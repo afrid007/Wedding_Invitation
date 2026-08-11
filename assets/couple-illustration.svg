@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 650">
+  <defs>
+    <linearGradient id="dress" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f3e5cf"/>
+      <stop offset="1" stop-color="#d5b27d"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Simple editorial illustration, intentionally not photorealistic -->
+  <ellipse cx="300" cy="585" rx="190" ry="30" fill="#ad8650" opacity=".13"/>
+
+  <!-- bride -->
+  <circle cx="230" cy="150" r="65" fill="#bd806f"/>
+  <path d="M170 150 Q230 75 290 150 Q282 88 230 80 Q178 88 170 150" fill="#563832"/>
+  <path d="M182 205 Q230 240 278 205 L300 420 Q230 480 160 420Z" fill="url(#dress)"/>
+  <path d="M165 400 Q230 445 295 400 L355 560 Q230 610 105 560Z" fill="#ead7b6"/>
+  <circle cx="208" cy="153" r="4" fill="#49302b"/>
+  <circle cx="252" cy="153" r="4" fill="#49302b"/>
+  <path d="M216 177 Q230 186 244 177" fill="none" stroke="#713d38" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="230" cy="105" r="8" fill="#ad8650"/>
+
+  <!-- groom -->
+  <circle cx="385" cy="150" r="63" fill="#aa6d5c"/>
+  <path d="M327 148 Q385 72 443 148 Q437 88 385 80 Q333 88 327 148" fill="#402d29"/>
+  <path d="M335 205 L435 205 L470 540 Q385 585 300 540Z" fill="#553630"/>
+  <path d="M365 212 L385 285 L405 212" fill="#fff5e5"/>
+  <path d="M385 280 L373 310 L385 338 L397 310Z" fill="#ad8650"/>
+  <circle cx="364" cy="153" r="4" fill="#49302b"/>
+  <circle cx="406" cy="153" r="4" fill="#49302b"/>
+  <path d="M372 177 Q385 186 398 177" fill="none" stroke="#49302b" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- joined hands -->
+  <path d="M275 330 Q315 305 350 330" fill="none" stroke="#b67665" stroke-width="16" stroke-linecap="round"/>
+
+  <!-- simple floral accents -->
+  <g fill="#ad8650">
+    <circle cx="100" cy="420" r="6"/>
+    <circle cx="120" cy="400" r="5"/>
+    <circle cx="500" cy="420" r="6"/>
+    <circle cx="480" cy="400" r="5"/>
+  </g>
+</svg>
