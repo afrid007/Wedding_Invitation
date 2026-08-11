@@ -1,2204 +1,2077 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aneesha & Kadiri Dhanu Reddy</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --cream:#fbf4e8;
+    --cream-dark:#f1e2ce;
+    --brown:#6e3328;
+    --brown-light:#8b5849;
+    --gold:#b98245;
+    --gold-light:#d7a66c;
+    --rose:#d89b8e;
+    --white:#fffdf8;
+    --shadow:0 20px 60px rgba(96,54,31,.12);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--cream);
+    color:var(--brown);
+    font-family:"DM Sans",sans-serif;
+    overflow-x:hidden;
+}
+
+button{
+    font-family:inherit;
+}
+
+/* SUBTLE PAPER TEXTURE */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:100;
+    opacity:.18;
+    background-image:
+        radial-gradient(
+            rgba(130,83,49,.16) .7px,
+            transparent .7px
+        );
+    background-size:7px 7px;
+}
+
+/* =========================
+   OPENING SCREEN
+========================= */
+
+#cover{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #fffaf2 0%,
+            #f7ead8 65%,
+            #ead6bd 100%
+        );
+
+    transition:
+        opacity 1.2s ease,
+        visibility 1.2s ease;
+}
+
+#cover.hidden{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+}
+
+.cover-decoration{
+    position:absolute;
+    color:var(--gold);
+    opacity:.55;
+    font-size:22px;
+
+    animation:
+        floatDecoration 5s ease-in-out infinite;
+}
+
+.cover-decoration:nth-child(1){
+    top:12%;
+    left:15%;
+}
+
+.cover-decoration:nth-child(2){
+    top:20%;
+    right:13%;
+    animation-delay:1s;
+}
+
+.cover-decoration:nth-child(3){
+    bottom:15%;
+    left:12%;
+    animation-delay:2s;
+}
+
+.cover-decoration:nth-child(4){
+    bottom:18%;
+    right:15%;
+    animation-delay:3s;
+}
+
+@keyframes floatDecoration{
+
+    0%,100%{
+        transform:
+            translateY(0)
+            rotate(0);
+    }
+
+    50%{
+        transform:
+            translateY(-15px)
+            rotate(8deg);
+    }
+}
+
+.cover-content{
+    width:min(90%,440px);
+    text-align:center;
+    position:relative;
+    z-index:10;
+}
+
+.cover-kicker{
+    font-family:"Cormorant Garamond",serif;
+    font-size:14px;
+    letter-spacing:.4em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:28px;
+}
+
+.cover-title{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(38px,10vw,64px);
+    font-weight:400;
+    line-height:1.05;
+    color:var(--brown);
+}
+
+.cover-names{
+    margin-top:16px;
+
+    font-family:"Cormorant Garamond",serif;
+    font-size:20px;
+    letter-spacing:.08em;
+}
+
+/* =========================
+   ENVELOPE
+========================= */
+
+.envelope-wrap{
+    position:relative;
+    margin:42px auto 0;
+
+    width:min(88vw,380px);
+    aspect-ratio:1.5;
+
+    cursor:pointer;
+
+    filter:
+        drop-shadow(
+            0 25px 35px
+            rgba(94,54,28,.22)
+        );
+
+    transition:
+        transform .4s ease;
+}
+
+.envelope-wrap:hover{
+    transform:translateY(-8px);
+}
+
+.envelope{
+    position:absolute;
+    inset:0;
+
+    overflow:hidden;
+
+    border-radius:5px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f7e8d5,
+            #e6c6a6
+        );
+}
+
+.envelope::before{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            35deg,
+            transparent 49.6%,
+            rgba(116,63,39,.15) 50%,
+            transparent 50.4%
+        ),
+        linear-gradient(
+            -35deg,
+            transparent 49.6%,
+            rgba(116,63,39,.15) 50%,
+            transparent 50.4%
+        );
+}
+
+.flap{
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:62%;
+
+    z-index:5;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f8ead9,
+            #dfb994
+        );
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            50% 100%
+        );
+
+    transform-origin:top center;
+
+    transition:
+        transform 1.2s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+.inner-card{
+    position:absolute;
+
+    z-index:3;
+
+    left:9%;
+    right:9%;
+    bottom:5%;
+
+    height:84%;
+
+    background:var(--white);
+
+    border-radius:3px;
+
+    box-shadow:
+        0 8px 20px
+        rgba(80,40,20,.1);
+
+    transform:translateY(35%);
+
+    transition:
+        transform 1.3s
+        cubic-bezier(.15,.75,.25,1);
+}
+
+.seal{
+    position:absolute;
+
+    z-index:10;
+
+    left:50%;
+    top:53%;
+
+    width:76px;
+    height:76px;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #e4a18d,
+            #b55f50 55%,
+            #8a3b31
+        );
+
+    border:
+        3px solid #9a473b;
+
+    box-shadow:
+        0 8px 20px
+        rgba(80,35,20,.25),
+        inset 0 3px 6px
+        rgba(255,255,255,.25);
 
-    <meta charset="UTF-8">
+    transition:
+        transform .7s ease,
+        opacity .6s ease;
+}
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+.seal::after{
+    content:"♥";
+    font-size:30px;
+    color:#f8dfb5;
+}
 
-    <title>
-        Aneesha & Kadiri Dhanu Reddy | Wedding Invitation
-    </title>
+.cover-hint{
+    margin-top:24px;
 
+    font-family:"Cormorant Garamond",serif;
+    font-size:16px;
 
-    <!-- Google Fonts -->
+    letter-spacing:.2em;
+    text-transform:uppercase;
+
+    color:var(--brown-light);
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    animation:
+        hintPulse 2s infinite;
+}
 
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin
-    >
+@keyframes hintPulse{
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap"
-        rel="stylesheet"
-    >
+    50%{
+        opacity:.45;
+    }
+}
 
+#cover.opening .flap{
+    transform:rotateX(180deg);
+}
 
-    <style>
+#cover.opening .inner-card{
+    transform:translateY(-22%);
+}
 
-        /* =====================================================
-           RESET
-        ===================================================== */
+#cover.opening .seal{
+    transform:
+        translate(-50%,-50%)
+        scale(1.5)
+        rotate(20deg);
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    opacity:0;
+}
 
+/* =========================
+   MAIN SITE
+========================= */
 
-        html {
-            scroll-behavior: smooth;
-        }
+#site{
+    opacity:0;
+    visibility:hidden;
 
+    transition:
+        opacity 1.2s ease;
+}
 
-        body {
+#site.visible{
+    opacity:1;
+    visibility:visible;
+}
 
-            background: #100304;
+/* =========================
+   HERO
+========================= */
 
-            color: #fff5e8;
+.hero{
+    min-height:100svh;
 
-            font-family:
-                "Cormorant Garamond",
-                Georgia,
-                serif;
+    position:relative;
 
-            overflow-x: hidden;
-        }
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
+    overflow:hidden;
 
-        button {
-            font-family: inherit;
-        }
+    padding:50px 20px;
+}
 
+.hero-image{
+    position:absolute;
 
-        /* =====================================================
-           OPENING SCREEN
-        ===================================================== */
+    inset:0;
 
-        #opening {
+    width:100%;
+    height:100%;
 
-            position: fixed;
+    object-fit:cover;
 
-            inset: 0;
+    object-position:center;
 
-            width: 100%;
-            height: 100svh;
+    opacity:.42;
 
-            z-index: 9999;
+    filter:
+        saturate(.85)
+        sepia(.08);
 
-            display: flex;
+    animation:
+        slowZoom 18s
+        ease-in-out
+        infinite alternate;
+}
 
-            align-items: center;
-            justify-content: center;
+@keyframes slowZoom{
 
-            overflow: hidden;
+    from{
+        transform:scale(1);
+    }
 
-            background:
-                radial-gradient(
-                    circle at center,
-                    #45191c 0%,
-                    #25090d 45%,
-                    #080203 100%
-                );
+    to{
+        transform:scale(1.06);
+    }
+}
 
-            transition:
-                opacity 1.8s ease,
-                visibility 1.8s ease;
-        }
+.hero::after{
+    content:"";
 
+    position:absolute;
 
-        /* Ambient light */
+    inset:0;
 
-        #opening::before {
+    background:
+        linear-gradient(
+            rgba(251,244,232,.82),
+            rgba(251,244,232,.72)
+        );
+}
 
-            content: "";
+.hero-content{
+    position:relative;
 
-            position: absolute;
+    z-index:2;
 
-            width: 650px;
-            height: 650px;
+    text-align:center;
 
-            max-width: 90vw;
-            max-height: 90vw;
+    max-width:850px;
 
-            border-radius: 50%;
+    animation:
+        revealUp 1.4s ease both;
+}
 
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(225, 170, 100, .16),
-                    transparent 68%
-                );
+@keyframes revealUp{
 
-            animation:
-                breathingGlow 5s ease-in-out infinite;
-        }
+    from{
+        opacity:0;
+        transform:translateY(35px);
+    }
 
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
 
-        @keyframes breathingGlow {
+.eyebrow{
+    font-family:"Cormorant Garamond",serif;
 
-            0%,
-            100% {
+    text-transform:uppercase;
 
-                transform: scale(.8);
+    letter-spacing:.4em;
 
-                opacity: .5;
-            }
+    font-size:13px;
 
-            50% {
+    color:var(--gold);
 
-                transform: scale(1.15);
+    margin-bottom:20px;
+}
 
-                opacity: 1;
-            }
-        }
+.hero h1{
+    font-family:"Playfair Display",serif;
 
+    font-size:
+        clamp(
+            44px,
+            8vw,
+            88px
+        );
 
-        /* =====================================================
-           OPENING DECORATIONS
-        ===================================================== */
+    font-weight:400;
 
-        .decor {
+    line-height:1.05;
 
-            position: absolute;
+    color:var(--brown);
+}
 
-            color: #e7c28b;
+.hero h1 span{
+    color:var(--gold);
+}
 
-            opacity: .55;
+.hero-date{
+    margin-top:28px;
 
-            pointer-events: none;
+    font-family:"Cormorant Garamond",serif;
 
-            animation:
-                floatingDecor 6s ease-in-out infinite;
-        }
+    font-size:
+        clamp(
+            22px,
+            4vw,
+            32px
+        );
 
+    letter-spacing:.18em;
 
-        .decor:nth-child(1) {
+    color:var(--brown);
+}
 
-            top: 12%;
-            left: 12%;
+.hero-subtitle{
+    margin-top:25px;
 
-            font-size: 25px;
-        }
+    font-family:"Cormorant Garamond",serif;
 
+    font-size:21px;
 
-        .decor:nth-child(2) {
+    font-style:italic;
 
-            top: 18%;
-            right: 14%;
+    color:var(--brown-light);
+}
 
-            font-size: 18px;
+/* =========================
+   GENERAL SECTIONS
+========================= */
 
-            animation-delay: 1s;
-        }
+section.content-section{
 
+    padding:
+        110px 20px;
 
-        .decor:nth-child(3) {
+    position:relative;
 
-            bottom: 18%;
-            left: 15%;
+    overflow:hidden;
+}
 
-            font-size: 20px;
+.section-inner{
+    width:min(1100px,100%);
+    margin:auto;
+}
 
-            animation-delay: 2s;
-        }
+.section-heading{
+    text-align:center;
+    margin-bottom:55px;
+}
 
+.section-number{
 
-        .decor:nth-child(4) {
+    display:inline-flex;
 
-            bottom: 13%;
-            right: 12%;
+    width:36px;
+    height:36px;
 
-            font-size: 28px;
+    align-items:center;
+    justify-content:center;
 
-            animation-delay: 3s;
-        }
+    border:
+        1px solid var(--gold);
 
+    border-radius:50%;
 
-        @keyframes floatingDecor {
+    color:var(--gold);
 
-            0%,
-            100% {
+    font-family:"Cormorant Garamond",serif;
 
-                transform:
-                    translateY(0)
-                    rotate(0deg);
-            }
+    font-size:17px;
 
-            50% {
+    margin-bottom:15px;
+}
 
-                transform:
-                    translateY(-18px)
-                    rotate(10deg);
-            }
-        }
+.section-heading h2{
 
+    font-family:"Playfair Display",serif;
 
-        /* =====================================================
-           ENVELOPE CONTAINER
-        ===================================================== */
+    font-weight:400;
 
-        .envelope-container {
+    font-size:
+        clamp(
+            36px,
+            6vw,
+            56px
+        );
 
-            position: relative;
+    color:var(--brown);
+}
 
-            z-index: 10;
+.section-heading p{
 
-            width: min(88vw, 440px);
+    margin-top:10px;
 
-            text-align: center;
+    font-family:"Cormorant Garamond",serif;
 
-            transition:
-                transform 1.2s ease,
-                opacity 1.2s ease;
-        }
+    font-size:19px;
 
+    color:var(--brown-light);
+}
 
-        /* =====================================================
-           ENVELOPE
-        ===================================================== */
+/* =========================
+   OUR STORY
+========================= */
 
-        .envelope {
+.story-grid{
 
-            position: relative;
+    display:grid;
 
-            width: 100%;
+    grid-template-columns:
+        1fr 1.15fr;
 
-            aspect-ratio: 1.55;
+    gap:45px;
 
-            cursor: pointer;
+    align-items:center;
+}
 
-            filter:
-                drop-shadow(
-                    0 30px 50px rgba(0, 0, 0, .65)
-                );
+.story-image{
 
-            animation:
-                floatingEnvelope 4s ease-in-out infinite;
-        }
+    width:100%;
 
+    aspect-ratio:.82;
 
-        @keyframes floatingEnvelope {
+    object-fit:cover;
 
-            0%,
-            100% {
+    border-radius:8px;
 
-                transform:
-                    translateY(0);
-            }
+    box-shadow:var(--shadow);
 
-            50% {
+    transition:
+        transform .7s ease;
+}
 
-                transform:
-                    translateY(-12px);
-            }
-        }
+.story-image:hover{
 
+    transform:
+        scale(1.025)
+        rotate(-.5deg);
+}
 
-        /* Envelope body */
+.story-text{
+    padding:25px;
+}
 
-        .envelope-body {
+.story-text .script{
 
-            position: absolute;
+    font-family:"Playfair Display",serif;
 
-            inset: 0;
+    font-style:italic;
 
-            border-radius: 6px;
+    font-size:28px;
 
-            background:
-                linear-gradient(
-                    145deg,
-                    #f4d8c2,
-                    #d9ad95
-                );
+    color:var(--gold);
 
-            overflow: hidden;
-        }
+    margin-bottom:18px;
+}
 
+.story-text p{
 
-        /* Envelope diagonal folds */
+    font-family:"Cormorant Garamond",serif;
 
-        .envelope-body::before {
+    font-size:22px;
 
-            content: "";
+    line-height:1.7;
 
-            position: absolute;
+    color:var(--brown-light);
+}
 
-            inset: 0;
+/* =========================
+   SAVE THE DATES
+========================= */
 
-            background:
-                linear-gradient(
-                    35deg,
-                    transparent 49.5%,
-                    rgba(80, 25, 20, .22) 50%,
-                    transparent 50.5%
-                );
-        }
+.dates-grid{
 
+    display:grid;
 
-        .envelope-body::after {
+    grid-template-columns:
+        repeat(2,1fr);
 
-            content: "";
+    gap:30px;
+}
 
-            position: absolute;
+.date-card{
 
-            inset: 0;
+    position:relative;
 
-            background:
-                linear-gradient(
-                    -35deg,
-                    transparent 49.5%,
-                    rgba(80, 25, 20, .22) 50%,
-                    transparent 50.5%
-                );
-        }
+    padding:55px 30px;
 
+    text-align:center;
 
-        /* =====================================================
-           INNER INVITATION CARD
-        ===================================================== */
+    background:
+        rgba(255,255,255,.52);
 
-        .card-inside {
+    border:
+        1px solid
+        rgba(185,130,69,.28);
 
-            position: absolute;
+    border-radius:10px;
 
-            z-index: 3;
+    box-shadow:
+        0 15px 40px
+        rgba(100,60,30,.06);
 
-            left: 8%;
-            right: 8%;
+    transition:
+        transform .45s ease,
+        box-shadow .45s ease;
+}
 
-            bottom: 5%;
+.date-card:hover{
 
-            height: 85%;
+    transform:
+        translateY(-10px);
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #fffaf1,
-                    #f0dfca
-                );
+    box-shadow:
+        0 25px 55px
+        rgba(100,60,30,.13);
+}
 
-            border-radius: 4px;
+.date-day{
 
-            transform:
-                translateY(38%);
+    font-family:"Playfair Display",serif;
 
-            transition:
-                transform 1.5s
-                cubic-bezier(.15, .75, .25, 1);
+    font-size:85px;
 
-            box-shadow:
-                0 10px 25px rgba(0, 0, 0, .2);
-        }
+    line-height:.9;
 
+    color:var(--brown);
+}
 
-        /* =====================================================
-           ENVELOPE FLAP
-        ===================================================== */
+.date-month{
 
-        .envelope-flap {
+    margin-top:15px;
 
-            position: absolute;
+    text-transform:uppercase;
 
-            top: 0;
-            left: 0;
+    letter-spacing:.28em;
 
-            width: 100%;
-            height: 62%;
+    color:var(--gold);
 
-            z-index: 5;
+    font-size:13px;
+}
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #f8dfca,
-                    #e4bda7
-                );
+.date-event{
 
-            clip-path:
-                polygon(
-                    0 0,
-                    100% 0,
-                    50% 100%
-                );
+    margin-top:25px;
 
-            transform-origin: top center;
+    font-family:"Cormorant Garamond",serif;
 
-            transition:
-                transform 1.3s
-                cubic-bezier(.2, .8, .2, 1);
-        }
+    font-size:25px;
+}
 
+.date-description{
 
-        /* =====================================================
-           WAX SEAL
-        ===================================================== */
+    margin-top:10px;
 
-        #waxSeal {
+    color:var(--brown-light);
 
-            position: absolute;
+    font-family:"Cormorant Garamond",serif;
 
-            z-index: 20;
+    font-size:18px;
+}
 
-            left: 50%;
-            top: 52%;
+/* =========================
+   FAMILY
+========================= */
 
-            width: 92px;
-            height: 92px;
+.family-card{
 
-            transform:
-                translate(-50%, -50%);
+    max-width:780px;
 
-            border-radius: 50%;
+    margin:auto;
 
-            display: flex;
+    text-align:center;
 
-            align-items: center;
-            justify-content: center;
+    padding:70px 30px;
 
-            cursor: pointer;
+    border:
+        1px solid
+        rgba(185,130,69,.35);
 
-            background:
-                radial-gradient(
-                    circle at 30% 25%,
-                    #d76169,
-                    #941d2b 52%,
-                    #510912 100%
-                );
+    border-radius:15px;
 
-            border:
-                4px solid #70131d;
+    background:
+        rgba(255,255,255,.42);
 
-            box-shadow:
+    position:relative;
+}
 
-                0 12px 30px rgba(0, 0, 0, .5),
+.family-card::before,
+.family-card::after{
 
-                inset 0 4px 8px
-                rgba(255, 255, 255, .18),
+    content:"❦";
 
-                0 0 30px
-                rgba(222, 65, 80, .3);
+    position:absolute;
 
-            animation:
-                sealGlow 2.2s infinite;
+    color:var(--gold-light);
 
-            transition:
-                transform .6s ease,
-                opacity .6s ease;
-        }
+    font-size:42px;
+}
 
+.family-card::before{
 
-        #waxSeal::after {
+    top:20px;
+    left:25px;
+}
 
-            content: "♥";
+.family-card::after{
 
-            font-size: 38px;
+    bottom:20px;
+    right:25px;
 
-            color: #f6d19a;
+    transform:rotate(180deg);
+}
 
-            text-shadow:
-                0 2px 4px rgba(0, 0, 0, .4);
-        }
+.family-label{
 
+    text-transform:uppercase;
 
-        @keyframes sealGlow {
+    letter-spacing:.3em;
 
-            0%,
-            100% {
+    font-size:12px;
 
-                box-shadow:
+    color:var(--gold);
+}
 
-                    0 12px 30px rgba(0, 0, 0, .5),
+.family-names{
 
-                    0 0 15px
-                    rgba(222, 65, 80, .2);
-            }
+    margin-top:20px;
 
-            50% {
+    font-family:"Playfair Display",serif;
 
-                box-shadow:
+    font-size:
+        clamp(
+            36px,
+            7vw,
+            58px
+        );
 
-                    0 12px 30px rgba(0, 0, 0, .5),
+    font-weight:400;
+}
 
-                    0 0 42px
-                    rgba(222, 65, 80, .55);
-            }
-        }
+.family-and{
 
+    margin:8px 0;
 
-        /* =====================================================
-           OPEN INSTRUCTION
-        ===================================================== */
+    color:var(--gold);
 
-        .open-instruction {
+    font-size:22px;
+}
 
-            margin-top: 35px;
+.family-message{
 
-            color: #e6c48c;
+    margin-top:25px;
 
-            text-transform: uppercase;
+    font-family:"Cormorant Garamond",serif;
 
-            letter-spacing: .35em;
+    font-size:20px;
 
-            font-size: 12px;
+    line-height:1.6;
 
-            animation:
-                instructionPulse 2s infinite;
-        }
+    color:var(--brown-light);
+}
 
+/* =========================
+   LOVE
+========================= */
 
-        @keyframes instructionPulse {
+.values{
 
-            50% {
-                opacity: .4;
-            }
-        }
+    display:grid;
 
+    grid-template-columns:
+        repeat(3,1fr);
 
-        /* =====================================================
-           OPENING STATE
-        ===================================================== */
+    gap:25px;
 
-        #opening.opened {
+    text-align:center;
+}
 
-            opacity: 0;
+.value{
 
-            visibility: hidden;
+    padding:40px 20px;
 
-            pointer-events: none;
-        }
+    border-top:
+        1px solid
+        rgba(185,130,69,.4);
 
+    border-bottom:
+        1px solid
+        rgba(185,130,69,.2);
 
-        #opening.opened
-        .envelope-flap {
+    transition:
+        transform .4s ease;
+}
 
-            transform:
-                rotateX(180deg);
-        }
+.value:hover{
 
+    transform:
+        translateY(-7px);
+}
 
-        #opening.opened
-        .card-inside {
+.value-icon{
 
-            transform:
-                translateY(-25%);
-        }
+    font-size:30px;
 
+    color:var(--gold);
 
-        #opening.opened
-        #waxSeal {
+    margin-bottom:15px;
+}
 
-            transform:
-                translate(-50%, -50%)
-                scale(1.7)
-                rotate(25deg);
+.value h3{
 
-            opacity: 0;
-        }
+    font-family:"Playfair Display",serif;
 
+    font-size:25px;
 
-        #opening.opened
-        .envelope-container {
+    font-weight:400;
+}
 
-            transform:
-                scale(1.1)
-                translateY(-20px);
+.value p{
 
-            opacity: 0;
-        }
+    margin-top:8px;
 
+    font-family:"Cormorant Garamond",serif;
 
-        /* =====================================================
-           MAIN INVITATION
-        ===================================================== */
+    font-size:18px;
 
-        #invitation {
+    color:var(--brown-light);
+}
 
-            opacity: 0;
+/* =========================
+   FINAL SCENE
+========================= */
 
-            visibility: hidden;
+.finale{
 
-            transition:
-                opacity 2s ease,
-                visibility 2s ease;
-        }
+    min-height:85vh;
 
+    display:flex;
 
-        #invitation.visible {
+    align-items:center;
 
-            opacity: 1;
+    position:relative;
 
-            visibility: visible;
-        }
+    overflow:hidden;
 
+    padding:80px 20px;
+}
 
-        /* =====================================================
-           HERO
-        ===================================================== */
+.finale-image{
 
-        .hero {
+    position:absolute;
 
-            position: relative;
+    inset:0;
 
-            min-height: 100svh;
+    width:100%;
+    height:100%;
 
-            display: flex;
+    object-fit:cover;
 
-            align-items: center;
+    opacity:.38;
 
-            justify-content: center;
+    filter:saturate(.85);
+}
 
-            overflow: hidden;
+.finale::after{
 
-            background: #190609;
-        }
+    content:"";
 
+    position:absolute;
 
-        /* Single couple artwork */
+    inset:0;
 
-        .hero-image {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(251,244,232,.96),
+            rgba(251,244,232,.5)
+        );
+}
 
-            position: absolute;
+.finale-content{
 
-            inset: -5%;
+    position:relative;
 
-            width: 110%;
-            height: 110%;
+    z-index:2;
 
-            object-fit: cover;
+    width:min(650px,100%);
 
-            object-position: center;
+    padding-left:5%;
+}
 
-            filter:
-                brightness(.78)
-                saturate(1.08);
+.finale-content h2{
 
-            animation:
-                cinematicZoom 18s ease-in-out infinite alternate;
-        }
+    font-family:"Playfair Display",serif;
 
+    font-weight:400;
 
-        @keyframes cinematicZoom {
+    font-size:
+        clamp(
+            45px,
+            8vw,
+            78px
+        );
 
-            from {
+    line-height:1.05;
+}
 
-                transform:
-                    scale(1);
-            }
+.finale-message{
 
-            to {
+    margin-top:25px;
 
-                transform:
-                    scale(1.08);
-            }
-        }
+    font-family:"Cormorant Garamond",serif;
 
+    font-size:25px;
 
-        /* Hero overlay */
+    line-height:1.5;
 
-        .hero::after {
+    color:var(--brown-light);
+}
 
-            content: "";
+.finale-names{
 
-            position: absolute;
+    margin-top:35px;
 
-            inset: 0;
+    font-family:"Playfair Display",serif;
 
-            background:
-                linear-gradient(
-                    to bottom,
-                    rgba(10, 2, 4, .12),
-                    rgba(10, 2, 4, .08) 45%,
-                    rgba(10, 2, 4, .78) 100%
-                );
+    font-style:italic;
 
-            z-index: 2;
-        }
+    font-size:29px;
 
+    color:var(--gold);
+}
 
-        /* =====================================================
-           HERO CONTENT
-        ===================================================== */
+/* =========================
+   FOOTER
+========================= */
 
-        .hero-content {
+footer{
 
-            position: relative;
+    padding:45px 20px;
 
-            z-index: 5;
+    text-align:center;
 
-            text-align: center;
+    border-top:
+        1px solid
+        rgba(185,130,69,.25);
 
-            width: min(90%, 850px);
+    background:#f6ead9;
+}
 
-            padding: 40px;
+footer p{
 
-            text-shadow:
-                0 4px 25px rgba(0, 0, 0, .7);
+    font-family:"Cormorant Garamond",serif;
 
-            animation:
-                contentReveal 2.5s ease forwards;
-        }
+    font-size:17px;
 
+    color:var(--brown-light);
+}
 
-        @keyframes contentReveal {
+footer .heart{
 
-            from {
+    color:var(--rose);
 
-                opacity: 0;
+    font-size:22px;
 
-                transform:
-                    translateY(50px);
-            }
+    margin:0 5px;
+}
 
-            to {
+/* =========================
+   MUSIC BUTTON
+========================= */
 
-                opacity: 1;
+#musicButton{
 
-                transform:
-                    translateY(0);
-            }
-        }
+    position:fixed;
 
+    right:20px;
+    bottom:20px;
 
-        .small-heading {
+    z-index:500;
 
-            font-size: 13px;
+    width:52px;
+    height:52px;
 
-            text-transform: uppercase;
+    border-radius:50%;
 
-            letter-spacing: .4em;
+    border:
+        1px solid
+        rgba(185,130,69,.6);
 
-            color: #f0ce91;
+    background:
+        rgba(255,249,239,.88);
 
-            margin-bottom: 18px;
-        }
+    color:var(--gold);
 
+    display:none;
 
-        .save-date {
+    align-items:center;
+    justify-content:center;
 
-            font-size:
-                clamp(42px, 9vw, 82px);
+    cursor:pointer;
 
-            font-weight: 500;
+    font-size:20px;
 
-            letter-spacing: .04em;
+    box-shadow:
+        0 10px 30px
+        rgba(80,40,20,.15);
 
-            color: #fff5df;
-        }
+    backdrop-filter:blur(8px);
 
+    transition:
+        transform .3s ease;
+}
 
-        .main-date {
+#musicButton:hover{
 
-            margin-top: 18px;
+    transform:
+        scale(1.1);
+}
 
-            font-size:
-                clamp(20px, 4vw, 30px);
+/* =========================
+   FALLING PETALS
+========================= */
 
-            letter-spacing: .2em;
+.petal{
 
-            color: #f5d09b;
-        }
+    position:fixed;
 
+    top:-30px;
 
-        .names {
+    z-index:200;
 
-            margin-top: 25px;
+    pointer-events:none;
 
-            font-family:
-                "Great Vibes",
-                cursive;
+    color:var(--rose);
 
-            font-size:
-                clamp(46px, 8vw, 82px);
+    animation:
+        fallPetal
+        linear
+        forwards;
+}
 
-            line-height: .95;
-        }
+@keyframes fallPetal{
 
+    0%{
+        opacity:0;
 
-        .heart-divider {
+        transform:
+            translateY(-20px)
+            rotate(0);
+    }
 
-            display: inline-block;
+    15%{
+        opacity:.75;
+    }
 
-            color: #ed7882;
+    100%{
 
-            margin: 12px;
+        opacity:0;
 
-            animation:
-                heartbeat 1.4s infinite;
-        }
+        transform:
+            translateY(110vh)
+            translateX(var(--drift))
+            rotate(500deg);
+    }
+}
 
+/* =========================
+   SCROLL REVEAL
+========================= */
 
-        @keyframes heartbeat {
+.reveal{
 
-            50% {
+    opacity:0;
 
-                transform:
-                    scale(1.25);
-            }
-        }
+    transform:
+        translateY(35px);
 
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
 
-        .scroll {
+.reveal.show{
 
-            margin-top: 45px;
+    opacity:1;
 
-            font-size: 11px;
+    transform:
+        translateY(0);
+}
 
-            letter-spacing: .35em;
+/* =========================
+   MOBILE
+========================= */
 
-            text-transform: uppercase;
+@media (max-width:700px){
 
-            color: #fff0d4;
+    section.content-section{
 
-            animation:
-                scrollFloat 2s infinite;
-        }
+        padding:
+            80px 18px;
+    }
 
+    .story-grid{
 
-        @keyframes scrollFloat {
+        grid-template-columns:1fr;
+    }
 
-            50% {
+    .story-text{
 
-                transform:
-                    translateY(9px);
-            }
-        }
+        padding:
+            10px 5px;
+    }
 
+    .dates-grid{
 
-        /* =====================================================
-           FAMILY SECTION
-        ===================================================== */
+        grid-template-columns:1fr;
+    }
 
-        .family {
+    .values{
 
-            position: relative;
+        grid-template-columns:1fr;
+    }
 
-            min-height: 70vh;
+    .hero{
 
-            display: flex;
+        min-height:90svh;
+    }
 
-            align-items: center;
+    .hero-image{
 
-            justify-content: center;
+        opacity:.32;
+    }
 
-            text-align: center;
+    .finale{
 
-            padding: 90px 20px;
+        min-height:75vh;
+    }
 
-            background:
-                radial-gradient(
-                    circle at center,
-                    #351014,
-                    #130406 70%
-                );
-        }
+    .finale::after{
 
+        background:
+            rgba(251,244,232,.72);
+    }
 
-        .family-inner {
+    .finale-content{
 
-            width: min(90%, 700px);
-        }
+        padding-left:0;
 
+        text-align:center;
+    }
 
-        .family-label {
+    .date-day{
 
-            text-transform: uppercase;
-
-            letter-spacing: .35em;
-
-            color: #dcb77d;
-
-            font-size: 12px;
-        }
-
-
-        .family-title {
-
-            margin-top: 20px;
-
-            font-family:
-                "Great Vibes",
-                cursive;
-
-            font-size:
-                clamp(55px, 10vw, 90px);
-
-            font-weight: 400;
-        }
-
-
-        .family-text {
-
-            margin-top: 35px;
-
-            font-size: 20px;
-
-            line-height: 1.8;
-
-            color: #ead8c2;
-        }
-
-
-        .parents {
-
-            margin-top: 45px;
-
-            padding: 30px;
-
-            border:
-                1px solid
-                rgba(224, 190, 131, .35);
-
-            border-radius: 18px;
-
-            background:
-                rgba(255, 255, 255, .035);
-
-            transition:
-                transform .4s ease,
-                border-color .4s ease;
-        }
-
-
-        .parents:hover {
-
-            transform:
-                translateY(-8px);
-
-            border-color:
-                rgba(224, 190, 131, .7);
-        }
-
-
-        .parents-label {
-
-            color: #dcb77d;
-
-            text-transform: uppercase;
-
-            letter-spacing: .25em;
-
-            font-size: 12px;
-        }
-
-
-        .parents-names {
-
-            margin-top: 15px;
-
-            font-family:
-                "Great Vibes",
-                cursive;
-
-            font-size:
-                clamp(35px, 7vw, 55px);
-
-            color: #fff0d2;
-        }
-
-
-        /* =====================================================
-           EVENTS
-        ===================================================== */
-
-        .events {
-
-            padding: 90px 20px;
-
-            background: #100304;
-
-            text-align: center;
-        }
-
-
-        .events-title {
-
-            font-family:
-                "Great Vibes",
-                cursive;
-
-            font-size:
-                clamp(55px, 10vw, 85px);
-        }
-
-
-        .event-grid {
-
-            max-width: 900px;
-
-            margin: 55px auto 0;
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(2, 1fr);
-
-            gap: 25px;
-        }
-
-
-        .event-card {
-
-            padding: 45px 25px;
-
-            border:
-                1px solid
-                rgba(220, 183, 125, .3);
-
-            border-radius: 20px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(255, 255, 255, .05),
-                    rgba(255, 255, 255, .015)
-                );
-
-            transition:
-                transform .4s ease,
-                border-color .4s ease;
-        }
-
-
-        .event-card:hover {
-
-            transform:
-                translateY(-10px);
-
-            border-color:
-                rgba(220, 183, 125, .8);
-        }
-
-
-        .event-date {
-
-            color: #dfbd80;
-
-            text-transform: uppercase;
-
-            letter-spacing: .25em;
-
-            font-size: 12px;
-        }
-
-
-        .event-name {
-
-            margin-top: 15px;
-
-            font-size: 35px;
-        }
-
-
-        .event-description {
-
-            margin-top: 15px;
-
-            font-size: 18px;
-
-            line-height: 1.6;
-
-            color: #d9c9b5;
-        }
-
-
-        /* =====================================================
-           CLOSING
-        ===================================================== */
-
-        .closing {
-
-            min-height: 65vh;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            text-align: center;
-
-            padding: 60px 20px;
-
-            background:
-                radial-gradient(
-                    circle at center,
-                    #351014,
-                    #0e0305 75%
-                );
-        }
-
-
-        .closing-title {
-
-            font-family:
-                "Great Vibes",
-                cursive;
-
-            font-size:
-                clamp(60px, 12vw, 110px);
-        }
-
-
-        .closing-names {
-
-            margin-top: 20px;
-
-            color: #e3c188;
-
-            font-size: 22px;
-
-            letter-spacing: .08em;
-        }
-
-
-        /* =====================================================
-           MUSIC BUTTON
-        ===================================================== */
-
-        #musicButton {
-
-            position: fixed;
-
-            right: 20px;
-            bottom: 20px;
-
-            z-index: 500;
-
-            width: 50px;
-            height: 50px;
-
-            border-radius: 50%;
-
-            border:
-                1px solid
-                rgba(255, 220, 170, .5);
-
-            background:
-                rgba(35, 8, 12, .78);
-
-            color: #f2ce92;
-
-            backdrop-filter:
-                blur(10px);
-
-            cursor: pointer;
-
-            font-size: 19px;
-
-            display: none;
-
-            align-items: center;
-            justify-content: center;
-
-            box-shadow:
-                0 8px 25px rgba(0, 0, 0, .4);
-
-            transition:
-                transform .3s ease;
-        }
-
-
-        #musicButton:hover {
-
-            transform:
-                scale(1.1);
-        }
-
-
-        /* =====================================================
-           PETALS
-        ===================================================== */
-
-        .petal {
-
-            position: fixed;
-
-            top: -30px;
-
-            z-index: 300;
-
-            pointer-events: none;
-
-            color: #f1b6a5;
-
-            font-size: 16px;
-
-            animation:
-                fallingPetal linear forwards;
-        }
-
-
-        @keyframes fallingPetal {
-
-            0% {
-
-                transform:
-                    translateY(-30px)
-                    rotate(0deg);
-
-                opacity: 0;
-            }
-
-            10% {
-
-                opacity: .9;
-            }
-
-            100% {
-
-                transform:
-                    translateY(110vh)
-                    translateX(var(--drift))
-                    rotate(600deg);
-
-                opacity: 0;
-            }
-        }
-
-
-        /* =====================================================
-           MOBILE
-        ===================================================== */
-
-        @media (max-width: 650px) {
-
-            .envelope-container {
-
-                width: 88vw;
-            }
-
-
-            #waxSeal {
-
-                width: 78px;
-                height: 78px;
-            }
-
-
-            #waxSeal::after {
-
-                font-size: 31px;
-            }
-
-
-            .event-grid {
-
-                grid-template-columns: 1fr;
-            }
-
-
-            .hero-content {
-
-                padding: 20px;
-            }
-
-
-            .main-date {
-
-                letter-spacing: .12em;
-            }
-
-
-            .parents {
-
-                padding: 25px 15px;
-            }
-
-
-            .names {
-
-                line-height: .9;
-            }
-        }
-
-
-        /* =====================================================
-           REDUCED MOTION
-        ===================================================== */
-
-        @media (prefers-reduced-motion: reduce) {
-
-            *,
-            *::before,
-            *::after {
-
-                animation-duration:
-                    .01ms !important;
-
-                animation-iteration-count:
-                    1 !important;
-
-                transition-duration:
-                    .01ms !important;
-            }
-        }
-
-    </style>
-
+        font-size:75px;
+    }
+}
+</style>
 </head>
-
 
 <body>
 
+<!-- =========================
+     ENVELOPE OPENING
+========================= -->
 
-    <!-- =====================================================
-         OPENING SCREEN
-    ===================================================== -->
+<div id="cover">
 
-    <section id="opening">
+    <div class="cover-decoration">✿</div>
+    <div class="cover-decoration">❦</div>
+    <div class="cover-decoration">✧</div>
+    <div class="cover-decoration">❀</div>
 
+    <div class="cover-content">
 
-        <!-- Floating decorations -->
+        <div class="cover-kicker">
+            A New Chapter Begins
+        </div>
 
-        <div class="decor">✿</div>
+        <div class="cover-title">
+            Our Wedding
+        </div>
 
-        <div class="decor">✦</div>
+        <div class="cover-names">
+            Aneesha
+            <span style="color:#b98245">&amp;</span>
+            Kadiri Dhanu Reddy
+        </div>
 
-        <div class="decor">❀</div>
+        <div
+            class="envelope-wrap"
+            id="openEnvelope"
+            role="button"
+            tabindex="0"
+            aria-label="Open wedding invitation"
+        >
 
-        <div class="decor">✧</div>
+            <div class="envelope">
 
+                <div class="inner-card"></div>
 
-        <div class="envelope-container">
+                <div class="flap"></div>
 
-
-            <!-- CSS ENVELOPE -->
-
-            <div
-                class="envelope"
-                id="envelope"
-                tabindex="0"
-                role="button"
-                aria-label="Open wedding invitation"
-            >
-
-
-                <!-- Invitation card -->
-
-                <div class="card-inside"></div>
-
-
-                <!-- Envelope body -->
-
-                <div class="envelope-body"></div>
-
-
-                <!-- Envelope flap -->
-
-                <div class="envelope-flap"></div>
-
-
-                <!-- Wax seal -->
-
-                <div id="waxSeal"></div>
-
+                <div class="seal"></div>
 
             </div>
 
+        </div>
 
-            <div class="open-instruction">
+        <div class="cover-hint">
+            Tap the invitation
+        </div>
 
-                Tap the seal to open
+    </div>
+</div>
 
+
+<!-- =========================
+     MAIN WEBSITE
+========================= -->
+
+<main id="site">
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <img
+            src="assets/couple.jpg"
+            class="hero-image"
+            alt="Aneesha and Kadiri Dhanu Reddy"
+        >
+
+        <div class="hero-content">
+
+            <div class="eyebrow">
+                We invite you to celebrate our love story
             </div>
 
+            <h1>
+                Aneesha
+                <span>&amp;</span>
+                Kadiri Dhanu Reddy
+            </h1>
+
+            <div class="hero-date">
+                15 &amp; 16 AUGUST 2026
+            </div>
+
+            <div class="hero-subtitle">
+                Two beautiful days.
+                One unforgettable beginning.
+            </div>
 
         </div>
 
     </section>
 
 
+    <!-- OUR STORY -->
 
-    <!-- =====================================================
-         MAIN INVITATION
+    <section class="content-section">
 
-         HIDDEN UNTIL ENVELOPE IS OPENED
-    ===================================================== -->
+        <div class="section-inner">
 
-    <main id="invitation">
+            <div class="section-heading reveal">
 
-
-        <!-- =================================================
-             HERO
-        ================================================= -->
-
-        <section class="hero">
-
-
-            <!--
-
-                SINGLE COUPLE ARTWORK
-
-                Put your image here:
-
-                assets/couple.jpg
-
-            -->
-
-            <img
-                src="assets/couple.jpg"
-                class="hero-image"
-                alt="Aneesha and Kadiri Dhanu Reddy"
-            >
-
-
-            <div class="hero-content">
-
-
-                <div class="small-heading">
-
-                    With the blessings of our families
-
+                <div class="section-number">
+                    1
                 </div>
 
+                <h2>
+                    Our Story
+                </h2>
 
-                <div class="save-date">
-
-                    Save the Date
-
-                </div>
-
-
-                <div class="main-date">
-
-                    15 · 16 AUGUST 2026
-
-                </div>
-
-
-                <div class="names">
-
-                    Aneesha Yelichelamala
-
-                    <br>
-
-
-                    <span class="heart-divider">
-
-                        ♥
-                        
-                    </span>
-
-
-                    <br>
-
-                    Kadiri Dhanu Reddy
-
-                </div>
-
-
-                <div class="scroll">
-
-                    Scroll to discover
-
-                    <br>
-
-                    ↓
-
-                </div>
-
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             FAMILY
-        ================================================= -->
-
-        <section class="family">
-
-
-            <div class="family-inner">
-
-
-                <div class="family-label">
-
-                    With love & blessings
-
-                </div>
-
-
-                <div class="family-title">
-
-                    Our Families
-
-                </div>
-
-
-                <p class="family-text">
-
-                    With the love and blessings of our
-                    families, we invite you to celebrate
-                    this beautiful beginning with us.
-
+                <p>
+                    begins here
                 </p>
 
-
-                <div class="parents">
-
-
-                    <div class="parents-label">
-
-                        Bride's Parents
-
-                    </div>
-
-
-                    <div class="parents-names">
-
-                        Banu & Ali Akbar Basha
-
-                    </div>
-
-
-                </div>
-
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             EVENTS
-        ================================================= -->
-
-        <section class="events">
-
-
-            <div class="small-heading">
-
-                The Celebration
-
             </div>
 
 
-            <div class="events-title">
+            <div class="story-grid reveal">
 
-                Two Beautiful Days
+                <img
+                    src="assets/couple.jpg"
+                    class="story-image"
+                    alt="The couple"
+                >
+
+                <div class="story-text">
+
+                    <div class="script">
+                        A beautiful beginning
+                    </div>
+
+                    <p>
+                        Some moments become memories.
+                        Some memories become stories.
+                        And some stories become forever.
+
+                        <br><br>
+
+                        We are delighted to invite you
+                        to be part of the beginning of ours.
+                    </p>
+
+                </div>
 
             </div>
 
+        </div>
 
-            <div class="event-grid">
+    </section>
 
 
-                <div class="event-card">
+    <!-- SAVE THE DATES -->
 
-
-                    <div class="event-date">
-
-                        15 August 2026
-
-                    </div>
-
-
-                    <div class="event-name">
-
-                        Celebration
-
-                    </div>
-
-
-                    <div class="event-description">
-
-                        A beautiful celebration filled
-                        with family, laughter and love.
-
-                    </div>
-
-
-                </div>
-
-
-
-                <div class="event-card">
-
-
-                    <div class="event-date">
-
-                        16 August 2026
-
-                    </div>
-
-
-                    <div class="event-name">
-
-                        Wedding
-
-                    </div>
-
-
-                    <div class="event-description">
-
-                        The beginning of a beautiful
-                        new chapter together.
-
-                    </div>
-
-
-                </div>
-
-
-            </div>
-
-
-        </section>
-
-
-
-        <!-- =================================================
-             CLOSING
-        ================================================= -->
-
-        <section class="closing">
-
-
-            <div>
-
-
-                <div class="closing-title">
-
-                    With Love
-
-                </div>
-
-
-                <div class="closing-names">
-
-                    Aneesha & Kadiri Dhanu Reddy
-
-                </div>
-
-
-            </div>
-
-
-        </section>
-
-
-    </main>
-
-
-
-    <!-- =====================================================
-         MUSIC
-
-         IMPORTANT:
-
-         Put:
-
-         assets/wedding-music.mp3
-
-         in your GitHub repository.
-    ===================================================== -->
-
-    <audio
-        id="weddingMusic"
-        loop
-        preload="auto"
+    <section
+        class="content-section"
+        style="background:#f6ead9;"
     >
 
-        <source
-            src="assets/wedding-music.mp3"
-            type="audio/mpeg"
+        <div class="section-inner">
+
+            <div class="section-heading reveal">
+
+                <div class="section-number">
+                    2
+                </div>
+
+                <h2>
+                    Save The Dates
+                </h2>
+
+                <p>
+                    Mark your calendar
+                </p>
+
+            </div>
+
+
+            <div class="dates-grid reveal">
+
+
+                <div class="date-card">
+
+                    <div class="date-day">
+                        15
+                    </div>
+
+                    <div class="date-month">
+                        August · 2026
+                    </div>
+
+                    <div class="date-event">
+                        The Celebration
+                    </div>
+
+                    <div class="date-description">
+                        A day filled with love,
+                        laughter and beautiful memories.
+                    </div>
+
+                </div>
+
+
+                <div class="date-card">
+
+                    <div class="date-day">
+                        16
+                    </div>
+
+                    <div class="date-month">
+                        August · 2026
+                    </div>
+
+                    <div class="date-event">
+                        The Wedding
+                    </div>
+
+                    <div class="date-description">
+                        The day we begin our
+                        beautiful journey together.
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FAMILY -->
+
+    <section class="content-section">
+
+        <div class="section-inner">
+
+            <div class="section-heading reveal">
+
+                <div class="section-number">
+                    3
+                </div>
+
+                <h2>
+                    With The Blessings
+                </h2>
+
+                <p>
+                    of her family
+                </p>
+
+            </div>
+
+
+            <div class="family-card reveal">
+
+                <div class="family-label">
+                    Bride's Parents
+                </div>
+
+                <div class="family-names">
+                    Banu
+                </div>
+
+                <div class="family-and">
+                    &amp;
+                </div>
+
+                <div class="family-names">
+                    Ali Akbar Basha
+                </div>
+
+                <div class="family-message">
+                    With their love and blessings,
+                    we begin this beautiful new chapter.
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CELEBRATING LOVE -->
+
+    <section
+        class="content-section"
+        style="background:#f6ead9;"
+    >
+
+        <div class="section-inner">
+
+            <div class="section-heading reveal">
+
+                <div class="section-number">
+                    4
+                </div>
+
+                <h2>
+                    Celebrating Love
+                </h2>
+
+                <p>
+                    together
+                </p>
+
+            </div>
+
+
+            <div class="values reveal">
+
+
+                <div class="value">
+
+                    <div class="value-icon">
+                        ♡
+                    </div>
+
+                    <h3>
+                        Love
+                    </h3>
+
+                    <p>
+                        That binds two hearts together.
+                    </p>
+
+                </div>
+
+
+                <div class="value">
+
+                    <div class="value-icon">
+                        ❦
+                    </div>
+
+                    <h3>
+                        Family
+                    </h3>
+
+                    <p>
+                        That makes every moment special.
+                    </p>
+
+                </div>
+
+
+                <div class="value">
+
+                    <div class="value-icon">
+                        ✧
+                    </div>
+
+                    <h3>
+                        Memories
+                    </h3>
+
+                    <p>
+                        That last forever.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FINAL COUPLE SCENE -->
+
+    <section class="finale">
+
+        <img
+            src="assets/couple-finale.jpg"
+            class="finale-image"
+            alt="Aneesha and Kadiri Dhanu Reddy"
         >
 
-    </audio>
+        <div class="finale-content reveal">
+
+            <div class="eyebrow">
+                See You There
+            </div>
+
+            <h2>
+                Let's make beautiful
+                memories together.
+            </h2>
+
+            <div class="finale-message">
+                Thank you for being a part
+                of our special day.
+            </div>
+
+            <div class="finale-names">
+                Aneesha × Kadiri Dhanu Reddy
+            </div>
+
+        </div>
+
+    </section>
 
 
+    <!-- FOOTER -->
 
-    <!-- Music control -->
+    <footer>
 
-    <button
-        id="musicButton"
-        aria-label="Toggle wedding music"
+        <p>
+            Made with
+            <span class="heart">♥</span>
+            for our special day
+        </p>
+
+        <p style="margin-top:8px;">
+            15 · 16 August 2026
+        </p>
+
+    </footer>
+
+</main>
+
+
+<!-- =========================
+     MUSIC
+========================= -->
+
+<audio
+    id="music"
+    loop
+    preload="auto"
+>
+    <source
+        src="assets/wedding-music.mp3"
+        type="audio/mpeg"
     >
+</audio>
 
-        ♪
 
-    </button>
+<button
+    id="musicButton"
+    aria-label="Toggle music"
+>
+    ♫
+</button>
 
 
+<script>
 
-    <script>
+/* =========================
+   OPEN INVITATION
+========================= */
 
-        /* =====================================================
-           ELEMENTS
-        ===================================================== */
+const cover =
+    document.getElementById("cover");
 
-        const opening =
-            document.getElementById("opening");
+const openEnvelope =
+    document.getElementById("openEnvelope");
 
+const site =
+    document.getElementById("site");
 
-        const envelope =
-            document.getElementById("envelope");
+const music =
+    document.getElementById("music");
 
+const musicButton =
+    document.getElementById("musicButton");
 
-        const invitation =
-            document.getElementById("invitation");
 
+let opened = false;
 
-        const music =
-            document.getElementById("weddingMusic");
+let musicPlaying = false;
 
 
-        const musicButton =
-            document.getElementById("musicButton");
+/* =========================
+   MUSIC FADE IN
+========================= */
 
+function fadeInMusic(){
 
-        let opened = false;
+    music.volume = 0;
 
+    music.play()
+        .then(() => {
 
-        let musicPlaying = false;
+            musicPlaying = true;
 
+            musicButton.style.display =
+                "flex";
 
-        /* =====================================================
-           MUSIC FADE IN
 
-           Music starts at 0 volume and gradually reaches
-           45% volume over 3 seconds.
-        ===================================================== */
+            const start =
+                performance.now();
 
-        function fadeInMusic(
-            duration = 3000,
-            targetVolume = 0.45
-        ) {
+            const duration = 3000;
 
+            const target = 0.42;
 
-            /*
-                Start completely silent.
-            */
 
-            music.volume = 0;
+            function animateVolume(now){
 
-
-            /*
-                Browser allows this because this function
-                is called directly from the user's click.
-            */
-
-            const playPromise =
-                music.play();
-
-
-            if (
-                playPromise !== undefined
-            ) {
-
-
-                playPromise
-                    .then(() => {
-
-
-                        musicPlaying = true;
-
-
-                        musicButton.style.display =
-                            "flex";
-
-
-                        musicButton.textContent =
-                            "♫";
-
-
-                        const startTime =
-                            performance.now();
-
-
-                        /*
-                            Smooth volume animation
-                        */
-
-                        function increaseVolume(
-                            currentTime
-                        ) {
-
-
-                            const elapsed =
-                                currentTime -
-                                startTime;
-
-
-                            const progress =
-                                Math.min(
-                                    elapsed /
-                                    duration,
-                                    1
-                                );
-
-
-                            /*
-                                Ease-out curve.
-
-                                This makes the music
-                                enter very gently.
-                            */
-
-                            const easedProgress =
-                                1 -
-                                Math.pow(
-                                    1 - progress,
-                                    3
-                                );
-
-
-                            music.volume =
-                                targetVolume *
-                                easedProgress;
-
-
-                            if (
-                                progress < 1
-                            ) {
-
-
-                                requestAnimationFrame(
-                                    increaseVolume
-                                );
-
-
-                            } else {
-
-
-                                music.volume =
-                                    targetVolume;
-
-                            }
-
-                        }
-
-
-                        requestAnimationFrame(
-                            increaseVolume
-                        );
-
-
-                    })
-                    .catch(
-                        error => {
-
-                            console.log(
-                                "Music could not start:",
-                                error
-                            );
-
-                        }
+                const progress =
+                    Math.min(
+                        (now - start) /
+                        duration,
+                        1
                     );
+
+                const ease =
+                    1 -
+                    Math.pow(
+                        1 - progress,
+                        3
+                    );
+
+                music.volume =
+                    target * ease;
+
+
+                if(progress < 1){
+
+                    requestAnimationFrame(
+                        animateVolume
+                    );
+
+                }
+
             }
 
-        }
+
+            requestAnimationFrame(
+                animateVolume
+            );
+
+        })
+
+        .catch(() => {
+
+            console.log(
+                "Music is unavailable or blocked."
+            );
+
+        });
+}
 
 
-        /* =====================================================
-           CREATE FALLING PETALS
-        ===================================================== */
+/* =========================
+   PETALS
+========================= */
 
-        function createPetals() {
+function createPetals(){
+
+    const symbols = [
+        "✿",
+        "❀",
+        "❁",
+        "♡"
+    ];
 
 
-            const symbols = [
+    for(
+        let i = 0;
+        i < 45;
+        i++
+    ){
 
-                "❀",
-                "✿",
-                "❁",
-                "♡"
+        const petal =
+            document.createElement("div");
 
+        petal.className =
+            "petal";
+
+        petal.textContent =
+            symbols[
+                Math.floor(
+                    Math.random() *
+                    symbols.length
+                )
             ];
 
 
-            for (
-                let i = 0;
-                i < 55;
-                i++
-            ) {
+        petal.style.left =
+            Math.random() * 100 + "%";
 
 
-                const petal =
-                    document.createElement(
-                        "div"
-                    );
+        petal.style.fontSize =
+            10 +
+            Math.random() * 15 +
+            "px";
 
 
-                petal.className =
-                    "petal";
-
-
-                petal.textContent =
-                    symbols[
-                        Math.floor(
-                            Math.random() *
-                            symbols.length
-                        )
-                    ];
-
-
-                /*
-                    Random horizontal position
-                */
-
-                petal.style.left =
-                    `${Math.random() * 100}%`;
-
-
-                /*
-                    Random horizontal movement
-                */
-
-                petal.style.setProperty(
-                    "--drift",
-                    `${Math.random() * 240 - 120}px`
-                );
-
-
-                /*
-                    Random size
-                */
-
-                petal.style.fontSize =
-                    `${10 + Math.random() * 18}px`;
-
-
-                /*
-                    Random fall speed
-                */
-
-                petal.style.animationDuration =
-                    `${5 + Math.random() * 7}s`;
-
-
-                /*
-                    Slightly randomized start
-                */
-
-                petal.style.animationDelay =
-                    `${Math.random() * 2}s`;
-
-
-                document.body.appendChild(
-                    petal
-                );
-
-
-                /*
-                    Remove after animation
-                */
-
-                setTimeout(
-                    () => petal.remove(),
-                    15000
-                );
-
-            }
-
-        }
-
-
-        /* =====================================================
-           OPEN INVITATION
-        ===================================================== */
-
-        function openInvitation() {
-
-
-            /*
-                Prevent double clicking.
-            */
-
-            if (opened) {
-
-                return;
-
-            }
-
-
-            opened = true;
-
-
-            /*
-                -----------------------------------------------
-                1. OPEN THE ENVELOPE
-                -----------------------------------------------
-            */
-
-            opening.classList.add(
-                "opened"
-            );
-
-
-            /*
-                -----------------------------------------------
-                2. START MUSIC
-
-                3-second cinematic fade-in
-                -----------------------------------------------
-            */
-
-            fadeInMusic(
-                3000,
-                0.45
-            );
-
-
-            /*
-                -----------------------------------------------
-                3. REVEAL INVITATION
-
-                We deliberately wait a little so that
-                the envelope animation happens first.
-                -----------------------------------------------
-            */
-
-            setTimeout(
-                () => {
-
-                    invitation.classList.add(
-                        "visible"
-                    );
-
-                },
-                850
-            );
-
-
-            /*
-                -----------------------------------------------
-                4. START PETALS
-                -----------------------------------------------
-            */
-
-            setTimeout(
-                () => {
-
-                    createPetals();
-
-                },
-                500
-            );
-
-
-            /*
-                -----------------------------------------------
-                5. REMOVE OPENING SCREEN
-                -----------------------------------------------
-            */
-
-            setTimeout(
-                () => {
-
-                    opening.style.display =
-                        "none";
-
-                },
-                2200
-            );
-
-        }
-
-
-        /* =====================================================
-           CLICK ENVELOPE
-        ===================================================== */
-
-        envelope.addEventListener(
-            "click",
-            openInvitation
+        petal.style.setProperty(
+            "--drift",
+            Math.random() * 220 -
+            110 +
+            "px"
         );
 
 
-        /* =====================================================
-           KEYBOARD ACCESSIBILITY
-        ===================================================== */
-
-        envelope.addEventListener(
-            "keydown",
-            event => {
+        petal.style.animationDuration =
+            6 +
+            Math.random() * 7 +
+            "s";
 
 
-                if (
-
-                    event.key === "Enter" ||
-
-                    event.key === " "
-
-                ) {
-
-
-                    event.preventDefault();
-
-
-                    openInvitation();
-
-                }
-
-            }
+        document.body.appendChild(
+            petal
         );
 
 
-        /* =====================================================
-           MUSIC PLAY / PAUSE BUTTON
-        ===================================================== */
+        setTimeout(
+            () => petal.remove(),
+            14000
+        );
 
-        musicButton.addEventListener(
-            "click",
-            () => {
+    }
 
-
-                if (
-                    musicPlaying
-                ) {
+}
 
 
-                    /*
-                        Pause
-                    */
+/* =========================
+   OPEN
+========================= */
 
-                    music.pause();
+function openInvitation(){
+
+    if(opened) return;
+
+    opened = true;
 
 
-                    musicPlaying =
-                        false;
+    cover.classList.add(
+        "opening"
+    );
 
+
+    fadeInMusic();
+
+
+    setTimeout(() => {
+
+        site.classList.add(
+            "visible"
+        );
+
+        createPetals();
+
+    },750);
+
+
+    setTimeout(() => {
+
+        cover.classList.add(
+            "hidden"
+        );
+
+    },1700);
+
+}
+
+
+/* CLICK */
+
+openEnvelope.addEventListener(
+    "click",
+    openInvitation
+);
+
+
+/* KEYBOARD */
+
+openEnvelope.addEventListener(
+    "keydown",
+    event => {
+
+        if(
+            event.key === "Enter" ||
+            event.key === " "
+        ){
+
+            event.preventDefault();
+
+            openInvitation();
+
+        }
+
+    }
+);
+
+
+/* =========================
+   MUSIC BUTTON
+========================= */
+
+musicButton.addEventListener(
+    "click",
+    () => {
+
+        if(musicPlaying){
+
+            music.pause();
+
+            musicPlaying = false;
+
+            musicButton.textContent =
+                "♪";
+
+        }
+
+        else{
+
+            music.play()
+                .then(() => {
+
+                    musicPlaying = true;
 
                     musicButton.textContent =
-                        "♪";
+                        "♫";
+
+                });
+
+        }
+
+    }
+);
 
 
-                } else {
+/* =========================
+   SCROLL ANIMATION
+========================= */
+
+const revealElements =
+    document.querySelectorAll(
+        ".reveal"
+    );
 
 
-                    /*
-                        Resume
+const observer =
+    new IntersectionObserver(
+        entries => {
 
-                        We resume directly at the
-                        current volume instead of
-                        restarting the fade.
-                    */
+            entries.forEach(
+                entry => {
 
-                    music.play()
-                        .then(
-                            () => {
+                    if(
+                        entry.isIntersecting
+                    ){
 
-                                musicPlaying =
-                                    true;
-
-                                musicButton.textContent =
-                                    "♫";
-
-                            }
+                        entry.target.classList.add(
+                            "show"
                         );
 
+                        observer.unobserve(
+                            entry.target
+                        );
+
+                    }
+
                 }
+            );
 
-            }
-        );
+        },
+        {
+            threshold:.15
+        }
+    );
 
-    </script>
 
+revealElements.forEach(
+    element =>
+        observer.observe(element)
+);
+
+</script>
 
 </body>
-
+</html>
