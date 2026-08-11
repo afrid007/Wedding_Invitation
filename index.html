@@ -46,6 +46,7 @@ body.locked {
 .opening {
     position: fixed;
     inset: 0;
+
     z-index: 1000;
 
     display: flex;
@@ -137,9 +138,9 @@ body.locked {
     animation: fadeUp 1s .2s both;
 }
 
-
 /*
-   Names intentionally removed from opening screen.
+   Names removed from opening screen.
+   Only the beautiful beginning message remains.
 */
 
 .opening-description {
@@ -179,7 +180,7 @@ body.locked {
     margin: 48px auto 0;
 
     animation:
-        envelopeIn 1.2s .6s both;
+        envelopeIn 1.2s .55s both;
 }
 
 @keyframes envelopeIn {
@@ -313,17 +314,26 @@ body.locked {
 
 .letter-content {
     text-align: center;
+}
 
-    padding: 10px;
+/*
+   This content is hidden while the envelope
+   is closed and revealed after the seal is opened.
+*/
+
+.letter-reveal {
+    opacity: 0;
+    transform: translateY(15px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
 }
 
 .letter-small {
     font-size: 7px;
-
     letter-spacing: 3px;
-
     text-transform: uppercase;
-
     color: #85887e;
 }
 
@@ -333,8 +343,6 @@ body.locked {
     font-family: "Italianno", cursive;
 
     font-size: 43px;
-
-    line-height: 1;
 
     color: #30342e;
 }
@@ -401,39 +409,32 @@ body.locked {
 
     border-radius: 50%;
 
-    /*
-       Realistic dark burgundy wax
-    */
-
     background:
+
         radial-gradient(
-            circle at 30% 22%,
-            #c96a68 0%,
-            #a33e42 22%,
-            #7d202a 52%,
-            #5b111b 78%,
-            #3d0b12 100%
+            circle at 32% 25%,
+            #c85a59 0%,
+            #9f3034 25%,
+            #7b2027 55%,
+            #5d151c 78%,
+            #421015 100%
         );
 
     border:
-        3px solid rgba(66,12,18,.55);
+        3px solid rgba(75,12,17,.65);
 
     box-shadow:
 
-        /* outer shadow */
-        0 12px 25px rgba(30,20,18,.32),
+        0 12px 24px rgba(35,12,14,.35),
 
-        /* wax depth */
-        inset 5px 5px 9px rgba(255,255,255,.18),
+        inset 4px 5px 8px
+        rgba(255,255,255,.20),
 
-        inset -7px -8px 12px rgba(35,4,8,.55),
+        inset -6px -8px 12px
+        rgba(40,5,8,.45),
 
-        /* soft wax glow */
-        0 0 0 2px rgba(126,35,43,.25),
-
-        0 0 28px rgba(100,22,30,.30);
-
-    overflow: hidden;
+        0 0 22px
+        rgba(116,25,31,.28);
 
     animation:
         sealPulse 2.4s ease-in-out infinite;
@@ -444,79 +445,60 @@ body.locked {
 }
 
 
-/*
-   Wax highlight
-*/
+/* irregular wax edge */
 
 .seal::before {
+
     content: "";
 
     position: absolute;
 
-    width: 65px;
-    height: 25px;
+    inset: -5px;
 
-    left: 8px;
-    top: 7px;
+    border-radius:
+        48% 52% 49% 51%
+        / 52% 48% 53% 47%;
 
-    border-radius: 50%;
+    border:
+        4px solid
+        rgba(111,25,31,.55);
 
-    background:
-        radial-gradient(
-            ellipse,
-            rgba(255,255,255,.25),
-            transparent 70%
-        );
+    box-shadow:
+        inset 0 0 5px
+        rgba(255,255,255,.15);
 
     transform:
-        rotate(-25deg);
-
-    filter: blur(2px);
-
-    pointer-events: none;
+        rotate(-7deg);
 }
 
 
-/*
-   Wax seal emblem
-*/
+/* seal initials */
 
 .seal::after {
+
     content: "A  •  D";
 
-    position: absolute;
+    position: relative;
 
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    width: 58px;
-    height: 58px;
-
-    border-radius: 50%;
-
-    border:
-        1px solid rgba(255,220,211,.30);
+    z-index: 2;
 
     font-family:
         "Cormorant Garamond",
         serif;
 
-    font-size: 15px;
-
     font-weight: 600;
+
+    font-size: 15px;
 
     letter-spacing: 2px;
 
-    color: rgba(255,239,229,.88);
+    color: #f7d8c8;
 
     text-shadow:
-        1px 1px 2px rgba(35,4,8,.65);
+        1px 1px 1px rgba(45,5,8,.55),
 
-    box-shadow:
-        inset 0 2px 4px rgba(255,255,255,.10),
-        inset 0 -3px 5px rgba(40,0,5,.30);
+        -1px -1px 1px
+        rgba(255,220,210,.18);
 }
 
 
@@ -526,30 +508,34 @@ body.locked {
 
         box-shadow:
 
-            0 12px 25px rgba(30,20,18,.32),
+            0 12px 24px
+            rgba(35,12,14,.35),
 
-            inset 5px 5px 9px rgba(255,255,255,.18),
+            inset 4px 5px 8px
+            rgba(255,255,255,.20),
 
-            inset -7px -8px 12px rgba(35,4,8,.55),
+            inset -6px -8px 12px
+            rgba(40,5,8,.45),
 
-            0 0 0 2px rgba(126,35,43,.25),
-
-            0 0 18px rgba(100,22,30,.20);
+            0 0 15px
+            rgba(116,25,31,.20);
     }
 
     50% {
 
         box-shadow:
 
-            0 12px 25px rgba(30,20,18,.32),
+            0 12px 24px
+            rgba(35,12,14,.35),
 
-            inset 5px 5px 9px rgba(255,255,255,.22),
+            inset 4px 5px 8px
+            rgba(255,255,255,.20),
 
-            inset -7px -8px 12px rgba(35,4,8,.60),
+            inset -6px -8px 12px
+            rgba(40,5,8,.45),
 
-            0 0 0 2px rgba(126,35,43,.35),
-
-            0 0 35px rgba(100,22,30,.42);
+            0 0 30px
+            rgba(116,25,31,.40);
     }
 
 }
@@ -593,6 +579,19 @@ body.locked {
 
 .opening.opened .letter {
     transform: translateY(-25%);
+}
+
+/*
+   Once opened, disclose the invitation text.
+*/
+
+.opening.opened .letter-reveal {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
 }
 
 .opening.opened .seal {
@@ -2191,6 +2190,10 @@ body.locked {
 
 @media (max-width: 380px) {
 
+    .names {
+        font-size: 58px;
+    }
+
     .family-title {
         font-size: 50px;
     }
@@ -2243,7 +2246,7 @@ body.locked {
             A Wedding Invitation
         </div>
 
-        <!-- Names removed from opening screen -->
+        <!-- NAMES REMOVED FROM HERE -->
 
         <div class="opening-description">
             A beautiful beginning awaits
@@ -2262,7 +2265,7 @@ body.locked {
 
                 <div class="letter">
 
-                    <div class="letter-content">
+                    <div class="letter-content letter-reveal">
 
                         <div class="letter-small">
                             You Are Invited To
@@ -2307,10 +2310,6 @@ body.locked {
 >
 
 
-    <!-- =====================================================
-         GLOBAL ANIMATIONS
-    ====================================================== -->
-
     <div
         class="star-field"
         id="starField"
@@ -2322,13 +2321,11 @@ body.locked {
     ></div>
 
 
-
     <!-- =====================================================
          SECTION 1
     ====================================================== -->
 
     <section class="section hero">
-
 
         <div class="hero-art">
 
@@ -2390,8 +2387,7 @@ body.locked {
                     </div>
 
                     <div class="parent-name">
-                        Banu<br>
-                        Ali Akbar Basha
+                        Banu & Ali Akbar Basha
                     </div>
 
                 </div>
@@ -2427,7 +2423,6 @@ body.locked {
 
     <section class="section family">
 
-
         <div class="family-art"></div>
 
 
@@ -2456,7 +2451,6 @@ body.locked {
 
             <div class="family-parents">
 
-
                 <div>
 
                     <div class="family-parent-label">
@@ -2464,8 +2458,7 @@ body.locked {
                     </div>
 
                     <div class="family-parent-name">
-                        Banu<br>
-                        Ali Akbar Basha
+                        Banu & Ali Akbar Basha
                     </div>
 
                 </div>
@@ -2487,7 +2480,6 @@ body.locked {
 
                 </div>
 
-
             </div>
 
         </div>
@@ -2501,7 +2493,6 @@ body.locked {
     ====================================================== -->
 
     <section class="section blessing">
-
 
         <div class="blessing-art">
 
@@ -2827,26 +2818,25 @@ function openInvitation() {
     seal.style.animation = "none";
 
 
-    /* Realistic seal breaking animation */
+    /* Break the wax seal */
 
     seal.animate(
 
         [
             {
                 transform:
-                    "translate(-50%, -50%) scale(1)",
-                opacity: 1
+                    "translate(-50%, -50%) scale(1)"
             },
 
             {
                 transform:
-                    "translate(-50%, -50%) scale(1.18) rotate(-10deg)",
-                opacity: 1
+                    "translate(-50%, -50%) scale(1.18) rotate(-10deg)"
             },
 
             {
                 transform:
                     "translate(-50%, -50%) scale(0) rotate(35deg)",
+
                 opacity: 0
             }
         ],
