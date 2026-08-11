@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Aneesha & Dhanu Reddy | Wedding Invitation</title>
+<title>Aneesha & Dhanu | Wedding Invitation</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,6 +12,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&family=Italianno&display=swap" rel="stylesheet">
 
 <style>
+
+/* =========================================================
+   RESET
+========================================================= */
 
 * {
     margin: 0;
@@ -69,6 +73,11 @@ body.locked {
     pointer-events: none;
 }
 
+
+/* =========================================================
+   OPENING LIGHT
+========================================================= */
+
 .opening::before {
     content: "";
 
@@ -93,6 +102,7 @@ body.locked {
 }
 
 @keyframes openingGlow {
+
     from {
         transform: scale(.75);
         opacity: .5;
@@ -127,19 +137,10 @@ body.locked {
     animation: fadeUp 1s .2s both;
 }
 
-.opening-names {
-    margin-top: 12px;
 
-    font-family: "Italianno", cursive;
-
-    font-size: clamp(65px, 13vw, 105px);
-
-    line-height: .9;
-
-    color: #292d27;
-
-    animation: fadeUp 1s .35s both;
-}
+/*
+   Names intentionally removed from opening screen.
+*/
 
 .opening-description {
     margin-top: 15px;
@@ -150,10 +151,11 @@ body.locked {
 
     color: #777a71;
 
-    animation: fadeUp 1s .5s both;
+    animation: fadeUp 1s .35s both;
 }
 
 @keyframes fadeUp {
+
     from {
         opacity: 0;
         transform: translateY(25px);
@@ -163,6 +165,7 @@ body.locked {
         opacity: 1;
         transform: translateY(0);
     }
+
 }
 
 
@@ -176,10 +179,11 @@ body.locked {
     margin: 48px auto 0;
 
     animation:
-        envelopeIn 1.2s .75s both;
+        envelopeIn 1.2s .6s both;
 }
 
 @keyframes envelopeIn {
+
     from {
         opacity: 0;
         transform: translateY(35px);
@@ -189,6 +193,7 @@ body.locked {
         opacity: 1;
         transform: translateY(0);
     }
+
 }
 
 .envelope {
@@ -212,6 +217,7 @@ body.locked {
 }
 
 @keyframes envelopeFloat {
+
     0%, 100% {
         transform: translateY(0);
     }
@@ -219,6 +225,7 @@ body.locked {
     50% {
         transform: translateY(-8px);
     }
+
 }
 
 
@@ -306,12 +313,17 @@ body.locked {
 
 .letter-content {
     text-align: center;
+
+    padding: 10px;
 }
 
 .letter-small {
     font-size: 7px;
+
     letter-spacing: 3px;
+
     text-transform: uppercase;
+
     color: #85887e;
 }
 
@@ -321,6 +333,8 @@ body.locked {
     font-family: "Italianno", cursive;
 
     font-size: 43px;
+
+    line-height: 1;
 
     color: #30342e;
 }
@@ -364,7 +378,7 @@ body.locked {
 
 
 /* =========================================================
-   SEAL
+   REALISTIC WAX SEAL
 ========================================================= */
 
 .seal {
@@ -375,8 +389,8 @@ body.locked {
     left: 50%;
     top: 51%;
 
-    width: 86px;
-    height: 86px;
+    width: 88px;
+    height: 88px;
 
     transform:
         translate(-50%, -50%);
@@ -387,21 +401,39 @@ body.locked {
 
     border-radius: 50%;
 
+    /*
+       Realistic dark burgundy wax
+    */
+
     background:
         radial-gradient(
-            circle at 30% 25%,
-            #d5d1aa,
-            #a9a983 55%,
-            #7f8266
+            circle at 30% 22%,
+            #c96a68 0%,
+            #a33e42 22%,
+            #7d202a 52%,
+            #5b111b 78%,
+            #3d0b12 100%
         );
 
     border:
-        3px solid rgba(255,255,255,.65);
+        3px solid rgba(66,12,18,.55);
 
     box-shadow:
-        0 10px 25px rgba(30,34,29,.25),
-        inset 0 2px 5px rgba(255,255,255,.35),
-        0 0 25px rgba(158,162,120,.25);
+
+        /* outer shadow */
+        0 12px 25px rgba(30,20,18,.32),
+
+        /* wax depth */
+        inset 5px 5px 9px rgba(255,255,255,.18),
+
+        inset -7px -8px 12px rgba(35,4,8,.55),
+
+        /* soft wax glow */
+        0 0 0 2px rgba(126,35,43,.25),
+
+        0 0 28px rgba(100,22,30,.30);
+
+    overflow: hidden;
 
     animation:
         sealPulse 2.4s ease-in-out infinite;
@@ -411,8 +443,61 @@ body.locked {
         opacity .5s ease;
 }
 
+
+/*
+   Wax highlight
+*/
+
+.seal::before {
+    content: "";
+
+    position: absolute;
+
+    width: 65px;
+    height: 25px;
+
+    left: 8px;
+    top: 7px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(255,255,255,.25),
+            transparent 70%
+        );
+
+    transform:
+        rotate(-25deg);
+
+    filter: blur(2px);
+
+    pointer-events: none;
+}
+
+
+/*
+   Wax seal emblem
+*/
+
 .seal::after {
     content: "A  •  D";
+
+    position: absolute;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 58px;
+    height: 58px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid rgba(255,220,211,.30);
 
     font-family:
         "Cormorant Garamond",
@@ -420,24 +505,55 @@ body.locked {
 
     font-size: 15px;
 
+    font-weight: 600;
+
     letter-spacing: 2px;
 
-    color: #fffdf5;
+    color: rgba(255,239,229,.88);
+
+    text-shadow:
+        1px 1px 2px rgba(35,4,8,.65);
+
+    box-shadow:
+        inset 0 2px 4px rgba(255,255,255,.10),
+        inset 0 -3px 5px rgba(40,0,5,.30);
 }
 
+
 @keyframes sealPulse {
+
     0%, 100% {
+
         box-shadow:
-            0 10px 25px rgba(30,34,29,.25),
-            0 0 12px rgba(158,162,120,.15);
+
+            0 12px 25px rgba(30,20,18,.32),
+
+            inset 5px 5px 9px rgba(255,255,255,.18),
+
+            inset -7px -8px 12px rgba(35,4,8,.55),
+
+            0 0 0 2px rgba(126,35,43,.25),
+
+            0 0 18px rgba(100,22,30,.20);
     }
 
     50% {
+
         box-shadow:
-            0 10px 25px rgba(30,34,29,.25),
-            0 0 35px rgba(158,162,120,.45);
+
+            0 12px 25px rgba(30,20,18,.32),
+
+            inset 5px 5px 9px rgba(255,255,255,.22),
+
+            inset -7px -8px 12px rgba(35,4,8,.60),
+
+            0 0 0 2px rgba(126,35,43,.35),
+
+            0 0 35px rgba(100,22,30,.42);
     }
+
 }
+
 
 .tap-text {
     margin-top: 28px;
@@ -455,6 +571,7 @@ body.locked {
 }
 
 @keyframes tapPulse {
+
     0%, 100% {
         opacity: .45;
     }
@@ -462,6 +579,7 @@ body.locked {
     50% {
         opacity: 1;
     }
+
 }
 
 
@@ -512,6 +630,7 @@ body.locked {
 }
 
 @keyframes particleExplosion {
+
     from {
         transform:
             translate(-50%, -50%)
@@ -528,6 +647,7 @@ body.locked {
 
         opacity: 0;
     }
+
 }
 
 
@@ -562,6 +682,7 @@ body.locked {
 ========================================================= */
 
 .invitation::before {
+
     content: "";
 
     position: fixed;
@@ -573,6 +694,7 @@ body.locked {
     pointer-events: none;
 
     background:
+
         radial-gradient(
             circle at 15% 20%,
             rgba(220,209,157,.13),
@@ -598,6 +720,7 @@ body.locked {
 }
 
 @keyframes globalLight {
+
     0% {
         transform:
             translate3d(-4%, -2%, 0)
@@ -615,6 +738,7 @@ body.locked {
             translate3d(-2%, 5%, 0)
             scale(1.04);
     }
+
 }
 
 
@@ -655,6 +779,7 @@ body.locked {
 }
 
 @keyframes twinkle {
+
     0%, 100% {
         opacity: .12;
         transform: scale(.6);
@@ -664,6 +789,7 @@ body.locked {
         opacity: .85;
         transform: scale(1.5);
     }
+
 }
 
 
@@ -712,6 +838,7 @@ body.locked {
 }
 
 @keyframes fallingPetal {
+
     0% {
         transform:
             translate3d(
@@ -753,6 +880,7 @@ body.locked {
 
         opacity: 0;
     }
+
 }
 
 
@@ -778,6 +906,7 @@ body.locked {
 ========================================================= */
 
 .hero {
+
     display: flex;
 
     align-items: center;
@@ -786,7 +915,9 @@ body.locked {
         #101510;
 }
 
+
 .hero-art {
+
     position: absolute;
 
     inset: 0;
@@ -796,7 +927,9 @@ body.locked {
     overflow: hidden;
 }
 
+
 .hero-art .moon {
+
     position: absolute;
 
     width: 58vw;
@@ -828,6 +961,7 @@ body.locked {
 }
 
 @keyframes moonFloat {
+
     from {
         transform:
             translate3d(0,0,0)
@@ -839,9 +973,12 @@ body.locked {
             translate3d(-30px,20px,0)
             scale(1.05);
     }
+
 }
 
+
 .hero-art .horizon {
+
     position: absolute;
 
     left: -10%;
@@ -864,6 +1001,7 @@ body.locked {
 }
 
 @keyframes horizonGlow {
+
     from {
         transform: scale(.9);
         opacity: .5;
@@ -873,6 +1011,7 @@ body.locked {
         transform: scale(1.1);
         opacity: 1;
     }
+
 }
 
 
@@ -881,6 +1020,7 @@ body.locked {
 ========================================================= */
 
 .couple-illustration {
+
     position: absolute;
 
     z-index: 2;
@@ -901,7 +1041,9 @@ body.locked {
     pointer-events: none;
 }
 
+
 .bride {
+
     position: absolute;
 
     bottom: 0;
@@ -941,7 +1083,9 @@ body.locked {
         );
 }
 
+
 .bride::before {
+
     content: "";
 
     position: absolute;
@@ -965,7 +1109,9 @@ body.locked {
         -18px 8px 0 -2px rgba(49,56,45,.8);
 }
 
+
 .groom {
+
     position: absolute;
 
     bottom: 0;
@@ -1005,7 +1151,9 @@ body.locked {
         );
 }
 
+
 .groom::before {
+
     content: "";
 
     position: absolute;
@@ -1036,6 +1184,7 @@ body.locked {
 ========================================================= */
 
 .hero::after {
+
     content: "";
 
     position: absolute;
@@ -1067,6 +1216,7 @@ body.locked {
 ========================================================= */
 
 .hero-content {
+
     position: relative;
 
     z-index: 6;
@@ -1081,7 +1231,9 @@ body.locked {
         90px 0;
 }
 
+
 .hero-content > * {
+
     animation:
         contentReveal
         1.2s
@@ -1110,6 +1262,7 @@ body.locked {
 }
 
 @keyframes contentReveal {
+
     from {
         opacity: 0;
 
@@ -1123,9 +1276,12 @@ body.locked {
         transform:
             translateY(0);
     }
+
 }
 
+
 .hero-label {
+
     font-size: 9px;
 
     letter-spacing: 5px;
@@ -1137,7 +1293,9 @@ body.locked {
     margin-bottom: 24px;
 }
 
+
 .names {
+
     font-family:
         "Italianno",
         cursive;
@@ -1153,7 +1311,9 @@ body.locked {
         0 10px 40px rgba(0,0,0,.4);
 }
 
+
 .names .and {
+
     display: block;
 
     margin:
@@ -1172,7 +1332,9 @@ body.locked {
     letter-spacing: 3px;
 }
 
+
 .divider {
+
     width: 65px;
 
     height: 1px;
@@ -1188,7 +1350,9 @@ body.locked {
         );
 }
 
+
 .date {
+
     font-family:
         "Cormorant Garamond",
         serif;
@@ -1201,7 +1365,9 @@ body.locked {
     color: #f5f0df;
 }
 
+
 .date-caption {
+
     margin-top: 8px;
 
     font-size: 8px;
@@ -1220,6 +1386,7 @@ body.locked {
 ========================================================= */
 
 .parents {
+
     display: grid;
 
     grid-template-columns:
@@ -1234,7 +1401,9 @@ body.locked {
     margin-top: 40px;
 }
 
+
 .parent-divider {
+
     width: 1px;
 
     height: 55px;
@@ -1243,7 +1412,9 @@ body.locked {
         rgba(218,208,163,.35);
 }
 
+
 .parent-label {
+
     font-size: 7px;
 
     letter-spacing: 2px;
@@ -1256,7 +1427,9 @@ body.locked {
     margin-bottom: 7px;
 }
 
+
 .parent-name {
+
     font-family:
         "Cormorant Garamond",
         serif;
@@ -1274,6 +1447,7 @@ body.locked {
 ========================================================= */
 
 .family {
+
     display: flex;
 
     align-items: center;
@@ -1287,7 +1461,9 @@ body.locked {
         #111610;
 }
 
+
 .family-art {
+
     position: absolute;
 
     inset: 0;
@@ -1297,7 +1473,9 @@ body.locked {
     z-index: 0;
 }
 
+
 .family-art::before {
+
     content: "";
 
     position: absolute;
@@ -1332,6 +1510,7 @@ body.locked {
 }
 
 @keyframes ringPulse {
+
     from {
         transform:
             translate(-50%, -50%)
@@ -1347,9 +1526,12 @@ body.locked {
 
         opacity: 1;
     }
+
 }
 
+
 .family-art::after {
+
     content: "";
 
     position: absolute;
@@ -1379,6 +1561,7 @@ body.locked {
 }
 
 @keyframes familyCenterGlow {
+
     from {
         transform:
             translate(-50%, -50%)
@@ -1390,6 +1573,7 @@ body.locked {
             translate(-50%, -50%)
             scale(1.2);
     }
+
 }
 
 
@@ -1398,6 +1582,7 @@ body.locked {
 ========================================================= */
 
 .family-card {
+
     position: relative;
 
     z-index: 5;
@@ -1432,6 +1617,7 @@ body.locked {
 }
 
 @keyframes familyCardIn {
+
     from {
         opacity: 0;
 
@@ -1447,9 +1633,12 @@ body.locked {
             translateY(0)
             scale(1);
     }
+
 }
 
+
 .family-label {
+
     font-size: 8px;
 
     letter-spacing: 4px;
@@ -1459,7 +1648,9 @@ body.locked {
     color: #cbc49b;
 }
 
+
 .family-title {
+
     margin-top: 20px;
 
     font-family:
@@ -1474,7 +1665,9 @@ body.locked {
     color: #fffdf3;
 }
 
+
 .family-message {
+
     width:
         min(620px, 100%);
 
@@ -1494,7 +1687,13 @@ body.locked {
         rgba(245,242,229,.76);
 }
 
+
+/* =========================================================
+   FAMILY PARENTS
+========================================================= */
+
 .family-parents {
+
     display: grid;
 
     grid-template-columns:
@@ -1510,7 +1709,9 @@ body.locked {
         50px auto 0;
 }
 
+
 .family-parent-divider {
+
     width: 1px;
 
     height: 70px;
@@ -1519,7 +1720,9 @@ body.locked {
         rgba(216,207,164,.30);
 }
 
+
 .family-parent-label {
+
     font-size: 7px;
 
     letter-spacing: 3px;
@@ -1532,7 +1735,9 @@ body.locked {
     margin-bottom: 10px;
 }
 
+
 .family-parent-name {
+
     font-family:
         "Cormorant Garamond",
         serif;
@@ -1550,6 +1755,7 @@ body.locked {
 ========================================================= */
 
 .blessing {
+
     display: flex;
 
     align-items: center;
@@ -1565,7 +1771,9 @@ body.locked {
         #101510;
 }
 
+
 .blessing-art {
+
     position: absolute;
 
     inset: 0;
@@ -1575,7 +1783,9 @@ body.locked {
     z-index: 0;
 }
 
+
 .blessing-art .flower {
+
     position: absolute;
 
     left: 50%;
@@ -1594,14 +1804,18 @@ body.locked {
 }
 
 @keyframes flowerRotate {
+
     to {
         transform:
             translate(-50%, -50%)
             rotate(360deg);
     }
+
 }
 
+
 .blessing-art .flower span {
+
     position: absolute;
 
     left: 50%;
@@ -1628,7 +1842,13 @@ body.locked {
         rotate(calc(var(--i) * 45deg));
 }
 
+
+/* =========================================================
+   BLESSING LIGHT
+========================================================= */
+
 .blessing::after {
+
     content: "";
 
     position: absolute;
@@ -1652,6 +1872,7 @@ body.locked {
 }
 
 @keyframes blessingLight {
+
     from {
         transform:
             scale(.7)
@@ -1667,9 +1888,16 @@ body.locked {
 
         opacity: 1;
     }
+
 }
 
+
+/* =========================================================
+   BLESSING CONTENT
+========================================================= */
+
 .blessing-content {
+
     position: relative;
 
     z-index: 5;
@@ -1682,6 +1910,7 @@ body.locked {
 }
 
 @keyframes blessingIn {
+
     from {
         opacity: 0;
 
@@ -1695,9 +1924,12 @@ body.locked {
         transform:
             translateY(0);
     }
+
 }
 
+
 .blessing-label {
+
     font-size: 8px;
 
     letter-spacing: 5px;
@@ -1707,7 +1939,9 @@ body.locked {
     color: #cbc49b;
 }
 
+
 .blessing-title {
+
     margin-top: 24px;
 
     font-family:
@@ -1722,7 +1956,9 @@ body.locked {
     color: #fffdf4;
 }
 
+
 .blessing-text {
+
     max-width: 600px;
 
     margin:
@@ -1741,7 +1977,9 @@ body.locked {
         rgba(245,242,229,.76);
 }
 
+
 .blessing-divider {
+
     width: 65px;
 
     height: 1px;
@@ -1758,7 +1996,9 @@ body.locked {
         );
 }
 
+
 .final-names {
+
     font-family:
         "Italianno",
         cursive;
@@ -1771,7 +2011,9 @@ body.locked {
     color: #f7f3e7;
 }
 
+
 .final-small {
+
     margin-top: 14px;
 
     font-size: 7px;
@@ -1795,14 +2037,21 @@ body.locked {
         align-items: flex-end;
     }
 
+
     .couple-illustration {
+
         right: -12%;
+
         width: 85vw;
+
         height: 70vh;
+
         opacity: .38;
     }
 
+
     .hero::after {
+
         background:
 
             linear-gradient(
@@ -1814,7 +2063,9 @@ body.locked {
             );
     }
 
+
     .hero-content {
+
         width: 88%;
 
         margin:
@@ -1824,23 +2075,33 @@ body.locked {
             80px 0 55px;
     }
 
+
     .names {
+
         font-size:
             clamp(62px, 18vw, 80px);
     }
 
+
     .names .and {
+
         font-size: 23px;
+
         margin:
             15px 0;
     }
 
+
     .date {
+
         font-size: 18px;
+
         letter-spacing: 2px;
     }
 
+
     .parents {
+
         grid-template-columns:
             1fr;
 
@@ -1849,54 +2110,78 @@ body.locked {
         margin-top: 30px;
     }
 
+
     .parent-divider {
+
         width: 45px;
+
         height: 1px;
     }
 
+
     .family {
+
         padding:
             70px 16px;
     }
 
+
     .family-card {
+
         padding:
             48px 22px;
     }
 
+
     .family-title {
+
         font-size: 58px;
     }
 
+
     .family-message {
+
         font-size: 20px;
     }
 
+
     .family-parents {
+
         grid-template-columns:
             1fr;
 
         gap: 24px;
     }
 
+
     .family-parent-divider {
+
         width: 50px;
+
         height: 1px;
+
         justify-self: center;
     }
 
+
     .blessing {
+
         padding:
             70px 16px;
     }
 
+
     .blessing-title {
+
         font-size: 68px;
     }
 
+
     .blessing-text {
+
         font-size: 20px;
     }
+
 }
 
 
@@ -1906,10 +2191,6 @@ body.locked {
 
 @media (max-width: 380px) {
 
-    .names {
-        font-size: 58px;
-    }
-
     .family-title {
         font-size: 50px;
     }
@@ -1917,6 +2198,7 @@ body.locked {
     .blessing-title {
         font-size: 58px;
     }
+
 }
 
 
@@ -1939,6 +2221,7 @@ body.locked {
         transition-duration:
             .01ms !important;
     }
+
 }
 
 </style>
@@ -1960,13 +2243,12 @@ body.locked {
             A Wedding Invitation
         </div>
 
-        <div class="opening-names">
-            Aneesha & Dhanu
-        </div>
+        <!-- Names removed from opening screen -->
 
         <div class="opening-description">
             A beautiful beginning awaits
         </div>
+
 
         <div class="envelope-area">
 
@@ -1983,7 +2265,7 @@ body.locked {
                     <div class="letter-content">
 
                         <div class="letter-small">
-                            You Are Invited
+                            You Are Invited To
                         </div>
 
                         <div class="letter-names">
@@ -2001,6 +2283,7 @@ body.locked {
                 <div class="seal" id="seal"></div>
 
             </div>
+
 
             <div class="tap-text">
                 Tap the seal to open
@@ -2023,6 +2306,11 @@ body.locked {
     id="invitation"
 >
 
+
+    <!-- =====================================================
+         GLOBAL ANIMATIONS
+    ====================================================== -->
+
     <div
         class="star-field"
         id="starField"
@@ -2034,11 +2322,13 @@ body.locked {
     ></div>
 
 
+
     <!-- =====================================================
          SECTION 1
     ====================================================== -->
 
     <section class="section hero">
+
 
         <div class="hero-art">
 
@@ -2067,13 +2357,13 @@ body.locked {
 
             <div class="names">
 
-                Aneesha Yelichelamala
+                Aneesha
 
                 <span class="and">
                     &
                 </span>
 
-                Kadri Dhanu Reddy
+                Dhanu Reddy
 
             </div>
 
@@ -2096,12 +2386,12 @@ body.locked {
                 <div class="parent">
 
                     <div class="parent-label">
-                        Bride's Family
+                        Bride's Parents
                     </div>
 
                     <div class="parent-name">
-                        With Love<br>
-                        & Blessings
+                        Banu<br>
+                        Ali Akbar Basha
                     </div>
 
                 </div>
@@ -2113,12 +2403,12 @@ body.locked {
                 <div class="parent">
 
                     <div class="parent-label">
-                        Groom's Family
+                        Groom's Parents
                     </div>
 
                     <div class="parent-name">
-                        With Love<br>
-                        & Blessings
+                        Mr. & Mrs.<br>
+                        Groom's Parents
                     </div>
 
                 </div>
@@ -2136,6 +2426,7 @@ body.locked {
     ====================================================== -->
 
     <section class="section family">
+
 
         <div class="family-art"></div>
 
@@ -2165,15 +2456,16 @@ body.locked {
 
             <div class="family-parents">
 
+
                 <div>
 
                     <div class="family-parent-label">
-                        Aneesha's Family
+                        Bride's Family
                     </div>
 
                     <div class="family-parent-name">
-                        With Love<br>
-                        & Blessings
+                        Banu<br>
+                        Ali Akbar Basha
                     </div>
 
                 </div>
@@ -2185,15 +2477,16 @@ body.locked {
                 <div>
 
                     <div class="family-parent-label">
-                        Dhanu's Family
+                        Groom's Family
                     </div>
 
                     <div class="family-parent-name">
-                        With Love<br>
-                        & Blessings
+                        Mr. & Mrs.<br>
+                        Groom's Parents
                     </div>
 
                 </div>
+
 
             </div>
 
@@ -2208,6 +2501,7 @@ body.locked {
     ====================================================== -->
 
     <section class="section blessing">
+
 
         <div class="blessing-art">
 
@@ -2266,7 +2560,7 @@ body.locked {
 
 
             <div class="final-small">
-                15 · 16 August 2026
+                With Love · With Family · With Blessings
             </div>
 
         </div>
@@ -2302,6 +2596,7 @@ const starField =
 const petalField =
     document.getElementById("petalField");
 
+
 let opened = false;
 
 
@@ -2322,21 +2617,25 @@ function createStars() {
 
         star.className = "star";
 
+
         star.style.left =
             Math.random() * 100 + "%";
 
         star.style.top =
             Math.random() * 100 + "%";
 
+
         star.style.setProperty(
             "--duration",
             (2 + Math.random() * 5) + "s"
         );
 
+
         star.style.setProperty(
             "--delay",
             (Math.random() * 5) + "s"
         );
+
 
         star.style.width =
             (1 + Math.random() * 3) + "px";
@@ -2344,8 +2643,11 @@ function createStars() {
         star.style.height =
             star.style.width;
 
+
         starField.appendChild(star);
+
     }
+
 }
 
 
@@ -2366,34 +2668,43 @@ function createPetals() {
 
         petal.className = "petal";
 
+
         petal.style.left =
             Math.random() * 100 + "%";
+
 
         petal.style.setProperty(
             "--duration",
             (12 + Math.random() * 15) + "s"
         );
 
+
         petal.style.setProperty(
             "--delay",
             (-Math.random() * 20) + "s"
         );
+
 
         petal.style.setProperty(
             "--sway",
             (-120 + Math.random() * 240) + "px"
         );
 
+
         petal.style.setProperty(
             "--sway2",
             (-180 + Math.random() * 360) + "px"
         );
 
+
         petal.style.transform =
             `scale(${.5 + Math.random() * .8})`;
 
+
         petalField.appendChild(petal);
+
     }
+
 }
 
 
@@ -2412,6 +2723,7 @@ function createExplosion() {
         "✿"
     ];
 
+
     for (
         let i = 0;
         i < 65;
@@ -2424,6 +2736,7 @@ function createExplosion() {
         particle.className =
             "particle";
 
+
         particle.textContent =
             symbols[
                 Math.floor(
@@ -2432,54 +2745,67 @@ function createExplosion() {
                 )
             ];
 
+
         const angle =
             Math.random() *
             Math.PI * 2;
+
 
         const distance =
             120 +
             Math.random() * 500;
 
+
         const x =
             Math.cos(angle) *
             distance;
 
+
         const y =
             Math.sin(angle) *
             distance;
+
 
         particle.style.setProperty(
             "--x",
             `${x}px`
         );
 
+
         particle.style.setProperty(
             "--y",
             `${y}px`
         );
+
 
         particle.style.setProperty(
             "--scale",
             `${.4 + Math.random() * 1.2}`
         );
 
+
         particle.style.setProperty(
             "--rotation",
             `${Math.random() * 720 - 360}deg`
         );
 
+
         particle.style.fontSize =
             `${10 + Math.random() * 20}px`;
+
 
         document.body.appendChild(
             particle
         );
 
+
         setTimeout(
             () => particle.remove(),
             2200
         );
+
     }
+
 }
 
 
@@ -2495,25 +2821,32 @@ function openInvitation() {
 
     opened = true;
 
+
+    /* Stop seal animation */
+
     seal.style.animation = "none";
+
+
+    /* Realistic seal breaking animation */
 
     seal.animate(
 
         [
             {
                 transform:
-                    "translate(-50%, -50%) scale(1)"
+                    "translate(-50%, -50%) scale(1)",
+                opacity: 1
             },
 
             {
                 transform:
-                    "translate(-50%, -50%) scale(1.18) rotate(-10deg)"
+                    "translate(-50%, -50%) scale(1.18) rotate(-10deg)",
+                opacity: 1
             },
 
             {
                 transform:
                     "translate(-50%, -50%) scale(0) rotate(35deg)",
-
                 opacity: 0
             }
         ],
@@ -2531,6 +2864,8 @@ function openInvitation() {
     );
 
 
+    /* Open envelope */
+
     setTimeout(() => {
 
         opening.classList.add(
@@ -2540,6 +2875,8 @@ function openInvitation() {
     }, 220);
 
 
+    /* Particle burst */
+
     setTimeout(() => {
 
         createExplosion();
@@ -2547,19 +2884,24 @@ function openInvitation() {
     }, 320);
 
 
+    /* Reveal invitation */
+
     setTimeout(() => {
 
         invitation.classList.add(
             "visible"
         );
 
+
         createStars();
 
         createPetals();
 
+
         document.body.classList.remove(
             "locked"
         );
+
 
         setTimeout(() => {
 
