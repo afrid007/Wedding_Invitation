@@ -1,123 +1,1070 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aneesha & Dhanu Reddy | Wedding Invitation</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f7eee4">
+
+<title>Aneesha & Dhanu Reddy | Wedding Invitation</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: #f7eee4;
+    color: #4a3028;
+    overflow-x: hidden;
+}
+
+/* =========================================================
+   GLOBAL BACKGROUND
+========================================================= */
+
+.page {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.page::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 20;
+    opacity: .28;
+
+    background-image:
+        radial-gradient(circle at 15% 20%, rgba(255,255,255,.8), transparent 2px),
+        radial-gradient(circle at 80% 30%, rgba(255,255,255,.7), transparent 2px),
+        radial-gradient(circle at 50% 80%, rgba(255,255,255,.6), transparent 2px);
+    background-size: 180px 180px, 230px 230px, 200px 200px;
+}
+
+/* =========================================================
+   FLOWERS / PETALS
+========================================================= */
+
+.petals {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 30;
+}
+
+.petal {
+    position: absolute;
+    top: -50px;
+    width: 13px;
+    height: 18px;
+    border-radius: 100% 0 100% 0;
+    background: rgba(166, 74, 87, .55);
+    animation: fall linear infinite;
+}
+
+.petal:nth-child(1) {
+    left: 8%;
+    animation-duration: 9s;
+    animation-delay: -2s;
+}
+
+.petal:nth-child(2) {
+    left: 22%;
+    animation-duration: 12s;
+    animation-delay: -5s;
+}
+
+.petal:nth-child(3) {
+    left: 38%;
+    animation-duration: 10s;
+    animation-delay: -7s;
+}
+
+.petal:nth-child(4) {
+    left: 57%;
+    animation-duration: 14s;
+    animation-delay: -3s;
+}
+
+.petal:nth-child(5) {
+    left: 74%;
+    animation-duration: 11s;
+    animation-delay: -6s;
+}
+
+.petal:nth-child(6) {
+    left: 91%;
+    animation-duration: 13s;
+    animation-delay: -1s;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(110vh) translateX(120px) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* =========================================================
+   OPENING SCREEN
+========================================================= */
+
+.opening {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(circle at center, rgba(255,255,255,.35), transparent 45%),
+        linear-gradient(135deg, #ead7c7, #f7eee4 45%, #dfc4b5);
+    transition:
+        opacity 1.2s ease,
+        visibility 1.2s ease;
+}
+
+.opening.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.opening-content {
+    text-align: center;
+    width: min(90%, 600px);
+}
+
+.intro-small {
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #866157;
+    margin-bottom: 18px;
+    animation: fadeUp 1.4s ease both;
+}
+
+.intro-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(52px, 9vw, 92px);
+    font-weight: 400;
+    color: #6f343d;
+    margin-bottom: 35px;
+    animation: fadeUp 1.6s .2s ease both;
+}
+
+/* =========================================================
+   ENVELOPE
+========================================================= */
+
+.envelope-wrapper {
+    position: relative;
+    width: min(440px, 88vw);
+    height: 300px;
+    margin: auto;
+    perspective: 1200px;
+    cursor: pointer;
+    animation: envelopeFloat 4s ease-in-out infinite;
+}
+
+@keyframes envelopeFloat {
+    0%,100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.envelope {
+    position: absolute;
+    inset: 0;
+    background: #f4dfca;
+    border-radius: 4px;
+    box-shadow:
+        0 25px 50px rgba(83, 49, 39, .25),
+        inset 0 0 0 1px rgba(120,70,55,.15);
+}
+
+/* envelope lower triangular flap */
+
+.envelope::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    height: 72%;
+    background: #e9ccb7;
+    clip-path: polygon(0 0, 50% 58%, 100% 0, 100% 100%, 0 100%);
+    z-index: 3;
+}
+
+/* envelope top flap */
+
+.envelope-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 62%;
+    background: #ecd3bf;
+    clip-path: polygon(0 0, 100% 0, 50% 72%);
+    transform-origin: top center;
+    transition: transform 1.3s cubic-bezier(.77,0,.18,1);
+    z-index: 6;
+}
+
+.envelope.open .envelope-flap {
+    transform: rotateX(180deg);
+}
+
+/* inner paper */
+
+.paper {
+    position: absolute;
+    left: 7%;
+    width: 86%;
+    height: 92%;
+    bottom: 0;
+    background: #fffaf3;
+    box-shadow: 0 10px 25px rgba(70,40,30,.15);
+    transition: transform 1.5s cubic-bezier(.77,0,.18,1);
+    z-index: 2;
+}
+
+.envelope.open .paper {
+    transform: translateY(-210px);
+}
+
+/* =========================================================
+   WAX SEAL
+========================================================= */
+
+.seal {
+    position: absolute;
+    z-index: 15;
+    left: 50%;
+    top: 57%;
+    transform: translate(-50%, -50%);
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 35% 30%, #c4777d, #8f3d4a 65%, #652936);
+    border: 4px solid #f0d7b6;
+    box-shadow:
+        0 8px 20px rgba(85,35,40,.3),
+        inset 0 0 12px rgba(255,255,255,.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f8e7cc;
+    font-family: 'Great Vibes', cursive;
+    font-size: 27px;
+    animation: sealPulse 2s ease-in-out infinite;
+    transition: transform .4s ease;
+}
+
+.seal:hover {
+    transform: translate(-50%, -50%) scale(1.08);
+}
+
+.seal::after {
+    content: "♥";
+    position: absolute;
+    font-family: serif;
+    font-size: 22px;
+    opacity: .8;
+}
+
+@keyframes sealPulse {
+    0%,100% {
+        box-shadow:
+            0 8px 20px rgba(85,35,40,.3),
+            0 0 0 0 rgba(143,61,74,.35);
+    }
+
+    50% {
+        box-shadow:
+            0 8px 20px rgba(85,35,40,.3),
+            0 0 0 15px rgba(143,61,74,0);
+    }
+}
+
+.tap {
+    margin-top: 38px;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #79534b;
+    animation: blink 2s infinite;
+}
+
+@keyframes blink {
+    50% { opacity: .4; }
+}
+
+/* =========================================================
+   MAIN INVITATION
+========================================================= */
+
+.invitation {
+    min-height: 100vh;
+    opacity: 0;
+    transform: translateY(40px);
+    transition:
+        opacity 1.5s ease,
+        transform 1.5s ease;
+    pointer-events: none;
+}
+
+.invitation.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 70px 20px;
+
+    background:
+        linear-gradient(
+            rgba(82, 43, 43, .28),
+            rgba(82, 43, 43, .28)
+        ),
+        url("couple-hd.jpg") center / cover no-repeat;
+
+    isolation: isolate;
+}
+
+/*
+   Replace couple-hd.jpg with your HD illustrated couple image.
+*/
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at center,
+        transparent 20%,
+        rgba(48, 25, 27, .48) 100%);
+    z-index: -1;
+}
+
+.hero-content {
+    color: white;
+    max-width: 900px;
+    animation: heroReveal 2s ease both;
+}
+
+.hero-kicker {
+    letter-spacing: 7px;
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+
+.hero-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(70px, 12vw, 150px);
+    line-height: .9;
+    font-weight: 400;
+    text-shadow: 0 8px 30px rgba(0,0,0,.3);
+}
+
+.hero-amp {
+    font-size: .5em;
+    display: inline-block;
+    margin: 0 15px;
+}
+
+.hero-date {
+    margin-top: 35px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 3vw, 30px);
+    letter-spacing: 4px;
+}
+
+.hero-line {
+    width: 100px;
+    height: 1px;
+    background: rgba(255,255,255,.8);
+    margin: 25px auto;
+}
+
+.hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    letter-spacing: 1px;
+}
+
+@keyframes heroReveal {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* =========================================================
+   ORNAMENT
+========================================================= */
+
+.ornament {
+    text-align: center;
+    color: #9b5a62;
+    font-size: 28px;
+    margin: 25px 0;
+}
+
+.ornament span {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+/* =========================================================
+   CONTENT SECTION
+========================================================= */
+
+.section {
+    position: relative;
+    padding: 100px 20px;
+    text-align: center;
+    background:
+        radial-gradient(circle at 10% 20%, rgba(168,92,94,.08), transparent 25%),
+        radial-gradient(circle at 90% 70%, rgba(168,92,94,.08), transparent 25%),
+        #fbf5ed;
+}
+
+.section-inner {
+    width: min(900px, 100%);
+    margin: auto;
+}
+
+.section-label {
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 10px;
+    color: #9b6560;
+    margin-bottom: 18px;
+}
+
+.section-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(48px, 8vw, 80px);
+    color: #713a43;
+    font-weight: 400;
+}
+
+.message {
+    max-width: 680px;
+    margin: 35px auto 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(21px, 3vw, 27px);
+    line-height: 1.7;
+    color: #65473f;
+}
+
+/* =========================================================
+   FAMILY SECTION
+========================================================= */
+
+.family {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 30px;
+    align-items: center;
+    margin-top: 60px;
+}
+
+.family-card {
+    padding: 30px;
+}
+
+.family-title {
+    font-family: 'Cormorant Garamond', serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 13px;
+    color: #9a625d;
+    margin-bottom: 15px;
+}
+
+.family-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 25px;
+    line-height: 1.5;
+}
+
+.family-divider {
+    font-family: 'Great Vibes', cursive;
+    color: #914550;
+    font-size: 55px;
+}
+
+/* =========================================================
+   COUPLE
+========================================================= */
+
+.couple-section {
+    background: #eee0d4;
+    position: relative;
+    overflow: hidden;
+}
+
+.couple-section::before,
+.couple-section::after {
+    content: "❧";
+    position: absolute;
+    font-family: serif;
+    font-size: 180px;
+    color: rgba(119,58,67,.08);
+}
+
+.couple-section::before {
+    left: -40px;
+    top: 30px;
+}
+
+.couple-section::after {
+    right: -40px;
+    bottom: 30px;
+    transform: rotate(180deg);
+}
+
+.couple-names {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(55px, 9vw, 100px);
+    color: #703741;
+    line-height: 1.05;
+}
+
+.couple-names .and {
+    font-size: .55em;
+    margin: 0 15px;
+}
+
+.parents-intro {
+    margin-top: 35px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px;
+    line-height: 1.7;
+}
+
+/* =========================================================
+   BLESSING
+========================================================= */
+
+.blessing {
+    background:
+        linear-gradient(rgba(87,47,46,.82), rgba(87,47,46,.82)),
+        url("couple-hd.jpg") center / cover fixed;
+    color: #fff7ee;
+}
+
+.blessing .section-label {
+    color: #e4c2ae;
+}
+
+.blessing .section-title {
+    color: #fff7ee;
+}
+
+.blessing-text {
+    max-width: 760px;
+    margin: 30px auto;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(23px, 3vw, 32px);
+    line-height: 1.7;
+}
+
+.heart {
+    font-size: 28px;
+    margin-top: 35px;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+    padding: 70px 20px;
+    background: #f4e6d9;
+    text-align: center;
+}
+
+.footer-names {
+    font-family: 'Great Vibes', cursive;
+    font-size: 58px;
+    color: #743943;
+}
+
+.footer-small {
+    margin-top: 15px;
+    letter-spacing: 3px;
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #87615a;
+}
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(45px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:700px) {
+
+    .envelope-wrapper {
+        height: 235px;
+    }
+
+    .seal {
+        width: 65px;
+        height: 65px;
+        font-size: 22px;
+    }
+
+    .family {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+
+    .family-divider {
+        transform: rotate(90deg);
+        margin: 5px 0;
+    }
+
+    .section {
+        padding: 75px 20px;
+    }
+
+    .hero {
+        background-position: center;
+    }
+}
+</style>
 </head>
+
 <body>
 
-  <!-- ONE opening envelope -->
-  <section class="opening" id="opening">
-    <div class="envelope-area">
-      <p class="small-title">A wedding invitation</p>
+<div class="page">
 
-      <div class="envelope" id="envelope" role="button" tabindex="0"
-           aria-label="Open invitation">
-        <div class="paper">
-          <span>With love</span>
-          <strong>Aneesha<br>&amp;<br>Dhanu Reddy</strong>
-        </div>
-
-        <div class="envelope-body"></div>
-        <div class="flap"></div>
-
-        <button class="seal" id="seal" aria-label="Open invitation">
-          A <span>♡</span> D
-        </button>
-      </div>
-
-      <p class="tap">Tap the seal to open</p>
+    <!-- FLOATING PETALS -->
+    <div class="petals">
+        <span class="petal"></span>
+        <span class="petal"></span>
+        <span class="petal"></span>
+        <span class="petal"></span>
+        <span class="petal"></span>
+        <span class="petal"></span>
     </div>
-  </section>
 
-  <!-- ONE CONTINUOUS WEBSITE -->
-  <div class="website" id="website">
+    <!-- =====================================================
+         OPENING ENVELOPE
+    ====================================================== -->
 
-    <header class="hero">
-      <div class="hero-content">
-        <p class="eyebrow">Together with their families</p>
+    <div class="opening" id="opening">
 
-        <h1>Aneesha <i>&amp;</i><br>Dhanu Reddy</h1>
+        <div class="opening-content">
 
-        <div class="line"></div>
+            <div class="intro-small">
+                A Wedding Invitation
+            </div>
 
-        <p class="date">15 · 16 August 2026</p>
+            <div class="intro-title">
+                With Love
+            </div>
 
-        <div class="couple">
-          <img src="assets/couple-illustration.svg" alt="Illustrated bride and groom">
+            <div class="envelope-wrapper" id="envelopeWrapper">
+
+                <div class="envelope" id="envelope">
+
+                    <div class="paper"></div>
+
+                    <div class="envelope-flap"></div>
+
+                    <div class="seal" id="seal">
+                        A ♡ D
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="tap">
+                Tap the seal to open
+            </div>
+
         </div>
 
-        <p class="intro">
-          Two hearts, one beautiful beginning.<br>
-          We invite you to celebrate with us.
-        </p>
-      </div>
-    </header>
+    </div>
 
-    <section class="info">
-      <p class="eyebrow">The celebration</p>
-      <h2>Our Special Days</h2>
 
-      <div class="events">
-        <article>
-          <span>15 AUGUST</span>
-          <h3>The Celebration</h3>
-          <p>A day filled with family, happiness and beautiful memories.</p>
-        </article>
+    <!-- =====================================================
+         ACTUAL INVITATION
+    ====================================================== -->
 
-        <article>
-          <span>16 AUGUST</span>
-          <h3>The Wedding</h3>
-          <p>The beginning of our new journey together.</p>
-        </article>
-      </div>
-    </section>
+    <main class="invitation" id="invitation">
 
-    <section class="parents">
-      <p class="eyebrow">With the blessings of</p>
-      <h2>Our Families</h2>
-      <div class="line"></div>
+        <!-- HERO -->
+        <section class="hero">
 
-      <p class="label">Bride's Parents</p>
-      <h3>Banu<br><small>&amp;</small><br>Ali Akbar Basha</h3>
+            <div class="hero-content">
 
-      <p class="message">
-        With the love and blessings of our families,
-        we begin this beautiful new chapter of our lives.
-      </p>
-    </section>
+                <div class="hero-kicker">
+                    Together with their families
+                </div>
 
-    <section class="blessing">
-      <div class="flower">❦</div>
-      <p class="eyebrow">A message from our hearts</p>
+                <h1 class="hero-title">
+                    Aneesha
+                    <span class="hero-amp">&</span>
+                    Dhanu Reddy
+                </h1>
 
-      <h2>
-        May our journey be filled with
-        love, laughter and countless
-        beautiful memories.
-      </h2>
+                <div class="hero-line"></div>
 
-      <p>
-        Your presence, blessings and good wishes
-        will make our celebration even more special.
-      </p>
+                <div class="hero-date">
+                    15 · 16 August 2026
+                </div>
 
-      <strong>Aneesha &amp; Dhanu Reddy</strong>
-    </section>
+                <div class="hero-sub">
+                    Invite you to celebrate their beautiful beginning
+                </div>
 
-    <footer>
-      <span>✦</span>
-      <p>Aneesha &amp; Dhanu Reddy</p>
-      <small>15 · 16 August 2026</small>
-    </footer>
+            </div>
 
-  </div>
+        </section>
 
-  <script src="script.js"></script>
+
+        <!-- WELCOME -->
+        <section class="section">
+
+            <div class="section-inner reveal">
+
+                <div class="section-label">
+                    A Beautiful Beginning
+                </div>
+
+                <h2 class="section-title">
+                    Welcome
+                </h2>
+
+                <div class="ornament">
+                    ❦ <span>♥</span> ❦
+                </div>
+
+                <p class="message">
+                    With hearts full of happiness and gratitude,
+                    we invite you to join us as we celebrate the
+                    beginning of a beautiful journey together.
+                    Your presence, love and blessings will make
+                    this special occasion even more meaningful.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- FAMILY -->
+        <section class="section couple-section">
+
+            <div class="section-inner reveal">
+
+                <div class="section-label">
+                    With the blessings of our families
+                </div>
+
+                <h2 class="section-title">
+                    Our Families
+                </h2>
+
+                <div class="family">
+
+                    <div class="family-card">
+
+                        <div class="family-title">
+                            Bride's Parents
+                        </div>
+
+                        <div class="family-name">
+                            Mr. & Mrs. [Bride's Parents]
+                        </div>
+
+                    </div>
+
+                    <div class="family-divider">
+                        ♥
+                    </div>
+
+                    <div class="family-card">
+
+                        <div class="family-title">
+                            Groom's Parents
+                        </div>
+
+                        <div class="family-name">
+                            Mr. & Mrs. [Groom's Parents]
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- COUPLE -->
+        <section class="section">
+
+            <div class="section-inner reveal">
+
+                <div class="section-label">
+                    The Couple
+                </div>
+
+                <div class="couple-names">
+                    Aneesha
+                    <span class="and">&</span>
+                    Dhanu Reddy
+                </div>
+
+                <div class="ornament">
+                    ❦
+                </div>
+
+                <p class="parents-intro">
+                    With the love and blessings of their parents,
+                    Aneesha and Dhanu Reddy begin a new chapter
+                    filled with love, laughter, companionship
+                    and countless beautiful memories.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- BLESSING -->
+        <section class="section blessing">
+
+            <div class="section-inner reveal">
+
+                <div class="section-label">
+                    A Blessing For Their Journey
+                </div>
+
+                <h2 class="section-title">
+                    May Love Always Lead The Way
+                </h2>
+
+                <p class="blessing-text">
+                    May their days be filled with laughter,
+                    their hearts with understanding,
+                    and their journey with endless love.
+                    May they always find strength in each other,
+                    joy in every moment, and warmth in the family
+                    they create together.
+                </p>
+
+                <div class="heart">
+                    ♥
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FINAL -->
+        <footer class="footer">
+
+            <div class="footer-names">
+                Aneesha & Dhanu Reddy
+            </div>
+
+            <div class="footer-small">
+                With love • With family • With blessings
+            </div>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   OPEN ENVELOPE
+========================================================= */
+
+const opening = document.getElementById("opening");
+const envelope = document.getElementById("envelope");
+const seal = document.getElementById("seal");
+const invitation = document.getElementById("invitation");
+
+seal.addEventListener("click", function(e) {
+
+    e.stopPropagation();
+
+    envelope.classList.add("open");
+
+    setTimeout(() => {
+
+        opening.classList.add("hide");
+
+        setTimeout(() => {
+            invitation.classList.add("show");
+        }, 400);
+
+    }, 1500);
+
+});
+
+
+/* Also allow clicking the envelope */
+
+envelope.addEventListener("click", function() {
+
+    if (!envelope.classList.contains("open")) {
+
+        envelope.classList.add("open");
+
+        setTimeout(() => {
+
+            opening.classList.add("hide");
+
+            setTimeout(() => {
+                invitation.classList.add("show");
+            }, 400);
+
+        }, 1500);
+
+    }
+
+});
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const revealElements = document.querySelectorAll(".reveal");
+
+const observer = new IntersectionObserver(
+    entries => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+                entry.target.classList.add("visible");
+
+                observer.unobserve(entry.target);
+
+            }
+
+        });
+
+    },
+    {
+        threshold: .15
+    }
+);
+
+revealElements.forEach(el => observer.observe(el));
+
+
+/* =========================================================
+   PARALLAX HERO
+========================================================= */
+
+window.addEventListener("scroll", () => {
+
+    const hero = document.querySelector(".hero");
+
+    if (!hero) return;
+
+    const scroll = window.scrollY;
+
+    if (scroll < window.innerHeight) {
+
+        hero.style.backgroundPosition =
+            `center ${50 + scroll * 0.025}%`;
+
+    }
+
+});
+
+
+/* =========================================================
+   RANDOM PETAL ROTATION
+========================================================= */
+
+document.querySelectorAll(".petal").forEach(petal => {
+
+    const size = 8 + Math.random() * 8;
+
+    petal.style.width = size + "px";
+    petal.style.height = size * 1.35 + "px";
+
+});
+
+</script>
+
 </body>
 </html>
+```
