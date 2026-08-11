@@ -1,257 +1,565 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aneesha & Kadiri Dhanu Reddy</title>
+
+<title>Aneesha & Kadiri Dhanu Reddy | Wedding Invitation</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
-:root{
-    --cream:#fbf4e8;
-    --cream-dark:#f1e2ce;
-    --brown:#6e3328;
-    --brown-light:#8b5849;
-    --gold:#b98245;
-    --gold-light:#d7a66c;
-    --rose:#d89b8e;
-    --white:#fffdf8;
-    --shadow:0 20px 60px rgba(96,54,31,.12);
+
+/* =========================================================
+   THEME
+========================================================= */
+
+:root {
+    --cream: #f7eee0;
+    --cream-light: #fffaf1;
+    --cream-dark: #ead9c0;
+
+    --burgundy: #5b201e;
+    --burgundy-dark: #391412;
+
+    --gold: #b8873f;
+    --gold-light: #d9b873;
+    --gold-faint: rgba(184,135,63,.28);
+
+    --brown: #493029;
+
+    --shadow:
+        0 30px 80px rgba(43, 19, 13, .25);
+
+    --serif:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    --script:
+        "Great Vibes",
+        cursive;
+
+    --sans:
+        "DM Sans",
+        sans-serif;
 }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-html{
-    scroll-behavior:smooth;
+html,
+body {
+    width: 100%;
+    height: 100%;
 }
 
-body{
-    background:var(--cream);
-    color:var(--brown);
-    font-family:"DM Sans",sans-serif;
-    overflow-x:hidden;
+body {
+    overflow: hidden;
+
+    background:
+        #30110f;
+
+    color: var(--brown);
+
+    font-family: var(--sans);
 }
 
-button{
-    font-family:inherit;
+button {
+    font: inherit;
 }
 
-/* SUBTLE PAPER TEXTURE */
 
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    z-index:100;
-    opacity:.18;
-    background-image:
-        radial-gradient(
-            rgba(130,83,49,.16) .7px,
-            transparent .7px
-        );
-    background-size:7px 7px;
-}
+/* =========================================================
+   APP
+========================================================= */
 
-/* =========================
-   OPENING SCREEN
-========================= */
+.app {
+    position: relative;
 
-#cover{
-    position:fixed;
-    inset:0;
-    z-index:9999;
+    width: 100vw;
+    height: 100svh;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    overflow: hidden;
 
     background:
         radial-gradient(
             circle at center,
-            #fffaf2 0%,
-            #f7ead8 65%,
-            #ead6bd 100%
+            #71342c 0%,
+            #3d1513 55%,
+            #210b0a 100%
         );
+}
+
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+.app::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        url("assets/bg-texture.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    opacity: .25;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   SLIDER
+========================================================= */
+
+.slider {
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
 
     transition:
-        opacity 1.2s ease,
-        visibility 1.2s ease;
+        transform 1s
+        cubic-bezier(.77,0,.18,1);
 }
 
-#cover.hidden{
-    opacity:0;
-    visibility:hidden;
-    pointer-events:none;
+.slide {
+    position: relative;
+
+    flex: 0 0 100%;
+
+    width: 100vw;
+    height: 100svh;
+
+    padding: 30px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
 }
 
-.cover-decoration{
-    position:absolute;
-    color:var(--gold);
-    opacity:.55;
-    font-size:22px;
 
-    animation:
-        floatDecoration 5s ease-in-out infinite;
+/* =========================================================
+   PAPER
+========================================================= */
+
+.paper {
+    position: relative;
+
+    width: min(1380px, 100%);
+    height: min(900px, 100%);
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,250,241,.98),
+            rgba(242,226,201,.98)
+        );
+
+    border:
+        1px solid
+        rgba(184,135,63,.75);
+
+    box-shadow:
+        0 35px 100px
+        rgba(0,0,0,.35);
+
+    isolation: isolate;
 }
 
-.cover-decoration:nth-child(1){
-    top:12%;
-    left:15%;
+
+/* Inner border */
+
+.paper::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 14px;
+
+    border:
+        1px solid
+        rgba(184,135,63,.55);
+
+    pointer-events: none;
+
+    z-index: 20;
 }
 
-.cover-decoration:nth-child(2){
-    top:20%;
-    right:13%;
-    animation-delay:1s;
+
+/* Fine inner border */
+
+.paper::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 23px;
+
+    border:
+        1px solid
+        rgba(184,135,63,.18);
+
+    pointer-events: none;
+
+    z-index: 20;
 }
 
-.cover-decoration:nth-child(3){
-    bottom:15%;
-    left:12%;
-    animation-delay:2s;
+
+/* =========================================================
+   CORNERS
+========================================================= */
+
+.corner {
+    position: absolute;
+
+    width: 115px;
+    height: 115px;
+
+    z-index: 30;
+
+    pointer-events: none;
+
+    background:
+        url("assets/floral-decor.png")
+        no-repeat;
+
+    background-size: contain;
+
+    opacity: .95;
 }
 
-.cover-decoration:nth-child(4){
-    bottom:18%;
-    right:15%;
-    animation-delay:3s;
+.corner.tl {
+    left: -12px;
+    top: -10px;
 }
 
-@keyframes floatDecoration{
+.corner.tr {
+    right: -12px;
+    top: -10px;
 
-    0%,100%{
-        transform:
-            translateY(0)
-            rotate(0);
-    }
-
-    50%{
-        transform:
-            translateY(-15px)
-            rotate(8deg);
-    }
+    transform: scaleX(-1);
 }
 
-.cover-content{
-    width:min(90%,440px);
-    text-align:center;
-    position:relative;
-    z-index:10;
+.corner.bl {
+    left: -12px;
+    bottom: -10px;
+
+    transform: scaleY(-1);
 }
 
-.cover-kicker{
-    font-family:"Cormorant Garamond",serif;
-    font-size:14px;
-    letter-spacing:.4em;
-    text-transform:uppercase;
-    color:var(--gold);
-    margin-bottom:28px;
+.corner.br {
+    right: -12px;
+    bottom: -10px;
+
+    transform: scale(-1);
 }
 
-.cover-title{
-    font-family:"Playfair Display",serif;
-    font-size:clamp(38px,10vw,64px);
-    font-weight:400;
-    line-height:1.05;
-    color:var(--brown);
+
+/* =========================================================
+   TYPOGRAPHY
+========================================================= */
+
+.eyebrow {
+    font-family: var(--serif);
+
+    font-size: 13px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .28em;
+
+    color: var(--gold);
+
+    text-align: center;
 }
 
-.cover-names{
-    margin-top:16px;
+.title-script {
+    font-family: var(--script);
 
-    font-family:"Cormorant Garamond",serif;
-    font-size:20px;
-    letter-spacing:.08em;
+    font-weight: 400;
+
+    color: var(--burgundy);
 }
 
-/* =========================
+.divider {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    color: var(--gold);
+
+    margin: 18px 0;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+
+    width: 70px;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold)
+        );
+}
+
+.divider::after {
+    transform: scaleX(-1);
+}
+
+
+/* =========================================================
+   SLIDE 1
    ENVELOPE
-========================= */
+========================================================= */
 
-.envelope-wrap{
-    position:relative;
-    margin:42px auto 0;
+.slide-one .paper {
+    display: flex;
 
-    width:min(88vw,380px);
-    aspect-ratio:1.5;
+    align-items: center;
 
-    cursor:pointer;
+    justify-content: center;
+}
+
+.invitation-intro {
+    position: relative;
+
+    z-index: 10;
+
+    width: 65%;
+
+    height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding-bottom: 30px;
+}
+
+.invitation-intro .title-script {
+    font-size:
+        clamp(
+            65px,
+            7vw,
+            105px
+        );
+
+    line-height: .9;
+
+    margin-top: 15px;
+}
+
+.ampersand {
+    font-family: var(--serif);
+
+    font-size: 34px;
+
+    color: var(--gold);
+
+    margin: 2px 0;
+}
+
+.names {
+    font-family: var(--serif);
+
+    font-size:
+        clamp(
+            25px,
+            3vw,
+            43px
+        );
+
+    color: var(--burgundy);
+
+    letter-spacing: .01em;
+}
+
+.date {
+    margin-top: 20px;
+
+    font-family: var(--serif);
+
+    font-size: 17px;
+
+    letter-spacing: .35em;
+
+    color: var(--burgundy);
+}
+
+
+/* Envelope */
+
+.envelope-wrapper {
+    position: absolute;
+
+    z-index: 15;
+
+    left: 50%;
+
+    bottom: 4%;
+
+    transform:
+        translateX(-50%);
+
+    width: min(500px, 47%);
+
+    cursor: pointer;
+
+    transition:
+        transform .5s ease;
+}
+
+.envelope-wrapper:hover {
+    transform:
+        translateX(-50%)
+        translateY(-8px);
+}
+
+.envelope {
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 1.55;
 
     filter:
         drop-shadow(
-            0 25px 35px
-            rgba(94,54,28,.22)
-        );
-
-    transition:
-        transform .4s ease;
-}
-
-.envelope-wrap:hover{
-    transform:translateY(-8px);
-}
-
-.envelope{
-    position:absolute;
-    inset:0;
-
-    overflow:hidden;
-
-    border-radius:5px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #f7e8d5,
-            #e6c6a6
+            0 25px 28px
+            rgba(55,20,14,.25)
         );
 }
 
-.envelope::before{
-    content:"";
+.envelope-base {
+    position: absolute;
 
-    position:absolute;
-    inset:0;
+    inset: 0;
 
     background:
         linear-gradient(
-            35deg,
+            145deg,
+            #f7ead7,
+            #dec19a
+        );
+
+    border:
+        1px solid
+        rgba(111,67,36,.4);
+
+    overflow: hidden;
+}
+
+.envelope-base::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            32deg,
             transparent 49.6%,
-            rgba(116,63,39,.15) 50%,
-            transparent 50.4%
+            rgba(99,57,32,.22) 50%,
+            transparent 50.5%
         ),
         linear-gradient(
-            -35deg,
+            -32deg,
             transparent 49.6%,
-            rgba(116,63,39,.15) 50%,
-            transparent 50.4%
+            rgba(99,57,32,.22) 50%,
+            transparent 50.5%
         );
 }
 
-.flap{
-    position:absolute;
+.envelope-liner {
+    position: absolute;
 
-    top:0;
-    left:0;
+    z-index: 2;
 
-    width:100%;
-    height:62%;
+    top: 7%;
+    left: 10%;
+    right: 10%;
 
-    z-index:5;
+    height: 54%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(184,135,63,.15) 1px,
+            transparent 1px
+        );
+
+    background-size: 9px 9px;
+
+    background-color:
+        var(--burgundy);
+
+    clip-path:
+        polygon(
+            50% 0,
+            100% 40%,
+            100% 100%,
+            0 100%,
+            0 40%
+        );
+}
+
+.envelope-flap {
+    position: absolute;
+
+    z-index: 5;
+
+    inset: 0 0 auto;
+
+    height: 63%;
 
     background:
         linear-gradient(
-            135deg,
-            #f8ead9,
-            #dfb994
+            145deg,
+            #fff3df,
+            #dfbf92
         );
 
     clip-path:
@@ -261,1472 +569,1402 @@ body::before{
             50% 100%
         );
 
-    transform-origin:top center;
-
-    transition:
-        transform 1.2s
-        cubic-bezier(.2,.8,.2,1);
+    border-top:
+        1px solid
+        rgba(110,65,37,.25);
 }
 
-.inner-card{
-    position:absolute;
+.seal {
+    position: absolute;
 
-    z-index:3;
+    z-index: 8;
 
-    left:9%;
-    right:9%;
-    bottom:5%;
+    left: 50%;
+    top: 59%;
 
-    height:84%;
-
-    background:var(--white);
-
-    border-radius:3px;
-
-    box-shadow:
-        0 8px 20px
-        rgba(80,40,20,.1);
-
-    transform:translateY(35%);
-
-    transition:
-        transform 1.3s
-        cubic-bezier(.15,.75,.25,1);
-}
-
-.seal{
-    position:absolute;
-
-    z-index:10;
-
-    left:50%;
-    top:53%;
-
-    width:76px;
-    height:76px;
+    width: 74px;
+    height: 74px;
 
     transform:
         translate(-50%,-50%);
 
-    border-radius:50%;
+    border-radius: 50%;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    display: grid;
+
+    place-items: center;
+
+    color: var(--gold-light);
+
+    font-family: var(--serif);
+
+    font-size: 14px;
 
     background:
         radial-gradient(
-            circle at 35% 30%,
-            #e4a18d,
-            #b55f50 55%,
-            #8a3b31
+            circle at 30% 25%,
+            #a54e43,
+            #541815
         );
 
     border:
-        3px solid #9a473b;
+        3px solid
+        #6f211c;
 
     box-shadow:
-        0 8px 20px
-        rgba(80,35,20,.25),
-        inset 0 3px 6px
-        rgba(255,255,255,.25);
-
-    transition:
-        transform .7s ease,
-        opacity .6s ease;
+        0 9px 20px
+        rgba(45,12,9,.35),
+        inset 0 2px 5px
+        rgba(255,255,255,.18);
 }
 
-.seal::after{
-    content:"♥";
-    font-size:30px;
-    color:#f8dfb5;
+.seal::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 7px;
+
+    border:
+        1px solid
+        rgba(220,181,113,.7);
+
+    border-radius: 50%;
 }
 
-.cover-hint{
-    margin-top:24px;
+.open-label {
+    position: absolute;
 
-    font-family:"Cormorant Garamond",serif;
-    font-size:16px;
+    left: 50%;
 
-    letter-spacing:.2em;
-    text-transform:uppercase;
+    bottom: -34px;
 
-    color:var(--brown-light);
-
-    animation:
-        hintPulse 2s infinite;
-}
-
-@keyframes hintPulse{
-
-    50%{
-        opacity:.45;
-    }
-}
-
-#cover.opening .flap{
-    transform:rotateX(180deg);
-}
-
-#cover.opening .inner-card{
-    transform:translateY(-22%);
-}
-
-#cover.opening .seal{
     transform:
-        translate(-50%,-50%)
-        scale(1.5)
-        rotate(20deg);
+        translateX(-50%);
 
-    opacity:0;
+    white-space: nowrap;
+
+    font-family: var(--serif);
+
+    font-style: italic;
+
+    font-size: 18px;
+
+    color: var(--burgundy);
 }
 
-/* =========================
-   MAIN SITE
-========================= */
 
-#site{
-    opacity:0;
-    visibility:hidden;
+/* =========================================================
+   SLIDE 2
+   COUPLE
+========================================================= */
 
-    transition:
-        opacity 1.2s ease;
+.slide-two .paper {
+    display: grid;
+
+    grid-template-columns:
+        52% 48%;
 }
 
-#site.visible{
-    opacity:1;
-    visibility:visible;
+.couple-image-area {
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        #6e392e;
 }
 
-/* =========================
-   HERO
-========================= */
+.couple-image {
+    position: absolute;
 
-.hero{
-    min-height:100svh;
+    inset: 0;
 
-    position:relative;
+    width: 100%;
+    height: 100%;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    object-fit: cover;
 
-    overflow:hidden;
-
-    padding:50px 20px;
-}
-
-.hero-image{
-    position:absolute;
-
-    inset:0;
-
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
-
-    object-position:center;
-
-    opacity:.42;
+    object-position: center;
 
     filter:
-        saturate(.85)
+        saturate(.82)
         sepia(.08);
 
-    animation:
-        slowZoom 18s
-        ease-in-out
-        infinite alternate;
-}
-
-@keyframes slowZoom{
-
-    from{
-        transform:scale(1);
-    }
-
-    to{
-        transform:scale(1.06);
-    }
-}
-
-.hero::after{
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    background:
-        linear-gradient(
-            rgba(251,244,232,.82),
-            rgba(251,244,232,.72)
-        );
-}
-
-.hero-content{
-    position:relative;
-
-    z-index:2;
-
-    text-align:center;
-
-    max-width:850px;
-
-    animation:
-        revealUp 1.4s ease both;
-}
-
-@keyframes revealUp{
-
-    from{
-        opacity:0;
-        transform:translateY(35px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-.eyebrow{
-    font-family:"Cormorant Garamond",serif;
-
-    text-transform:uppercase;
-
-    letter-spacing:.4em;
-
-    font-size:13px;
-
-    color:var(--gold);
-
-    margin-bottom:20px;
-}
-
-.hero h1{
-    font-family:"Playfair Display",serif;
-
-    font-size:
-        clamp(
-            44px,
-            8vw,
-            88px
-        );
-
-    font-weight:400;
-
-    line-height:1.05;
-
-    color:var(--brown);
-}
-
-.hero h1 span{
-    color:var(--gold);
-}
-
-.hero-date{
-    margin-top:28px;
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:
-        clamp(
-            22px,
-            4vw,
-            32px
-        );
-
-    letter-spacing:.18em;
-
-    color:var(--brown);
-}
-
-.hero-subtitle{
-    margin-top:25px;
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:21px;
-
-    font-style:italic;
-
-    color:var(--brown-light);
-}
-
-/* =========================
-   GENERAL SECTIONS
-========================= */
-
-section.content-section{
-
-    padding:
-        110px 20px;
-
-    position:relative;
-
-    overflow:hidden;
-}
-
-.section-inner{
-    width:min(1100px,100%);
-    margin:auto;
-}
-
-.section-heading{
-    text-align:center;
-    margin-bottom:55px;
-}
-
-.section-number{
-
-    display:inline-flex;
-
-    width:36px;
-    height:36px;
-
-    align-items:center;
-    justify-content:center;
-
-    border:
-        1px solid var(--gold);
-
-    border-radius:50%;
-
-    color:var(--gold);
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:17px;
-
-    margin-bottom:15px;
-}
-
-.section-heading h2{
-
-    font-family:"Playfair Display",serif;
-
-    font-weight:400;
-
-    font-size:
-        clamp(
-            36px,
-            6vw,
-            56px
-        );
-
-    color:var(--brown);
-}
-
-.section-heading p{
-
-    margin-top:10px;
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:19px;
-
-    color:var(--brown-light);
-}
-
-/* =========================
-   OUR STORY
-========================= */
-
-.story-grid{
-
-    display:grid;
-
-    grid-template-columns:
-        1fr 1.15fr;
-
-    gap:45px;
-
-    align-items:center;
-}
-
-.story-image{
-
-    width:100%;
-
-    aspect-ratio:.82;
-
-    object-fit:cover;
-
-    border-radius:8px;
-
-    box-shadow:var(--shadow);
+    transform: scale(1.015);
 
     transition:
-        transform .7s ease;
+        transform 10s
+        ease;
 }
 
-.story-image:hover{
-
+.slide-two.active
+.couple-image {
     transform:
-        scale(1.025)
-        rotate(-.5deg);
+        scale(1.07);
 }
 
-.story-text{
-    padding:25px;
-}
 
-.story-text .script{
+/* warm overlay */
 
-    font-family:"Playfair Display",serif;
+.couple-image-area::after {
+    content: "";
 
-    font-style:italic;
+    position: absolute;
 
-    font-size:28px;
-
-    color:var(--gold);
-
-    margin-bottom:18px;
-}
-
-.story-text p{
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:22px;
-
-    line-height:1.7;
-
-    color:var(--brown-light);
-}
-
-/* =========================
-   SAVE THE DATES
-========================= */
-
-.dates-grid{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
-    gap:30px;
-}
-
-.date-card{
-
-    position:relative;
-
-    padding:55px 30px;
-
-    text-align:center;
-
-    background:
-        rgba(255,255,255,.52);
-
-    border:
-        1px solid
-        rgba(185,130,69,.28);
-
-    border-radius:10px;
-
-    box-shadow:
-        0 15px 40px
-        rgba(100,60,30,.06);
-
-    transition:
-        transform .45s ease,
-        box-shadow .45s ease;
-}
-
-.date-card:hover{
-
-    transform:
-        translateY(-10px);
-
-    box-shadow:
-        0 25px 55px
-        rgba(100,60,30,.13);
-}
-
-.date-day{
-
-    font-family:"Playfair Display",serif;
-
-    font-size:85px;
-
-    line-height:.9;
-
-    color:var(--brown);
-}
-
-.date-month{
-
-    margin-top:15px;
-
-    text-transform:uppercase;
-
-    letter-spacing:.28em;
-
-    color:var(--gold);
-
-    font-size:13px;
-}
-
-.date-event{
-
-    margin-top:25px;
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:25px;
-}
-
-.date-description{
-
-    margin-top:10px;
-
-    color:var(--brown-light);
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:18px;
-}
-
-/* =========================
-   FAMILY
-========================= */
-
-.family-card{
-
-    max-width:780px;
-
-    margin:auto;
-
-    text-align:center;
-
-    padding:70px 30px;
-
-    border:
-        1px solid
-        rgba(185,130,69,.35);
-
-    border-radius:15px;
-
-    background:
-        rgba(255,255,255,.42);
-
-    position:relative;
-}
-
-.family-card::before,
-.family-card::after{
-
-    content:"❦";
-
-    position:absolute;
-
-    color:var(--gold-light);
-
-    font-size:42px;
-}
-
-.family-card::before{
-
-    top:20px;
-    left:25px;
-}
-
-.family-card::after{
-
-    bottom:20px;
-    right:25px;
-
-    transform:rotate(180deg);
-}
-
-.family-label{
-
-    text-transform:uppercase;
-
-    letter-spacing:.3em;
-
-    font-size:12px;
-
-    color:var(--gold);
-}
-
-.family-names{
-
-    margin-top:20px;
-
-    font-family:"Playfair Display",serif;
-
-    font-size:
-        clamp(
-            36px,
-            7vw,
-            58px
-        );
-
-    font-weight:400;
-}
-
-.family-and{
-
-    margin:8px 0;
-
-    color:var(--gold);
-
-    font-size:22px;
-}
-
-.family-message{
-
-    margin-top:25px;
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:20px;
-
-    line-height:1.6;
-
-    color:var(--brown-light);
-}
-
-/* =========================
-   LOVE
-========================= */
-
-.values{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:25px;
-
-    text-align:center;
-}
-
-.value{
-
-    padding:40px 20px;
-
-    border-top:
-        1px solid
-        rgba(185,130,69,.4);
-
-    border-bottom:
-        1px solid
-        rgba(185,130,69,.2);
-
-    transition:
-        transform .4s ease;
-}
-
-.value:hover{
-
-    transform:
-        translateY(-7px);
-}
-
-.value-icon{
-
-    font-size:30px;
-
-    color:var(--gold);
-
-    margin-bottom:15px;
-}
-
-.value h3{
-
-    font-family:"Playfair Display",serif;
-
-    font-size:25px;
-
-    font-weight:400;
-}
-
-.value p{
-
-    margin-top:8px;
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:18px;
-
-    color:var(--brown-light);
-}
-
-/* =========================
-   FINAL SCENE
-========================= */
-
-.finale{
-
-    min-height:85vh;
-
-    display:flex;
-
-    align-items:center;
-
-    position:relative;
-
-    overflow:hidden;
-
-    padding:80px 20px;
-}
-
-.finale-image{
-
-    position:absolute;
-
-    inset:0;
-
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
-
-    opacity:.38;
-
-    filter:saturate(.85);
-}
-
-.finale::after{
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
+    inset: 0;
 
     background:
         linear-gradient(
             90deg,
-            rgba(251,244,232,.96),
-            rgba(251,244,232,.5)
-        );
-}
-
-.finale-content{
-
-    position:relative;
-
-    z-index:2;
-
-    width:min(650px,100%);
-
-    padding-left:5%;
-}
-
-.finale-content h2{
-
-    font-family:"Playfair Display",serif;
-
-    font-weight:400;
-
-    font-size:
-        clamp(
-            45px,
-            8vw,
-            78px
+            transparent 55%,
+            rgba(255,245,220,.85)
         );
 
-    line-height:1.05;
+    pointer-events: none;
 }
 
-.finale-message{
 
-    margin-top:25px;
+/* Floating petals */
 
-    font-family:"Cormorant Garamond",serif;
+.petals {
+    position: absolute;
 
-    font-size:25px;
+    inset: 0;
 
-    line-height:1.5;
+    z-index: 4;
 
-    color:var(--brown-light);
+    pointer-events: none;
 }
 
-.finale-names{
+.petal {
+    position: absolute;
 
-    margin-top:35px;
-
-    font-family:"Playfair Display",serif;
-
-    font-style:italic;
-
-    font-size:29px;
-
-    color:var(--gold);
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-
-    padding:45px 20px;
-
-    text-align:center;
-
-    border-top:
-        1px solid
-        rgba(185,130,69,.25);
-
-    background:#f6ead9;
-}
-
-footer p{
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:17px;
-
-    color:var(--brown-light);
-}
-
-footer .heart{
-
-    color:var(--rose);
-
-    font-size:22px;
-
-    margin:0 5px;
-}
-
-/* =========================
-   MUSIC BUTTON
-========================= */
-
-#musicButton{
-
-    position:fixed;
-
-    right:20px;
-    bottom:20px;
-
-    z-index:500;
-
-    width:52px;
-    height:52px;
-
-    border-radius:50%;
-
-    border:
-        1px solid
-        rgba(185,130,69,.6);
+    width: 15px;
+    height: 25px;
 
     background:
-        rgba(255,249,239,.88);
+        url("assets/petals.png")
+        center/contain
+        no-repeat;
 
-    color:var(--gold);
-
-    display:none;
-
-    align-items:center;
-    justify-content:center;
-
-    cursor:pointer;
-
-    font-size:20px;
-
-    box-shadow:
-        0 10px 30px
-        rgba(80,40,20,.15);
-
-    backdrop-filter:blur(8px);
-
-    transition:
-        transform .3s ease;
-}
-
-#musicButton:hover{
-
-    transform:
-        scale(1.1);
-}
-
-/* =========================
-   FALLING PETALS
-========================= */
-
-.petal{
-
-    position:fixed;
-
-    top:-30px;
-
-    z-index:200;
-
-    pointer-events:none;
-
-    color:var(--rose);
+    opacity: .8;
 
     animation:
-        fallPetal
-        linear
-        forwards;
+        floatPetal
+        var(--duration)
+        ease-in-out
+        infinite;
 }
 
-@keyframes fallPetal{
+.petal:nth-child(1) {
+    left: 15%;
+    top: 18%;
 
-    0%{
-        opacity:0;
+    --duration: 6s;
+}
 
+.petal:nth-child(2) {
+    left: 60%;
+    top: 10%;
+
+    --duration: 7s;
+}
+
+.petal:nth-child(3) {
+    left: 78%;
+    top: 37%;
+
+    --duration: 5.5s;
+}
+
+.petal:nth-child(4) {
+    left: 32%;
+    top: 70%;
+
+    --duration: 8s;
+}
+
+@keyframes floatPetal {
+
+    0%,
+    100% {
         transform:
-            translateY(-20px)
+            translateY(0)
             rotate(0);
     }
 
-    15%{
-        opacity:.75;
-    }
-
-    100%{
-
-        opacity:0;
-
+    50% {
         transform:
-            translateY(110vh)
-            translateX(var(--drift))
-            rotate(500deg);
+            translateY(25px)
+            translateX(12px)
+            rotate(25deg);
     }
 }
 
-/* =========================
-   SCROLL REVEAL
-========================= */
 
-.reveal{
+/* Couple card */
 
-    opacity:0;
+.couple-card {
+    position: relative;
+
+    z-index: 10;
+
+    align-self: end;
+
+    margin:
+        0 7%
+        5% -15%;
+
+    padding:
+        42px 42px 38px;
+
+    background:
+        rgba(255,250,241,.96);
+
+    border:
+        1px solid
+        rgba(184,135,63,.7);
+
+    box-shadow:
+        0 25px 60px
+        rgba(60,25,15,.17);
+
+    text-align: center;
+
+    backdrop-filter:
+        blur(4px);
+}
+
+.couple-card::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 9px;
+
+    border:
+        1px solid
+        rgba(184,135,63,.25);
+
+    pointer-events: none;
+}
+
+.couple-card h1 {
+    font-family: var(--script);
+
+    font-weight: 400;
+
+    color: var(--burgundy);
+
+    font-size:
+        clamp(
+            42px,
+            4vw,
+            68px
+        );
+
+    line-height: .95;
+}
+
+.couple-card .sub {
+    margin-top: 18px;
+
+    font-family: var(--serif);
+
+    font-size: 15px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .25em;
+
+    color: var(--gold);
+}
+
+.couple-card .date {
+    margin-top: 15px;
+}
+
+
+/* Music */
+
+.music-button {
+    position: absolute;
+
+    z-index: 100;
+
+    right: 32px;
+    top: 32px;
+
+    width: 48px;
+    height: 48px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        var(--gold);
+
+    background:
+        rgba(255,250,241,.92);
+
+    color: var(--burgundy);
+
+    cursor: pointer;
+
+    display: grid;
+
+    place-items: center;
+
+    box-shadow:
+        0 8px 20px
+        rgba(55,20,14,.15);
+}
+
+
+/* =========================================================
+   SLIDE 3
+========================================================= */
+
+.slide-three .paper {
+    padding:
+        75px 90px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 70px;
+
+    align-items: center;
+}
+
+.schedule {
+    text-align: center;
+}
+
+.schedule h2 {
+    font-family: var(--serif);
+
+    font-size:
+        clamp(
+            42px,
+            5vw,
+            65px
+        );
+
+    font-weight: 500;
+
+    color: var(--burgundy);
+}
+
+.schedule .heart {
+    color: var(--gold);
+
+    font-size: 22px;
+
+    margin: 13px 0;
+}
+
+
+/* Date cards */
+
+.date-grid {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 18px;
+
+    margin-top: 35px;
+}
+
+.date-card {
+    position: relative;
+
+    padding:
+        32px 18px;
+
+    border:
+        1px solid
+        rgba(184,135,63,.55);
+
+    background:
+        rgba(255,250,241,.65);
+
+    text-align: center;
+}
+
+.date-card::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 7px;
+
+    border:
+        1px solid
+        rgba(184,135,63,.17);
+}
+
+.day-number {
+    font-family: var(--serif);
+
+    font-size: 70px;
+
+    line-height: .85;
+
+    color: var(--burgundy);
+}
+
+.month {
+    margin-top: 12px;
+
+    font-family: var(--sans);
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .22em;
+
+    color: var(--gold);
+}
+
+.event-name {
+    margin-top: 24px;
+
+    font-family: var(--script);
+
+    font-size: 28px;
+
+    color: var(--burgundy);
+}
+
+.event-description {
+    margin-top: 8px;
+
+    font-family: var(--serif);
+
+    font-size: 16px;
+
+    line-height: 1.35;
+
+    color: #6b5147;
+}
+
+
+/* Family */
+
+.family {
+    text-align: center;
+
+    padding:
+        40px;
+
+    border:
+        1px solid
+        var(--gold-faint);
+
+    background:
+        rgba(255,250,241,.4);
+}
+
+.family h3 {
+    font-family: var(--serif);
+
+    font-size: 17px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .24em;
+
+    color: var(--gold);
+}
+
+.family-names {
+    margin-top: 24px;
+
+    font-family: var(--script);
+
+    font-size:
+        clamp(
+            40px,
+            4vw,
+            62px
+        );
+
+    line-height: 1.15;
+
+    color: var(--burgundy);
+}
+
+.family-and {
+    margin: 5px 0;
+
+    font-family: var(--serif);
+
+    color: var(--gold);
+
+    font-size: 25px;
+}
+
+.family-text {
+    margin:
+        25px auto 0;
+
+    max-width: 430px;
+
+    font-family: var(--serif);
+
+    font-size: 18px;
+
+    line-height: 1.5;
+
+    color: #654e44;
+}
+
+.final-line {
+    margin-top: 38px;
+
+    font-family: var(--script);
+
+    font-size: 33px;
+
+    color: var(--burgundy);
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.nav {
+    position: absolute;
+
+    z-index: 200;
+
+    bottom: 24px;
+
+    left: 50%;
 
     transform:
-        translateY(35px);
+        translateX(-50%);
+
+    display: flex;
+
+    gap: 10px;
+
+    padding: 7px 12px;
+
+    border:
+        1px solid
+        rgba(218,184,115,.35);
+
+    border-radius: 30px;
+
+    background:
+        rgba(49,17,14,.72);
+
+    backdrop-filter:
+        blur(12px);
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    border: 1px solid
+        var(--gold-light);
+
+    background: transparent;
+
+    cursor: pointer;
+
+    transition:
+        all .4s ease;
+}
+
+.dot.active {
+    width: 26px;
+
+    border-radius: 10px;
+
+    background:
+        var(--gold-light);
+}
+
+
+/* arrows */
+
+.arrow {
+    position: absolute;
+
+    z-index: 200;
+
+    top: 50%;
+
+    width: 46px;
+    height: 46px;
+
+    transform:
+        translateY(-50%);
+
+    border:
+        1px solid
+        rgba(184,135,63,.65);
+
+    border-radius: 50%;
+
+    background:
+        rgba(62,20,17,.9);
+
+    color: var(--gold-light);
+
+    cursor: pointer;
+
+    display: grid;
+
+    place-items: center;
+
+    font-size: 20px;
+
+    transition:
+        transform .3s ease,
+        background .3s ease;
+}
+
+.arrow:hover {
+    background:
+        var(--burgundy);
+
+    transform:
+        translateY(-50%)
+        scale(1.08);
+}
+
+.arrow-left {
+    left: 18px;
+}
+
+.arrow-right {
+    right: 18px;
+}
+
+
+/* =========================================================
+   OPENING
+========================================================= */
+
+.intro-overlay {
+    position: fixed;
+
+    z-index: 1000;
+
+    inset: 0;
+
+    display: grid;
+
+    place-items: center;
+
+    background:
+        radial-gradient(
+            circle,
+            #71342c,
+            #210b09
+        );
 
     transition:
         opacity 1s ease,
-        transform 1s ease;
+        visibility 1s ease;
 }
 
-.reveal.show{
+.intro-overlay.hide {
+    opacity: 0;
 
-    opacity:1;
+    visibility: hidden;
 
-    transform:
-        translateY(0);
+    pointer-events: none;
 }
 
-/* =========================
-   MOBILE
-========================= */
+.intro-content {
+    text-align: center;
 
-@media (max-width:700px){
+    color: var(--cream);
+}
 
-    section.content-section{
+.intro-small {
+    font-family: var(--serif);
 
-        padding:
-            80px 18px;
+    text-transform: uppercase;
+
+    letter-spacing: .4em;
+
+    font-size: 11px;
+
+    color: var(--gold-light);
+}
+
+.intro-title {
+    margin-top: 18px;
+
+    font-family: var(--script);
+
+    font-size:
+        clamp(
+            65px,
+            10vw,
+            110px
+        );
+
+    color: var(--cream);
+}
+
+.enter-button {
+    margin-top: 35px;
+
+    padding:
+        13px 30px;
+
+    border:
+        1px solid
+        var(--gold-light);
+
+    background:
+        transparent;
+
+    color:
+        var(--cream);
+
+    cursor: pointer;
+
+    text-transform: uppercase;
+
+    letter-spacing: .2em;
+
+    font-size: 10px;
+
+    transition:
+        background .3s ease,
+        color .3s ease;
+}
+
+.enter-button:hover {
+    background:
+        var(--gold-light);
+
+    color:
+        var(--burgundy-dark);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:900px) {
+
+    body {
+        overflow: hidden;
     }
 
-    .story-grid{
-
-        grid-template-columns:1fr;
+    .slide {
+        padding: 12px;
     }
 
-    .story-text{
-
-        padding:
-            10px 5px;
+    .paper {
+        height: calc(100svh - 24px);
     }
 
-    .dates-grid{
-
-        grid-template-columns:1fr;
+    .corner {
+        width: 75px;
+        height: 75px;
     }
 
-    .values{
-
-        grid-template-columns:1fr;
+    .slide-one .paper {
+        align-items: flex-start;
     }
 
-    .hero{
+    .invitation-intro {
+        width: 100%;
 
-        min-height:90svh;
+        height: 48%;
+
+        padding-top: 70px;
     }
 
-    .hero-image{
-
-        opacity:.32;
+    .invitation-intro .title-script {
+        font-size: 65px;
     }
 
-    .finale{
+    .envelope-wrapper {
+        width: min(390px, 75%);
 
-        min-height:75vh;
+        bottom: 12%;
     }
 
-    .finale::after{
+    .slide-two .paper {
+        grid-template-columns: 1fr;
+    }
 
+    .couple-image-area {
+        height: 100%;
+    }
+
+    .couple-image-area::after {
         background:
-            rgba(251,244,232,.72);
+            linear-gradient(
+                0deg,
+                rgba(255,245,220,.95),
+                transparent 55%
+            );
     }
 
-    .finale-content{
+    .couple-card {
+        position: absolute;
 
-        padding-left:0;
+        left: 5%;
+        right: 5%;
 
-        text-align:center;
+        bottom: 5%;
+
+        margin: 0;
+
+        padding: 30px 22px;
     }
 
-    .date-day{
+    .slide-three .paper {
+        padding:
+            60px 30px;
 
-        font-size:75px;
+        grid-template-columns:
+            1fr;
+
+        gap: 30px;
+
+        overflow-y: auto;
+    }
+
+    .family {
+        padding: 30px 20px;
+    }
+
+    .arrow {
+        width: 38px;
+        height: 38px;
     }
 }
+
+
+@media(max-width:600px) {
+
+    .slide {
+        padding: 6px;
+    }
+
+    .paper {
+        height:
+            calc(100svh - 12px);
+    }
+
+    .paper::before {
+        inset: 9px;
+    }
+
+    .paper::after {
+        inset: 16px;
+    }
+
+    .invitation-intro {
+        padding-top: 50px;
+    }
+
+    .invitation-intro .title-script {
+        font-size: 56px;
+    }
+
+    .names {
+        font-size: 23px;
+    }
+
+    .date {
+        font-size: 12px;
+
+        letter-spacing: .2em;
+    }
+
+    .envelope-wrapper {
+        width: 84%;
+
+        bottom: 11%;
+    }
+
+    .seal {
+        width: 58px;
+        height: 58px;
+    }
+
+    .open-label {
+        font-size: 15px;
+    }
+
+    .music-button {
+        right: 20px;
+        top: 20px;
+
+        width: 40px;
+        height: 40px;
+    }
+
+    .date-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .date-card {
+        padding: 23px 15px;
+    }
+
+    .day-number {
+        font-size: 52px;
+    }
+
+    .family-names {
+        font-size: 42px;
+    }
+
+    .final-line {
+        font-size: 27px;
+    }
+
+    .nav {
+        bottom: 12px;
+    }
+
+    .arrow-left {
+        left: 9px;
+    }
+
+    .arrow-right {
+        right: 9px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+
+        transition: none !important;
+    }
+}
+
 </style>
 </head>
 
+
 <body>
 
-<!-- =========================
-     ENVELOPE OPENING
-========================= -->
 
-<div id="cover">
+<!-- =======================================================
+     INTRO
+======================================================= -->
 
-    <div class="cover-decoration">✿</div>
-    <div class="cover-decoration">❦</div>
-    <div class="cover-decoration">✧</div>
-    <div class="cover-decoration">❀</div>
+<div class="intro-overlay" id="intro">
 
-    <div class="cover-content">
+    <div class="intro-content">
 
-        <div class="cover-kicker">
-            A New Chapter Begins
+        <div class="intro-small">
+            You are cordially invited
         </div>
 
-        <div class="cover-title">
-            Our Wedding
+        <div class="intro-title">
+            Aneesha &amp; Dhanu
         </div>
 
-        <div class="cover-names">
-            Aneesha
-            <span style="color:#b98245">&amp;</span>
-            Kadiri Dhanu Reddy
+        <div class="divider">
+            ♥
         </div>
 
-        <div
-            class="envelope-wrap"
-            id="openEnvelope"
-            role="button"
-            tabindex="0"
-            aria-label="Open wedding invitation"
+        <button
+            class="enter-button"
+            id="enter"
         >
-
-            <div class="envelope">
-
-                <div class="inner-card"></div>
-
-                <div class="flap"></div>
-
-                <div class="seal"></div>
-
-            </div>
-
-        </div>
-
-        <div class="cover-hint">
-            Tap the invitation
-        </div>
+            Open Invitation
+        </button>
 
     </div>
+
 </div>
 
 
-<!-- =========================
-     MAIN WEBSITE
-========================= -->
+<!-- =======================================================
+     APPLICATION
+======================================================= -->
 
-<main id="site">
+<div class="app" id="app">
 
 
-    <!-- HERO -->
+    <!-- SLIDER -->
 
-    <section class="hero">
+    <div
+        class="slider"
+        id="slider"
+    >
 
-        <img
-            src="assets/couple.jpg"
-            class="hero-image"
-            alt="Aneesha and Kadiri Dhanu Reddy"
+
+        <!-- =================================================
+             SLIDE 1
+        ================================================== -->
+
+        <section
+            class="slide slide-one active"
         >
 
-        <div class="hero-content">
+            <div class="paper">
 
-            <div class="eyebrow">
-                We invite you to celebrate our love story
-            </div>
-
-            <h1>
-                Aneesha
-                <span>&amp;</span>
-                Kadiri Dhanu Reddy
-            </h1>
-
-            <div class="hero-date">
-                15 &amp; 16 AUGUST 2026
-            </div>
-
-            <div class="hero-subtitle">
-                Two beautiful days.
-                One unforgettable beginning.
-            </div>
-
-        </div>
-
-    </section>
+                <div class="corner tl"></div>
+                <div class="corner tr"></div>
+                <div class="corner bl"></div>
+                <div class="corner br"></div>
 
 
-    <!-- OUR STORY -->
+                <div class="invitation-intro">
 
-    <section class="content-section">
+                    <div class="eyebrow">
+                        You are cordially invited
+                    </div>
 
-        <div class="section-inner">
+                    <div class="title-script">
+                        Aneesha
+                    </div>
 
-            <div class="section-heading reveal">
+                    <div class="ampersand">
+                        &amp;
+                    </div>
 
-                <div class="section-number">
-                    1
+                    <div class="title-script">
+                        Kadiri Dhanu Reddy
+                    </div>
+
+                    <div class="divider">
+                        ♥
+                    </div>
+
+                    <div class="date">
+                        15 &amp; 16 AUGUST 2026
+                    </div>
+
                 </div>
 
-                <h2>
-                    Our Story
-                </h2>
 
-                <p>
-                    begins here
-                </p>
+                <!-- Envelope -->
 
-            </div>
-
-
-            <div class="story-grid reveal">
-
-                <img
-                    src="assets/couple.jpg"
-                    class="story-image"
-                    alt="The couple"
+                <div
+                    class="envelope-wrapper"
+                    id="envelope"
                 >
 
-                <div class="story-text">
+                    <div class="envelope">
 
-                    <div class="script">
-                        A beautiful beginning
+                        <div class="envelope-base"></div>
+
+                        <div class="envelope-liner"></div>
+
+                        <div class="envelope-flap"></div>
+
+                        <div class="seal">
+                            A ♥ D
+                        </div>
+
                     </div>
 
-                    <p>
-                        Some moments become memories.
-                        Some memories become stories.
-                        And some stories become forever.
-
-                        <br><br>
-
-                        We are delighted to invite you
-                        to be part of the beginning of ours.
-                    </p>
+                    <div class="open-label">
+                        Open our invitation
+                    </div>
 
                 </div>
 
             </div>
 
-        </div>
+        </section>
 
-    </section>
 
+        <!-- =================================================
+             SLIDE 2
+        ================================================== -->
 
-    <!-- SAVE THE DATES -->
-
-    <section
-        class="content-section"
-        style="background:#f6ead9;"
-    >
-
-        <div class="section-inner">
-
-            <div class="section-heading reveal">
-
-                <div class="section-number">
-                    2
-                </div>
-
-                <h2>
-                    Save The Dates
-                </h2>
-
-                <p>
-                    Mark your calendar
-                </p>
-
-            </div>
-
-
-            <div class="dates-grid reveal">
-
-
-                <div class="date-card">
-
-                    <div class="date-day">
-                        15
-                    </div>
-
-                    <div class="date-month">
-                        August · 2026
-                    </div>
-
-                    <div class="date-event">
-                        The Celebration
-                    </div>
-
-                    <div class="date-description">
-                        A day filled with love,
-                        laughter and beautiful memories.
-                    </div>
-
-                </div>
-
-
-                <div class="date-card">
-
-                    <div class="date-day">
-                        16
-                    </div>
-
-                    <div class="date-month">
-                        August · 2026
-                    </div>
-
-                    <div class="date-event">
-                        The Wedding
-                    </div>
-
-                    <div class="date-description">
-                        The day we begin our
-                        beautiful journey together.
-                    </div>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- FAMILY -->
-
-    <section class="content-section">
-
-        <div class="section-inner">
-
-            <div class="section-heading reveal">
-
-                <div class="section-number">
-                    3
-                </div>
-
-                <h2>
-                    With The Blessings
-                </h2>
-
-                <p>
-                    of her family
-                </p>
-
-            </div>
-
-
-            <div class="family-card reveal">
-
-                <div class="family-label">
-                    Bride's Parents
-                </div>
-
-                <div class="family-names">
-                    Banu
-                </div>
-
-                <div class="family-and">
-                    &amp;
-                </div>
-
-                <div class="family-names">
-                    Ali Akbar Basha
-                </div>
-
-                <div class="family-message">
-                    With their love and blessings,
-                    we begin this beautiful new chapter.
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- CELEBRATING LOVE -->
-
-    <section
-        class="content-section"
-        style="background:#f6ead9;"
-    >
-
-        <div class="section-inner">
-
-            <div class="section-heading reveal">
-
-                <div class="section-number">
-                    4
-                </div>
-
-                <h2>
-                    Celebrating Love
-                </h2>
-
-                <p>
-                    together
-                </p>
-
-            </div>
-
-
-            <div class="values reveal">
-
-
-                <div class="value">
-
-                    <div class="value-icon">
-                        ♡
-                    </div>
-
-                    <h3>
-                        Love
-                    </h3>
-
-                    <p>
-                        That binds two hearts together.
-                    </p>
-
-                </div>
-
-
-                <div class="value">
-
-                    <div class="value-icon">
-                        ❦
-                    </div>
-
-                    <h3>
-                        Family
-                    </h3>
-
-                    <p>
-                        That makes every moment special.
-                    </p>
-
-                </div>
-
-
-                <div class="value">
-
-                    <div class="value-icon">
-                        ✧
-                    </div>
-
-                    <h3>
-                        Memories
-                    </h3>
-
-                    <p>
-                        That last forever.
-                    </p>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- FINAL COUPLE SCENE -->
-
-    <section class="finale">
-
-        <img
-            src="assets/couple-finale.jpg"
-            class="finale-image"
-            alt="Aneesha and Kadiri Dhanu Reddy"
+        <section
+            class="slide slide-two"
         >
 
-        <div class="finale-content reveal">
+            <div class="paper">
 
-            <div class="eyebrow">
-                See You There
+                <div class="corner tl"></div>
+                <div class="corner tr"></div>
+                <div class="corner bl"></div>
+                <div class="corner br"></div>
+
+
+                <div class="couple-image-area">
+
+                    <img
+                        class="couple-image"
+                        src="assets/couple.png"
+                        alt="Illustrated portrait of Aneesha and Kadiri Dhanu Reddy"
+                    >
+
+                    <div class="petals">
+
+                        <span class="petal"></span>
+                        <span class="petal"></span>
+                        <span class="petal"></span>
+                        <span class="petal"></span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="couple-card">
+
+                    <div class="eyebrow">
+                        Together with our families
+                    </div>
+
+                    <h1>
+                        Aneesha
+                        <br>
+                        &amp;
+                        <br>
+                        Kadiri Dhanu Reddy
+                    </h1>
+
+                    <div class="divider">
+                        ♥
+                    </div>
+
+                    <div class="sub">
+                        We invite you to celebrate our love
+                    </div>
+
+                    <div class="date">
+                        15 &amp; 16 AUGUST 2026
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="music-button"
+                    id="musicButton"
+                    aria-label="Toggle music"
+                >
+                    ♪
+                </button>
+
             </div>
 
-            <h2>
-                Let's make beautiful
-                memories together.
-            </h2>
+        </section>
 
-            <div class="finale-message">
-                Thank you for being a part
-                of our special day.
+
+        <!-- =================================================
+             SLIDE 3
+        ================================================== -->
+
+        <section
+            class="slide slide-three"
+        >
+
+            <div class="paper">
+
+                <div class="corner tl"></div>
+                <div class="corner tr"></div>
+                <div class="corner bl"></div>
+                <div class="corner br"></div>
+
+
+                <!-- Schedule -->
+
+                <div class="schedule">
+
+                    <div class="eyebrow">
+                        Save The Dates
+                    </div>
+
+                    <h2>
+                        Our Celebration
+                    </h2>
+
+                    <div class="heart">
+                        ── ♥ ──
+                    </div>
+
+
+                    <div class="date-grid">
+
+                        <article class="date-card">
+
+                            <div class="day-number">
+                                15
+                            </div>
+
+                            <div class="month">
+                                August 2026
+                            </div>
+
+                            <div class="event-name">
+                                The Celebration
+                            </div>
+
+                            <p class="event-description">
+                                A beautiful day filled
+                                with love, laughter
+                                and memories.
+                            </p>
+
+                        </article>
+
+
+                        <article class="date-card">
+
+                            <div class="day-number">
+                                16
+                            </div>
+
+                            <div class="month">
+                                August 2026
+                            </div>
+
+                            <div class="event-name">
+                                The Wedding
+                            </div>
+
+                            <p class="event-description">
+                                The day we begin
+                                our beautiful journey
+                                together.
+                            </p>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Family -->
+
+                <div class="family">
+
+                    <h3>
+                        With The Blessings Of
+                    </h3>
+
+                    <div class="family-names">
+                        Banu
+                    </div>
+
+                    <div class="family-and">
+                        &amp;
+                    </div>
+
+                    <div class="family-names">
+                        Ali Akbar Basha
+                    </div>
+
+                    <p class="family-text">
+                        With their love and blessings,
+                        we begin this beautiful new chapter
+                        and would be honoured to have
+                        you celebrate with us.
+                    </p>
+
+                    <div class="divider">
+                        ♥
+                    </div>
+
+                    <div class="final-line">
+                        Let's make beautiful memories together.
+                    </div>
+
+                </div>
+
             </div>
 
-            <div class="finale-names">
-                Aneesha × Kadiri Dhanu Reddy
-            </div>
-
-        </div>
-
-    </section>
+        </section>
 
 
-    <!-- FOOTER -->
-
-    <footer>
-
-        <p>
-            Made with
-            <span class="heart">♥</span>
-            for our special day
-        </p>
-
-        <p style="margin-top:8px;">
-            15 · 16 August 2026
-        </p>
-
-    </footer>
-
-</main>
+    </div>
 
 
-<!-- =========================
-     MUSIC
-========================= -->
+    <!-- =====================================================
+         ARROWS
+    ====================================================== -->
+
+    <button
+        class="arrow arrow-left"
+        id="prev"
+        aria-label="Previous slide"
+    >
+        ←
+    </button>
+
+    <button
+        class="arrow arrow-right"
+        id="next"
+        aria-label="Next slide"
+    >
+        →
+    </button>
+
+
+    <!-- =====================================================
+         NAV
+    ====================================================== -->
+
+    <div class="nav">
+
+        <button
+            class="dot active"
+            data-slide="0"
+            aria-label="Slide 1"
+        ></button>
+
+        <button
+            class="dot"
+            data-slide="1"
+            aria-label="Slide 2"
+        ></button>
+
+        <button
+            class="dot"
+            data-slide="2"
+            aria-label="Slide 3"
+        ></button>
+
+    </div>
+
+
+</div>
+
+
+<!-- =======================================================
+     AUDIO
+======================================================= -->
 
 <audio
-    id="music"
+    id="audio"
     loop
     preload="auto"
 >
@@ -1737,250 +1975,177 @@ footer .heart{
 </audio>
 
 
-<button
-    id="musicButton"
-    aria-label="Toggle music"
->
-    ♫
-</button>
-
-
 <script>
 
-/* =========================
-   OPEN INVITATION
-========================= */
+/* =========================================================
+   ELEMENTS
+========================================================= */
 
-const cover =
-    document.getElementById("cover");
+const slider =
+    document.getElementById("slider");
 
-const openEnvelope =
-    document.getElementById("openEnvelope");
+const slides =
+    document.querySelectorAll(".slide");
 
-const site =
-    document.getElementById("site");
+const dots =
+    document.querySelectorAll(".dot");
 
-const music =
-    document.getElementById("music");
+const nextButton =
+    document.getElementById("next");
+
+const prevButton =
+    document.getElementById("prev");
+
+const intro =
+    document.getElementById("intro");
+
+const enter =
+    document.getElementById("enter");
+
+const envelope =
+    document.getElementById("envelope");
+
+const audio =
+    document.getElementById("audio");
 
 const musicButton =
     document.getElementById("musicButton");
 
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let currentSlide = 0;
 
 let opened = false;
 
 let musicPlaying = false;
 
 
-/* =========================
-   MUSIC FADE IN
-========================= */
+/* =========================================================
+   SLIDE CHANGE
+========================================================= */
 
-function fadeInMusic(){
+function goToSlide(index) {
 
-    music.volume = 0;
-
-    music.play()
-        .then(() => {
-
-            musicPlaying = true;
-
-            musicButton.style.display =
-                "flex";
-
-
-            const start =
-                performance.now();
-
-            const duration = 3000;
-
-            const target = 0.42;
-
-
-            function animateVolume(now){
-
-                const progress =
-                    Math.min(
-                        (now - start) /
-                        duration,
-                        1
-                    );
-
-                const ease =
-                    1 -
-                    Math.pow(
-                        1 - progress,
-                        3
-                    );
-
-                music.volume =
-                    target * ease;
-
-
-                if(progress < 1){
-
-                    requestAnimationFrame(
-                        animateVolume
-                    );
-
-                }
-
-            }
-
-
-            requestAnimationFrame(
-                animateVolume
-            );
-
-        })
-
-        .catch(() => {
-
-            console.log(
-                "Music is unavailable or blocked."
-            );
-
-        });
-}
-
-
-/* =========================
-   PETALS
-========================= */
-
-function createPetals(){
-
-    const symbols = [
-        "✿",
-        "❀",
-        "❁",
-        "♡"
-    ];
-
-
-    for(
-        let i = 0;
-        i < 45;
-        i++
-    ){
-
-        const petal =
-            document.createElement("div");
-
-        petal.className =
-            "petal";
-
-        petal.textContent =
-            symbols[
-                Math.floor(
-                    Math.random() *
-                    symbols.length
-                )
-            ];
-
-
-        petal.style.left =
-            Math.random() * 100 + "%";
-
-
-        petal.style.fontSize =
-            10 +
-            Math.random() * 15 +
-            "px";
-
-
-        petal.style.setProperty(
-            "--drift",
-            Math.random() * 220 -
-            110 +
-            "px"
-        );
-
-
-        petal.style.animationDuration =
-            6 +
-            Math.random() * 7 +
-            "s";
-
-
-        document.body.appendChild(
-            petal
-        );
-
-
-        setTimeout(
-            () => petal.remove(),
-            14000
-        );
-
+    if(index < 0) {
+        index = slides.length - 1;
     }
 
-}
+    if(index >= slides.length) {
+        index = 0;
+    }
+
+    currentSlide = index;
+
+    slider.style.transform =
+        `translateX(-${index * 100}%)`;
 
 
-/* =========================
-   OPEN
-========================= */
+    slides.forEach(
+        (slide, i) => {
 
-function openInvitation(){
+            slide.classList.toggle(
+                "active",
+                i === index
+            );
 
-    if(opened) return;
-
-    opened = true;
-
-
-    cover.classList.add(
-        "opening"
+        }
     );
 
 
-    fadeInMusic();
+    dots.forEach(
+        (dot, i) => {
 
+            dot.classList.toggle(
+                "active",
+                i === index
+            );
 
-    setTimeout(() => {
-
-        site.classList.add(
-            "visible"
-        );
-
-        createPetals();
-
-    },750);
-
-
-    setTimeout(() => {
-
-        cover.classList.add(
-            "hidden"
-        );
-
-    },1700);
+        }
+    );
 
 }
 
 
-/* CLICK */
+/* =========================================================
+   NEXT
+========================================================= */
 
-openEnvelope.addEventListener(
+nextButton.addEventListener(
     "click",
-    openInvitation
+    () => {
+
+        goToSlide(
+            currentSlide + 1
+        );
+
+    }
 );
 
 
-/* KEYBOARD */
+/* =========================================================
+   PREVIOUS
+========================================================= */
 
-openEnvelope.addEventListener(
+prevButton.addEventListener(
+    "click",
+    () => {
+
+        goToSlide(
+            currentSlide - 1
+        );
+
+    }
+);
+
+
+/* =========================================================
+   DOT NAVIGATION
+========================================================= */
+
+dots.forEach(
+    dot => {
+
+        dot.addEventListener(
+            "click",
+            () => {
+
+                goToSlide(
+                    Number(
+                        dot.dataset.slide
+                    )
+                );
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================================================
+   KEYBOARD
+========================================================= */
+
+document.addEventListener(
     "keydown",
     event => {
 
-        if(
-            event.key === "Enter" ||
-            event.key === " "
-        ){
+        if(event.key === "ArrowRight") {
 
-            event.preventDefault();
+            goToSlide(
+                currentSlide + 1
+            );
 
-            openInvitation();
+        }
+
+        if(event.key === "ArrowLeft") {
+
+            goToSlide(
+                currentSlide - 1
+            );
 
         }
 
@@ -1988,17 +2153,153 @@ openEnvelope.addEventListener(
 );
 
 
-/* =========================
+/* =========================================================
+   TOUCH SWIPE
+========================================================= */
+
+let touchStartX = 0;
+
+let touchEndX = 0;
+
+document.addEventListener(
+    "touchstart",
+    event => {
+
+        touchStartX =
+            event.changedTouches[0].screenX;
+
+    },
+    {
+        passive: true
+    }
+);
+
+
+document.addEventListener(
+    "touchend",
+    event => {
+
+        touchEndX =
+            event.changedTouches[0].screenX;
+
+        const distance =
+            touchEndX -
+            touchStartX;
+
+        if(Math.abs(distance) < 50) {
+            return;
+        }
+
+        if(distance < 0) {
+
+            goToSlide(
+                currentSlide + 1
+            );
+
+        }
+        else {
+
+            goToSlide(
+                currentSlide - 1
+            );
+
+        }
+
+    },
+    {
+        passive: true
+    }
+);
+
+
+/* =========================================================
+   OPEN INVITATION
+========================================================= */
+
+function openInvitation() {
+
+    if(opened) {
+        return;
+    }
+
+    opened = true;
+
+    intro.classList.add("hide");
+
+    goToSlide(0);
+
+    startMusic();
+
+}
+
+
+/* =========================================================
+   ENTER
+========================================================= */
+
+enter.addEventListener(
+    "click",
+    openInvitation
+);
+
+
+/* =========================================================
+   ENVELOPE
+========================================================= */
+
+envelope.addEventListener(
+    "click",
+    () => {
+
+        goToSlide(1);
+
+        startMusic();
+
+    }
+);
+
+
+/* =========================================================
+   MUSIC
+========================================================= */
+
+function startMusic() {
+
+    if(musicPlaying) {
+        return;
+    }
+
+    audio.volume = .35;
+
+    audio.play()
+        .then(() => {
+
+            musicPlaying = true;
+
+            musicButton.textContent =
+                "♫";
+
+        })
+        .catch(() => {
+
+            musicPlaying = false;
+
+        });
+
+}
+
+
+/* =========================================================
    MUSIC BUTTON
-========================= */
+========================================================= */
 
 musicButton.addEventListener(
     "click",
     () => {
 
-        if(musicPlaying){
+        if(musicPlaying) {
 
-            music.pause();
+            audio.pause();
 
             musicPlaying = false;
 
@@ -2006,10 +2307,9 @@ musicButton.addEventListener(
                 "♪";
 
         }
+        else {
 
-        else{
-
-            music.play()
+            audio.play()
                 .then(() => {
 
                     musicPlaying = true;
@@ -2025,53 +2325,14 @@ musicButton.addEventListener(
 );
 
 
-/* =========================
-   SCROLL ANIMATION
-========================= */
+/* =========================================================
+   INITIAL
+========================================================= */
 
-const revealElements =
-    document.querySelectorAll(
-        ".reveal"
-    );
-
-
-const observer =
-    new IntersectionObserver(
-        entries => {
-
-            entries.forEach(
-                entry => {
-
-                    if(
-                        entry.isIntersecting
-                    ){
-
-                        entry.target.classList.add(
-                            "show"
-                        );
-
-                        observer.unobserve(
-                            entry.target
-                        );
-
-                    }
-
-                }
-            );
-
-        },
-        {
-            threshold:.15
-        }
-    );
-
-
-revealElements.forEach(
-    element =>
-        observer.observe(element)
-);
+goToSlide(0);
 
 </script>
 
 </body>
 </html>
+```
