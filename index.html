@@ -5,15 +5,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Aneesha & Dhanu — Wedding Invitation</title>
+<title>Aneesha & Dhanu | Wedding Invitation</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link
-  href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&family=Italianno&display=swap"
-  rel="stylesheet"
->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&family=Italianno&display=swap" rel="stylesheet">
 
 <style>
 
@@ -32,8 +29,8 @@ html {
 }
 
 body {
-    background: #f3f0e9;
-    color: #252923;
+    background: #101510;
+    color: #f8f4e8;
     font-family: "DM Sans", sans-serif;
     overflow-x: hidden;
 }
@@ -50,18 +47,21 @@ body.locked {
 .opening {
     position: fixed;
     inset: 0;
+
     z-index: 1000;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
+    overflow: hidden;
+
     background:
         radial-gradient(
             circle at center,
             #ffffff 0%,
-            #f4f1e9 48%,
-            #deded5 100%
+            #f5f2e9 45%,
+            #dcded4 100%
         );
 
     transition:
@@ -77,38 +77,37 @@ body.locked {
 
 
 /* =========================================================
-   OPENING GLOW
+   OPENING LIGHT
 ========================================================= */
 
-.opening-glow {
+.opening::before {
+    content: "";
+
     position: absolute;
 
-    width: 600px;
-    height: 600px;
-
-    max-width: 80vw;
-    max-height: 80vw;
+    width: 700px;
+    height: 700px;
 
     border-radius: 50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(188,198,170,.22),
-            rgba(205,194,153,.08) 45%,
-            transparent 70%
+            rgba(194,187,137,.25),
+            transparent 68%
         );
 
     filter: blur(20px);
 
     animation:
-        glow 7s ease-in-out infinite alternate;
+        openingGlow 7s ease-in-out infinite alternate;
 }
 
-@keyframes glow {
+@keyframes openingGlow {
+
     from {
-        transform: scale(.8);
-        opacity: .6;
+        transform: scale(.75);
+        opacity: .5;
     }
 
     to {
@@ -135,10 +134,9 @@ body.locked {
     font-size: 9px;
     letter-spacing: 5px;
     text-transform: uppercase;
-    color: #7d8177;
+    color: #777b72;
 
-    animation:
-        fadeUp 1s .2s both;
+    animation: fadeUp 1s .2s both;
 }
 
 .opening-names {
@@ -152,8 +150,7 @@ body.locked {
 
     color: #292d27;
 
-    animation:
-        fadeUp 1s .35s both;
+    animation: fadeUp 1s .35s both;
 }
 
 .opening-description {
@@ -165,11 +162,11 @@ body.locked {
 
     color: #777a71;
 
-    animation:
-        fadeUp 1s .5s both;
+    animation: fadeUp 1s .5s both;
 }
 
 @keyframes fadeUp {
+
     from {
         opacity: 0;
         transform: translateY(25px);
@@ -179,6 +176,7 @@ body.locked {
         opacity: 1;
         transform: translateY(0);
     }
+
 }
 
 
@@ -188,6 +186,7 @@ body.locked {
 
 .envelope-area {
     width: min(460px, 88vw);
+
     margin: 48px auto 0;
 
     animation:
@@ -195,6 +194,7 @@ body.locked {
 }
 
 @keyframes envelopeIn {
+
     from {
         opacity: 0;
         transform: translateY(35px);
@@ -204,12 +204,14 @@ body.locked {
         opacity: 1;
         transform: translateY(0);
     }
+
 }
 
 .envelope {
     position: relative;
 
     width: 100%;
+
     aspect-ratio: 1.55 / 1;
 
     cursor: pointer;
@@ -226,6 +228,7 @@ body.locked {
 }
 
 @keyframes envelopeFloat {
+
     0%, 100% {
         transform: translateY(0);
     }
@@ -233,6 +236,7 @@ body.locked {
     50% {
         transform: translateY(-8px);
     }
+
 }
 
 
@@ -440,6 +444,7 @@ body.locked {
 }
 
 @keyframes sealPulse {
+
     0%, 100% {
         box-shadow:
             0 10px 25px rgba(30,34,29,.25),
@@ -451,6 +456,7 @@ body.locked {
             0 10px 25px rgba(30,34,29,.25),
             0 0 35px rgba(158,162,120,.45);
     }
+
 }
 
 .tap-text {
@@ -469,6 +475,7 @@ body.locked {
 }
 
 @keyframes tapPulse {
+
     0%, 100% {
         opacity: .45;
     }
@@ -476,11 +483,12 @@ body.locked {
     50% {
         opacity: 1;
     }
+
 }
 
 
 /* =========================================================
-   OPEN ANIMATION
+   OPENING STATE
 ========================================================= */
 
 .opening.opened .flap {
@@ -519,13 +527,14 @@ body.locked {
 
     pointer-events: none;
 
-    color: #b7ad80;
+    color: #c9c18f;
 
     animation:
-        particle 1.7s ease-out forwards;
+        particleExplosion 1.8s ease-out forwards;
 }
 
-@keyframes particle {
+@keyframes particleExplosion {
+
     from {
         transform:
             translate(-50%, -50%)
@@ -542,20 +551,28 @@ body.locked {
 
         opacity: 0;
     }
+
 }
 
 
 /* =========================================================
-   INVITATION
+   MAIN INVITATION
 ========================================================= */
 
 .invitation {
+    position: relative;
+
     opacity: 0;
     visibility: hidden;
 
+    background:
+        #111610;
+
+    color: #f7f3e8;
+
     transition:
-        opacity 1.3s ease,
-        visibility 1.3s ease;
+        opacity 1.5s ease,
+        visibility 1.5s ease;
 }
 
 .invitation.visible {
@@ -565,82 +582,554 @@ body.locked {
 
 
 /* =========================================================
-   ALL SECTIONS
+   GLOBAL MOVING LIGHT
+========================================================= */
+
+.invitation::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: -30%;
+
+    z-index: 50;
+
+    pointer-events: none;
+
+    background:
+
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(220,209,157,.13),
+            transparent 22%
+        ),
+
+        radial-gradient(
+            circle at 80% 70%,
+            rgba(174,194,155,.12),
+            transparent 24%
+        ),
+
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(255,255,255,.035),
+            transparent 30%
+        );
+
+    filter: blur(35px);
+
+    animation:
+        globalLight 20s ease-in-out infinite alternate;
+}
+
+@keyframes globalLight {
+
+    0% {
+        transform:
+            translate3d(-4%, -2%, 0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate3d(4%, 3%, 0)
+            scale(1.1);
+    }
+
+    100% {
+        transform:
+            translate3d(-2%, 5%, 0)
+            scale(1.04);
+    }
+
+}
+
+
+/* =========================================================
+   GLOBAL STAR FIELD
+========================================================= */
+
+.star-field {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 40;
+
+    pointer-events: none;
+
+    overflow: hidden;
+}
+
+.star {
+    position: absolute;
+
+    width: 3px;
+    height: 3px;
+
+    border-radius: 50%;
+
+    background: #e8dfb4;
+
+    opacity: .35;
+
+    animation:
+        twinkle
+        var(--duration)
+        ease-in-out
+        infinite
+        var(--delay);
+}
+
+@keyframes twinkle {
+
+    0%, 100% {
+        opacity: .12;
+        transform: scale(.6);
+    }
+
+    50% {
+        opacity: .85;
+        transform: scale(1.5);
+    }
+
+}
+
+
+/* =========================================================
+   FLOATING PETALS
+========================================================= */
+
+.petal-field {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 45;
+
+    pointer-events: none;
+
+    overflow: hidden;
+}
+
+.petal {
+    position: absolute;
+
+    top: -50px;
+
+    width: 9px;
+    height: 14px;
+
+    border-radius:
+        70% 30% 70% 30%;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(239,224,183,.65),
+            rgba(177,191,155,.30)
+        );
+
+    filter: blur(.2px);
+
+    animation:
+        fallingPetal
+        var(--duration)
+        linear
+        infinite
+        var(--delay);
+}
+
+@keyframes fallingPetal {
+
+    0% {
+        transform:
+            translate3d(
+                0,
+                -60px,
+                0
+            )
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: .65;
+    }
+
+    50% {
+        transform:
+            translate3d(
+                var(--sway),
+                50vh,
+                0
+            )
+            rotate(180deg);
+    }
+
+    90% {
+        opacity: .5;
+    }
+
+    100% {
+        transform:
+            translate3d(
+                var(--sway2),
+                110vh,
+                0
+            )
+            rotate(360deg);
+
+        opacity: 0;
+    }
+
+}
+
+
+/* =========================================================
+   SECTION
 ========================================================= */
 
 .section {
     position: relative;
 
+    width: 100%;
+
     min-height: 100svh;
 
-    width: 100%;
+    overflow: hidden;
+
+    isolation: isolate;
+}
+
+
+/* =========================================================
+   SECTION 1 — CINEMATIC COUPLE
+========================================================= */
+
+.hero {
+
+    display: flex;
+
+    align-items: center;
+
+    background:
+        #101510;
+}
+
+
+/*
+   Instead of requiring another image file,
+   this creates an elegant illustrated background
+   directly inside the HTML.
+*/
+
+.hero-art {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
 
     overflow: hidden;
 }
 
 
-/* =========================================================
-   SECTION 1 — COUPLE
-========================================================= */
+/* giant moon */
 
-.hero {
-    display: flex;
-    align-items: center;
+.hero-art .moon {
 
-    background: #252922;
-
-    color: white;
-}
-
-.hero-image {
     position: absolute;
 
-    inset: 0;
+    width: 58vw;
+    height: 58vw;
 
-    width: 100%;
-    height: 100%;
+    max-width: 700px;
+    max-height: 700px;
 
-    object-fit: cover;
+    border-radius: 50%;
 
-    object-position: center;
+    right: -10%;
+    top: 8%;
 
-    filter:
-        brightness(.55)
-        saturate(.75);
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fffdf1 0%,
+            #d9d2a4 38%,
+            #8d9679 70%,
+            transparent 72%
+        );
+
+    opacity: .32;
+
+    filter: blur(.5px);
 
     animation:
-        imageZoom 18s ease-in-out infinite alternate;
+        moonFloat 12s ease-in-out infinite alternate;
 }
 
-@keyframes imageZoom {
+@keyframes moonFloat {
+
     from {
-        transform: scale(1.02);
+        transform:
+            translate3d(0,0,0)
+            scale(1);
     }
 
     to {
-        transform: scale(1.09);
+        transform:
+            translate3d(-30px,20px,0)
+            scale(1.05);
     }
+
 }
 
 
-/* readable overlay */
+/* horizon glow */
 
-.hero::after {
-    content: "";
+.hero-art .horizon {
 
     position: absolute;
-    inset: 0;
+
+    left: -10%;
+    right: -10%;
+    bottom: -20%;
+
+    height: 65%;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(182,194,158,.24),
+            transparent 65%
+        );
+
+    filter: blur(25px);
+
+    animation:
+        horizonGlow 8s ease-in-out infinite alternate;
+}
+
+@keyframes horizonGlow {
+
+    from {
+        transform: scale(.9);
+        opacity: .5;
+    }
+
+    to {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+
+}
+
+
+/* =========================================================
+   ILLUSTRATED COUPLE
+========================================================= */
+
+.couple-illustration {
+
+    position: absolute;
+
+    z-index: 2;
+
+    right:
+        clamp(4%, 9vw, 12%);
+
+    bottom: 0;
+
+    width:
+        clamp(300px, 40vw, 600px);
+
+    height:
+        clamp(500px, 80vh, 760px);
+
+    opacity: .8;
+
+    pointer-events: none;
+}
+
+
+/* woman's silhouette */
+
+.bride {
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 22%;
+
+    width: 35%;
+
+    height: 78%;
 
     background:
         linear-gradient(
-            90deg,
-            rgba(15,18,14,.86) 0%,
-            rgba(15,18,14,.65) 40%,
-            rgba(15,18,14,.25) 75%,
-            rgba(15,18,14,.10) 100%
+            135deg,
+            rgba(245,240,220,.95),
+            rgba(185,190,161,.75)
         );
 
-    z-index: 1;
+    clip-path:
+        polygon(
+            48% 0%,
+            63% 3%,
+            69% 12%,
+            68% 24%,
+            74% 39%,
+            86% 58%,
+            100% 100%,
+            0 100%,
+            18% 60%,
+            30% 40%,
+            33% 24%,
+            35% 12%
+        );
+
+    filter:
+        drop-shadow(
+            0 0 30px rgba(224,216,176,.12)
+        );
+}
+
+
+/* bride head */
+
+.bride::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 29%;
+    aspect-ratio: 1;
+
+    border-radius: 50%;
+
+    top: -7%;
+    left: 36%;
+
+    background:
+        radial-gradient(
+            circle at 45% 35%,
+            #eee8d6,
+            #a8aa91 75%
+        );
+
+    box-shadow:
+        -18px 8px 0 -2px rgba(49,56,45,.8);
+}
+
+
+/* groom */
+
+.groom {
+
+    position: absolute;
+
+    bottom: 0;
+
+    right: 4%;
+
+    width: 38%;
+
+    height: 84%;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(44,52,44,.98),
+            rgba(101,111,91,.9)
+        );
+
+    clip-path:
+        polygon(
+            42% 0%,
+            60% 2%,
+            65% 12%,
+            63% 25%,
+            70% 36%,
+            79% 49%,
+            93% 100%,
+            0 100%,
+            18% 52%,
+            30% 38%,
+            35% 23%,
+            34% 10%
+        );
+
+    filter:
+        drop-shadow(
+            0 0 35px rgba(40,45,38,.35)
+        );
+}
+
+
+/* groom head */
+
+.groom::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 27%;
+
+    aspect-ratio: 1;
+
+    border-radius: 50%;
+
+    top: -6%;
+    left: 36%;
+
+    background:
+        radial-gradient(
+            circle at 45% 35%,
+            #d0c7aa,
+            #777d69 75%
+        );
+
+    box-shadow:
+        0 -8px 0 4px rgba(38,44,37,.95);
+}
+
+
+/* =========================================================
+   HERO OVERLAY
+========================================================= */
+
+.hero::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 3;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            rgba(10,14,10,.95) 0%,
+            rgba(10,14,10,.78) 38%,
+            rgba(10,14,10,.30) 72%,
+            rgba(10,14,10,.10) 100%
+        ),
+
+        linear-gradient(
+            180deg,
+            rgba(10,14,10,.10),
+            rgba(10,14,10,.50)
+        );
 }
 
 
@@ -649,85 +1138,143 @@ body.locked {
 ========================================================= */
 
 .hero-content {
+
     position: relative;
 
-    z-index: 3;
+    z-index: 6;
 
-    width: min(620px, 88%);
+    width:
+        min(620px, 88%);
 
-    margin-left: clamp(30px, 9vw, 130px);
+    margin-left:
+        clamp(30px, 9vw, 130px);
 
     padding:
-        70px 0;
-
-    animation:
-        heroIn 1.5s .3s both;
+        90px 0;
 }
 
-@keyframes heroIn {
+
+.hero-content > * {
+
+    animation:
+        contentReveal
+        1.2s
+        cubic-bezier(.2,.8,.2,1)
+        both;
+}
+
+.hero-content > *:nth-child(1) {
+    animation-delay: .1s;
+}
+
+.hero-content > *:nth-child(2) {
+    animation-delay: .25s;
+}
+
+.hero-content > *:nth-child(3) {
+    animation-delay: .4s;
+}
+
+.hero-content > *:nth-child(4) {
+    animation-delay: .55s;
+}
+
+.hero-content > *:nth-child(5) {
+    animation-delay: .7s;
+}
+
+@keyframes contentReveal {
+
     from {
         opacity: 0;
-        transform: translateY(45px);
+
+        transform:
+            translateY(35px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
     }
+
 }
 
+
 .hero-label {
+
     font-size: 9px;
 
     letter-spacing: 5px;
 
     text-transform: uppercase;
 
-    opacity: .7;
+    color: #d8d09f;
 
-    margin-bottom: 22px;
+    margin-bottom: 24px;
 }
 
+
 .names {
+
     font-family:
         "Italianno",
         cursive;
 
     font-size:
-        clamp(65px, 10vw, 115px);
+        clamp(68px, 10vw, 115px);
 
-    line-height: .85;
+    line-height: .82;
 
-    white-space: normal;
+    color: #fffdf3;
+
+    text-shadow:
+        0 10px 40px rgba(0,0,0,.4);
 }
 
+
 .names .and {
+
     display: block;
+
+    margin:
+        20px 0;
 
     font-family:
         "Cormorant Garamond",
         serif;
 
-    font-size: 30px;
+    font-size: 28px;
 
     line-height: 1;
 
-    margin:
-        18px 0;
+    color: #d9cf99;
 
-    color: #d8d1a3;
+    letter-spacing: 3px;
 }
+
 
 .divider {
-    width: 70px;
+
+    width: 65px;
+
     height: 1px;
 
-    margin: 30px 0;
+    margin:
+        32px 0;
 
-    background: #d8d1a3;
+    background:
+        linear-gradient(
+            90deg,
+            #d9cf99,
+            transparent
+        );
 }
 
+
 .date {
+
     font-family:
         "Cormorant Garamond",
         serif;
@@ -735,12 +1282,14 @@ body.locked {
     font-size:
         clamp(21px, 3vw, 28px);
 
-    letter-spacing: 4px;
+    letter-spacing: 5px;
 
-    line-height: 1.3;
+    color: #f5f0df;
 }
 
+
 .date-caption {
+
     margin-top: 8px;
 
     font-size: 8px;
@@ -749,15 +1298,17 @@ body.locked {
 
     text-transform: uppercase;
 
-    opacity: .6;
+    color:
+        rgba(255,255,255,.52);
 }
 
 
 /* =========================================================
-   PARENTS — CLEAN ROW
+   PARENTS
 ========================================================= */
 
 .parents {
+
     display: grid;
 
     grid-template-columns:
@@ -765,40 +1316,42 @@ body.locked {
 
     align-items: center;
 
-    gap: 24px;
-
-    width: 100%;
+    gap: 25px;
 
     max-width: 570px;
 
-    margin-top: 38px;
+    margin-top: 40px;
 }
 
+
 .parent-divider {
+
     width: 1px;
+
     height: 55px;
 
     background:
-        rgba(255,255,255,.3);
+        rgba(218,208,163,.35);
 }
 
-.parent {
-    min-width: 0;
-}
 
 .parent-label {
+
     font-size: 7px;
 
     letter-spacing: 2px;
 
     text-transform: uppercase;
 
-    opacity: .5;
+    color:
+        rgba(255,255,255,.45);
 
-    margin-bottom: 6px;
+    margin-bottom: 7px;
 }
 
+
 .parent-name {
+
     font-family:
         "Cormorant Garamond",
         serif;
@@ -807,101 +1360,247 @@ body.locked {
 
     line-height: 1.25;
 
-    color: #f5f3e9;
+    color: #f5f0df;
 }
 
 
 /* =========================================================
-   SECTION 2 — FAMILY
+   SECTION 2
 ========================================================= */
 
 .family {
+
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     padding:
-        80px 20px;
+        90px 20px;
+
+    background:
+        #111610;
+}
+
+
+/* animated arch */
+
+.family-art {
+
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    z-index: 0;
+}
+
+
+/* giant rings */
+
+.family-art::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 700px;
+    height: 700px;
+
+    border:
+        1px solid rgba(215,206,158,.14);
+
+    border-radius: 50%;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    box-shadow:
+
+        0 0 0 80px
+        rgba(215,206,158,.025),
+
+        0 0 0 160px
+        rgba(215,206,158,.018),
+
+        0 0 0 240px
+        rgba(215,206,158,.012);
+
+    animation:
+        ringPulse 10s ease-in-out infinite alternate;
+}
+
+@keyframes ringPulse {
+
+    from {
+        transform:
+            translate(-50%, -50%)
+            scale(.88);
+
+        opacity: .5;
+    }
+
+    to {
+        transform:
+            translate(-50%, -50%)
+            scale(1.08);
+
+        opacity: 1;
+    }
+
+}
+
+
+/* floating glow */
+
+.family-art::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    border-radius: 50%;
 
     background:
         radial-gradient(
-            circle at 15% 15%,
-            rgba(180,190,162,.22),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 85% 85%,
-            rgba(208,192,150,.16),
-            transparent 30%
-        ),
-        #f3f0e9;
+            circle,
+            rgba(184,196,159,.14),
+            transparent 68%
+        );
+
+    filter: blur(30px);
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    animation:
+        familyCenterGlow 8s ease-in-out infinite alternate;
 }
 
+@keyframes familyCenterGlow {
+
+    from {
+        transform:
+            translate(-50%, -50%)
+            scale(.7);
+    }
+
+    to {
+        transform:
+            translate(-50%, -50%)
+            scale(1.2);
+    }
+
+}
+
+
+/* =========================================================
+   FAMILY CARD
+========================================================= */
+
 .family-card {
-    width: min(850px, 94%);
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(850px, 94%);
 
     padding:
-        clamp(40px, 7vw, 75px)
+        clamp(45px, 7vw, 80px)
         clamp(25px, 7vw, 80px);
 
     text-align: center;
 
     background:
-        rgba(255,255,255,.65);
+        rgba(255,255,255,.045);
 
     border:
-        1px solid rgba(71,77,64,.14);
+        1px solid
+        rgba(225,218,180,.17);
 
     box-shadow:
-        0 30px 70px rgba(45,50,42,.08);
+        0 40px 100px rgba(0,0,0,.25);
+
+    backdrop-filter:
+        blur(14px);
+
+    -webkit-backdrop-filter:
+        blur(14px);
 
     animation:
-        cardIn 1.3s both;
+        familyCardIn 1.3s both;
 }
 
-@keyframes cardIn {
+@keyframes familyCardIn {
+
     from {
         opacity: 0;
-        transform: translateY(50px);
+
+        transform:
+            translateY(45px)
+            scale(.97);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0)
+            scale(1);
     }
+
 }
 
+
 .family-label {
+
     font-size: 8px;
 
     letter-spacing: 4px;
 
     text-transform: uppercase;
 
-    color: #85897e;
+    color: #cbc49b;
 }
 
+
 .family-title {
-    margin-top: 18px;
+
+    margin-top: 20px;
 
     font-family:
         "Italianno",
         cursive;
 
     font-size:
-        clamp(55px, 8vw, 85px);
+        clamp(58px, 8vw, 88px);
 
     line-height: .9;
 
-    color: #30342e;
+    color: #fffdf3;
 }
 
+
 .family-message {
-    width: min(620px, 100%);
+
+    width:
+        min(620px, 100%);
 
     margin:
-        28px auto 0;
+        30px auto 0;
 
     font-family:
         "Cormorant Garamond",
@@ -912,7 +1611,8 @@ body.locked {
 
     line-height: 1.55;
 
-    color: #696d64;
+    color:
+        rgba(245,242,229,.76);
 }
 
 
@@ -921,6 +1621,7 @@ body.locked {
 ========================================================= */
 
 .family-parents {
+
     display: grid;
 
     grid-template-columns:
@@ -933,31 +1634,38 @@ body.locked {
     max-width: 650px;
 
     margin:
-        48px auto 0;
+        50px auto 0;
 }
 
+
 .family-parent-divider {
+
     width: 1px;
 
     height: 70px;
 
     background:
-        #c9c7ba;
+        rgba(216,207,164,.30);
 }
 
+
 .family-parent-label {
+
     font-size: 7px;
 
     letter-spacing: 3px;
 
     text-transform: uppercase;
 
-    color: #979a90;
+    color:
+        rgba(255,255,255,.45);
 
     margin-bottom: 10px;
 }
 
+
 .family-parent-name {
+
     font-family:
         "Cormorant Garamond",
         serif;
@@ -966,79 +1674,225 @@ body.locked {
 
     line-height: 1.3;
 
-    color: #373b34;
+    color: #f5f1df;
 }
 
 
 /* =========================================================
-   SECTION 3 — BLESSING
+   SECTION 3
 ========================================================= */
 
 .blessing {
+
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     text-align: center;
 
     padding:
-        80px 20px;
+        90px 20px;
 
-    color: #f5f3e9;
+    background:
+        #101510;
+}
+
+
+/* large animated flower */
+
+.blessing-art {
+
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    z-index: 0;
+}
+
+
+/* flower petals */
+
+.blessing-art .flower {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 260px;
+    height: 260px;
+
+    transform:
+        translate(-50%, -50%);
+
+    opacity: .15;
+
+    animation:
+        flowerRotate 35s linear infinite;
+}
+
+@keyframes flowerRotate {
+
+    to {
+        transform:
+            translate(-50%, -50%)
+            rotate(360deg);
+    }
+
+}
+
+
+/* petal */
+
+.blessing-art .flower span {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 100px;
+    height: 170px;
+
+    transform-origin:
+        50% 100%;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(221,211,164,.5),
+            rgba(164,181,146,.05)
+        );
+
+    border-radius:
+        100% 0 100% 0;
+
+    transform:
+        translate(-50%, -100%)
+        rotate(calc(var(--i) * 45deg));
+}
+
+
+/* =========================================================
+   BLESSING LIGHT
+========================================================= */
+
+.blessing::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 650px;
+    height: 650px;
+
+    border-radius: 50%;
 
     background:
         radial-gradient(
-            circle at center,
-            rgba(184,191,163,.17),
-            transparent 35%
-        ),
-        #252922;
+            circle,
+            rgba(216,205,159,.12),
+            transparent 68%
+        );
+
+    filter: blur(30px);
+
+    animation:
+        blessingLight 10s ease-in-out infinite alternate;
 }
 
+@keyframes blessingLight {
+
+    from {
+        transform:
+            scale(.7)
+            translate3d(-30px,20px,0);
+
+        opacity: .4;
+    }
+
+    to {
+        transform:
+            scale(1.15)
+            translate3d(30px,-20px,0);
+
+        opacity: 1;
+    }
+
+}
+
+
+/* =========================================================
+   BLESSING CONTENT
+========================================================= */
+
 .blessing-content {
-    width: min(720px, 92%);
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(720px, 92%);
 
     animation:
         blessingIn 1.4s both;
 }
 
 @keyframes blessingIn {
+
     from {
         opacity: 0;
-        transform: translateY(50px);
+
+        transform:
+            translateY(45px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
     }
+
 }
 
+
 .blessing-label {
+
     font-size: 8px;
 
     letter-spacing: 5px;
 
     text-transform: uppercase;
 
-    color: #c9c6aa;
+    color: #cbc49b;
 }
 
+
 .blessing-title {
-    margin-top: 22px;
+
+    margin-top: 24px;
 
     font-family:
         "Italianno",
         cursive;
 
     font-size:
-        clamp(65px, 10vw, 105px);
+        clamp(68px, 10vw, 108px);
 
-    line-height: .9;
+    line-height: .88;
+
+    color: #fffdf4;
 }
 
+
 .blessing-text {
+
     max-width: 600px;
 
     margin:
@@ -1053,21 +1907,32 @@ body.locked {
 
     line-height: 1.65;
 
-    color: #d8d7cd;
+    color:
+        rgba(245,242,229,.76);
 }
 
+
 .blessing-divider {
+
     width: 65px;
+
     height: 1px;
 
     margin:
-        38px auto;
+        40px auto;
 
     background:
-        #d5ce9f;
+        linear-gradient(
+            90deg,
+            transparent,
+            #d8ce9a,
+            transparent
+        );
 }
 
+
 .final-names {
+
     font-family:
         "Italianno",
         cursive;
@@ -1076,10 +1941,14 @@ body.locked {
         clamp(48px, 7vw, 72px);
 
     line-height: 1;
+
+    color: #f7f3e7;
 }
 
+
 .final-small {
-    margin-top: 12px;
+
+    margin-top: 14px;
 
     font-size: 7px;
 
@@ -1087,7 +1956,8 @@ body.locked {
 
     text-transform: uppercase;
 
-    color: #9da094;
+    color:
+        rgba(255,255,255,.38);
 }
 
 
@@ -1095,69 +1965,77 @@ body.locked {
    MOBILE
 ========================================================= */
 
-@media (max-width: 650px) {
-
-    .opening-names {
-        font-size: 65px;
-    }
-
-    .envelope-area {
-        margin-top: 40px;
-    }
-
-    .seal {
-        width: 72px;
-        height: 72px;
-    }
+@media (max-width: 700px) {
 
     .hero {
         align-items: flex-end;
     }
 
+
+    .couple-illustration {
+
+        right: -12%;
+
+        width: 85vw;
+
+        height: 70vh;
+
+        opacity: .38;
+    }
+
+
     .hero::after {
+
         background:
+
             linear-gradient(
                 180deg,
-                rgba(15,18,14,.05) 0%,
-                rgba(15,18,14,.15) 35%,
-                rgba(15,18,14,.72) 70%,
-                rgba(15,18,14,.94) 100%
+                rgba(10,14,10,.10),
+                rgba(10,14,10,.25) 35%,
+                rgba(10,14,10,.75) 68%,
+                rgba(10,14,10,.96) 100%
             );
     }
 
+
     .hero-content {
+
         width: 88%;
 
         margin:
             0 auto;
 
         padding:
-            70px 0 55px;
+            80px 0 55px;
     }
+
 
     .names {
-        font-size: 68px;
+
+        font-size:
+            clamp(62px, 18vw, 80px);
     }
+
 
     .names .and {
-        font-size: 24px;
+
+        font-size: 23px;
 
         margin:
-            13px 0;
+            15px 0;
     }
 
-    .divider {
-        margin:
-            25px 0;
-    }
 
     .date {
-        font-size: 19px;
+
+        font-size: 18px;
 
         letter-spacing: 2px;
     }
 
+
     .parents {
+
         grid-template-columns:
             1fr;
 
@@ -1166,61 +2044,78 @@ body.locked {
         margin-top: 30px;
     }
 
-    .parent {
-        text-align: left;
-    }
 
     .parent-divider {
+
         width: 45px;
+
         height: 1px;
-
-        justify-self: start;
     }
 
-    .parent-name {
-        font-size: 17px;
+
+    .family {
+
+        padding:
+            70px 16px;
     }
+
 
     .family-card {
+
         padding:
-            50px 22px;
+            48px 22px;
     }
+
 
     .family-title {
-        font-size: 57px;
+
+        font-size: 58px;
     }
 
+
     .family-message {
+
         font-size: 20px;
     }
 
+
     .family-parents {
+
         grid-template-columns:
             1fr;
 
         gap: 24px;
-
-        margin-top: 40px;
     }
 
+
     .family-parent-divider {
+
         width: 50px;
+
         height: 1px;
 
         justify-self: center;
     }
 
-    .family-parent-name {
-        font-size: 20px;
+
+    .blessing {
+
+        padding:
+            70px 16px;
     }
 
+
     .blessing-title {
+
         font-size: 68px;
     }
 
+
     .blessing-text {
+
         font-size: 20px;
     }
+
 }
 
 
@@ -1230,20 +2125,8 @@ body.locked {
 
 @media (max-width: 380px) {
 
-    .opening-names {
-        font-size: 58px;
-    }
-
-    .envelope-area {
-        margin-top: 32px;
-    }
-
     .names {
-        font-size: 59px;
-    }
-
-    .date {
-        font-size: 17px;
+        font-size: 58px;
     }
 
     .family-title {
@@ -1251,8 +2134,9 @@ body.locked {
     }
 
     .blessing-title {
-        font-size: 57px;
+        font-size: 58px;
     }
+
 }
 
 
@@ -1265,10 +2149,17 @@ body.locked {
     *,
     *::before,
     *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
+
+        animation-duration:
+            .01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            .01ms !important;
     }
+
 }
 
 </style>
@@ -1279,12 +2170,10 @@ body.locked {
 
 
 <!-- =========================================================
-     OPENING
+     OPENING SCREEN
 ========================================================= -->
 
 <div class="opening" id="opening">
-
-    <div class="opening-glow"></div>
 
     <div class="opening-content">
 
@@ -1335,6 +2224,7 @@ body.locked {
 
             </div>
 
+
             <div class="tap-text">
                 Tap the seal to open
             </div>
@@ -1349,30 +2239,55 @@ body.locked {
 
 <!-- =========================================================
      INVITATION
-     EXACTLY 3 SECTIONS
 ========================================================= -->
 
-<main class="invitation" id="invitation">
+<main
+    class="invitation"
+    id="invitation"
+>
 
 
     <!-- =====================================================
-         1. COUPLE
+         GLOBAL ANIMATIONS
+    ====================================================== -->
+
+    <div
+        class="star-field"
+        id="starField"
+    ></div>
+
+    <div
+        class="petal-field"
+        id="petalField"
+    ></div>
+
+
+
+    <!-- =====================================================
+         SECTION 1
     ====================================================== -->
 
     <section class="section hero">
 
 
-        <!--
-            Put your HD couple image here:
+        <!-- CSS / SVG-LIKE ILLUSTRATION -->
 
-            assets/couple.jpg
-        -->
+        <div class="hero-art">
 
-        <img
-            src="assets/couple.jpg"
-            alt="Aneesha and Dhanu"
-            class="hero-image"
-        >
+            <div class="moon"></div>
+
+            <div class="horizon"></div>
+
+        </div>
+
+
+        <div class="couple-illustration">
+
+            <div class="bride"></div>
+
+            <div class="groom"></div>
+
+        </div>
 
 
         <div class="hero-content">
@@ -1402,13 +2317,13 @@ body.locked {
                 15 · 16 AUGUST 2026
             </div>
 
+
             <div class="date-caption">
                 Invite you to celebrate their journey together
             </div>
 
 
             <div class="parents">
-
 
                 <div class="parent">
 
@@ -1440,7 +2355,6 @@ body.locked {
 
                 </div>
 
-
             </div>
 
         </div>
@@ -1450,14 +2364,16 @@ body.locked {
 
 
     <!-- =====================================================
-         2. FAMILIES
+         SECTION 2
     ====================================================== -->
 
     <section class="section family">
 
 
-        <div class="family-card">
+        <div class="family-art"></div>
 
+
+        <div class="family-card">
 
             <div class="family-label">
                 With The Blessings Of Our Families
@@ -1516,7 +2432,6 @@ body.locked {
 
             </div>
 
-
         </div>
 
     </section>
@@ -1524,14 +2439,31 @@ body.locked {
 
 
     <!-- =====================================================
-         3. BLESSING
+         SECTION 3
     ====================================================== -->
 
     <section class="section blessing">
 
 
-        <div class="blessing-content">
+        <div class="blessing-art">
 
+            <div class="flower">
+
+                <span style="--i:0"></span>
+                <span style="--i:1"></span>
+                <span style="--i:2"></span>
+                <span style="--i:3"></span>
+                <span style="--i:4"></span>
+                <span style="--i:5"></span>
+                <span style="--i:6"></span>
+                <span style="--i:7"></span>
+
+            </div>
+
+        </div>
+
+
+        <div class="blessing-content">
 
             <div class="blessing-label">
                 A Blessing For Their Journey
@@ -1573,7 +2505,6 @@ body.locked {
                 With Love · With Family · With Blessings
             </div>
 
-
         </div>
 
     </section>
@@ -1601,32 +2532,152 @@ const seal =
 const invitation =
     document.getElementById("invitation");
 
+const starField =
+    document.getElementById("starField");
+
+const petalField =
+    document.getElementById("petalField");
+
 
 let opened = false;
 
 
 /* =========================================================
-   PARTICLES
+   CREATE STARS
 ========================================================= */
 
-function createParticles() {
+function createStars() {
+
+    for (
+        let i = 0;
+        i < 80;
+        i++
+    ) {
+
+        const star =
+            document.createElement("div");
+
+        star.className = "star";
+
+
+        star.style.left =
+            Math.random() * 100 + "%";
+
+        star.style.top =
+            Math.random() * 100 + "%";
+
+
+        star.style.setProperty(
+            "--duration",
+            (2 + Math.random() * 5) + "s"
+        );
+
+
+        star.style.setProperty(
+            "--delay",
+            (Math.random() * 5) + "s"
+        );
+
+
+        star.style.width =
+            (1 + Math.random() * 3) + "px";
+
+        star.style.height =
+            star.style.width;
+
+
+        starField.appendChild(star);
+
+    }
+
+}
+
+
+/* =========================================================
+   CREATE PETALS
+========================================================= */
+
+function createPetals() {
+
+    for (
+        let i = 0;
+        i < 22;
+        i++
+    ) {
+
+        const petal =
+            document.createElement("div");
+
+        petal.className = "petal";
+
+
+        petal.style.left =
+            Math.random() * 100 + "%";
+
+
+        petal.style.setProperty(
+            "--duration",
+            (12 + Math.random() * 15) + "s"
+        );
+
+
+        petal.style.setProperty(
+            "--delay",
+            (-Math.random() * 20) + "s"
+        );
+
+
+        petal.style.setProperty(
+            "--sway",
+            (-120 + Math.random() * 240) + "px"
+        );
+
+
+        petal.style.setProperty(
+            "--sway2",
+            (-180 + Math.random() * 360) + "px"
+        );
+
+
+        petal.style.transform =
+            `scale(${.5 + Math.random() * .8})`;
+
+
+        petalField.appendChild(petal);
+
+    }
+
+}
+
+
+/* =========================================================
+   OPENING PARTICLE BURST
+========================================================= */
+
+function createExplosion() {
 
     const symbols = [
         "✦",
         "✧",
         "·",
         "♡",
-        "❋"
+        "❋",
+        "✿"
     ];
 
 
-    for (let i = 0; i < 55; i++) {
+    for (
+        let i = 0;
+        i < 65;
+        i++
+    ) {
 
         const particle =
             document.createElement("div");
 
         particle.className =
             "particle";
+
 
         particle.textContent =
             symbols[
@@ -1641,14 +2692,16 @@ function createParticles() {
             Math.random() *
             Math.PI * 2;
 
+
         const distance =
-            130 +
-            Math.random() * 480;
+            120 +
+            Math.random() * 500;
 
 
         const x =
             Math.cos(angle) *
             distance;
+
 
         const y =
             Math.sin(angle) *
@@ -1660,15 +2713,18 @@ function createParticles() {
             `${x}px`
         );
 
+
         particle.style.setProperty(
             "--y",
             `${y}px`
         );
 
+
         particle.style.setProperty(
             "--scale",
-            `${.5 + Math.random() * 1.1}`
+            `${.4 + Math.random() * 1.2}`
         );
+
 
         particle.style.setProperty(
             "--rotation",
@@ -1677,11 +2733,7 @@ function createParticles() {
 
 
         particle.style.fontSize =
-            `${10 + Math.random() * 18}px`;
-
-
-        particle.style.animationDelay =
-            `${Math.random() * .2}s`;
+            `${10 + Math.random() * 20}px`;
 
 
         document.body.appendChild(
@@ -1691,7 +2743,7 @@ function createParticles() {
 
         setTimeout(
             () => particle.remove(),
-            2100
+            2200
         );
 
     }
@@ -1712,12 +2764,12 @@ function openInvitation() {
     opened = true;
 
 
-    /* stop seal pulse */
+    /* stop seal animation */
 
     seal.style.animation = "none";
 
 
-    /* seal break */
+    /* seal breaks */
 
     seal.animate(
 
@@ -1735,14 +2787,19 @@ function openInvitation() {
             {
                 transform:
                     "translate(-50%, -50%) scale(0) rotate(35deg)",
+
                 opacity: 0
             }
         ],
 
         {
             duration: 650,
-            easing: "cubic-bezier(.2,.8,.2,1)",
-            fill: "forwards"
+
+            easing:
+                "cubic-bezier(.2,.8,.2,1)",
+
+            fill:
+                "forwards"
         }
 
     );
@@ -1752,21 +2809,23 @@ function openInvitation() {
 
     setTimeout(() => {
 
-        opening.classList.add("opened");
+        opening.classList.add(
+            "opened"
+        );
 
     }, 220);
 
 
-    /* particles */
+    /* particle burst */
 
     setTimeout(() => {
 
-        createParticles();
+        createExplosion();
 
     }, 320);
 
 
-    /* reveal actual invitation */
+    /* reveal invitation */
 
     setTimeout(() => {
 
@@ -1775,15 +2834,12 @@ function openInvitation() {
         );
 
 
-        /*
-            IMPORTANT:
+        /* start atmospheric animation */
 
-            There is NO automatic navigation.
+        createStars();
 
-            The invitation is now an ordinary
-            scrollable webpage containing exactly
-            three sections.
-        */
+        createPetals();
+
 
         document.body.classList.remove(
             "locked"
@@ -1791,9 +2847,14 @@ function openInvitation() {
 
 
         /*
-            Remove opening from DOM after
-            its fade animation.
+           IMPORTANT:
+           We do NOT automatically scroll.
+
+           The visitor gets the first
+           invitation section and can
+           naturally scroll through it.
         */
+
 
         setTimeout(() => {
 
