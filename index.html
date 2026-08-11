@@ -1,126 +1,45 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
-
-<title>Aneesha & Dhanu | Wedding Invitation</title>
-
-
-<!-- =========================================================
-     FONTS
-========================================================= -->
+<title>Aneesha & Dhanu — Wedding Invitation</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
+  href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&family=Italianno&display=swap"
+  rel="stylesheet"
 >
-
-<link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&family=Italianno&display=swap"
-    rel="stylesheet"
->
-
 
 <style>
-
-/* =========================================================
-   PEARL & AURORA
-   PREMIUM CINEMATIC WEDDING INVITATION
-
-   STRUCTURE
-
-   1. ENVELOPE
-   2. COUPLE + PARENTS
-   3. BLESSING
-
-   IMPORTANT:
-   After opening, the invitation is a normal
-   scrollable page.
-
-   NO continue button.
-   NO scroll button.
-   NO automatic page switching.
-========================================================= */
-
 
 /* =========================================================
    RESET
 ========================================================= */
 
 * {
-
     margin: 0;
     padding: 0;
-
     box-sizing: border-box;
-
 }
-
 
 html {
-
     scroll-behavior: smooth;
-
 }
-
 
 body {
-
-    background: #eeeae2;
-
-    color: #252823;
-
-    font-family:
-        "DM Sans",
-        sans-serif;
-
+    background: #f3f0e9;
+    color: #252923;
+    font-family: "DM Sans", sans-serif;
     overflow-x: hidden;
-
 }
-
 
 body.locked {
-
     overflow: hidden;
-
-}
-
-
-/* =========================================================
-   SCROLLBAR
-========================================================= */
-
-::-webkit-scrollbar {
-
-    width: 5px;
-
-}
-
-
-::-webkit-scrollbar-track {
-
-    background: #eeeae2;
-
-}
-
-
-::-webkit-scrollbar-thumb {
-
-    background: #aaa89e;
-
-    border-radius: 20px;
-
 }
 
 
@@ -128,109 +47,74 @@ body.locked {
    OPENING SCREEN
 ========================================================= */
 
-.opening-screen {
-
+.opening {
     position: fixed;
-
     inset: 0;
-
-    width: 100%;
-    height: 100svh;
-
-    z-index: 999;
+    z-index: 1000;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
-    overflow: hidden;
-
     background:
-
         radial-gradient(
-            circle at 50% 45%,
+            circle at center,
             #ffffff 0%,
-            #f6f4ee 38%,
-            #e4e2da 100%
+            #f4f1e9 48%,
+            #deded5 100%
         );
 
     transition:
+        opacity 1.5s ease,
+        visibility 1.5s ease;
+}
 
-        opacity 1.5s
-        cubic-bezier(.22,1,.36,1),
-
-        visibility 1.5s;
-
+.opening.closed {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 }
 
 
 /* =========================================================
-   OPENING AURORA
+   OPENING GLOW
 ========================================================= */
 
-.aurora {
-
+.opening-glow {
     position: absolute;
 
-    width: 75vw;
-    height: 75vw;
+    width: 600px;
+    height: 600px;
 
-    max-width: 850px;
-    max-height: 850px;
+    max-width: 80vw;
+    max-height: 80vw;
 
     border-radius: 50%;
 
     background:
-
-        conic-gradient(
-            from 0deg,
-            rgba(188,202,180,.15),
-            rgba(222,204,161,.18),
-            rgba(187,201,191,.12),
-            rgba(255,255,255,.05),
-            rgba(188,202,180,.15)
+        radial-gradient(
+            circle,
+            rgba(188,198,170,.22),
+            rgba(205,194,153,.08) 45%,
+            transparent 70%
         );
 
-    filter: blur(70px);
+    filter: blur(20px);
 
     animation:
-
-        auroraRotate
-        18s
-        linear
-        infinite;
-
+        glow 7s ease-in-out infinite alternate;
 }
 
-
-@keyframes auroraRotate {
-
-    0% {
-
-        transform:
-            rotate(0deg)
-            scale(.9);
-
+@keyframes glow {
+    from {
+        transform: scale(.8);
+        opacity: .6;
     }
 
-    50% {
-
-        transform:
-            rotate(180deg)
-            scale(1.08);
-
+    to {
+        transform: scale(1.15);
+        opacity: 1;
     }
-
-    100% {
-
-        transform:
-            rotate(360deg)
-            scale(.9);
-
-    }
-
 }
 
 
@@ -239,114 +123,62 @@ body.locked {
 ========================================================= */
 
 .opening-content {
-
     position: relative;
+    z-index: 5;
 
-    z-index: 10;
-
-    width: min(90vw, 600px);
+    width: min(90%, 520px);
 
     text-align: center;
-
 }
 
-
-.opening-small {
-
+.opening-label {
     font-size: 9px;
-
     letter-spacing: 5px;
-
     text-transform: uppercase;
-
-    color: #777970;
-
-    opacity: 0;
+    color: #7d8177;
 
     animation:
-
-        openingText
-        1.2s
-        .2s
-        ease
-        forwards;
-
+        fadeUp 1s .2s both;
 }
-
 
 .opening-names {
+    margin-top: 12px;
 
-    margin-top: 13px;
+    font-family: "Italianno", cursive;
 
-    font-family:
-        "Italianno",
-        cursive;
+    font-size: clamp(65px, 13vw, 105px);
 
-    font-size:
-        clamp(70px, 12vw, 115px);
+    line-height: .9;
 
-    line-height: .8;
-
-    color: #252823;
-
-    opacity: 0;
+    color: #292d27;
 
     animation:
-
-        openingText
-        1.3s
-        .4s
-        ease
-        forwards;
-
+        fadeUp 1s .35s both;
 }
 
+.opening-description {
+    margin-top: 15px;
 
-.opening-subtitle {
-
-    margin-top: 22px;
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
+    font-family: "Cormorant Garamond", serif;
 
     font-size: 18px;
 
-    color: #73766e;
-
-    opacity: 0;
+    color: #777a71;
 
     animation:
-
-        openingText
-        1.3s
-        .7s
-        ease
-        forwards;
-
+        fadeUp 1s .5s both;
 }
 
-
-@keyframes openingText {
-
+@keyframes fadeUp {
     from {
-
         opacity: 0;
-
-        transform:
-            translateY(25px);
-
+        transform: translateY(25px);
     }
 
     to {
-
         opacity: 1;
-
-        transform:
-            translateY(0);
-
+        transform: translateY(0);
     }
-
 }
 
 
@@ -354,103 +186,53 @@ body.locked {
    ENVELOPE
 ========================================================= */
 
-.envelope-wrapper {
-
-    position: relative;
-
-    width: min(500px, 85vw);
-
-    margin:
-        55px auto 0;
-
-    opacity: 0;
+.envelope-area {
+    width: min(460px, 88vw);
+    margin: 48px auto 0;
 
     animation:
-
-        envelopeReveal
-        1.4s
-        1s
-        cubic-bezier(.22,1,.36,1)
-        forwards;
-
+        envelopeIn 1.2s .75s both;
 }
 
-
-@keyframes envelopeReveal {
-
+@keyframes envelopeIn {
     from {
-
         opacity: 0;
-
-        transform:
-            translateY(50px)
-            scale(.95);
-
+        transform: translateY(35px);
     }
 
     to {
-
         opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-
+        transform: translateY(0);
     }
-
 }
-
-
-/* =========================================================
-   ENVELOPE
-========================================================= */
 
 .envelope {
-
     position: relative;
 
     width: 100%;
-
     aspect-ratio: 1.55 / 1;
 
     cursor: pointer;
 
-    perspective: 1400px;
+    perspective: 1200px;
 
     filter:
-
         drop-shadow(
-            0 30px 45px
-            rgba(54,57,49,.20)
+            0 25px 35px rgba(38,42,35,.20)
         );
 
     animation:
-
-        envelopeFloat
-        4.5s
-        ease-in-out
-        infinite;
-
+        envelopeFloat 4s ease-in-out infinite;
 }
 
-
 @keyframes envelopeFloat {
-
-    0%,
-    100% {
-
-        transform:
-            translateY(0);
-
+    0%, 100% {
+        transform: translateY(0);
     }
 
     50% {
-
-        transform:
-            translateY(-10px);
-
+        transform: translateY(-8px);
     }
-
 }
 
 
@@ -459,72 +241,49 @@ body.locked {
 ========================================================= */
 
 .envelope-body {
-
     position: absolute;
-
     inset: 0;
-
-    overflow: hidden;
 
     border-radius: 8px;
 
-    background:
+    overflow: hidden;
 
+    background:
         linear-gradient(
             145deg,
-            #f5f1e8,
-            #d9d9cf
+            #f6f3eb,
+            #d8d9d0
         );
-
-    box-shadow:
-
-        inset 0 0 0 1px
-        rgba(75,79,69,.14);
-
 }
-
-
-/* =========================================================
-   ENVELOPE FOLDS
-========================================================= */
 
 .envelope-body::before {
-
     content: "";
 
     position: absolute;
-
     inset: 0;
 
     background:
-
         linear-gradient(
-            32deg,
+            35deg,
             transparent 49.5%,
-            rgba(67,73,63,.13) 50%,
+            rgba(55,61,52,.12) 50%,
             transparent 50.5%
         );
-
 }
 
-
 .envelope-body::after {
-
     content: "";
 
     position: absolute;
-
     inset: 0;
 
     background:
-
         linear-gradient(
-            -32deg,
+            -35deg,
             transparent 49.5%,
-            rgba(67,73,63,.13) 50%,
+            rgba(55,61,52,.12) 50%,
             transparent 50.5%
         );
-
 }
 
 
@@ -532,82 +291,52 @@ body.locked {
    LETTER
 ========================================================= */
 
-.inner-card {
-
+.letter {
     position: absolute;
 
     z-index: 2;
 
-    left: 8%;
-    right: 8%;
+    left: 9%;
+    right: 9%;
+    bottom: 5%;
 
-    bottom: 4%;
-
-    height: 83%;
+    height: 82%;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
-    background:
-
-        linear-gradient(
-            135deg,
-            #fffefa,
-            #f0eee7
-        );
+    background: #fffdf8;
 
     box-shadow:
+        0 12px 25px rgba(30,34,29,.12);
 
-        0 15px 30px
-        rgba(45,49,42,.13);
-
-    transform:
-        translateY(40%);
+    transform: translateY(38%);
 
     transition:
-
-        transform
-        1.5s
-        cubic-bezier(.15,.75,.25,1);
-
+        transform 1.4s
+        cubic-bezier(.2,.8,.2,1);
 }
 
-
-.inner-card-text {
-
+.letter-content {
     text-align: center;
-
 }
 
-
-.inner-card-label {
-
+.letter-small {
     font-size: 7px;
-
-    letter-spacing: 4px;
-
+    letter-spacing: 3px;
     text-transform: uppercase;
-
-    color: #8a8c83;
-
+    color: #85887e;
 }
 
+.letter-names {
+    margin-top: 7px;
 
-.inner-card-names {
+    font-family: "Italianno", cursive;
 
-    margin-top: 8px;
+    font-size: 43px;
 
-    font-family:
-        "Italianno",
-        cursive;
-
-    font-size: 45px;
-
-    color: #343831;
-
+    color: #30342e;
 }
 
 
@@ -615,8 +344,7 @@ body.locked {
    ENVELOPE FLAP
 ========================================================= */
 
-.envelope-flap {
-
+.flap {
     position: absolute;
 
     top: 0;
@@ -625,36 +353,27 @@ body.locked {
     width: 100%;
     height: 59%;
 
-    z-index: 8;
+    z-index: 7;
 
     background:
-
         linear-gradient(
             135deg,
-            #f7f3ea,
-            #dcdcd1
+            #f8f5ed,
+            #ddddD4
         );
 
     clip-path:
-
         polygon(
             0 0,
             100% 0,
             50% 100%
         );
 
-    transform-origin:
-        top center;
+    transform-origin: top center;
 
     transition:
-
-        transform
-        1.35s
+        transform 1.3s
         cubic-bezier(.2,.8,.2,1);
-
-    backface-visibility:
-        hidden;
-
 }
 
 
@@ -662,8 +381,7 @@ body.locked {
    SEAL
 ========================================================= */
 
-.wax-seal {
-
+.seal {
     position: absolute;
 
     z-index: 20;
@@ -671,114 +389,72 @@ body.locked {
     left: 50%;
     top: 51%;
 
-    width: 88px;
-    height: 88px;
+    width: 86px;
+    height: 86px;
 
     transform:
         translate(-50%, -50%);
 
-    border-radius: 50%;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
-    background:
+    border-radius: 50%;
 
+    background:
         radial-gradient(
             circle at 30% 25%,
-            #d8d2a9,
-            #a9a983 52%,
-            #7f8265 100%
+            #d5d1aa,
+            #a9a983 55%,
+            #7f8266
         );
 
     border:
-        3px solid
-        rgba(255,255,255,.65);
+        3px solid rgba(255,255,255,.65);
 
     box-shadow:
-
-        0 10px 25px
-        rgba(48,51,43,.25),
-
-        inset 0 2px 5px
-        rgba(255,255,255,.35),
-
-        0 0 25px
-        rgba(161,165,119,.30);
+        0 10px 25px rgba(30,34,29,.25),
+        inset 0 2px 5px rgba(255,255,255,.35),
+        0 0 25px rgba(158,162,120,.25);
 
     animation:
-
-        sealPulse
-        2.5s
-        ease-in-out
-        infinite;
+        sealPulse 2.4s ease-in-out infinite;
 
     transition:
-
         transform .5s ease,
         opacity .5s ease;
-
 }
 
-
-.wax-seal::after {
-
-    content:
-        "A  •  D";
-
-    color: #fffdf4;
+.seal::after {
+    content: "A  •  D";
 
     font-family:
         "Cormorant Garamond",
         serif;
 
-    font-size: 16px;
+    font-size: 15px;
 
     letter-spacing: 2px;
 
+    color: #fffdf5;
 }
 
-
 @keyframes sealPulse {
-
-    0%,
-    100% {
-
+    0%, 100% {
         box-shadow:
-
-            0 10px 25px
-            rgba(48,51,43,.25),
-
-            0 0 15px
-            rgba(161,165,119,.18);
-
+            0 10px 25px rgba(30,34,29,.25),
+            0 0 12px rgba(158,162,120,.15);
     }
 
     50% {
-
         box-shadow:
-
-            0 10px 25px
-            rgba(48,51,43,.25),
-
-            0 0 38px
-            rgba(161,165,119,.48);
-
+            0 10px 25px rgba(30,34,29,.25),
+            0 0 35px rgba(158,162,120,.45);
     }
-
 }
 
-
-/* =========================================================
-   OPEN TEXT
-========================================================= */
-
-.open-text {
-
-    margin-top: 35px;
+.tap-text {
+    margin-top: 28px;
 
     font-size: 8px;
 
@@ -786,91 +462,46 @@ body.locked {
 
     text-transform: uppercase;
 
-    color: #777970;
+    color: #777a71;
 
     animation:
-
-        pulseText
-        2.2s
-        ease-in-out
-        infinite;
-
+        tapPulse 2s ease-in-out infinite;
 }
 
-
-@keyframes pulseText {
-
-    0%,
-    100% {
-
+@keyframes tapPulse {
+    0%, 100% {
         opacity: .45;
-
     }
 
     50% {
-
         opacity: 1;
-
     }
-
 }
 
 
 /* =========================================================
-   OPENING STATE
+   OPEN ANIMATION
 ========================================================= */
 
-.opening-screen.opened {
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    pointer-events: none;
-
+.opening.opened .flap {
+    transform: rotateX(180deg);
 }
 
-
-.opening-screen.opened
-.envelope-flap {
-
-    transform:
-        rotateX(180deg);
-
+.opening.opened .letter {
+    transform: translateY(-25%);
 }
 
-
-.opening-screen.opened
-.inner-card {
-
-    transform:
-        translateY(-27%);
-
-}
-
-
-.opening-screen.opened
-.wax-seal {
-
+.opening.opened .seal {
     transform:
         translate(-50%, -50%)
-        scale(1.7)
-        rotate(25deg);
+        scale(1.5)
+        rotate(20deg);
 
     opacity: 0;
-
 }
 
-
-.opening-screen.opened
-.envelope-wrapper {
-
-    transform:
-        scale(1.1)
-        translateY(-25px);
-
-    opacity: 0;
-
+.opening.opened .envelope {
+    animation: none;
 }
 
 
@@ -879,57 +510,38 @@ body.locked {
 ========================================================= */
 
 .particle {
-
     position: fixed;
 
     left: 50%;
     top: 50%;
 
-    z-index: 1100;
+    z-index: 2000;
 
     pointer-events: none;
 
-    color: #b5aa7a;
+    color: #b7ad80;
 
     animation:
-
-        particleExplosion
-        1.8s
-        cubic-bezier(.15,.75,.25,1)
-        forwards;
-
+        particle 1.7s ease-out forwards;
 }
 
-
-@keyframes particleExplosion {
-
-    0% {
-
+@keyframes particle {
+    from {
         transform:
             translate(-50%, -50%)
             scale(.2);
 
         opacity: 1;
-
     }
 
-    100% {
-
+    to {
         transform:
-
-            translate(
-                var(--x),
-                var(--y)
-            )
-
+            translate(var(--x), var(--y))
             scale(var(--scale))
-
             rotate(var(--rotation));
 
         opacity: 0;
-
     }
-
 }
 
 
@@ -938,538 +550,339 @@ body.locked {
 ========================================================= */
 
 .invitation {
-
     opacity: 0;
-
     visibility: hidden;
 
     transition:
-
-        opacity
-        1.5s ease,
-
-        visibility
-        1.5s ease;
-
+        opacity 1.3s ease,
+        visibility 1.3s ease;
 }
 
-
 .invitation.visible {
-
     opacity: 1;
-
     visibility: visible;
-
 }
 
 
 /* =========================================================
-   COMMON SECTION
+   ALL SECTIONS
 ========================================================= */
 
-.invite-section {
-
+.section {
     position: relative;
-
-    width: 100%;
 
     min-height: 100svh;
 
-    overflow: hidden;
+    width: 100%;
 
+    overflow: hidden;
 }
 
 
 /* =========================================================
-   SECTION 1
-   CINEMATIC COUPLE
+   SECTION 1 — COUPLE
 ========================================================= */
 
-.couple-section {
-
+.hero {
     display: flex;
-
     align-items: center;
 
-    justify-content: flex-start;
-
-    background: #252921;
+    background: #252922;
 
     color: white;
-
 }
 
-
-/* =========================================================
-   COUPLE IMAGE
-========================================================= */
-
-.couple-image {
-
+.hero-image {
     position: absolute;
 
-    inset: -5%;
+    inset: 0;
 
-    width: 110%;
-    height: 110%;
+    width: 100%;
+    height: 100%;
 
     object-fit: cover;
 
     object-position: center;
 
     filter:
-
-        brightness(.60)
-        saturate(.78)
-        contrast(1.02);
+        brightness(.55)
+        saturate(.75);
 
     animation:
-
-        slowZoom
-        18s
-        ease-in-out
-        infinite
-        alternate;
-
+        imageZoom 18s ease-in-out infinite alternate;
 }
 
-
-@keyframes slowZoom {
-
+@keyframes imageZoom {
     from {
-
-        transform:
-            scale(1.02);
-
+        transform: scale(1.02);
     }
 
     to {
-
-        transform:
-            scale(1.10);
-
+        transform: scale(1.09);
     }
-
 }
 
 
-/* =========================================================
-   CINEMATIC OVERLAY
-========================================================= */
+/* readable overlay */
 
-.couple-section::after {
-
+.hero::after {
     content: "";
 
     position: absolute;
-
     inset: 0;
 
     background:
-
         linear-gradient(
             90deg,
-            rgba(18,21,17,.83) 0%,
-            rgba(18,21,17,.63) 35%,
-            rgba(18,21,17,.20) 70%,
-            rgba(18,21,17,.05) 100%
+            rgba(15,18,14,.86) 0%,
+            rgba(15,18,14,.65) 40%,
+            rgba(15,18,14,.25) 75%,
+            rgba(15,18,14,.10) 100%
         );
 
-    z-index: 2;
-
-}
-
-
-.couple-section::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 500px;
-    height: 500px;
-
-    right: 5%;
-    top: 15%;
-
-    border-radius: 50%;
-
-    background:
-
-        radial-gradient(
-            circle,
-            rgba(201,210,177,.13),
-            transparent 70%
-        );
-
-    filter: blur(30px);
-
-    z-index: 3;
-
-    animation:
-
-        glowMove
-        9s
-        ease-in-out
-        infinite
-        alternate;
-
-}
-
-
-@keyframes glowMove {
-
-    from {
-
-        transform:
-            translate(0,0)
-            scale(.8);
-
-    }
-
-    to {
-
-        transform:
-            translate(-60px,40px)
-            scale(1.15);
-
-    }
-
+    z-index: 1;
 }
 
 
 /* =========================================================
-   COUPLE CONTENT
+   HERO CONTENT
 ========================================================= */
 
-.couple-content {
-
+.hero-content {
     position: relative;
 
-    z-index: 5;
+    z-index: 3;
 
-    width:
-        min(850px, 88vw);
+    width: min(620px, 88%);
 
-    margin-left:
-        clamp(
-            30px,
-            9vw,
-            130px
-        );
+    margin-left: clamp(30px, 9vw, 130px);
+
+    padding:
+        70px 0;
 
     animation:
-
-        contentReveal
-        1.6s
-        .5s
-        cubic-bezier(.22,1,.36,1)
-        both;
-
+        heroIn 1.5s .3s both;
 }
 
-
-@keyframes contentReveal {
-
+@keyframes heroIn {
     from {
-
         opacity: 0;
-
-        transform:
-            translateY(50px);
-
+        transform: translateY(45px);
     }
 
     to {
-
         opacity: 1;
-
-        transform:
-            translateY(0);
-
+        transform: translateY(0);
     }
-
 }
 
-
-.eyebrow {
-
+.hero-label {
     font-size: 9px;
 
     letter-spacing: 5px;
 
     text-transform: uppercase;
 
-    opacity: .68;
+    opacity: .7;
 
     margin-bottom: 22px;
-
 }
 
-
-.couple-names {
-
+.names {
     font-family:
         "Italianno",
         cursive;
 
     font-size:
-        clamp(
-            80px,
-            12vw,
-            150px
-        );
+        clamp(65px, 10vw, 115px);
 
-    line-height: .73;
+    line-height: .85;
 
-    text-shadow:
-
-        0 10px 35px
-        rgba(0,0,0,.35);
-
+    white-space: normal;
 }
 
-
-.couple-names .amp {
-
+.names .and {
     display: block;
-
-    color:
-        #d6cf9d;
 
     font-family:
         "Cormorant Garamond",
         serif;
 
-    font-size: .35em;
+    font-size: 30px;
 
     line-height: 1;
 
     margin:
-        15px 0;
+        18px 0;
 
+    color: #d8d1a3;
 }
 
-
-.gold-line {
-
-    width: 80px;
-
+.divider {
+    width: 70px;
     height: 1px;
 
-    margin:
-        32px 0;
+    margin: 30px 0;
 
-    background:
-        #d6cf9d;
-
+    background: #d8d1a3;
 }
 
-
-.wedding-date {
-
+.date {
     font-family:
         "Cormorant Garamond",
         serif;
 
     font-size:
-        clamp(
-            22px,
-            3vw,
-            30px
-        );
+        clamp(21px, 3vw, 28px);
 
-    letter-spacing: 5px;
+    letter-spacing: 4px;
 
+    line-height: 1.3;
 }
 
+.date-caption {
+    margin-top: 8px;
 
-.wedding-caption {
+    font-size: 8px;
 
-    margin-top: 10px;
-
-    font-size: 9px;
-
-    letter-spacing: 3px;
+    letter-spacing: 2px;
 
     text-transform: uppercase;
 
-    opacity: .65;
-
+    opacity: .6;
 }
 
 
 /* =========================================================
-   PARENTS
+   PARENTS — CLEAN ROW
 ========================================================= */
 
 .parents {
+    display: grid;
 
-    display: flex;
+    grid-template-columns:
+        1fr 1px 1fr;
 
     align-items: center;
 
-    gap: 25px;
+    gap: 24px;
 
-    margin-top: 35px;
+    width: 100%;
 
+    max-width: 570px;
+
+    margin-top: 38px;
 }
 
+.parent-divider {
+    width: 1px;
+    height: 55px;
+
+    background:
+        rgba(255,255,255,.3);
+}
 
 .parent {
-
-    text-align: left;
-
+    min-width: 0;
 }
 
-
 .parent-label {
-
     font-size: 7px;
 
     letter-spacing: 2px;
 
     text-transform: uppercase;
 
-    opacity: .52;
+    opacity: .5;
 
-    margin-bottom: 5px;
-
+    margin-bottom: 6px;
 }
 
-
 .parent-name {
-
     font-family:
         "Cormorant Garamond",
         serif;
 
-    font-size: 19px;
-
-    line-height: 1.15;
-
-}
-
-
-.parent-divider {
-
-    color:
-        #d6cf9d;
-
     font-size: 18px;
 
+    line-height: 1.25;
+
+    color: #f5f3e9;
 }
 
 
 /* =========================================================
-   SECTION 2
-   PARENTS / INVITATION MESSAGE
+   SECTION 2 — FAMILY
 ========================================================= */
 
-.family-section {
-
-    min-height: 100svh;
-
+.family {
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
     padding:
-        100px 25px;
+        80px 20px;
 
     background:
-
         radial-gradient(
-            circle at 15% 20%,
-            rgba(174,183,151,.22),
-            transparent 28%
-        ),
-
-        radial-gradient(
-            circle at 85% 80%,
-            rgba(207,191,146,.17),
+            circle at 15% 15%,
+            rgba(180,190,162,.22),
             transparent 30%
         ),
-
-        #f4f1e9;
-
+        radial-gradient(
+            circle at 85% 85%,
+            rgba(208,192,150,.16),
+            transparent 30%
+        ),
+        #f3f0e9;
 }
 
-
 .family-card {
+    width: min(850px, 94%);
 
-    width:
-        min(900px, 94vw);
+    padding:
+        clamp(40px, 7vw, 75px)
+        clamp(25px, 7vw, 80px);
 
     text-align: center;
 
-    padding:
-        clamp(45px, 8vw, 90px);
+    background:
+        rgba(255,255,255,.65);
 
     border:
-        1px solid
-        rgba(91,99,78,.18);
-
-    background:
-        rgba(255,255,255,.52);
-
-    backdrop-filter:
-        blur(18px);
+        1px solid rgba(71,77,64,.14);
 
     box-shadow:
-
-        0 30px 80px
-        rgba(64,69,57,.09);
+        0 30px 70px rgba(45,50,42,.08);
 
     animation:
-
-        familyReveal
-        1.5s
-        both;
-
+        cardIn 1.3s both;
 }
 
-
-@keyframes familyReveal {
-
+@keyframes cardIn {
     from {
-
         opacity: 0;
-
-        transform:
-            translateY(60px);
-
+        transform: translateY(50px);
     }
 
     to {
-
         opacity: 1;
-
-        transform:
-            translateY(0);
-
+        transform: translateY(0);
     }
-
 }
 
-
 .family-label {
-
     font-size: 8px;
 
-    letter-spacing: 5px;
+    letter-spacing: 4px;
 
     text-transform: uppercase;
 
-    color: #85887c;
-
+    color: #85897e;
 }
 
-
 .family-title {
-
     margin-top: 18px;
 
     font-family:
@@ -1477,127 +890,94 @@ body.locked {
         cursive;
 
     font-size:
-        clamp(
-            65px,
-            9vw,
-            100px
-        );
+        clamp(55px, 8vw, 85px);
 
-    color: #31352e;
+    line-height: .9;
 
+    color: #30342e;
 }
 
-
 .family-message {
-
-    max-width: 670px;
+    width: min(620px, 100%);
 
     margin:
-        25px auto 0;
+        28px auto 0;
 
     font-family:
         "Cormorant Garamond",
         serif;
 
     font-size:
-        clamp(
-            20px,
-            3vw,
-            27px
-        );
+        clamp(19px, 2.7vw, 25px);
 
     line-height: 1.55;
 
-    color: #666960;
-
+    color: #696d64;
 }
 
 
 /* =========================================================
-   FAMILY NAMES
+   FAMILY PARENTS
 ========================================================= */
 
-.family-grid {
-
+.family-parents {
     display: grid;
 
     grid-template-columns:
-        1fr auto 1fr;
+        1fr 1px 1fr;
 
     align-items: center;
 
     gap: 30px;
 
-    max-width: 700px;
+    max-width: 650px;
 
     margin:
-        55px auto 0;
-
+        48px auto 0;
 }
 
+.family-parent-divider {
+    width: 1px;
 
-.family-side {
+    height: 70px;
 
-    text-align: center;
-
+    background:
+        #c9c7ba;
 }
 
-
-.family-role {
-
+.family-parent-label {
     font-size: 7px;
 
     letter-spacing: 3px;
 
     text-transform: uppercase;
 
-    color: #929487;
+    color: #979a90;
 
     margin-bottom: 10px;
-
 }
 
-
-.family-names {
-
+.family-parent-name {
     font-family:
         "Cormorant Garamond",
         serif;
 
-    font-size: 22px;
+    font-size: 21px;
 
-    line-height: 1.25;
+    line-height: 1.3;
 
-    color: #353930;
-
-}
-
-
-.family-divider {
-
-    width: 1px;
-
-    height: 60px;
-
-    background:
-        #c8c5b6;
-
+    color: #373b34;
 }
 
 
 /* =========================================================
-   SECTION 3
-   BLESSING
+   SECTION 3 — BLESSING
 ========================================================= */
 
-.blessing-section {
-
-    min-height: 100svh;
-
+.blessing {
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
     text-align: center;
@@ -1605,238 +985,109 @@ body.locked {
     padding:
         80px 20px;
 
-    color: #f5f4ed;
+    color: #f5f3e9;
 
     background:
-
         radial-gradient(
-            circle at 50% 45%,
-            rgba(174,183,151,.20),
-            transparent 30%
+            circle at center,
+            rgba(184,191,163,.17),
+            transparent 35%
         ),
-
-        radial-gradient(
-            circle at 20% 80%,
-            rgba(205,185,139,.10),
-            transparent 30%
-        ),
-
-        #252921;
-
+        #252922;
 }
-
-
-/* =========================================================
-   BLESSING GLOW
-========================================================= */
-
-.blessing-section::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 600px;
-    height: 600px;
-
-    border-radius: 50%;
-
-    background:
-
-        radial-gradient(
-            circle,
-            rgba(205,207,169,.10),
-            transparent 70%
-        );
-
-    filter: blur(35px);
-
-    animation:
-
-        blessingGlow
-        8s
-        ease-in-out
-        infinite
-        alternate;
-
-}
-
-
-@keyframes blessingGlow {
-
-    from {
-
-        transform:
-            scale(.8);
-
-        opacity: .4;
-
-    }
-
-    to {
-
-        transform:
-            scale(1.15);
-
-        opacity: 1;
-
-    }
-
-}
-
-
-/* =========================================================
-   BLESSING CONTENT
-========================================================= */
 
 .blessing-content {
-
-    position: relative;
-
-    z-index: 5;
-
-    width:
-        min(760px, 90vw);
+    width: min(720px, 92%);
 
     animation:
-
-        blessingReveal
-        1.6s
-        cubic-bezier(.22,1,.36,1)
-        both;
-
+        blessingIn 1.4s both;
 }
 
-
-@keyframes blessingReveal {
-
+@keyframes blessingIn {
     from {
-
         opacity: 0;
-
-        transform:
-            translateY(60px);
-
+        transform: translateY(50px);
     }
 
     to {
-
         opacity: 1;
-
-        transform:
-            translateY(0);
-
+        transform: translateY(0);
     }
-
 }
 
-
 .blessing-label {
-
     font-size: 8px;
 
     letter-spacing: 5px;
 
     text-transform: uppercase;
 
-    color: #c6c5ae;
-
+    color: #c9c6aa;
 }
 
-
 .blessing-title {
-
-    margin-top: 25px;
+    margin-top: 22px;
 
     font-family:
         "Italianno",
         cursive;
 
     font-size:
-        clamp(
-            75px,
-            11vw,
-            125px
-        );
+        clamp(65px, 10vw, 105px);
 
-    line-height: .8;
-
-    color: #f5f2e8;
-
+    line-height: .9;
 }
 
-
 .blessing-text {
-
-    max-width: 650px;
+    max-width: 600px;
 
     margin:
-        40px auto 0;
+        35px auto 0;
 
     font-family:
         "Cormorant Garamond",
         serif;
 
     font-size:
-        clamp(
-            20px,
-            3vw,
-            28px
-        );
+        clamp(19px, 2.8vw, 25px);
 
-    line-height: 1.6;
+    line-height: 1.65;
 
-    color: #d5d4c8;
-
+    color: #d8d7cd;
 }
 
-
-.blessing-line {
-
-    width: 75px;
-
+.blessing-divider {
+    width: 65px;
     height: 1px;
 
     margin:
         38px auto;
 
     background:
-        #d6cf9d;
-
+        #d5ce9f;
 }
 
-
-.blessing-names {
-
+.final-names {
     font-family:
         "Italianno",
         cursive;
 
     font-size:
-        clamp(
-            52px,
-            7vw,
-            75px
-        );
+        clamp(48px, 7vw, 72px);
 
-    color:
-        #f4f1e7;
-
+    line-height: 1;
 }
 
-
-.blessing-footer {
-
-    margin-top: 10px;
+.final-small {
+    margin-top: 12px;
 
     font-size: 7px;
 
-    letter-spacing: 4px;
+    letter-spacing: 3px;
 
     text-transform: uppercase;
 
-    color: #999d91;
-
+    color: #9da094;
 }
 
 
@@ -1844,197 +1095,164 @@ body.locked {
    MOBILE
 ========================================================= */
 
-@media (max-width: 700px) {
-
+@media (max-width: 650px) {
 
     .opening-names {
-
-        font-size: 72px;
-
+        font-size: 65px;
     }
 
-
-    .envelope-wrapper {
-
-        width: 88vw;
-
-        margin-top: 42px;
-
+    .envelope-area {
+        margin-top: 40px;
     }
 
-
-    .wax-seal {
-
+    .seal {
         width: 72px;
         height: 72px;
-
     }
 
-
-    .couple-section {
-
+    .hero {
         align-items: flex-end;
-
     }
 
-
-    .couple-section::after {
-
+    .hero::after {
         background:
-
             linear-gradient(
                 180deg,
-                rgba(18,21,17,.05) 0%,
-                rgba(18,21,17,.20) 32%,
-                rgba(18,21,17,.72) 68%,
-                rgba(18,21,17,.96) 100%
+                rgba(15,18,14,.05) 0%,
+                rgba(15,18,14,.15) 35%,
+                rgba(15,18,14,.72) 70%,
+                rgba(15,18,14,.94) 100%
             );
-
     }
 
-
-    .couple-content {
-
-        width: 88vw;
+    .hero-content {
+        width: 88%;
 
         margin:
-            0 0 9vh 6vw;
-
-    }
-
-
-    .couple-names {
-
-        font-size: 76px;
-
-    }
-
-
-    .couple-names .amp {
-
-        margin:
-            10px 0;
-
-    }
-
-
-    .wedding-date {
-
-        font-size: 19px;
-
-        letter-spacing: 3px;
-
-    }
-
-
-    .parents {
-
-        gap: 14px;
-
-        margin-top: 24px;
-
-    }
-
-
-    .parent-name {
-
-        font-size: 15px;
-
-    }
-
-
-    .family-card {
+            0 auto;
 
         padding:
-            55px 22px;
-
+            70px 0 55px;
     }
 
-
-    .family-grid {
-
-        grid-template-columns: 1fr;
-
-        gap: 25px;
-
+    .names {
+        font-size: 68px;
     }
 
+    .names .and {
+        font-size: 24px;
 
-    .family-divider {
+        margin:
+            13px 0;
+    }
 
-        width: 60px;
+    .divider {
+        margin:
+            25px 0;
+    }
 
+    .date {
+        font-size: 19px;
+
+        letter-spacing: 2px;
+    }
+
+    .parents {
+        grid-template-columns:
+            1fr;
+
+        gap: 18px;
+
+        margin-top: 30px;
+    }
+
+    .parent {
+        text-align: left;
+    }
+
+    .parent-divider {
+        width: 45px;
         height: 1px;
 
-        margin: auto;
-
+        justify-self: start;
     }
 
+    .parent-name {
+        font-size: 17px;
+    }
+
+    .family-card {
+        padding:
+            50px 22px;
+    }
+
+    .family-title {
+        font-size: 57px;
+    }
+
+    .family-message {
+        font-size: 20px;
+    }
+
+    .family-parents {
+        grid-template-columns:
+            1fr;
+
+        gap: 24px;
+
+        margin-top: 40px;
+    }
+
+    .family-parent-divider {
+        width: 50px;
+        height: 1px;
+
+        justify-self: center;
+    }
+
+    .family-parent-name {
+        font-size: 20px;
+    }
 
     .blessing-title {
-
-        font-size: 70px;
-
+        font-size: 68px;
     }
-
 
     .blessing-text {
-
         font-size: 20px;
-
     }
-
 }
 
 
 /* =========================================================
-   VERY SMALL PHONES
+   SMALL PHONES
 ========================================================= */
 
-@media (max-width: 390px) {
-
+@media (max-width: 380px) {
 
     .opening-names {
-
-        font-size: 62px;
-
+        font-size: 58px;
     }
 
-
-    .couple-names {
-
-        font-size: 62px;
-
+    .envelope-area {
+        margin-top: 32px;
     }
 
+    .names {
+        font-size: 59px;
+    }
 
-    .wedding-date {
-
+    .date {
         font-size: 17px;
-
     }
-
-
-    .parent-name {
-
-        font-size: 13px;
-
-    }
-
 
     .family-title {
-
-        font-size: 58px;
-
+        font-size: 50px;
     }
-
 
     .blessing-title {
-
-        font-size: 58px;
-
+        font-size: 57px;
     }
-
 }
 
 
@@ -2047,22 +1265,13 @@ body.locked {
     *,
     *::before,
     *::after {
-
-        animation-duration:
-            .01ms !important;
-
-        animation-iteration-count:
-            1 !important;
-
-        transition-duration:
-            .01ms !important;
-
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
     }
-
 }
 
 </style>
-
 </head>
 
 
@@ -2070,59 +1279,47 @@ body.locked {
 
 
 <!-- =========================================================
-     OPENING ENVELOPE
+     OPENING
 ========================================================= -->
 
-<div
-    class="opening-screen"
-    id="openingScreen"
->
+<div class="opening" id="opening">
 
-
-    <div class="aurora"></div>
-
+    <div class="opening-glow"></div>
 
     <div class="opening-content">
 
-
-        <div class="opening-small">
+        <div class="opening-label">
             A Wedding Invitation
         </div>
-
 
         <div class="opening-names">
             Aneesha & Dhanu
         </div>
 
-
-        <div class="opening-subtitle">
+        <div class="opening-description">
             A beautiful beginning awaits
         </div>
 
 
-        <div class="envelope-wrapper">
-
+        <div class="envelope-area">
 
             <div
                 class="envelope"
                 id="envelope"
-                role="button"
                 tabindex="0"
+                role="button"
                 aria-label="Open wedding invitation"
             >
 
+                <div class="letter">
 
-                <!-- Letter -->
+                    <div class="letter-content">
 
-                <div class="inner-card">
-
-                    <div class="inner-card-text">
-
-                        <div class="inner-card-label">
+                        <div class="letter-small">
                             You Are Invited
                         </div>
 
-                        <div class="inner-card-names">
+                        <div class="letter-names">
                             Aneesha & Dhanu
                         </div>
 
@@ -2130,33 +1327,19 @@ body.locked {
 
                 </div>
 
-
-                <!-- Envelope -->
-
                 <div class="envelope-body"></div>
 
+                <div class="flap"></div>
 
-                <div class="envelope-flap"></div>
-
-
-                <!-- Seal -->
-
-                <div
-                    class="wax-seal"
-                    id="waxSeal"
-                ></div>
-
+                <div class="seal" id="seal"></div>
 
             </div>
 
-
-            <div class="open-text">
+            <div class="tap-text">
                 Tap the seal to open
             </div>
 
-
         </div>
-
 
     </div>
 
@@ -2165,58 +1348,45 @@ body.locked {
 
 
 <!-- =========================================================
-     MAIN INVITATION
-
+     INVITATION
      EXACTLY 3 SECTIONS
 ========================================================= -->
 
-<main
-    class="invitation"
-    id="invitation"
->
+<main class="invitation" id="invitation">
 
 
     <!-- =====================================================
-         SECTION 1
-         COUPLE
+         1. COUPLE
     ====================================================== -->
 
-    <section
-        class="invite-section couple-section"
-    >
+    <section class="section hero">
 
 
         <!--
-            Replace this image with your HD couple artwork.
+            Put your HD couple image here:
 
-            Recommended:
             assets/couple.jpg
-
-            For best result:
-            2000px+ resolution
-            Portrait / cinematic composition
         -->
 
         <img
             src="assets/couple.jpg"
-            class="couple-image"
             alt="Aneesha and Dhanu"
+            class="hero-image"
         >
 
 
-        <div class="couple-content">
+        <div class="hero-content">
 
-
-            <div class="eyebrow">
+            <div class="hero-label">
                 Together With Their Families
             </div>
 
 
-            <div class="couple-names">
+            <div class="names">
 
                 Aneesha
 
-                <span class="amp">
+                <span class="and">
                     &
                 </span>
 
@@ -2225,16 +1395,15 @@ body.locked {
             </div>
 
 
-            <div class="gold-line"></div>
+            <div class="divider"></div>
 
 
-            <div class="wedding-date">
+            <div class="date">
                 15 · 16 AUGUST 2026
             </div>
 
-
-            <div class="wedding-caption">
-                Invite you to celebrate their beautiful beginning
+            <div class="date-caption">
+                Invite you to celebrate their journey together
             </div>
 
 
@@ -2249,15 +1418,13 @@ body.locked {
 
                     <div class="parent-name">
                         Mr. & Mrs.<br>
-                        [Bride's Parents]
+                        Bride's Parents
                     </div>
 
                 </div>
 
 
-                <div class="parent-divider">
-                    •
-                </div>
+                <div class="parent-divider"></div>
 
 
                 <div class="parent">
@@ -2268,7 +1435,7 @@ body.locked {
 
                     <div class="parent-name">
                         Mr. & Mrs.<br>
-                        [Groom's Parents]
+                        Groom's Parents
                     </div>
 
                 </div>
@@ -2276,22 +1443,17 @@ body.locked {
 
             </div>
 
-
         </div>
-
 
     </section>
 
 
 
     <!-- =====================================================
-         SECTION 2
-         FAMILY
+         2. FAMILIES
     ====================================================== -->
 
-    <section
-        class="invite-section family-section"
-    >
+    <section class="section family">
 
 
         <div class="family-card">
@@ -2303,59 +1465,50 @@ body.locked {
 
 
             <div class="family-title">
-                Two Families,
-                One Beautiful Beginning
+                Two Families,<br>
+                One Beginning
             </div>
 
 
             <div class="family-message">
 
                 With the love and blessings of our
-                parents and families, we invite you
-                to be a part of the celebration as
-                Aneesha and Dhanu begin their journey
-                together.
+                families, we invite you to join us
+                as Aneesha and Dhanu begin a beautiful
+                new chapter together.
 
             </div>
 
 
-            <div class="family-grid">
+            <div class="family-parents">
 
 
-                <div class="family-side">
+                <div>
 
-                    <div class="family-role">
+                    <div class="family-parent-label">
                         Bride's Family
                     </div>
 
-                    <div class="family-names">
-
-                        Mr. & Mrs.
-                        <br>
-
-                        [Bride's Parents]
-
+                    <div class="family-parent-name">
+                        Mr. & Mrs.<br>
+                        Bride's Parents
                     </div>
 
                 </div>
 
 
-                <div class="family-divider"></div>
+                <div class="family-parent-divider"></div>
 
 
-                <div class="family-side">
+                <div>
 
-                    <div class="family-role">
+                    <div class="family-parent-label">
                         Groom's Family
                     </div>
 
-                    <div class="family-names">
-
-                        Mr. & Mrs.
-                        <br>
-
-                        [Groom's Parents]
-
+                    <div class="family-parent-name">
+                        Mr. & Mrs.<br>
+                        Groom's Parents
                     </div>
 
                 </div>
@@ -2366,19 +1519,15 @@ body.locked {
 
         </div>
 
-
     </section>
 
 
 
     <!-- =====================================================
-         SECTION 3
-         BLESSING
+         3. BLESSING
     ====================================================== -->
 
-    <section
-        class="invite-section blessing-section"
-    >
+    <section class="section blessing">
 
 
         <div class="blessing-content">
@@ -2390,10 +1539,8 @@ body.locked {
 
 
             <div class="blessing-title">
-
                 May Love<br>
                 Lead The Way
-
             </div>
 
 
@@ -2414,21 +1561,20 @@ body.locked {
             </div>
 
 
-            <div class="blessing-line"></div>
+            <div class="blessing-divider"></div>
 
 
-            <div class="blessing-names">
+            <div class="final-names">
                 Aneesha & Dhanu Reddy
             </div>
 
 
-            <div class="blessing-footer">
+            <div class="final-small">
                 With Love · With Family · With Blessings
             </div>
 
 
         </div>
-
 
     </section>
 
@@ -2443,65 +1589,44 @@ body.locked {
    ELEMENTS
 ========================================================= */
 
-const openingScreen =
-    document.getElementById(
-        "openingScreen"
-    );
-
+const opening =
+    document.getElementById("opening");
 
 const envelope =
-    document.getElementById(
-        "envelope"
-    );
+    document.getElementById("envelope");
 
-
-const waxSeal =
-    document.getElementById(
-        "waxSeal"
-    );
-
+const seal =
+    document.getElementById("seal");
 
 const invitation =
-    document.getElementById(
-        "invitation"
-    );
+    document.getElementById("invitation");
 
 
 let opened = false;
 
 
 /* =========================================================
-   PARTICLE EXPLOSION
+   PARTICLES
 ========================================================= */
 
 function createParticles() {
-
 
     const symbols = [
         "✦",
         "✧",
         "·",
-        "❋",
-        "♡"
+        "♡",
+        "❋"
     ];
 
 
-    for (
-        let i = 0;
-        i < 55;
-        i++
-    ) {
-
+    for (let i = 0; i < 55; i++) {
 
         const particle =
-            document.createElement(
-                "div"
-            );
-
+            document.createElement("div");
 
         particle.className =
             "particle";
-
 
         particle.textContent =
             symbols[
@@ -2516,16 +1641,14 @@ function createParticles() {
             Math.random() *
             Math.PI * 2;
 
-
         const distance =
             130 +
-            Math.random() * 500;
+            Math.random() * 480;
 
 
         const x =
             Math.cos(angle) *
             distance;
-
 
         const y =
             Math.sin(angle) *
@@ -2537,18 +1660,15 @@ function createParticles() {
             `${x}px`
         );
 
-
         particle.style.setProperty(
             "--y",
             `${y}px`
         );
 
-
         particle.style.setProperty(
             "--scale",
-            `${.5 + Math.random() * 1.2}`
+            `${.5 + Math.random() * 1.1}`
         );
-
 
         particle.style.setProperty(
             "--rotation",
@@ -2561,7 +1681,7 @@ function createParticles() {
 
 
         particle.style.animationDelay =
-            `${Math.random() * .25}s`;
+            `${Math.random() * .2}s`;
 
 
         document.body.appendChild(
@@ -2571,7 +1691,7 @@ function createParticles() {
 
         setTimeout(
             () => particle.remove(),
-            2200
+            2100
         );
 
     }
@@ -2585,155 +1705,104 @@ function createParticles() {
 
 function openInvitation() {
 
-
     if (opened) {
-
         return;
-
     }
-
 
     opened = true;
 
 
-    /* -------------------------------------------------------
-       Seal animation
-    ------------------------------------------------------- */
+    /* stop seal pulse */
 
-    waxSeal.style.animation =
-        "none";
+    seal.style.animation = "none";
 
 
-    waxSeal.animate(
+    /* seal break */
+
+    seal.animate(
 
         [
-
             {
-
                 transform:
-                    "translate(-50%, -50%) scale(1)",
-
-                opacity: 1
-
+                    "translate(-50%, -50%) scale(1)"
             },
 
             {
-
                 transform:
-                    "translate(-50%, -50%) scale(1.2) rotate(-10deg)",
-
-                opacity: 1
-
+                    "translate(-50%, -50%) scale(1.18) rotate(-10deg)"
             },
 
             {
-
                 transform:
-                    "translate(-50%, -50%) scale(0) rotate(40deg)",
-
+                    "translate(-50%, -50%) scale(0) rotate(35deg)",
                 opacity: 0
-
             }
-
         ],
 
         {
-
             duration: 650,
-
-            easing:
-                "cubic-bezier(.2,.8,.2,1)",
-
-            fill:
-                "forwards"
-
+            easing: "cubic-bezier(.2,.8,.2,1)",
+            fill: "forwards"
         }
 
     );
 
 
-    /* -------------------------------------------------------
-       Open envelope
-    ------------------------------------------------------- */
+    /* open envelope */
 
-    setTimeout(
+    setTimeout(() => {
 
-        () => {
+        opening.classList.add("opened");
 
-            openingScreen.classList.add(
-                "opened"
-            );
-
-        },
-
-        200
-
-    );
+    }, 220);
 
 
-    /* -------------------------------------------------------
-       Particles
-    ------------------------------------------------------- */
+    /* particles */
 
-    setTimeout(
+    setTimeout(() => {
 
-        createParticles,
+        createParticles();
 
-        300
-
-    );
+    }, 320);
 
 
-    /* -------------------------------------------------------
-       Reveal invitation
-    ------------------------------------------------------- */
+    /* reveal actual invitation */
 
-    setTimeout(
+    setTimeout(() => {
 
-        () => {
-
-            invitation.classList.add(
-                "visible"
-            );
+        invitation.classList.add(
+            "visible"
+        );
 
 
-            /*
-                IMPORTANT:
+        /*
+            IMPORTANT:
 
-                We do NOT set a timer here.
+            There is NO automatic navigation.
 
-                The user now controls navigation
-                by scrolling/swiping naturally.
-            */
+            The invitation is now an ordinary
+            scrollable webpage containing exactly
+            three sections.
+        */
 
-            document.body.classList.remove(
-                "locked"
-            );
+        document.body.classList.remove(
+            "locked"
+        );
 
 
-            /*
-                Remove opening screen after
-                its fade-out animation.
-            */
+        /*
+            Remove opening from DOM after
+            its fade animation.
+        */
 
-            setTimeout(
+        setTimeout(() => {
 
-                () => {
+            opening.style.display =
+                "none";
 
-                    openingScreen.style.display =
-                        "none";
+        }, 1600);
 
-                },
-
-                1600
-
-            );
-
-        },
-
-        900
-
-    );
+    }, 850);
 
 }
 
@@ -2743,11 +1812,8 @@ function openInvitation() {
 ========================================================= */
 
 envelope.addEventListener(
-
     "click",
-
     openInvitation
-
 );
 
 
@@ -2756,36 +1822,24 @@ envelope.addEventListener(
 ========================================================= */
 
 envelope.addEventListener(
-
     "keydown",
-
-    function(event) {
-
+    event => {
 
         if (
-
             event.key === "Enter" ||
-
             event.key === " "
-
         ) {
-
 
             event.preventDefault();
 
-
             openInvitation();
-
 
         }
 
     }
-
 );
 
 </script>
 
-
 </body>
-
 
