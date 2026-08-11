@@ -5,28 +5,28 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Aneesha & Dhanu Reddy</title>
+<title>Aneesha & Dhanu Reddy | Wedding Invitation</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
 
 /* =========================================================
-   PREMIUM CINEMATIC WEDDING
-   EXACTLY 3 SCREENS
+   PREMIUM CINEMATIC WEDDING INVITATION
+   3 SCREENS
 ========================================================= */
 
 :root {
-    --ivory: #f8f5ef;
-    --cream: #eee8dd;
-    --charcoal: #252321;
-    --muted: #756e66;
-    --gold: #b59a6b;
-    --gold-light: #d8c29a;
-    --white: #ffffff;
+    --ivory: #f8f6f1;
+    --warm-white: #fffdfa;
+    --dark: #242220;
+    --soft-dark: #514b45;
+    --muted: #817a72;
+    --gold: #b79a68;
+    --gold-light: #ddc89f;
 }
 
 * {
@@ -43,9 +43,18 @@ body {
 
 body {
     overflow: hidden;
+
     background: var(--ivory);
-    color: var(--charcoal);
-    font-family: "DM Sans", sans-serif;
+
+    color: var(--dark);
+
+    font-family:
+        "DM Sans",
+        sans-serif;
+}
+
+button {
+    font-family: inherit;
 }
 
 
@@ -54,106 +63,124 @@ body {
 ========================================================= */
 
 #app {
+    position: relative;
+
     width: 100vw;
     height: 100vh;
-    position: relative;
+
     overflow: hidden;
 }
 
 
 /* =========================================================
-   SCREENS
+   SCREEN BASE
 ========================================================= */
 
 .screen {
     position: absolute;
+
     inset: 0;
 
     width: 100%;
     height: 100%;
 
     opacity: 0;
+
     visibility: hidden;
 
-    transform: scale(1.025);
+    transform: translateY(0) scale(1);
 
     transition:
-        opacity 1.1s cubic-bezier(.22,1,.36,1),
+        opacity 1.2s cubic-bezier(.22,1,.36,1),
         transform 1.3s cubic-bezier(.22,1,.36,1),
-        visibility 1.1s;
+        visibility 1.2s;
 }
 
 .screen.active {
     opacity: 1;
+
     visibility: visible;
-    transform: scale(1);
+
+    transform:
+        translateY(0)
+        scale(1);
 }
 
 
 /* =========================================================
    SCREEN 1
-   CINEMATIC ENVELOPE
+   OPENING
 ========================================================= */
 
 #screen1 {
-    background:
-        radial-gradient(
-            circle at center,
-            #ffffff 0%,
-            #f7f3ec 45%,
-            #e9e1d4 100%
-        );
 
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
+
     justify-content: center;
 
     text-align: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 42%,
+            #ffffff 0%,
+            #faf7f1 42%,
+            #eee8dd 100%
+        );
 }
 
 
-/* Soft light */
+/* Large soft light */
 
 #screen1::before {
+
     content: "";
 
     position: absolute;
 
-    width: 500px;
-    height: 500px;
+    width: 600px;
+    height: 600px;
 
     left: 50%;
-    top: 50%;
+    top: 48%;
 
     transform: translate(-50%, -50%);
 
     background:
         radial-gradient(
             circle,
-            rgba(216,194,154,.25),
-            transparent 70%
+            rgba(183,154,104,.16),
+            transparent 68%
         );
 
-    filter: blur(30px);
+    filter: blur(25px);
 
     pointer-events: none;
 }
 
 
-/* Opening text */
+/* Opening heading */
 
-.opening {
+.opening-heading {
+
     position: relative;
+
     z-index: 5;
 
-    margin-bottom: 38px;
+    margin-bottom: 42px;
 
     animation:
-        openingReveal 1.5s cubic-bezier(.22,1,.36,1) both;
+        openingHeading 1.5s
+        cubic-bezier(.22,1,.36,1)
+        both;
 }
 
-.opening-small {
+.opening-label {
+
     font-size: 9px;
 
     letter-spacing: 5px;
@@ -164,27 +191,35 @@ body {
 }
 
 .opening-title {
+
     margin-top: 12px;
 
-    font-family: "Great Vibes", cursive;
+    font-family:
+        "Great Vibes",
+        cursive;
 
-    font-size: clamp(55px, 8vw, 82px);
+    font-size:
+        clamp(58px, 9vw, 88px);
 
     line-height: 1;
 
-    color: #302c29;
+    color: #292623;
 }
 
-@keyframes openingReveal {
+@keyframes openingHeading {
 
     from {
         opacity: 0;
-        transform: translateY(-30px);
+
+        transform:
+            translateY(-30px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
     }
 }
 
@@ -193,29 +228,38 @@ body {
    ENVELOPE
 ========================================================= */
 
-.envelope-wrapper {
+.envelope-container {
+
     position: relative;
-
-    width: min(500px, 84vw);
-    height: min(315px, 53vw);
-
-    perspective: 1300px;
 
     z-index: 5;
 
+    width:
+        min(500px, 86vw);
+
+    height:
+        min(320px, 54vw);
+
+    perspective: 1400px;
+
     animation:
-        envelopeFloat 5s ease-in-out infinite;
+        envelopeFloat 5s
+        ease-in-out
+        infinite;
 }
+
 
 @keyframes envelopeFloat {
 
     0%,
     100% {
-        transform: translateY(0);
+        transform:
+            translateY(0);
     }
 
     50% {
-        transform: translateY(-10px);
+        transform:
+            translateY(-9px);
     }
 }
 
@@ -223,110 +267,133 @@ body {
 /* Shadow */
 
 .envelope-shadow {
+
     position: absolute;
 
-    left: 7%;
-    right: 7%;
+    left: 8%;
+    right: 8%;
 
     bottom: -25px;
 
     height: 30px;
 
-    background: rgba(45,40,34,.18);
-
     border-radius: 50%;
 
-    filter: blur(15px);
+    background:
+        rgba(40,35,29,.18);
+
+    filter:
+        blur(15px);
 }
 
 
-/* Main envelope */
+/* Envelope */
 
 .envelope {
+
     position: absolute;
 
     inset: 0;
 
+    border-radius: 8px;
+
     background:
         linear-gradient(
             135deg,
-            #e9dfd0,
-            #d8cabb
+            #e9e0d2,
+            #d9ccbb
         );
 
-    border-radius: 8px;
-
     box-shadow:
-        0 30px 70px rgba(48,40,31,.18);
-
-    overflow: visible;
+        0 30px 75px
+        rgba(48,42,34,.18);
 
     cursor: pointer;
+
+    overflow: visible;
 }
 
 
-/* Letter */
+/* =========================================================
+   LETTER
+========================================================= */
 
 .letter {
+
     position: absolute;
 
-    width: 88%;
-    height: 94%;
-
     left: 6%;
+
     bottom: 0;
 
-    background: #fffdf9;
+    width: 88%;
 
-    border-radius: 3px;
+    height: 94%;
 
     z-index: 2;
+
+    background:
+        #fffdfa;
+
+    border-radius: 3px;
 
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     box-shadow:
-        0 12px 30px rgba(45,38,31,.12);
+        0 12px 35px
+        rgba(50,43,35,.12);
 
     transition:
-        transform 1.4s cubic-bezier(.77,0,.18,1);
+        transform 1.35s
+        cubic-bezier(.77,0,.18,1);
 }
 
-.letter-inner {
+.letter-content {
     text-align: center;
 }
 
 .letter-small {
+
     font-size: 7px;
 
     letter-spacing: 4px;
 
     text-transform: uppercase;
 
-    color: var(--muted);
+    color: #8b837a;
 }
 
-.letter-name {
+.letter-names {
+
     margin-top: 8px;
 
-    font-family: "Great Vibes", cursive;
+    font-family:
+        "Great Vibes",
+        cursive;
 
-    font-size: 43px;
+    font-size: 45px;
 
-    color: #3b3632;
+    color: #3a3531;
 }
 
 
-/* Side folds */
+/* =========================================================
+   ENVELOPE FOLDS
+========================================================= */
 
 .fold-left {
+
     position: absolute;
 
     inset: 0;
 
-    background: #ded2c1;
+    z-index: 4;
+
+    background: #ded3c4;
 
     clip-path:
         polygon(
@@ -334,16 +401,18 @@ body {
             50% 50%,
             0 100%
         );
-
-    z-index: 4;
 }
 
+
 .fold-right {
+
     position: absolute;
 
     inset: 0;
 
-    background: #d3c3b0;
+    z-index: 4;
+
+    background: #d4c6b4;
 
     clip-path:
         polygon(
@@ -351,19 +420,18 @@ body {
             50% 50%,
             100% 100%
         );
-
-    z-index: 4;
 }
 
 
-/* Bottom */
-
 .fold-bottom {
+
     position: absolute;
 
     inset: 0;
 
-    background: #d8c8b4;
+    z-index: 5;
+
+    background: #d9cab7;
 
     clip-path:
         polygon(
@@ -371,14 +439,13 @@ body {
             50% 48%,
             100% 100%
         );
-
-    z-index: 5;
 }
 
 
 /* Top flap */
 
 .fold-top {
+
     position: absolute;
 
     top: 0;
@@ -387,10 +454,12 @@ body {
     width: 100%;
     height: 67%;
 
+    z-index: 9;
+
     background:
         linear-gradient(
             135deg,
-            #eee4d5,
+            #eee6d9,
             #d9cbbb
         );
 
@@ -401,104 +470,131 @@ body {
             50% 76%
         );
 
-    transform-origin: top center;
-
-    z-index: 8;
+    transform-origin:
+        top center;
 
     transition:
-        transform 1.3s cubic-bezier(.77,0,.18,1);
+        transform 1.3s
+        cubic-bezier(.77,0,.18,1);
 }
 
 .envelope.open .fold-top {
-    transform: rotateX(180deg);
+
+    transform:
+        rotateX(180deg);
 }
 
 .envelope.open .letter {
-    transform: translateY(-160px);
+
+    transform:
+        translateY(-160px);
 }
 
 
 /* =========================================================
-   MODERN SEAL
+   SEAL
 ========================================================= */
 
 .seal {
+
     position: absolute;
 
     left: 50%;
     top: 58%;
 
-    transform: translate(-50%, -50%);
+    z-index: 20;
 
-    width: 76px;
-    height: 76px;
+    width: 78px;
+    height: 78px;
+
+    transform:
+        translate(-50%, -50%);
 
     border-radius: 50%;
 
-    z-index: 15;
-
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     background:
         linear-gradient(
             145deg,
-            #d1b47b,
-            #9d7e4e
+            #d2b77f,
+            #9f804f
         );
 
-    border: 3px solid rgba(255,255,255,.6);
-
-    box-shadow:
-        0 12px 25px rgba(70,55,35,.25);
+    border:
+        3px solid
+        rgba(255,255,255,.65);
 
     color: white;
+
+    box-shadow:
+        0 12px 28px
+        rgba(62,50,34,.25);
 
     cursor: pointer;
 
     animation:
-        sealGlow 2.5s ease-in-out infinite;
+        sealPulse 2.6s
+        ease-in-out
+        infinite;
 
     transition:
-        transform .4s ease;
+        transform .35s ease;
 }
 
 .seal:hover {
+
     transform:
         translate(-50%, -50%)
         scale(1.08);
 }
 
 .seal span {
-    font-family: "Cormorant Garamond", serif;
 
-    font-size: 19px;
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 18px;
 
     letter-spacing: 2px;
 }
 
-@keyframes sealGlow {
+@keyframes sealPulse {
 
     0%,
     100% {
+
         box-shadow:
-            0 12px 25px rgba(70,55,35,.25),
-            0 0 0 0 rgba(181,154,107,.3);
+            0 12px 28px
+            rgba(62,50,34,.25),
+            0 0 0 0
+            rgba(183,154,104,.35);
     }
 
     50% {
+
         box-shadow:
-            0 12px 25px rgba(70,55,35,.25),
-            0 0 0 13px rgba(181,154,107,0);
+            0 12px 28px
+            rgba(62,50,34,.25),
+            0 0 0 13px
+            rgba(183,154,104,0);
     }
 }
 
 
-/* Instruction */
+/* Opening instruction */
 
-.open-text {
-    margin-top: 38px;
+.open-instruction {
+
+    position: relative;
+
+    z-index: 5;
+
+    margin-top: 42px;
 
     font-size: 8px;
 
@@ -506,13 +602,15 @@ body {
 
     text-transform: uppercase;
 
-    color: #777067;
+    color: #817970;
 
     animation:
-        breathe 2s infinite;
+        breathing 2.2s
+        ease-in-out
+        infinite;
 }
 
-@keyframes breathe {
+@keyframes breathing {
 
     0%,
     100% {
@@ -527,54 +625,68 @@ body {
 
 /* =========================================================
    SCREEN 2
-   CINEMATIC INVITATION
+   CINEMATIC MAIN INVITATION
 ========================================================= */
 
 #screen2 {
-    background: #eee9e0;
 
     display: flex;
+
     align-items: center;
-    justify-content: center;
+
+    justify-content: flex-start;
+
+    overflow: hidden;
+
+    background: #24201c;
 }
 
 
-/* Full image */
+/* Couple image */
 
-.hero-image {
+.couple-image {
+
     position: absolute;
 
     inset: 0;
 
     background:
         url("couple-hd.jpg")
-        center / cover no-repeat;
+        center center /
+        cover
+        no-repeat;
+
+    transform:
+        scale(1.04);
 
     filter:
-        saturate(.8)
-        contrast(.95);
-
-    transform: scale(1.05);
+        saturate(.82)
+        contrast(.96);
 
     animation:
-        cinematicZoom 15s ease-in-out infinite alternate;
+        slowZoom 16s
+        ease-in-out
+        infinite alternate;
 }
 
-@keyframes cinematicZoom {
+@keyframes slowZoom {
 
     from {
-        transform: scale(1.04);
+        transform:
+            scale(1.04);
     }
 
     to {
-        transform: scale(1.1);
+        transform:
+            scale(1.12);
     }
 }
 
 
-/* Dark gradient */
+/* Cinematic overlay */
 
-.hero-overlay {
+.cinematic-overlay {
+
     position: absolute;
 
     inset: 0;
@@ -582,40 +694,70 @@ body {
     background:
         linear-gradient(
             90deg,
-            rgba(20,18,16,.72),
-            rgba(20,18,16,.34) 55%,
-            rgba(20,18,16,.15)
+            rgba(17,15,13,.78) 0%,
+            rgba(17,15,13,.57) 38%,
+            rgba(17,15,13,.18) 72%,
+            rgba(17,15,13,.05) 100%
         );
 }
 
 
-/* Main information */
+/* Bottom shadow */
 
-.hero-content {
+.cinematic-overlay::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 35%;
+
+    background:
+        linear-gradient(
+            transparent,
+            rgba(0,0,0,.28)
+        );
+}
+
+
+/* Hero content */
+
+.invitation-content {
+
     position: relative;
 
     z-index: 5;
 
-    width: min(850px, 88vw);
+    width:
+        min(850px, 88vw);
+
+    margin-left:
+        clamp(30px, 9vw, 130px);
 
     color: white;
 
-    text-align: left;
-
     animation:
-        heroReveal 1.7s cubic-bezier(.22,1,.36,1) both;
+        invitationReveal 1.6s
+        cubic-bezier(.22,1,.36,1)
+        both;
 }
 
-@keyframes heroReveal {
+@keyframes invitationReveal {
 
     from {
+
         opacity: 0;
 
         transform:
-            translateX(-45px);
+            translateX(-55px);
     }
 
     to {
+
         opacity: 1;
 
         transform:
@@ -624,61 +766,90 @@ body {
 }
 
 
-.hero-small {
+/* Small heading */
+
+.invitation-label {
+
     font-size: 9px;
 
     letter-spacing: 5px;
 
     text-transform: uppercase;
 
-    opacity: .8;
+    opacity: .75;
 
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 }
 
 
-.hero-names {
-    font-family: "Great Vibes", cursive;
+/* Names */
 
-    font-size: clamp(75px, 12vw, 145px);
+.invitation-names {
 
-    line-height: .82;
+    font-family:
+        "Great Vibes",
+        cursive;
+
+    font-size:
+        clamp(75px, 11vw, 145px);
+
+    line-height:
+        .82;
 
     text-shadow:
-        0 10px 35px rgba(0,0,0,.25);
+        0 10px 35px
+        rgba(0,0,0,.28);
 }
 
-.hero-names .amp {
+.invitation-names .amp {
+
     display: inline-block;
 
-    margin: 0 12px;
+    margin:
+        0 12px;
 
     font-size: .55em;
+
+    color:
+        var(--gold-light);
 }
 
 
-.hero-line {
+/* Divider */
+
+.invitation-divider {
+
     width: 90px;
 
     height: 1px;
 
-    background:
-        rgba(255,255,255,.75);
+    margin:
+        30px 0;
 
-    margin: 30px 0;
+    background:
+        rgba(255,255,255,.7);
 }
 
 
-.hero-date {
-    font-family: "Cormorant Garamond", serif;
+/* Date */
 
-    font-size: clamp(21px, 3vw, 30px);
+.invitation-date {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(22px, 3vw, 30px);
 
     letter-spacing: 5px;
 }
 
 
-.hero-sub {
+/* Description */
+
+.invitation-description {
+
     margin-top: 12px;
 
     font-size: 10px;
@@ -687,24 +858,26 @@ body {
 
     text-transform: uppercase;
 
-    opacity: .75;
+    opacity: .72;
 }
 
 
-/* Parents */
+/* =========================================================
+   PARENTS
+========================================================= */
 
-.hero-parents {
+.parents {
 
     display: flex;
 
     align-items: center;
 
-    gap: 28px;
+    gap: 30px;
 
-    margin-top: 35px;
+    margin-top: 34px;
 }
 
-.hero-parent-label {
+.parent-label {
 
     font-size: 7px;
 
@@ -712,78 +885,58 @@ body {
 
     text-transform: uppercase;
 
-    opacity: .6;
+    opacity: .55;
 
-    margin-bottom: 4px;
+    margin-bottom: 5px;
 }
 
-.hero-parent-name {
+.parent-name {
 
-    font-family: "Cormorant Garamond", serif;
+    font-family:
+        "Cormorant Garamond",
+        serif;
 
     font-size: 19px;
 
     line-height: 1.2;
 }
 
-.hero-parent-divider {
-    font-size: 20px;
+.parent-divider {
 
-    color: var(--gold-light);
+    font-size: 18px;
+
+    color:
+        var(--gold-light);
 }
 
 
-/* Continue */
+/* =========================================================
+   SCREEN 2 EXIT
+========================================================= */
 
-.continue {
+#screen2.exit {
 
-    margin-top: 35px;
+    opacity: 0;
 
-    padding: 13px 25px;
-
-    background: rgba(255,255,255,.08);
-
-    border: 1px solid rgba(255,255,255,.55);
-
-    color: white;
-
-    font-family: "DM Sans", sans-serif;
-
-    font-size: 8px;
-
-    letter-spacing: 3px;
-
-    text-transform: uppercase;
-
-    cursor: pointer;
-
-    backdrop-filter: blur(8px);
+    transform:
+        translateY(-120px)
+        scale(1.035);
 
     transition:
-        background .3s,
-        transform .3s;
-}
+        opacity 1.4s
+        cubic-bezier(.22,1,.36,1),
 
-.continue:hover {
-    background: rgba(255,255,255,.18);
-
-    transform: translateY(-2px);
+        transform 1.4s
+        cubic-bezier(.22,1,.36,1);
 }
 
 
 /* =========================================================
    SCREEN 3
-   MINIMAL BLESSING
+   BLESSING
 ========================================================= */
 
 #screen3 {
-
-    background:
-        linear-gradient(
-            135deg,
-            #f8f5ef,
-            #eee8dd
-        );
 
     display: flex;
 
@@ -792,10 +945,18 @@ body {
     justify-content: center;
 
     text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #ffffff 0%,
+            #f8f5ef 48%,
+            #ece5d9 100%
+        );
 }
 
 
-/* Background glow */
+/* Soft background glow */
 
 #screen3::before {
 
@@ -803,23 +964,24 @@ body {
 
     position: absolute;
 
-    width: 600px;
-    height: 600px;
+    width: 650px;
+    height: 650px;
 
     border-radius: 50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(181,154,107,.12),
+            rgba(183,154,104,.13),
             transparent 70%
         );
 
-    filter: blur(20px);
+    filter:
+        blur(20px);
 }
 
 
-/* Blessing */
+/* Blessing container */
 
 .blessing {
 
@@ -827,22 +989,27 @@ body {
 
     z-index: 5;
 
-    width: min(700px, 90vw);
+    width:
+        min(720px, 90vw);
 
     animation:
-        blessingReveal 1.8s cubic-bezier(.22,1,.36,1) both;
+        blessingReveal 1.6s
+        cubic-bezier(.22,1,.36,1)
+        both;
 }
 
 @keyframes blessingReveal {
 
     from {
+
         opacity: 0;
 
         transform:
-            translateY(35px);
+            translateY(70px);
     }
 
     to {
+
         opacity: 1;
 
         transform:
@@ -851,7 +1018,9 @@ body {
 }
 
 
-.blessing-small {
+/* Label */
+
+.blessing-label {
 
     font-size: 8px;
 
@@ -859,41 +1028,60 @@ body {
 
     text-transform: uppercase;
 
-    color: var(--muted);
+    color:
+        var(--muted);
 
     margin-bottom: 25px;
 }
 
 
+/* Title */
+
 .blessing-title {
 
-    font-family: "Great Vibes", cursive;
+    font-family:
+        "Great Vibes",
+        cursive;
 
-    font-size: clamp(65px, 10vw, 105px);
+    font-size:
+        clamp(68px, 10vw, 108px);
 
-    line-height: .9;
+    line-height:
+        .88;
 
-    color: #292622;
+    color:
+        #292623;
 
-    margin-bottom: 35px;
+    margin-bottom: 38px;
 }
 
+
+/* Message */
 
 .blessing-message {
 
-    max-width: 620px;
+    width:
+        min(620px, 100%);
 
-    margin: auto;
+    margin:
+        0 auto;
 
-    font-family: "Cormorant Garamond", serif;
+    font-family:
+        "Cormorant Garamond",
+        serif;
 
-    font-size: clamp(21px, 3vw, 28px);
+    font-size:
+        clamp(20px, 3vw, 27px);
 
-    line-height: 1.65;
+    line-height:
+        1.65;
 
-    color: #625c55;
+    color:
+        #625c55;
 }
 
+
+/* Line */
 
 .blessing-line {
 
@@ -901,21 +1089,31 @@ body {
 
     height: 1px;
 
-    background: var(--gold);
+    margin:
+        35px auto;
 
-    margin: 35px auto;
+    background:
+        var(--gold);
 }
 
+
+/* Names */
 
 .blessing-names {
 
-    font-family: "Great Vibes", cursive;
+    font-family:
+        "Great Vibes",
+        cursive;
 
-    font-size: clamp(48px, 7vw, 70px);
+    font-size:
+        clamp(48px, 7vw, 72px);
 
-    color: var(--burgundy);
+    color:
+        #453d36;
 }
 
+
+/* Footer */
 
 .blessing-footer {
 
@@ -927,100 +1125,162 @@ body {
 
     text-transform: uppercase;
 
-    color: #858078;
+    color:
+        #8b8379;
 }
 
 
 /* =========================================================
-   RESPONSIVE
+   MOBILE
 ========================================================= */
 
 @media(max-width: 700px) {
 
-    .opening {
-        margin-bottom: 25px;
+    .opening-heading {
+
+        margin-bottom: 28px;
     }
 
     .opening-title {
+
         font-size: 58px;
     }
 
-    .envelope-wrapper {
+    .envelope-container {
+
         width: 88vw;
+
         height: 54vw;
+
         min-height: 205px;
     }
 
     .seal {
-        width: 65px;
-        height: 65px;
+
+        width: 66px;
+
+        height: 66px;
     }
 
     .envelope.open .letter {
-        transform: translateY(-110px);
+
+        transform:
+            translateY(-115px);
     }
 
 
-    /* Screen 2 */
+    /* Main invitation */
 
-    .hero-image {
-        background-position: center;
+    #screen2 {
+
+        align-items: flex-end;
     }
 
-    .hero-overlay {
+    .couple-image {
+
+        background-position:
+            center center;
+    }
+
+    .cinematic-overlay {
+
         background:
             linear-gradient(
-                90deg,
-                rgba(20,18,16,.72),
-                rgba(20,18,16,.35)
+                180deg,
+                rgba(15,13,12,.08) 0%,
+                rgba(15,13,12,.22) 35%,
+                rgba(15,13,12,.82) 72%,
+                rgba(15,13,12,.94) 100%
             );
     }
 
-    .hero-content {
+    .invitation-content {
+
         width: 88vw;
+
+        margin:
+            0 0 8vh 6vw;
+
+        padding-bottom: 5vh;
     }
 
-    .hero-names {
+    .invitation-label {
+
+        margin-bottom: 16px;
+    }
+
+    .invitation-names {
+
         font-size: 72px;
+
+        line-height: .85;
     }
 
-    .hero-names .amp {
+    .invitation-names .amp {
+
         display: block;
 
-        margin: 10px 0;
+        margin:
+            8px 0;
 
         font-size: 38px;
     }
 
-    .hero-date {
+    .invitation-divider {
+
+        margin:
+            22px 0;
+    }
+
+    .invitation-date {
+
         font-size: 20px;
 
         letter-spacing: 3px;
     }
 
-    .hero-parents {
+    .invitation-description {
+
+        font-size: 8px;
+
+        line-height: 1.5;
+    }
+
+    .parents {
+
         gap: 15px;
 
         margin-top: 25px;
     }
 
-    .hero-parent-name {
+    .parent-name {
+
         font-size: 16px;
     }
 
 
-    /* Screen 3 */
+    /* Blessing */
 
     .blessing {
+
         width: 88vw;
     }
 
     .blessing-title {
-        font-size: 65px;
+
+        font-size: 66px;
     }
 
     .blessing-message {
+
         font-size: 20px;
+
+        line-height: 1.55;
+    }
+
+    .blessing-names {
+
+        font-size: 50px;
     }
 
 }
@@ -1033,30 +1293,37 @@ body {
 @media(max-width: 390px) {
 
     .opening-title {
+
         font-size: 50px;
     }
 
-    .envelope-wrapper {
+    .envelope-container {
+
         min-height: 175px;
     }
 
-    .hero-names {
-        font-size: 58px;
+    .invitation-names {
+
+        font-size: 59px;
     }
 
-    .hero-parent-name {
-        font-size: 14px;
-    }
+    .invitation-date {
 
-    .hero-date {
         font-size: 17px;
     }
 
+    .parent-name {
+
+        font-size: 14px;
+    }
+
     .blessing-title {
+
         font-size: 55px;
     }
 
     .blessing-message {
+
         font-size: 18px;
     }
 
@@ -1073,11 +1340,14 @@ body {
     *::before,
     *::after {
 
-        animation-duration: .01ms !important;
+        animation-duration:
+            .01ms !important;
 
-        animation-iteration-count: 1 !important;
+        animation-iteration-count:
+            1 !important;
 
-        transition-duration: .01ms !important;
+        transition-duration:
+            .01ms !important;
     }
 
 }
@@ -1101,9 +1371,9 @@ body {
         class="screen active"
     >
 
-        <div class="opening">
+        <div class="opening-heading">
 
-            <div class="opening-small">
+            <div class="opening-label">
                 A Wedding Invitation
             </div>
 
@@ -1114,7 +1384,7 @@ body {
         </div>
 
 
-        <div class="envelope-wrapper">
+        <div class="envelope-container">
 
             <div class="envelope-shadow"></div>
 
@@ -1129,13 +1399,13 @@ body {
 
                 <div class="letter">
 
-                    <div class="letter-inner">
+                    <div class="letter-content">
 
                         <div class="letter-small">
-                            You are invited
+                            You Are Invited
                         </div>
 
-                        <div class="letter-name">
+                        <div class="letter-names">
                             Aneesha & Dhanu
                         </div>
 
@@ -1144,7 +1414,7 @@ body {
                 </div>
 
 
-                <!-- Folds -->
+                <!-- Envelope folds -->
 
                 <div class="fold-left"></div>
 
@@ -1173,7 +1443,7 @@ body {
         </div>
 
 
-        <div class="open-text">
+        <div class="open-instruction">
             Tap the seal to open
         </div>
 
@@ -1183,7 +1453,7 @@ body {
 
     <!-- =====================================================
          SCREEN 2
-         MAIN CINEMATIC INVITATION
+         MAIN INVITATION
     ====================================================== -->
 
     <section
@@ -1192,93 +1462,91 @@ body {
     >
 
 
-        <!-- Full HD image -->
+        <!-- HD COUPLE IMAGE -->
 
-        <div class="hero-image"></div>
-
-
-        <!-- Cinematic overlay -->
-
-        <div class="hero-overlay"></div>
+        <div class="couple-image"></div>
 
 
-        <!-- Content -->
+        <!-- CINEMATIC OVERLAY -->
 
-        <div class="hero-content">
+        <div class="cinematic-overlay"></div>
 
 
-            <div class="hero-small">
+        <!-- INVITATION CONTENT -->
+
+        <div class="invitation-content">
+
+
+            <div class="invitation-label">
                 Together With Their Families
             </div>
 
 
-            <div class="hero-names">
+            <div class="invitation-names">
 
                 Aneesha
-                <span class="amp">&</span>
+
+                <span class="amp">
+                    &
+                </span>
+
                 Dhanu Reddy
 
             </div>
 
 
-            <div class="hero-line"></div>
+            <div class="invitation-divider"></div>
 
 
-            <div class="hero-date">
+            <div class="invitation-date">
                 15 · 16 August 2026
             </div>
 
 
-            <div class="hero-sub">
+            <div class="invitation-description">
                 Invite you to celebrate their beautiful beginning
             </div>
 
 
-            <!-- Parents -->
+            <!-- PARENTS -->
 
-            <div class="hero-parents">
+            <div class="parents">
 
 
-                <div>
+                <div class="parent">
 
-                    <div class="hero-parent-label">
+                    <div class="parent-label">
                         Bride's Parents
                     </div>
 
-                    <div class="hero-parent-name">
-                        Mr. & Mrs. [Bride's Parents]
+                    <div class="parent-name">
+                        Mr. & Mrs.<br>
+                        [Bride's Parents]
                     </div>
 
                 </div>
 
 
-                <div class="hero-parent-divider">
+                <div class="parent-divider">
                     •
                 </div>
 
 
-                <div>
+                <div class="parent">
 
-                    <div class="hero-parent-label">
+                    <div class="parent-label">
                         Groom's Parents
                     </div>
 
-                    <div class="hero-parent-name">
-                        Mr. & Mrs. [Groom's Parents]
+                    <div class="parent-name">
+                        Mr. & Mrs.<br>
+                        [Groom's Parents]
                     </div>
 
                 </div>
 
 
             </div>
-
-
-            <button
-                class="continue"
-                onclick="showScreen(3)"
-            >
-                Continue
-            </button>
 
 
         </div>
@@ -1301,14 +1569,16 @@ body {
         <div class="blessing">
 
 
-            <div class="blessing-small">
+            <div class="blessing-label">
                 A Blessing For Their Journey
             </div>
 
 
             <div class="blessing-title">
+
                 May Love<br>
                 Lead The Way
+
             </div>
 
 
@@ -1355,7 +1625,7 @@ body {
 <script>
 
 /* =========================================================
-   SCREEN CONTROL
+   ELEMENTS
 ========================================================= */
 
 const screen1 =
@@ -1367,35 +1637,6 @@ const screen2 =
 const screen3 =
     document.getElementById("screen3");
 
-
-function showScreen(number) {
-
-    screen1.classList.remove("active");
-
-    screen2.classList.remove("active");
-
-    screen3.classList.remove("active");
-
-
-    if (number === 1) {
-        screen1.classList.add("active");
-    }
-
-    if (number === 2) {
-        screen2.classList.add("active");
-    }
-
-    if (number === 3) {
-        screen3.classList.add("active");
-    }
-
-}
-
-
-/* =========================================================
-   ENVELOPE OPEN
-========================================================= */
-
 const envelope =
     document.getElementById("envelope");
 
@@ -1403,27 +1644,64 @@ const seal =
     document.getElementById("seal");
 
 
+let opened = false;
+
+let invitationTimer = null;
+
+
+/* =========================================================
+   SCREEN SWITCH
+========================================================= */
+
+function activateScreen(screen) {
+
+    screen1.classList.remove("active");
+
+    screen2.classList.remove("active");
+
+    screen3.classList.remove("active");
+
+    screen.classList.add("active");
+
+}
+
+
+/* =========================================================
+   OPEN ENVELOPE
+========================================================= */
+
 function openEnvelope() {
 
-    if (envelope.classList.contains("open")) {
+    if (opened) {
         return;
     }
+
+    opened = true;
 
 
     envelope.classList.add("open");
 
 
+    /*
+       Let the visitor see the envelope opening
+       before moving to the invitation.
+    */
+
     setTimeout(
         function() {
 
-            showScreen(2);
+            activateScreen(screen2);
+
+            startInvitationTimer();
 
         },
-        1500
+        1550
     );
 
 }
 
+
+/* Seal click */
 
 seal.addEventListener(
     "click",
@@ -1437,6 +1715,8 @@ seal.addEventListener(
 );
 
 
+/* Envelope click */
+
 envelope.addEventListener(
     "click",
     function() {
@@ -1448,41 +1728,93 @@ envelope.addEventListener(
 
 
 /* =========================================================
-   KEYBOARD
+   SCREEN 2
+   AUTOMATIC CINEMATIC TRANSITION
+========================================================= */
+
+function startInvitationTimer() {
+
+    clearTimeout(invitationTimer);
+
+
+    /*
+       Eight seconds gives enough time
+       to read the invitation.
+    */
+
+    invitationTimer = setTimeout(
+        function() {
+
+            cinematicTransition();
+
+        },
+        8000
+    );
+
+}
+
+
+/* =========================================================
+   DOWNWARD CINEMATIC TRANSITION
+========================================================= */
+
+function cinematicTransition() {
+
+
+    /*
+       The invitation moves upward,
+       giving the impression that the
+       camera is travelling downward.
+    */
+
+    screen2.classList.add("exit");
+
+
+    setTimeout(
+        function() {
+
+            screen2.classList.remove("active");
+
+            screen2.classList.remove("exit");
+
+
+            /*
+               Blessing enters from below.
+            */
+
+            screen3.classList.add("active");
+
+        },
+        1350
+    );
+
+}
+
+
+/* =========================================================
+   KEYBOARD SUPPORT
 ========================================================= */
 
 document.addEventListener(
     "keydown",
     function(event) {
 
-        if (event.key === "ArrowRight") {
+        /*
+           Keyboard is only an accessibility
+           shortcut. There are no visible
+           navigation controls.
+        */
 
-            if (screen1.classList.contains("active")) {
+        if (
+            event.key === "Enter" ||
+            event.key === " "
+        ) {
+
+            if (
+                screen1.classList.contains("active")
+            ) {
 
                 openEnvelope();
-
-            }
-
-            else if (screen2.classList.contains("active")) {
-
-                showScreen(3);
-
-            }
-
-        }
-
-
-        if (event.key === "ArrowLeft") {
-
-            if (screen3.classList.contains("active")) {
-
-                showScreen(2);
-
-            }
-
-            else if (screen2.classList.contains("active")) {
-
-                showScreen(1);
 
             }
 
