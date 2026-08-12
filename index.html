@@ -41,12 +41,12 @@ body.locked {
 
 /* =========================================================
    OPENING SCREEN
+   UNCHANGED
 ========================================================= */
 
 .opening {
     position: fixed;
     inset: 0;
-
     z-index: 1000;
 
     display: flex;
@@ -73,11 +73,6 @@ body.locked {
     visibility: hidden;
     pointer-events: none;
 }
-
-
-/* =========================================================
-   OPENING LIGHT
-========================================================= */
 
 .opening::before {
     content: "";
@@ -115,11 +110,6 @@ body.locked {
     }
 }
 
-
-/* =========================================================
-   OPENING CONTENT
-========================================================= */
-
 .opening-content {
     position: relative;
     z-index: 5;
@@ -138,10 +128,19 @@ body.locked {
     animation: fadeUp 1s .2s both;
 }
 
-/*
-   Names removed from opening screen.
-   Only the beautiful beginning message remains.
-*/
+.opening-names {
+    margin-top: 12px;
+
+    font-family: "Italianno", cursive;
+
+    font-size: clamp(65px, 13vw, 105px);
+
+    line-height: .9;
+
+    color: #292d27;
+
+    animation: fadeUp 1s .35s both;
+}
 
 .opening-description {
     margin-top: 15px;
@@ -152,7 +151,7 @@ body.locked {
 
     color: #777a71;
 
-    animation: fadeUp 1s .35s both;
+    animation: fadeUp 1s .5s both;
 }
 
 @keyframes fadeUp {
@@ -180,7 +179,7 @@ body.locked {
     margin: 48px auto 0;
 
     animation:
-        envelopeIn 1.2s .55s both;
+        envelopeIn 1.2s .75s both;
 }
 
 @keyframes envelopeIn {
@@ -228,11 +227,6 @@ body.locked {
     }
 
 }
-
-
-/* =========================================================
-   ENVELOPE BODY
-========================================================= */
 
 .envelope-body {
     position: absolute;
@@ -316,20 +310,6 @@ body.locked {
     text-align: center;
 }
 
-/*
-   This content is hidden while the envelope
-   is closed and revealed after the seal is opened.
-*/
-
-.letter-reveal {
-    opacity: 0;
-    transform: translateY(15px);
-
-    transition:
-        opacity .8s ease,
-        transform .8s ease;
-}
-
 .letter-small {
     font-size: 7px;
     letter-spacing: 3px;
@@ -367,7 +347,7 @@ body.locked {
         linear-gradient(
             135deg,
             #f8f5ed,
-            #ddddD4
+            #ddddd4
         );
 
     clip-path:
@@ -410,31 +390,22 @@ body.locked {
     border-radius: 50%;
 
     background:
-
         radial-gradient(
             circle at 32% 25%,
-            #c85a59 0%,
-            #9f3034 25%,
-            #7b2027 55%,
-            #5d151c 78%,
-            #421015 100%
+            #d9b56d 0%,
+            #b8893e 30%,
+            #8c6027 62%,
+            #624016 100%
         );
 
     border:
-        3px solid rgba(75,12,17,.65);
+        3px solid rgba(255,226,158,.72);
 
     box-shadow:
-
-        0 12px 24px rgba(35,12,14,.35),
-
-        inset 4px 5px 8px
-        rgba(255,255,255,.20),
-
-        inset -6px -8px 12px
-        rgba(40,5,8,.45),
-
-        0 0 22px
-        rgba(116,25,31,.28);
+        0 10px 25px rgba(30,34,29,.28),
+        inset 5px 5px 10px rgba(255,235,175,.32),
+        inset -6px -7px 12px rgba(62,36,8,.45),
+        0 0 22px rgba(180,130,50,.30);
 
     animation:
         sealPulse 2.4s ease-in-out infinite;
@@ -444,38 +415,23 @@ body.locked {
         opacity .5s ease;
 }
 
-
-/* irregular wax edge */
-
 .seal::before {
-
     content: "";
 
     position: absolute;
 
-    inset: -5px;
+    inset: 7px;
 
-    border-radius:
-        48% 52% 49% 51%
-        / 52% 48% 53% 47%;
+    border-radius: 50%;
 
     border:
-        4px solid
-        rgba(111,25,31,.55);
+        1px solid rgba(255,224,154,.55);
 
     box-shadow:
-        inset 0 0 5px
-        rgba(255,255,255,.15);
-
-    transform:
-        rotate(-7deg);
+        inset 0 0 8px rgba(74,44,12,.35);
 }
 
-
-/* seal initials */
-
 .seal::after {
-
     content: "A  •  D";
 
     position: relative;
@@ -486,60 +442,37 @@ body.locked {
         "Cormorant Garamond",
         serif;
 
-    font-weight: 600;
-
     font-size: 15px;
+
+    font-weight: 600;
 
     letter-spacing: 2px;
 
-    color: #f7d8c8;
+    color: #fff2c8;
 
     text-shadow:
-        1px 1px 1px rgba(45,5,8,.55),
-
-        -1px -1px 1px
-        rgba(255,220,210,.18);
+        0 1px 2px rgba(70,38,5,.6);
 }
-
 
 @keyframes sealPulse {
 
     0%, 100% {
-
         box-shadow:
-
-            0 12px 24px
-            rgba(35,12,14,.35),
-
-            inset 4px 5px 8px
-            rgba(255,255,255,.20),
-
-            inset -6px -8px 12px
-            rgba(40,5,8,.45),
-
-            0 0 15px
-            rgba(116,25,31,.20);
+            0 10px 25px rgba(30,34,29,.28),
+            inset 5px 5px 10px rgba(255,235,175,.32),
+            inset -6px -7px 12px rgba(62,36,8,.45),
+            0 0 16px rgba(180,130,50,.20);
     }
 
     50% {
-
         box-shadow:
-
-            0 12px 24px
-            rgba(35,12,14,.35),
-
-            inset 4px 5px 8px
-            rgba(255,255,255,.20),
-
-            inset -6px -8px 12px
-            rgba(40,5,8,.45),
-
-            0 0 30px
-            rgba(116,25,31,.40);
+            0 10px 25px rgba(30,34,29,.28),
+            inset 5px 5px 10px rgba(255,235,175,.32),
+            inset -6px -7px 12px rgba(62,36,8,.45),
+            0 0 32px rgba(210,163,76,.48);
     }
 
 }
-
 
 .tap-text {
     margin-top: 28px;
@@ -581,19 +514,6 @@ body.locked {
     transform: translateY(-25%);
 }
 
-/*
-   Once opened, disclose the invitation text.
-*/
-
-.opening.opened .letter-reveal {
-
-    opacity: 1;
-
-    transform:
-        translateY(0);
-
-}
-
 .opening.opened .seal {
     transform:
         translate(-50%, -50%)
@@ -609,7 +529,7 @@ body.locked {
 
 
 /* =========================================================
-   PARTICLES
+   PARTICLE EXPLOSION
 ========================================================= */
 
 .particle {
@@ -622,7 +542,7 @@ body.locked {
 
     pointer-events: none;
 
-    color: #c9c18f;
+    color: #d8b76c;
 
     animation:
         particleExplosion 1.8s ease-out forwards;
@@ -651,19 +571,43 @@ body.locked {
 
 
 /* =========================================================
-   MAIN INVITATION
+   =========================================================
+   INTERNAL INVITATION THEME
+   NEW ANIMATED FLOWER + HEART THEME
+   =========================================================
 ========================================================= */
 
 .invitation {
+
     position: relative;
 
     opacity: 0;
     visibility: hidden;
 
-    background:
-        #111610;
+    color: #f8f2df;
 
-    color: #f7f3e8;
+    background:
+        radial-gradient(
+            ellipse at 50% 10%,
+            rgba(154,119,64,.16),
+            transparent 35%
+        ),
+        radial-gradient(
+            ellipse at 15% 70%,
+            rgba(100,128,87,.18),
+            transparent 32%
+        ),
+        radial-gradient(
+            ellipse at 85% 60%,
+            rgba(139,91,104,.14),
+            transparent 34%
+        ),
+        linear-gradient(
+            135deg,
+            #111710 0%,
+            #182018 42%,
+            #101610 100%
+        );
 
     transition:
         opacity 1.5s ease,
@@ -677,7 +621,7 @@ body.locked {
 
 
 /* =========================================================
-   GLOBAL MOVING LIGHT
+   ANIMATED BACKGROUND LIGHT
 ========================================================= */
 
 .invitation::before {
@@ -688,7 +632,7 @@ body.locked {
 
     inset: -30%;
 
-    z-index: 50;
+    z-index: 1;
 
     pointer-events: none;
 
@@ -696,190 +640,449 @@ body.locked {
 
         radial-gradient(
             circle at 15% 20%,
-            rgba(220,209,157,.13),
-            transparent 22%
+            rgba(221,190,115,.16),
+            transparent 20%
         ),
 
         radial-gradient(
-            circle at 80% 70%,
-            rgba(174,194,155,.12),
+            circle at 82% 25%,
+            rgba(173,124,144,.13),
+            transparent 23%
+        ),
+
+        radial-gradient(
+            circle at 65% 82%,
+            rgba(120,155,111,.13),
             transparent 24%
         ),
 
         radial-gradient(
-            circle at 50% 45%,
-            rgba(255,255,255,.035),
-            transparent 30%
+            circle at 35% 60%,
+            rgba(255,230,160,.07),
+            transparent 25%
         );
 
-    filter: blur(35px);
+    filter: blur(45px);
 
     animation:
-        globalLight 20s ease-in-out infinite alternate;
+        backgroundGlow 22s ease-in-out infinite alternate;
 }
 
-@keyframes globalLight {
+@keyframes backgroundGlow {
 
     0% {
         transform:
-            translate3d(-4%, -2%, 0)
+            translate3d(-5%, -3%, 0)
             scale(1);
+    }
+
+    25% {
+        transform:
+            translate3d(4%, 2%, 0)
+            scale(1.08);
     }
 
     50% {
         transform:
-            translate3d(4%, 3%, 0)
-            scale(1.1);
+            translate3d(-2%, 6%, 0)
+            scale(1.12);
+    }
+
+    75% {
+        transform:
+            translate3d(6%, -2%, 0)
+            scale(1.06);
     }
 
     100% {
         transform:
-            translate3d(-2%, 5%, 0)
-            scale(1.04);
+            translate3d(-3%, 4%, 0)
+            scale(1.1);
     }
 
 }
 
 
 /* =========================================================
-   GLOBAL STAR FIELD
+   FLOWER FIELD
 ========================================================= */
 
-.star-field {
+.flower-field {
+
     position: fixed;
 
     inset: 0;
 
-    z-index: 40;
+    z-index: 2;
 
     pointer-events: none;
 
     overflow: hidden;
 }
 
-.star {
+
+/* =========================================================
+   GLOWING FLOWERS
+========================================================= */
+
+.floating-flower {
+
     position: absolute;
 
-    width: 3px;
-    height: 3px;
+    width: var(--flower-size);
+    height: var(--flower-size);
 
-    border-radius: 50%;
+    left: var(--left);
+    top: var(--top);
 
-    background: #e8dfb4;
-
-    opacity: .35;
+    opacity: var(--opacity);
 
     animation:
-        twinkle
+        flowerFloat
+        var(--duration)
+        ease-in-out
+        infinite
+        var(--delay);
+
+    filter:
+        drop-shadow(
+            0 0 12px rgba(225,190,112,.16)
+        );
+}
+
+.floating-flower::before,
+.floating-flower::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 42%;
+    height: 75%;
+
+    border-radius:
+        100% 0 100% 0;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(245,216,154,.40),
+            rgba(184,137,89,.10)
+        );
+
+    transform-origin:
+        50% 100%;
+}
+
+.floating-flower::before {
+
+    transform:
+        translate(-50%, -100%)
+        rotate(0deg);
+}
+
+.floating-flower::after {
+
+    transform:
+        translate(-50%, -100%)
+        rotate(90deg);
+}
+
+.floating-flower {
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(235,195,113,.58) 0 7%,
+            transparent 8%
+        );
+}
+
+@keyframes flowerFloat {
+
+    0%, 100% {
+        transform:
+            translate3d(0,0,0)
+            rotate(0deg)
+            scale(.85);
+    }
+
+    25% {
+        transform:
+            translate3d(25px,-35px,0)
+            rotate(20deg)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate3d(-18px,-65px,0)
+            rotate(45deg)
+            scale(1.08);
+    }
+
+    75% {
+        transform:
+            translate3d(30px,-25px,0)
+            rotate(70deg)
+            scale(.95);
+    }
+
+}
+
+
+/* =========================================================
+   HEART FIELD
+========================================================= */
+
+.heart-field {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 3;
+
+    pointer-events: none;
+
+    overflow: hidden;
+}
+
+.floating-heart {
+
+    position: absolute;
+
+    left: var(--left);
+
+    bottom: -40px;
+
+    font-size: var(--size);
+
+    color: rgba(218,166,157,.30);
+
+    text-shadow:
+        0 0 12px rgba(215,159,151,.25);
+
+    animation:
+        heartRise
         var(--duration)
         ease-in-out
         infinite
         var(--delay);
 }
 
-@keyframes twinkle {
+@keyframes heartRise {
 
-    0%, 100% {
-        opacity: .12;
-        transform: scale(.6);
+    0% {
+
+        transform:
+            translate3d(0,0,0)
+            rotate(0deg)
+            scale(.6);
+
+        opacity: 0;
     }
 
-    50% {
-        opacity: .85;
-        transform: scale(1.5);
+    10% {
+        opacity: .5;
+    }
+
+    30% {
+
+        transform:
+            translate3d(var(--x1),-25vh,0)
+            rotate(12deg)
+            scale(.85);
+    }
+
+    60% {
+
+        transform:
+            translate3d(var(--x2),-58vh,0)
+            rotate(-14deg)
+            scale(1);
+    }
+
+    85% {
+        opacity: .25;
+    }
+
+    100% {
+
+        transform:
+            translate3d(var(--x3),-115vh,0)
+            rotate(18deg)
+            scale(.7);
+
+        opacity: 0;
     }
 
 }
 
 
 /* =========================================================
-   FLOATING PETALS
+   GOLD DUST
 ========================================================= */
 
-.petal-field {
+.dust-field {
+
     position: fixed;
 
     inset: 0;
 
-    z-index: 45;
+    z-index: 4;
 
     pointer-events: none;
 
     overflow: hidden;
 }
 
-.petal {
+.dust {
+
     position: absolute;
 
-    top: -50px;
+    width: var(--size);
+    height: var(--size);
 
-    width: 9px;
-    height: 14px;
+    left: var(--left);
+    top: var(--top);
 
-    border-radius:
-        70% 30% 70% 30%;
+    border-radius: 50%;
 
     background:
-        linear-gradient(
-            135deg,
-            rgba(239,224,183,.65),
-            rgba(177,191,155,.30)
-        );
+        rgba(241,211,139,.65);
 
-    filter: blur(.2px);
+    box-shadow:
+        0 0 8px rgba(237,199,111,.55);
 
     animation:
-        fallingPetal
+        dustTwinkle
         var(--duration)
-        linear
+        ease-in-out
         infinite
         var(--delay);
 }
 
-@keyframes fallingPetal {
+@keyframes dustTwinkle {
 
-    0% {
-        transform:
-            translate3d(
-                0,
-                -60px,
-                0
-            )
-            rotate(0deg);
-
-        opacity: 0;
-    }
-
-    10% {
-        opacity: .65;
+    0%, 100% {
+        opacity: .08;
+        transform: scale(.5);
     }
 
     50% {
+        opacity: .85;
+        transform: scale(1.7);
+    }
+}
+
+
+/* =========================================================
+   FLORAL ORBIT
+========================================================= */
+
+.floral-orbit {
+
+    position: absolute;
+
+    width: 760px;
+    height: 760px;
+
+    max-width: 100vw;
+    max-height: 100vw;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border:
+        1px solid rgba(220,190,122,.10);
+
+    border-radius: 50%;
+
+    box-shadow:
+
+        0 0 0 70px
+        rgba(220,190,122,.025),
+
+        0 0 0 140px
+        rgba(220,190,122,.018),
+
+        0 0 0 210px
+        rgba(220,190,122,.012);
+
+    animation:
+        orbitPulse 12s ease-in-out infinite alternate;
+}
+
+.floral-orbit::before,
+.floral-orbit::after {
+
+    content: "✿";
+
+    position: absolute;
+
+    font-size: 38px;
+
+    color:
+        rgba(222,190,120,.22);
+
+    text-shadow:
+        0 0 20px rgba(224,187,105,.18);
+
+    animation:
+        orbitFlower 14s linear infinite;
+}
+
+.floral-orbit::before {
+    left: 8%;
+    top: 15%;
+}
+
+.floral-orbit::after {
+    right: 8%;
+    bottom: 15%;
+
+    animation-direction: reverse;
+}
+
+@keyframes orbitPulse {
+
+    from {
         transform:
-            translate3d(
-                var(--sway),
-                50vh,
-                0
-            )
-            rotate(180deg);
+            translate(-50%, -50%)
+            scale(.87);
+
+        opacity: .45;
     }
 
-    90% {
-        opacity: .5;
-    }
-
-    100% {
+    to {
         transform:
-            translate3d(
-                var(--sway2),
-                110vh,
-                0
-            )
-            rotate(360deg);
+            translate(-50%, -50%)
+            scale(1.08);
 
-        opacity: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes orbitFlower {
+
+    from {
+        transform:
+            rotate(0deg)
+            translateX(15px);
     }
 
+    to {
+        transform:
+            rotate(360deg)
+            translateX(15px);
+    }
 }
 
 
@@ -888,6 +1091,7 @@ body.locked {
 ========================================================= */
 
 .section {
+
     position: relative;
 
     width: 100%;
@@ -911,9 +1115,23 @@ body.locked {
     align-items: center;
 
     background:
-        #101510;
+        radial-gradient(
+            ellipse at 80% 20%,
+            rgba(205,170,100,.12),
+            transparent 28%
+        ),
+        linear-gradient(
+            145deg,
+            #101610,
+            #182018,
+            #111710
+        );
 }
 
+
+/* =========================================================
+   HERO ART
+========================================================= */
 
 .hero-art {
 
@@ -925,7 +1143,6 @@ body.locked {
 
     overflow: hidden;
 }
-
 
 .hero-art .moon {
 
@@ -945,13 +1162,13 @@ body.locked {
     background:
         radial-gradient(
             circle at 35% 30%,
-            #fffdf1 0%,
-            #d9d2a4 38%,
-            #8d9679 70%,
+            #fff8dd 0%,
+            #d9c78e 34%,
+            #8d9679 68%,
             transparent 72%
         );
 
-    opacity: .32;
+    opacity: .30;
 
     filter: blur(.5px);
 
@@ -972,9 +1189,7 @@ body.locked {
             translate3d(-30px,20px,0)
             scale(1.05);
     }
-
 }
-
 
 .hero-art .horizon {
 
@@ -1010,7 +1225,6 @@ body.locked {
         transform: scale(1.1);
         opacity: 1;
     }
-
 }
 
 
@@ -1039,7 +1253,6 @@ body.locked {
 
     pointer-events: none;
 }
-
 
 .bride {
 
@@ -1082,7 +1295,6 @@ body.locked {
         );
 }
 
-
 .bride::before {
 
     content: "";
@@ -1107,7 +1319,6 @@ body.locked {
     box-shadow:
         -18px 8px 0 -2px rgba(49,56,45,.8);
 }
-
 
 .groom {
 
@@ -1149,7 +1360,6 @@ body.locked {
             0 0 35px rgba(40,45,38,.35)
         );
 }
-
 
 .groom::before {
 
@@ -1230,7 +1440,6 @@ body.locked {
         90px 0;
 }
 
-
 .hero-content > * {
 
     animation:
@@ -1264,20 +1473,14 @@ body.locked {
 
     from {
         opacity: 0;
-
-        transform:
-            translateY(35px);
+        transform: translateY(35px);
     }
 
     to {
         opacity: 1;
-
-        transform:
-            translateY(0);
+        transform: translateY(0);
     }
-
 }
-
 
 .hero-label {
 
@@ -1287,11 +1490,10 @@ body.locked {
 
     text-transform: uppercase;
 
-    color: #d8d09f;
+    color: #d8c27d;
 
     margin-bottom: 24px;
 }
-
 
 .names {
 
@@ -1310,7 +1512,6 @@ body.locked {
         0 10px 40px rgba(0,0,0,.4);
 }
 
-
 .names .and {
 
     display: block;
@@ -1326,11 +1527,10 @@ body.locked {
 
     line-height: 1;
 
-    color: #d9cf99;
+    color: #d9c47e;
 
     letter-spacing: 3px;
 }
-
 
 .divider {
 
@@ -1344,11 +1544,10 @@ body.locked {
     background:
         linear-gradient(
             90deg,
-            #d9cf99,
+            #d9c47e,
             transparent
         );
 }
-
 
 .date {
 
@@ -1363,7 +1562,6 @@ body.locked {
 
     color: #f5f0df;
 }
-
 
 .date-caption {
 
@@ -1400,7 +1598,6 @@ body.locked {
     margin-top: 40px;
 }
 
-
 .parent-divider {
 
     width: 1px;
@@ -1410,7 +1607,6 @@ body.locked {
     background:
         rgba(218,208,163,.35);
 }
-
 
 .parent-label {
 
@@ -1425,7 +1621,6 @@ body.locked {
 
     margin-bottom: 7px;
 }
-
 
 .parent-name {
 
@@ -1442,7 +1637,7 @@ body.locked {
 
 
 /* =========================================================
-   SECTION 2
+   SECTION 2 — FAMILY
 ========================================================= */
 
 .family {
@@ -1457,9 +1652,18 @@ body.locked {
         90px 20px;
 
     background:
-        #111610;
+        radial-gradient(
+            ellipse at center,
+            rgba(109,139,96,.10),
+            transparent 45%
+        ),
+        linear-gradient(
+            135deg,
+            #111811,
+            #182118,
+            #101610
+        );
 }
-
 
 .family-art {
 
@@ -1471,7 +1675,6 @@ body.locked {
 
     z-index: 0;
 }
-
 
 .family-art::before {
 
@@ -1525,54 +1728,44 @@ body.locked {
 
         opacity: 1;
     }
-
 }
-
 
 .family-art::after {
 
-    content: "";
+    content: "✿  ❀  ✿";
 
     position: absolute;
 
-    width: 500px;
-    height: 500px;
+    width: 100%;
 
-    border-radius: 50%;
+    text-align: center;
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(184,196,159,.14),
-            transparent 68%
-        );
+    top: 14%;
 
-    filter: blur(30px);
+    font-size: 42px;
 
-    left: 50%;
-    top: 50%;
+    letter-spacing: 45px;
 
-    transform:
-        translate(-50%, -50%);
+    color:
+        rgba(215,185,115,.14);
 
     animation:
-        familyCenterGlow 8s ease-in-out infinite alternate;
+        floralDrift 9s ease-in-out infinite alternate;
 }
 
-@keyframes familyCenterGlow {
+@keyframes floralDrift {
 
     from {
         transform:
-            translate(-50%, -50%)
-            scale(.7);
+            translateX(-20px)
+            rotate(-2deg);
     }
 
     to {
         transform:
-            translate(-50%, -50%)
-            scale(1.2);
+            translateX(20px)
+            rotate(2deg);
     }
-
 }
 
 
@@ -1596,20 +1789,25 @@ body.locked {
     text-align: center;
 
     background:
-        rgba(255,255,255,.045);
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.075),
+            rgba(255,255,255,.025)
+        );
 
     border:
         1px solid
-        rgba(225,218,180,.17);
+        rgba(225,218,180,.20);
 
     box-shadow:
-        0 40px 100px rgba(0,0,0,.25);
+        0 40px 100px rgba(0,0,0,.28),
+        inset 0 0 60px rgba(218,185,112,.025);
 
     backdrop-filter:
-        blur(14px);
+        blur(18px);
 
     -webkit-backdrop-filter:
-        blur(14px);
+        blur(18px);
 
     animation:
         familyCardIn 1.3s both;
@@ -1632,9 +1830,7 @@ body.locked {
             translateY(0)
             scale(1);
     }
-
 }
-
 
 .family-label {
 
@@ -1644,9 +1840,8 @@ body.locked {
 
     text-transform: uppercase;
 
-    color: #cbc49b;
+    color: #d5c27f;
 }
-
 
 .family-title {
 
@@ -1663,7 +1858,6 @@ body.locked {
 
     color: #fffdf3;
 }
-
 
 .family-message {
 
@@ -1708,7 +1902,6 @@ body.locked {
         50px auto 0;
 }
 
-
 .family-parent-divider {
 
     width: 1px;
@@ -1718,7 +1911,6 @@ body.locked {
     background:
         rgba(216,207,164,.30);
 }
-
 
 .family-parent-label {
 
@@ -1733,7 +1925,6 @@ body.locked {
 
     margin-bottom: 10px;
 }
-
 
 .family-parent-name {
 
@@ -1750,7 +1941,7 @@ body.locked {
 
 
 /* =========================================================
-   SECTION 3
+   SECTION 3 — BLESSING
 ========================================================= */
 
 .blessing {
@@ -1767,9 +1958,18 @@ body.locked {
         90px 20px;
 
     background:
-        #101510;
+        radial-gradient(
+            ellipse at center,
+            rgba(158,110,128,.10),
+            transparent 38%
+        ),
+        linear-gradient(
+            145deg,
+            #111610,
+            #1a1a18,
+            #101510
+        );
 }
-
 
 .blessing-art {
 
@@ -1783,6 +1983,10 @@ body.locked {
 }
 
 
+/* =========================================================
+   LARGE FLOWER
+========================================================= */
+
 .blessing-art .flower {
 
     position: absolute;
@@ -1790,13 +1994,13 @@ body.locked {
     left: 50%;
     top: 50%;
 
-    width: 260px;
-    height: 260px;
+    width: 300px;
+    height: 300px;
 
     transform:
         translate(-50%, -50%);
 
-    opacity: .15;
+    opacity: .18;
 
     animation:
         flowerRotate 35s linear infinite;
@@ -1809,9 +2013,7 @@ body.locked {
             translate(-50%, -50%)
             rotate(360deg);
     }
-
 }
-
 
 .blessing-art .flower span {
 
@@ -1820,8 +2022,8 @@ body.locked {
     left: 50%;
     top: 50%;
 
-    width: 100px;
-    height: 170px;
+    width: 105px;
+    height: 180px;
 
     transform-origin:
         50% 100%;
@@ -1829,7 +2031,7 @@ body.locked {
     background:
         linear-gradient(
             180deg,
-            rgba(221,211,164,.5),
+            rgba(230,196,125,.50),
             rgba(164,181,146,.05)
         );
 
@@ -1839,55 +2041,9 @@ body.locked {
     transform:
         translate(-50%, -100%)
         rotate(calc(var(--i) * 45deg));
-}
 
-
-/* =========================================================
-   BLESSING LIGHT
-========================================================= */
-
-.blessing::after {
-
-    content: "";
-
-    position: absolute;
-
-    width: 650px;
-    height: 650px;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(216,205,159,.12),
-            transparent 68%
-        );
-
-    filter: blur(30px);
-
-    animation:
-        blessingLight 10s ease-in-out infinite alternate;
-}
-
-@keyframes blessingLight {
-
-    from {
-        transform:
-            scale(.7)
-            translate3d(-30px,20px,0);
-
-        opacity: .4;
-    }
-
-    to {
-        transform:
-            scale(1.15)
-            translate3d(30px,-20px,0);
-
-        opacity: 1;
-    }
-
+    box-shadow:
+        0 0 20px rgba(221,182,104,.08);
 }
 
 
@@ -1923,9 +2079,7 @@ body.locked {
         transform:
             translateY(0);
     }
-
 }
-
 
 .blessing-label {
 
@@ -1935,9 +2089,8 @@ body.locked {
 
     text-transform: uppercase;
 
-    color: #cbc49b;
+    color: #d5c27f;
 }
-
 
 .blessing-title {
 
@@ -1953,8 +2106,10 @@ body.locked {
     line-height: .88;
 
     color: #fffdf4;
-}
 
+    text-shadow:
+        0 10px 40px rgba(0,0,0,.30);
+}
 
 .blessing-text {
 
@@ -1976,7 +2131,6 @@ body.locked {
         rgba(245,242,229,.76);
 }
 
-
 .blessing-divider {
 
     width: 65px;
@@ -1995,7 +2149,6 @@ body.locked {
         );
 }
 
-
 .final-names {
 
     font-family:
@@ -2009,7 +2162,6 @@ body.locked {
 
     color: #f7f3e7;
 }
-
 
 .final-small {
 
@@ -2036,7 +2188,6 @@ body.locked {
         align-items: flex-end;
     }
 
-
     .couple-illustration {
 
         right: -12%;
@@ -2047,7 +2198,6 @@ body.locked {
 
         opacity: .38;
     }
-
 
     .hero::after {
 
@@ -2062,7 +2212,6 @@ body.locked {
             );
     }
 
-
     .hero-content {
 
         width: 88%;
@@ -2074,13 +2223,11 @@ body.locked {
             80px 0 55px;
     }
 
-
     .names {
 
         font-size:
             clamp(62px, 18vw, 80px);
     }
-
 
     .names .and {
 
@@ -2090,14 +2237,12 @@ body.locked {
             15px 0;
     }
 
-
     .date {
 
         font-size: 18px;
 
         letter-spacing: 2px;
     }
-
 
     .parents {
 
@@ -2109,7 +2254,6 @@ body.locked {
         margin-top: 30px;
     }
 
-
     .parent-divider {
 
         width: 45px;
@@ -2117,13 +2261,11 @@ body.locked {
         height: 1px;
     }
 
-
     .family {
 
         padding:
             70px 16px;
     }
-
 
     .family-card {
 
@@ -2131,18 +2273,15 @@ body.locked {
             48px 22px;
     }
 
-
     .family-title {
 
         font-size: 58px;
     }
 
-
     .family-message {
 
         font-size: 20px;
     }
-
 
     .family-parents {
 
@@ -2151,7 +2290,6 @@ body.locked {
 
         gap: 24px;
     }
-
 
     .family-parent-divider {
 
@@ -2162,23 +2300,25 @@ body.locked {
         justify-self: center;
     }
 
-
     .blessing {
 
         padding:
             70px 16px;
     }
 
-
     .blessing-title {
 
         font-size: 68px;
     }
 
-
     .blessing-text {
 
         font-size: 20px;
+    }
+
+    .floral-orbit {
+        width: 550px;
+        height: 550px;
     }
 
 }
@@ -2246,7 +2386,7 @@ body.locked {
             A Wedding Invitation
         </div>
 
-        <!-- NAMES REMOVED FROM HERE -->
+        <!-- Names intentionally not shown here -->
 
         <div class="opening-description">
             A beautiful beginning awaits
@@ -2265,7 +2405,7 @@ body.locked {
 
                 <div class="letter">
 
-                    <div class="letter-content letter-reveal">
+                    <div class="letter-content">
 
                         <div class="letter-small">
                             You Are Invited To
@@ -2310,15 +2450,18 @@ body.locked {
 >
 
 
-    <div
-        class="star-field"
-        id="starField"
-    ></div>
+    <!-- =====================================================
+         NEW ANIMATED THEME LAYERS
+    ====================================================== -->
 
-    <div
-        class="petal-field"
-        id="petalField"
-    ></div>
+    <div class="flower-field" id="flowerField"></div>
+
+    <div class="heart-field" id="heartField"></div>
+
+    <div class="dust-field" id="dustField"></div>
+
+    <div class="floral-orbit"></div>
+
 
 
     <!-- =====================================================
@@ -2326,6 +2469,7 @@ body.locked {
     ====================================================== -->
 
     <section class="section hero">
+
 
         <div class="hero-art">
 
@@ -2387,7 +2531,8 @@ body.locked {
                     </div>
 
                     <div class="parent-name">
-                        Banu & Ali Akbar Basha
+                        Banu<br>
+                        Ali Akbar Basha
                     </div>
 
                 </div>
@@ -2423,6 +2568,7 @@ body.locked {
 
     <section class="section family">
 
+
         <div class="family-art"></div>
 
 
@@ -2451,6 +2597,7 @@ body.locked {
 
             <div class="family-parents">
 
+
                 <div>
 
                     <div class="family-parent-label">
@@ -2458,7 +2605,8 @@ body.locked {
                     </div>
 
                     <div class="family-parent-name">
-                        Banu & Ali Akbar Basha
+                        Banu<br>
+                        Ali Akbar Basha
                     </div>
 
                 </div>
@@ -2480,6 +2628,7 @@ body.locked {
 
                 </div>
 
+
             </div>
 
         </div>
@@ -2493,6 +2642,7 @@ body.locked {
     ====================================================== -->
 
     <section class="section blessing">
+
 
         <div class="blessing-art">
 
@@ -2581,61 +2731,81 @@ const seal =
 const invitation =
     document.getElementById("invitation");
 
-const starField =
-    document.getElementById("starField");
+const flowerField =
+    document.getElementById("flowerField");
 
-const petalField =
-    document.getElementById("petalField");
+const heartField =
+    document.getElementById("heartField");
+
+const dustField =
+    document.getElementById("dustField");
 
 
 let opened = false;
 
 
 /* =========================================================
-   CREATE STARS
+   CREATE FLOWERS
 ========================================================= */
 
-function createStars() {
+function createFlowers() {
 
-    for (
-        let i = 0;
-        i < 80;
-        i++
-    ) {
+    const flowerSymbols = [
+        "✿",
+        "❀",
+        "✽",
+        "✾"
+    ];
 
-        const star =
+    for (let i = 0; i < 18; i++) {
+
+        const flower =
             document.createElement("div");
 
-        star.className = "star";
+        flower.className =
+            "floating-flower";
 
+        flower.dataset.symbol =
+            flowerSymbols[
+                Math.floor(
+                    Math.random() *
+                    flowerSymbols.length
+                )
+            ];
 
-        star.style.left =
-            Math.random() * 100 + "%";
+        flower.style.setProperty(
+            "--flower-size",
+            `${35 + Math.random() * 75}px`
+        );
 
-        star.style.top =
-            Math.random() * 100 + "%";
+        flower.style.setProperty(
+            "--left",
+            `${Math.random() * 100}%`
+        );
 
+        flower.style.setProperty(
+            "--top",
+            `${Math.random() * 100}%`
+        );
 
-        star.style.setProperty(
+        flower.style.setProperty(
+            "--opacity",
+            `${0.15 + Math.random() * 0.35}`
+        );
+
+        flower.style.setProperty(
             "--duration",
-            (2 + Math.random() * 5) + "s"
+            `${8 + Math.random() * 12}s`
         );
 
-
-        star.style.setProperty(
+        flower.style.setProperty(
             "--delay",
-            (Math.random() * 5) + "s"
+            `${-Math.random() * 12}s`
         );
 
-
-        star.style.width =
-            (1 + Math.random() * 3) + "px";
-
-        star.style.height =
-            star.style.width;
-
-
-        starField.appendChild(star);
+        flowerField.appendChild(
+            flower
+        );
 
     }
 
@@ -2643,56 +2813,110 @@ function createStars() {
 
 
 /* =========================================================
-   CREATE PETALS
+   CREATE HEARTS
 ========================================================= */
 
-function createPetals() {
+function createHearts() {
 
-    for (
-        let i = 0;
-        i < 22;
-        i++
-    ) {
+    for (let i = 0; i < 18; i++) {
 
-        const petal =
+        const heart =
             document.createElement("div");
 
-        petal.className = "petal";
+        heart.className =
+            "floating-heart";
 
+        heart.textContent =
+            Math.random() > .5
+                ? "♡"
+                : "♥";
 
-        petal.style.left =
-            Math.random() * 100 + "%";
+        heart.style.setProperty(
+            "--left",
+            `${Math.random() * 100}%`
+        );
 
+        heart.style.setProperty(
+            "--size",
+            `${10 + Math.random() * 18}px`
+        );
 
-        petal.style.setProperty(
+        heart.style.setProperty(
             "--duration",
-            (12 + Math.random() * 15) + "s"
+            `${13 + Math.random() * 12}s`
         );
 
-
-        petal.style.setProperty(
+        heart.style.setProperty(
             "--delay",
-            (-Math.random() * 20) + "s"
+            `${-Math.random() * 20}s`
         );
 
-
-        petal.style.setProperty(
-            "--sway",
-            (-120 + Math.random() * 240) + "px"
+        heart.style.setProperty(
+            "--x1",
+            `${-100 + Math.random() * 200}px`
         );
 
-
-        petal.style.setProperty(
-            "--sway2",
-            (-180 + Math.random() * 360) + "px"
+        heart.style.setProperty(
+            "--x2",
+            `${-160 + Math.random() * 320}px`
         );
 
+        heart.style.setProperty(
+            "--x3",
+            `${-220 + Math.random() * 440}px`
+        );
 
-        petal.style.transform =
-            `scale(${.5 + Math.random() * .8})`;
+        heartField.appendChild(
+            heart
+        );
+
+    }
+
+}
 
 
-        petalField.appendChild(petal);
+/* =========================================================
+   CREATE GOLD DUST
+========================================================= */
+
+function createDust() {
+
+    for (let i = 0; i < 75; i++) {
+
+        const dust =
+            document.createElement("div");
+
+        dust.className =
+            "dust";
+
+        dust.style.setProperty(
+            "--size",
+            `${1 + Math.random() * 3}px`
+        );
+
+        dust.style.setProperty(
+            "--left",
+            `${Math.random() * 100}%`
+        );
+
+        dust.style.setProperty(
+            "--top",
+            `${Math.random() * 100}%`
+        );
+
+        dust.style.setProperty(
+            "--duration",
+            `${2 + Math.random() * 5}s`
+        );
+
+        dust.style.setProperty(
+            "--delay",
+            `${-Math.random() * 5}s`
+        );
+
+        dustField.appendChild(
+            dust
+        );
 
     }
 
@@ -2813,12 +3037,8 @@ function openInvitation() {
     opened = true;
 
 
-    /* Stop seal animation */
-
     seal.style.animation = "none";
 
-
-    /* Break the wax seal */
 
     seal.animate(
 
@@ -2854,8 +3074,6 @@ function openInvitation() {
     );
 
 
-    /* Open envelope */
-
     setTimeout(() => {
 
         opening.classList.add(
@@ -2865,16 +3083,12 @@ function openInvitation() {
     }, 220);
 
 
-    /* Particle burst */
-
     setTimeout(() => {
 
         createExplosion();
 
     }, 320);
 
-
-    /* Reveal invitation */
 
     setTimeout(() => {
 
@@ -2883,9 +3097,15 @@ function openInvitation() {
         );
 
 
-        createStars();
+        /*
+           START NEW FLOWER / HEART THEME
+        */
 
-        createPetals();
+        createFlowers();
+
+        createHearts();
+
+        createDust();
 
 
         document.body.classList.remove(
