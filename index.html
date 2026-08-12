@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -286,6 +285,8 @@ body.locked {
 
     background: #fffdf8;
 
+    opacity: 0;
+
     box-shadow:
         0 12px 25px rgba(30,34,29,.12);
 
@@ -457,6 +458,7 @@ body.locked {
 
 .opening.opened .letter {
     transform: translateY(-25%);
+    opacity: 1;
 }
 
 .opening.opened .seal {
@@ -2342,10 +2344,11 @@ body.locked {
 }
 
 </style>
-
 </head>
 
+
 <body class="locked">
+
 
 <!-- =========================================================
      OPENING SCREEN
@@ -2353,59 +2356,60 @@ body.locked {
 
 <div class="opening" id="opening">
 
-<div class="opening-content">
+    <div class="opening-content">
 
-    <div class="opening-label">
-        A Wedding Invitation
-    </div>
+        <div class="opening-label">
+            A Wedding Invitation
+        </div>
 
-    <div class="opening-description">
-        A beautiful beginning awaits
-    </div>
+        <div class="opening-description">
+            A beautiful beginning awaits
+        </div>
 
-    <div class="envelope-area">
+        <div class="envelope-area">
 
-        <div
-            class="envelope"
-            id="envelope"
-            tabindex="0"
-            role="button"
-            aria-label="Open wedding invitation"
-        >
+            <div
+                class="envelope"
+                id="envelope"
+                tabindex="0"
+                role="button"
+                aria-label="Open wedding invitation"
+            >
 
-            <div class="letter">
+                <div class="letter">
 
-                <div class="letter-content">
+                    <div class="letter-content">
 
-                    <div class="letter-small">
-                        You Are Invited
-                    </div>
+                        <div class="letter-small">
+                            You Are Invited
+                        </div>
 
-                    <div class="letter-names">
-                        Aneesha & Dhanu
+                        <div class="letter-names">
+                            Aneesha & Dhanu
+                        </div>
+
                     </div>
 
                 </div>
 
+                <div class="envelope-body"></div>
+
+                <div class="flap"></div>
+
+                <div class="seal" id="seal"></div>
+
             </div>
 
-            <div class="envelope-body"></div>
+            <div class="tap-text">
+                Tap the seal to open
+            </div>
 
-            <div class="flap"></div>
-
-            <div class="seal" id="seal"></div>
-
-        </div>
-
-        <div class="tap-text">
-            Tap the seal to open
         </div>
 
     </div>
 
 </div>
 
-</div>
 
 <!-- =========================================================
      INVITATION
@@ -2416,38 +2420,385 @@ body.locked {
     id="invitation"
 >
 
-<div
-    class="star-field"
-    id="starField"
-></div>
 
-<div
-    class="petal-field"
-    id="petalField"
-></div>
+    <div
+        class="star-field"
+        id="starField"
+    ></div>
 
-
-<!-- =====================================================
-     SECTION 1 — NEW ANIMATED GARDEN THEME
-====================================================== -->
-
-<section class="section hero">
+    <div
+        class="petal-field"
+        id="petalField"
+    ></div>
 
 
-    <div class="hero-art">
+    <!-- =====================================================
+         SECTION 1 — NEW ANIMATED GARDEN THEME
+    ====================================================== -->
 
-        <!-- FLOWER GARDEN -->
+    <section class="section hero">
 
-        <div class="flower-garden">
+
+        <div class="hero-art">
+
+            <!-- FLOWER GARDEN -->
+
+            <div class="flower-garden">
+
+                <div
+                    class="garden-flower"
+                    style="
+                        left:5%;
+                        top:14%;
+                        --flower-speed:5s;
+                    "
+                >
+                    <span style="--i:0"></span>
+                    <span style="--i:1"></span>
+                    <span style="--i:2"></span>
+                    <span style="--i:3"></span>
+                    <span style="--i:4"></span>
+                    <span style="--i:5"></span>
+                    <span style="--i:6"></span>
+                    <span style="--i:7"></span>
+                </div>
+
+
+                <div
+                    class="garden-flower"
+                    style="
+                        right:8%;
+                        top:18%;
+                        --flower-speed:6s;
+                    "
+                >
+                    <span style="--i:0"></span>
+                    <span style="--i:1"></span>
+                    <span style="--i:2"></span>
+                    <span style="--i:3"></span>
+                    <span style="--i:4"></span>
+                    <span style="--i:5"></span>
+                    <span style="--i:6"></span>
+                    <span style="--i:7"></span>
+                </div>
+
+
+                <div
+                    class="garden-flower"
+                    style="
+                        left:18%;
+                        bottom:5%;
+                        transform:scale(.75);
+                        --flower-speed:7s;
+                    "
+                >
+                    <span style="--i:0"></span>
+                    <span style="--i:1"></span>
+                    <span style="--i:2"></span>
+                    <span style="--i:3"></span>
+                    <span style="--i:4"></span>
+                    <span style="--i:5"></span>
+                    <span style="--i:6"></span>
+                    <span style="--i:7"></span>
+                </div>
+
+
+                <div
+                    class="garden-flower"
+                    style="
+                        right:17%;
+                        bottom:7%;
+                        transform:scale(.8);
+                        --flower-speed:5.5s;
+                    "
+                >
+                    <span style="--i:0"></span>
+                    <span style="--i:1"></span>
+                    <span style="--i:2"></span>
+                    <span style="--i:3"></span>
+                    <span style="--i:4"></span>
+                    <span style="--i:5"></span>
+                    <span style="--i:6"></span>
+                    <span style="--i:7"></span>
+                </div>
+
+            </div>
+
+
+            <!-- VINES -->
+
+            <div class="vine left"></div>
+
+            <div class="vine right"></div>
+
+
+            <!-- FIREFLIES -->
+
+            <div class="firefly-field">
+
+                <span
+                    class="firefly"
+                    style="
+                        left:12%;
+                        top:32%;
+                        --fly-time:5s;
+                        --fly-delay:0s;
+                        --fly-x:40px;
+                        --fly-y:-60px;
+                    "
+                ></span>
+
+                <span
+                    class="firefly"
+                    style="
+                        left:24%;
+                        top:60%;
+                        --fly-time:7s;
+                        --fly-delay:1s;
+                        --fly-x:-50px;
+                        --fly-y:-90px;
+                    "
+                ></span>
+
+                <span
+                    class="firefly"
+                    style="
+                        left:70%;
+                        top:28%;
+                        --fly-time:6s;
+                        --fly-delay:2s;
+                        --fly-x:60px;
+                        --fly-y:70px;
+                    "
+                ></span>
+
+                <span
+                    class="firefly"
+                    style="
+                        left:82%;
+                        top:52%;
+                        --fly-time:8s;
+                        --fly-delay:1.5s;
+                        --fly-x:-60px;
+                        --fly-y:-80px;
+                    "
+                ></span>
+
+                <span
+                    class="firefly"
+                    style="
+                        left:55%;
+                        top:72%;
+                        --fly-time:5.5s;
+                        --fly-delay:3s;
+                        --fly-x:50px;
+                        --fly-y:-50px;
+                    "
+                ></span>
+
+            </div>
+
+
+            <!-- BUTTERFLIES -->
 
             <div
-                class="garden-flower"
+                class="butterfly"
                 style="
-                    left:5%;
-                    top:14%;
-                    --flower-speed:5s;
+                    left:17%;
+                    top:28%;
+                    --butterfly-time:14s;
+                    --butterfly-delay:1s;
                 "
-            >
+            ></div>
+
+
+            <div
+                class="butterfly"
+                style="
+                    right:18%;
+                    top:58%;
+                    --butterfly-time:17s;
+                    --butterfly-delay:4s;
+                    transform:scale(.8);
+                "
+            ></div>
+
+
+            <div
+                class="butterfly"
+                style="
+                    left:62%;
+                    top:17%;
+                    --butterfly-time:19s;
+                    --butterfly-delay:7s;
+                    transform:scale(.65);
+                "
+            ></div>
+
+
+            <!-- BOTTOM FLOWERS -->
+
+            <div class="flower-border"></div>
+
+        </div>
+
+
+        <!-- =================================================
+             HERO CONTENT
+        ================================================== -->
+
+        <div class="hero-content">
+
+            <div class="hero-label">
+                You Are Invited To Celebrate
+            </div>
+
+
+            <div class="names">
+
+                Aneesha
+
+                <span class="and">
+                    &
+                </span>
+
+                Dhanu
+
+            </div>
+
+
+            <div class="divider"></div>
+
+
+            <div class="date">
+                15 · 16 AUGUST 2026
+            </div>
+
+
+            <div class="date-caption">
+                Invite you to celebrate their journey together
+            </div>
+
+
+            <div class="parents">
+
+                <div class="parent">
+
+                    <div class="parent-label">
+                        Bride's Parents
+                    </div>
+
+                    <div class="parent-name">
+                        Banu & Ali Akbar Basha
+                    </div>
+
+                </div>
+
+
+                <div class="parent-divider"></div>
+
+
+                <div class="parent">
+
+                    <div class="parent-label">
+                        Groom's Parents
+                    </div>
+
+                    <div class="parent-name">
+                        Mr. & Mrs.<br>
+                        Groom's Parents
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SECTION 2
+    ====================================================== -->
+
+    <section class="section family">
+
+        <div class="family-art"></div>
+
+
+        <div class="family-card">
+
+            <div class="family-label">
+                With The Blessings Of Our Families
+            </div>
+
+
+            <div class="family-title">
+                Two Families,<br>
+                One Beginning
+            </div>
+
+
+            <div class="family-message">
+
+                With the love and blessings of our
+                families, we invite you to join us
+                as Aneesha and Dhanu begin a beautiful
+                new chapter together.
+
+            </div>
+
+
+            <div class="family-parents">
+
+                <div>
+
+                    <div class="family-parent-label">
+                        Bride's Family
+                    </div>
+
+                    <div class="family-parent-name">
+                        Banu & Ali Akbar Basha
+                    </div>
+
+                </div>
+
+
+                <div class="family-parent-divider"></div>
+
+
+                <div>
+
+                    <div class="family-parent-label">
+                        Groom's Family
+                    </div>
+
+                    <div class="family-parent-name">
+                        Mr. & Mrs.<br>
+                        Groom's Parents
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SECTION 3
+    ====================================================== -->
+
+    <section class="section blessing">
+
+
+        <div class="blessing-art">
+
+            <div class="flower">
+
                 <span style="--i:0"></span>
                 <span style="--i:1"></span>
                 <span style="--i:2"></span>
@@ -2456,26 +2807,400 @@ body.locked {
                 <span style="--i:5"></span>
                 <span style="--i:6"></span>
                 <span style="--i:7"></span>
+
+            </div>
+
+        </div>
+
+
+        <div class="blessing-content">
+
+            <div class="blessing-label">
+                A Blessing For Their Journey
             </div>
 
 
-            <div
-                class="garden-flower"
-                style="
-                    right:8%;
-                    top:18%;
-                    --flower-speed:6s;
-                "
-            >
-                <span style="--i:0"></span>
-                <span style="--i:1"></span>
-                <span style="--i:2"></span>
-                <span style="--i:3"></span>
-                <span style="--i:4"></span>
-                <span style="--i:5"></span>
-                <span style="--i:6"></span>
-                <span style="--i:7"></span>
+            <div class="blessing-title">
+                May Love<br>
+                Lead The Way
             </div>
 
 
-            <div
+            <div class="blessing-text">
+
+                May their hearts always find happiness
+                in one another, their home be filled
+                with laughter, and their journey be
+                blessed with love, understanding
+                and togetherness.
+
+                <br><br>
+
+                May they walk hand in hand through
+                every season of life, surrounded by
+                the love and blessings of their families.
+
+            </div>
+
+
+            <div class="blessing-divider"></div>
+
+
+            <div class="final-names">
+                Aneesha & Dhanu
+            </div>
+
+
+            <div class="final-small">
+                With Love · With Family · With Blessings
+            </div>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<script>
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const opening =
+    document.getElementById("opening");
+
+const envelope =
+    document.getElementById("envelope");
+
+const seal =
+    document.getElementById("seal");
+
+const invitation =
+    document.getElementById("invitation");
+
+const starField =
+    document.getElementById("starField");
+
+const petalField =
+    document.getElementById("petalField");
+
+
+let opened = false;
+
+
+/* =========================================================
+   CREATE STARS
+========================================================= */
+
+function createStars() {
+
+    for (
+        let i = 0;
+        i < 80;
+        i++
+    ) {
+
+        const star =
+            document.createElement("div");
+
+        star.className = "star";
+
+        star.style.left =
+            Math.random() * 100 + "%";
+
+        star.style.top =
+            Math.random() * 100 + "%";
+
+        star.style.setProperty(
+            "--duration",
+            (2 + Math.random() * 5) + "s"
+        );
+
+        star.style.setProperty(
+            "--delay",
+            (Math.random() * 5) + "s"
+        );
+
+        star.style.width =
+            (1 + Math.random() * 3) + "px";
+
+        star.style.height =
+            star.style.width;
+
+        starField.appendChild(star);
+
+    }
+
+}
+
+
+/* =========================================================
+   CREATE PETALS
+========================================================= */
+
+function createPetals() {
+
+    for (
+        let i = 0;
+        i < 30;
+        i++
+    ) {
+
+        const petal =
+            document.createElement("div");
+
+        petal.className = "petal";
+
+        petal.style.left =
+            Math.random() * 100 + "%";
+
+        petal.style.setProperty(
+            "--duration",
+            (12 + Math.random() * 15) + "s"
+        );
+
+        petal.style.setProperty(
+            "--delay",
+            (-Math.random() * 20) + "s"
+        );
+
+        petal.style.setProperty(
+            "--sway",
+            (-120 + Math.random() * 240) + "px"
+        );
+
+        petal.style.setProperty(
+            "--sway2",
+            (-180 + Math.random() * 360) + "px"
+        );
+
+        petal.style.transform =
+            `scale(${.5 + Math.random() * .8})`;
+
+        petalField.appendChild(petal);
+
+    }
+
+}
+
+
+/* =========================================================
+   OPENING PARTICLE BURST
+========================================================= */
+
+function createExplosion() {
+
+    const symbols = [
+        "✦",
+        "✧",
+        "·",
+        "♡",
+        "❋",
+        "✿"
+    ];
+
+    for (
+        let i = 0;
+        i < 65;
+        i++
+    ) {
+
+        const particle =
+            document.createElement("div");
+
+        particle.className =
+            "particle";
+
+        particle.textContent =
+            symbols[
+                Math.floor(
+                    Math.random() *
+                    symbols.length
+                )
+            ];
+
+        const angle =
+            Math.random() *
+            Math.PI * 2;
+
+        const distance =
+            120 +
+            Math.random() * 500;
+
+        const x =
+            Math.cos(angle) *
+            distance;
+
+        const y =
+            Math.sin(angle) *
+            distance;
+
+        particle.style.setProperty(
+            "--x",
+            `${x}px`
+        );
+
+        particle.style.setProperty(
+            "--y",
+            `${y}px`
+        );
+
+        particle.style.setProperty(
+            "--scale",
+            `${.4 + Math.random() * 1.2}`
+        );
+
+        particle.style.setProperty(
+            "--rotation",
+            `${Math.random() * 720 - 360}deg`
+        );
+
+        particle.style.fontSize =
+            `${10 + Math.random() * 20}px`;
+
+        document.body.appendChild(
+            particle
+        );
+
+        setTimeout(
+            () => particle.remove(),
+            2200
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   OPEN INVITATION
+========================================================= */
+
+function openInvitation() {
+
+    if (opened) {
+        return;
+    }
+
+    opened = true;
+
+
+    seal.style.animation = "none";
+
+
+    seal.animate(
+
+        [
+            {
+                transform:
+                    "translate(-50%, -50%) scale(1)"
+            },
+
+            {
+                transform:
+                    "translate(-50%, -50%) scale(1.18) rotate(-10deg)"
+            },
+
+            {
+                transform:
+                    "translate(-50%, -50%) scale(0) rotate(35deg)",
+
+                opacity: 0
+            }
+        ],
+
+        {
+            duration: 650,
+
+            easing:
+                "cubic-bezier(.2,.8,.2,1)",
+
+            fill:
+                "forwards"
+        }
+
+    );
+
+
+    setTimeout(() => {
+
+        opening.classList.add(
+            "opened"
+        );
+
+    }, 220);
+
+
+    setTimeout(() => {
+
+        createExplosion();
+
+    }, 320);
+
+
+    setTimeout(() => {
+
+        invitation.classList.add(
+            "visible"
+        );
+
+        createStars();
+
+        createPetals();
+
+        document.body.classList.remove(
+            "locked"
+        );
+
+
+        setTimeout(() => {
+
+            opening.style.display =
+                "none";
+
+        }, 1600);
+
+    }, 850);
+
+}
+
+
+/* =========================================================
+   CLICK
+========================================================= */
+
+envelope.addEventListener(
+    "click",
+    openInvitation
+);
+
+
+/* =========================================================
+   KEYBOARD
+========================================================= */
+
+envelope.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "Enter" ||
+            event.key === " "
+        ) {
+
+            event.preventDefault();
+
+            openInvitation();
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
