@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -40,13 +41,12 @@ body.locked {
 
 
 /* =========================================================
-   OPENING SCREEN
+   OPENING SCREEN — UNCHANGED
 ========================================================= */
 
 .opening {
     position: fixed;
     inset: 0;
-
     z-index: 1000;
 
     display: flex;
@@ -73,11 +73,6 @@ body.locked {
     visibility: hidden;
     pointer-events: none;
 }
-
-
-/* =========================================================
-   OPENING LIGHT
-========================================================= */
 
 .opening::before {
     content: "";
@@ -115,11 +110,6 @@ body.locked {
     }
 }
 
-
-/* =========================================================
-   OPENING CONTENT
-========================================================= */
-
 .opening-content {
     position: relative;
     z-index: 5;
@@ -138,12 +128,19 @@ body.locked {
     animation: fadeUp 1s .2s both;
 }
 
+.opening-names {
+    margin-top: 12px;
 
-/*
-   IMPORTANT:
-   Bride and groom names have intentionally been removed
-   from the landing page.
-*/
+    font-family: "Italianno", cursive;
+
+    font-size: clamp(65px, 13vw, 105px);
+
+    line-height: .9;
+
+    color: #292d27;
+
+    animation: fadeUp 1s .35s both;
+}
 
 .opening-description {
     margin-top: 15px;
@@ -154,7 +151,7 @@ body.locked {
 
     color: #777a71;
 
-    animation: fadeUp 1s .35s both;
+    animation: fadeUp 1s .5s both;
 }
 
 @keyframes fadeUp {
@@ -170,11 +167,6 @@ body.locked {
     }
 
 }
-
-
-/* =========================================================
-   ENVELOPE
-========================================================= */
 
 .envelope-area {
     width: min(460px, 88vw);
@@ -231,11 +223,6 @@ body.locked {
 
 }
 
-
-/* =========================================================
-   ENVELOPE BODY
-========================================================= */
-
 .envelope-body {
     position: absolute;
     inset: 0;
@@ -282,11 +269,6 @@ body.locked {
         );
 }
 
-
-/* =========================================================
-   LETTER
-========================================================= */
-
 .letter {
     position: absolute;
 
@@ -307,13 +289,7 @@ body.locked {
     box-shadow:
         0 12px 25px rgba(30,34,29,.12);
 
-    /*
-       IMPORTANT:
-       Keep the invitation completely hidden
-       until the seal is opened.
-    */
-
-    transform: translateY(100%);
+    transform: translateY(38%);
 
     transition:
         transform 1.4s
@@ -341,11 +317,6 @@ body.locked {
     color: #30342e;
 }
 
-
-/* =========================================================
-   ENVELOPE FLAP
-========================================================= */
-
 .flap {
     position: absolute;
 
@@ -361,7 +332,7 @@ body.locked {
         linear-gradient(
             135deg,
             #f8f5ed,
-            #ddddD4
+            #ddddd4
         );
 
     clip-path:
@@ -377,11 +348,6 @@ body.locked {
         transform 1.3s
         cubic-bezier(.2,.8,.2,1);
 }
-
-
-/* =========================================================
-   SEAL
-========================================================= */
 
 .seal {
     position: absolute;
@@ -406,9 +372,9 @@ body.locked {
     background:
         radial-gradient(
             circle at 30% 25%,
-            #d5d1aa,
-            #a9a983 55%,
-            #7f8266
+            #b98c5b,
+            #875c39 55%,
+            #5d3d27
         );
 
     border:
@@ -417,7 +383,8 @@ body.locked {
     box-shadow:
         0 10px 25px rgba(30,34,29,.25),
         inset 0 2px 5px rgba(255,255,255,.35),
-        0 0 25px rgba(158,162,120,.25);
+        inset 0 -5px 10px rgba(45,25,10,.35),
+        0 0 25px rgba(139,91,50,.25);
 
     animation:
         sealPulse 2.4s ease-in-out infinite;
@@ -446,13 +413,13 @@ body.locked {
     0%, 100% {
         box-shadow:
             0 10px 25px rgba(30,34,29,.25),
-            0 0 12px rgba(158,162,120,.15);
+            0 0 12px rgba(139,91,50,.15);
     }
 
     50% {
         box-shadow:
             0 10px 25px rgba(30,34,29,.25),
-            0 0 35px rgba(158,162,120,.45);
+            0 0 35px rgba(139,91,50,.45);
     }
 
 }
@@ -484,21 +451,9 @@ body.locked {
 
 }
 
-
-/* =========================================================
-   OPENING STATE
-========================================================= */
-
 .opening.opened .flap {
     transform: rotateX(180deg);
 }
-
-
-/*
-   IMPORTANT:
-   The invitation letter is revealed only AFTER
-   the seal is opened.
-*/
 
 .opening.opened .letter {
     transform: translateY(-25%);
@@ -532,7 +487,7 @@ body.locked {
 
     pointer-events: none;
 
-    color: #c9c18f;
+    color: #c89a67;
 
     animation:
         particleExplosion 1.8s ease-out forwards;
@@ -561,7 +516,7 @@ body.locked {
 
 
 /* =========================================================
-   MAIN INVITATION
+   INVITATION
 ========================================================= */
 
 .invitation {
@@ -570,10 +525,9 @@ body.locked {
     opacity: 0;
     visibility: hidden;
 
-    background:
-        #111610;
+    background: #f7f0e4;
 
-    color: #f7f3e8;
+    color: #382d25;
 
     transition:
         opacity 1.5s ease,
@@ -587,7 +541,7 @@ body.locked {
 
 
 /* =========================================================
-   GLOBAL MOVING LIGHT
+   GLOBAL ATMOSPHERE
 ========================================================= */
 
 .invitation::before {
@@ -606,26 +560,26 @@ body.locked {
 
         radial-gradient(
             circle at 15% 20%,
-            rgba(220,209,157,.13),
+            rgba(239,192,134,.16),
             transparent 22%
         ),
 
         radial-gradient(
             circle at 80% 70%,
-            rgba(174,194,155,.12),
+            rgba(214,159,153,.14),
             transparent 24%
         ),
 
         radial-gradient(
             circle at 50% 45%,
-            rgba(255,255,255,.035),
+            rgba(255,255,255,.25),
             transparent 30%
         );
 
     filter: blur(35px);
 
     animation:
-        globalLight 20s ease-in-out infinite alternate;
+        globalLight 18s ease-in-out infinite alternate;
 }
 
 @keyframes globalLight {
@@ -652,7 +606,7 @@ body.locked {
 
 
 /* =========================================================
-   GLOBAL STAR FIELD
+   GLOBAL STARS
 ========================================================= */
 
 .star-field {
@@ -675,7 +629,7 @@ body.locked {
 
     border-radius: 50%;
 
-    background: #e8dfb4;
+    background: #d4a76c;
 
     opacity: .35;
 
@@ -703,7 +657,7 @@ body.locked {
 
 
 /* =========================================================
-   FLOATING PETALS
+   GLOBAL PETALS
 ========================================================= */
 
 .petal-field {
@@ -732,8 +686,8 @@ body.locked {
     background:
         linear-gradient(
             135deg,
-            rgba(239,224,183,.65),
-            rgba(177,191,155,.30)
+            rgba(205,137,142,.65),
+            rgba(239,190,161,.38)
         );
 
     filter: blur(.2px);
@@ -811,7 +765,8 @@ body.locked {
 
 
 /* =========================================================
-   SECTION 1 — CINEMATIC COUPLE
+   NEW FIRST INTERNAL THEME
+   CINEMATIC GARDEN WEDDING
 ========================================================= */
 
 .hero {
@@ -821,8 +776,20 @@ body.locked {
     align-items: center;
 
     background:
-        #101510;
+        linear-gradient(
+            135deg,
+            #fbf5e9 0%,
+            #f4e5d2 45%,
+            #ead6c4 100%
+        );
+
+    color: #3d3029;
 }
+
+
+/* =========================================================
+   GARDEN BACKGROUND
+========================================================= */
 
 .hero-art {
 
@@ -833,251 +800,550 @@ body.locked {
     z-index: 0;
 
     overflow: hidden;
+
+    background:
+
+        radial-gradient(
+            ellipse at 50% 25%,
+            rgba(255,255,255,.95),
+            transparent 38%
+        ),
+
+        radial-gradient(
+            ellipse at 15% 85%,
+            rgba(220,157,149,.28),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            ellipse at 90% 75%,
+            rgba(207,163,111,.25),
+            transparent 35%
+        );
 }
 
-.hero-art .moon {
+
+/* =========================================================
+   WARM MOVING SUNLIGHT
+========================================================= */
+
+.hero-art::before {
+
+    content: "";
 
     position: absolute;
 
-    width: 58vw;
-    height: 58vw;
+    width: 65vw;
+    height: 65vw;
 
-    max-width: 700px;
-    max-height: 700px;
+    max-width: 850px;
+    max-height: 850px;
+
+    left: 50%;
+    top: 35%;
+
+    transform:
+        translate(-50%, -50%);
 
     border-radius: 50%;
 
-    right: -10%;
-    top: 8%;
-
     background:
         radial-gradient(
-            circle at 35% 30%,
-            #fffdf1 0%,
-            #d9d2a4 38%,
-            #8d9679 70%,
-            transparent 72%
+            circle,
+            rgba(255,220,169,.42),
+            rgba(255,235,201,.12) 38%,
+            transparent 70%
         );
 
-    opacity: .32;
-
-    filter: blur(.5px);
+    filter: blur(12px);
 
     animation:
-        moonFloat 12s ease-in-out infinite alternate;
+        gardenSun 10s ease-in-out infinite alternate;
 }
 
-@keyframes moonFloat {
+@keyframes gardenSun {
 
     from {
         transform:
-            translate3d(0,0,0)
-            scale(1);
+            translate(-55%, -48%)
+            scale(.82);
+        opacity: .55;
     }
 
     to {
         transform:
-            translate3d(-30px,20px,0)
-            scale(1.05);
+            translate(-45%, -52%)
+            scale(1.12);
+        opacity: 1;
     }
-
 }
 
-.hero-art .horizon {
+
+/* =========================================================
+   SOFT CLOUD / LIGHT LAYERS
+========================================================= */
+
+.hero-art::after {
+
+    content: "";
 
     position: absolute;
 
-    left: -10%;
-    right: -10%;
-    bottom: -20%;
-
-    height: 65%;
+    inset: -20%;
 
     background:
+
         radial-gradient(
-            ellipse at center,
-            rgba(182,194,158,.24),
-            transparent 65%
+            ellipse at 20% 30%,
+            rgba(255,255,255,.6),
+            transparent 25%
+        ),
+
+        radial-gradient(
+            ellipse at 80% 60%,
+            rgba(255,255,255,.38),
+            transparent 28%
         );
 
     filter: blur(25px);
 
     animation:
-        horizonGlow 8s ease-in-out infinite alternate;
+        cloudMove 16s ease-in-out infinite alternate;
 }
 
-@keyframes horizonGlow {
+@keyframes cloudMove {
 
     from {
-        transform: scale(.9);
-        opacity: .5;
+        transform:
+            translateX(-5%)
+            translateY(2%);
     }
 
     to {
-        transform: scale(1.1);
-        opacity: 1;
+        transform:
+            translateX(5%)
+            translateY(-3%);
     }
-
 }
 
 
 /* =========================================================
-   ILLUSTRATED COUPLE
+   FLOWER GARDEN
 ========================================================= */
 
-.couple-illustration {
+.flower-garden {
 
     position: absolute;
 
-    z-index: 2;
+    inset: 0;
 
-    right:
-        clamp(4%, 9vw, 12%);
-
-    bottom: 0;
-
-    width:
-        clamp(300px, 40vw, 600px);
-
-    height:
-        clamp(500px, 80vh, 760px);
-
-    opacity: .8;
+    z-index: 1;
 
     pointer-events: none;
 }
 
-.bride {
+
+/* individual flowers */
+
+.garden-flower {
 
     position: absolute;
 
-    bottom: 0;
+    width: 100px;
+    height: 100px;
 
-    left: 22%;
+    animation:
+        flowerFloat
+        var(--flower-speed)
+        ease-in-out
+        infinite
+        alternate;
+}
 
-    width: 35%;
+@keyframes flowerFloat {
 
-    height: 78%;
+    from {
+        transform:
+            translateY(0)
+            rotate(-3deg);
+    }
+
+    to {
+        transform:
+            translateY(-18px)
+            rotate(5deg);
+    }
+}
+
+
+/* petals */
+
+.garden-flower span {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 32px;
+    height: 52px;
+
+    border-radius:
+        70% 30% 70% 30%;
+
+    transform-origin:
+        50% 100%;
 
     background:
         linear-gradient(
-            135deg,
-            rgba(245,240,220,.95),
-            rgba(185,190,161,.75)
+            145deg,
+            #fff8ed,
+            #d99898
         );
 
-    clip-path:
-        polygon(
-            48% 0%,
-            63% 3%,
-            69% 12%,
-            68% 24%,
-            74% 39%,
-            86% 58%,
-            100% 100%,
-            0 100%,
-            18% 60%,
-            30% 40%,
-            33% 24%,
-            35% 12%
-        );
+    box-shadow:
+        0 5px 15px rgba(117,67,53,.12);
 
-    filter:
-        drop-shadow(
-            0 0 30px rgba(224,216,176,.12)
-        );
+    transform:
+        translate(-50%, -100%)
+        rotate(calc(var(--i) * 45deg));
 }
 
-.bride::before {
+
+/* flower center */
+
+.garden-flower::after {
 
     content: "";
 
     position: absolute;
 
-    width: 29%;
-    aspect-ratio: 1;
+    left: 50%;
+    top: 50%;
+
+    width: 19px;
+    height: 19px;
+
+    transform:
+        translate(-50%, -50%);
 
     border-radius: 50%;
 
-    top: -7%;
-    left: 36%;
-
     background:
         radial-gradient(
-            circle at 45% 35%,
-            #eee8d6,
-            #a8aa91 75%
+            circle at 35% 30%,
+            #fff0b9,
+            #c98b4e
         );
 
     box-shadow:
-        -18px 8px 0 -2px rgba(49,56,45,.8);
+        0 0 18px rgba(202,142,79,.4);
 }
 
-.groom {
+
+/* =========================================================
+   VINES
+========================================================= */
+
+.vine {
 
     position: absolute;
 
-    bottom: 0;
+    width: 270px;
+    height: 500px;
 
-    right: 4%;
+    opacity: .7;
 
-    width: 38%;
+    border-left:
+        2px solid rgba(111,96,67,.22);
 
-    height: 84%;
+    border-radius: 50%;
 
-    background:
-        linear-gradient(
-            135deg,
-            rgba(44,52,44,.98),
-            rgba(101,111,91,.9)
-        );
-
-    clip-path:
-        polygon(
-            42% 0%,
-            60% 2%,
-            65% 12%,
-            63% 25%,
-            70% 36%,
-            79% 49%,
-            93% 100%,
-            0 100%,
-            18% 52%,
-            30% 38%,
-            35% 23%,
-            34% 10%
-        );
-
-    filter:
-        drop-shadow(
-            0 0 35px rgba(40,45,38,.35)
-        );
+    animation:
+        vineMove 8s ease-in-out infinite alternate;
 }
 
-.groom::before {
+.vine.left {
+    left: -90px;
+    top: 15%;
+
+    transform:
+        rotate(12deg);
+}
+
+.vine.right {
+    right: -90px;
+    bottom: 5%;
+
+    transform:
+        rotate(-12deg);
+}
+
+@keyframes vineMove {
+
+    from {
+        transform:
+            rotate(8deg)
+            translateY(0);
+    }
+
+    to {
+        transform:
+            rotate(15deg)
+            translateY(-15px);
+    }
+}
+
+
+/* =========================================================
+   FLOATING FIREFLIES
+========================================================= */
+
+.firefly-field {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 3;
+
+    pointer-events: none;
+}
+
+.firefly {
+
+    position: absolute;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #e6b66c;
+
+    box-shadow:
+        0 0 10px 3px rgba(230,182,108,.45);
+
+    animation:
+        fireflyMove
+        var(--fly-time)
+        ease-in-out
+        infinite
+        var(--fly-delay);
+}
+
+@keyframes fireflyMove {
+
+    0%, 100% {
+        opacity: .1;
+        transform:
+            translate(0,0)
+            scale(.6);
+    }
+
+    50% {
+        opacity: 1;
+        transform:
+            translate(
+                var(--fly-x),
+                var(--fly-y)
+            )
+            scale(1.3);
+    }
+}
+
+
+/* =========================================================
+   BUTTERFLIES
+========================================================= */
+
+.butterfly {
+
+    position: absolute;
+
+    z-index: 4;
+
+    width: 24px;
+    height: 18px;
+
+    animation:
+        butterflyFlight
+        var(--butterfly-time)
+        ease-in-out
+        infinite
+        var(--butterfly-delay);
+}
+
+.butterfly::before,
+.butterfly::after {
 
     content: "";
 
     position: absolute;
 
-    width: 27%;
+    width: 12px;
+    height: 17px;
 
-    aspect-ratio: 1;
-
-    border-radius: 50%;
-
-    top: -6%;
-    left: 36%;
+    top: 0;
 
     background:
         radial-gradient(
-            circle at 45% 35%,
-            #d0c7aa,
-            #777d69 75%
+            circle at 70% 35%,
+            #fff8ef,
+            #dca2a1
         );
 
+    border-radius:
+        80% 20% 70% 30%;
+
     box-shadow:
-        0 -8px 0 4px rgba(38,44,37,.95);
+        0 3px 10px rgba(110,70,55,.12);
+}
+
+.butterfly::before {
+    left: 0;
+
+    transform-origin:
+        100% 100%;
+
+    animation:
+        wingLeft .45s ease-in-out infinite alternate;
+}
+
+.butterfly::after {
+    right: 0;
+
+    transform:
+        scaleX(-1);
+
+    transform-origin:
+        0 100%;
+
+    animation:
+        wingRight .45s ease-in-out infinite alternate;
+}
+
+@keyframes wingLeft {
+    from {
+        transform: rotateY(0deg);
+    }
+
+    to {
+        transform: rotateY(55deg);
+    }
+}
+
+@keyframes wingRight {
+    from {
+        transform: scaleX(-1) rotateY(0deg);
+    }
+
+    to {
+        transform: scaleX(-1) rotateY(55deg);
+    }
+}
+
+@keyframes butterflyFlight {
+
+    0% {
+        transform:
+            translate3d(0,0,0)
+            rotate(5deg);
+    }
+
+    25% {
+        transform:
+            translate3d(80px,-70px,0)
+            rotate(-8deg);
+    }
+
+    50% {
+        transform:
+            translate3d(160px,20px,0)
+            rotate(8deg);
+    }
+
+    75% {
+        transform:
+            translate3d(60px,100px,0)
+            rotate(-5deg);
+    }
+
+    100% {
+        transform:
+            translate3d(0,0,0)
+            rotate(5deg);
+    }
+}
+
+
+/* =========================================================
+   BOTTOM FLOWER BORDER
+========================================================= */
+
+.flower-border {
+
+    position: absolute;
+
+    left: -5%;
+
+    bottom: -45px;
+
+    width: 110%;
+
+    height: 180px;
+
+    z-index: 3;
+
+    background:
+
+        radial-gradient(
+            ellipse at 10% 80%,
+            rgba(187,104,112,.38),
+            transparent 16%
+        ),
+
+        radial-gradient(
+            ellipse at 28% 70%,
+            rgba(223,165,128,.45),
+            transparent 18%
+        ),
+
+        radial-gradient(
+            ellipse at 50% 80%,
+            rgba(202,135,143,.38),
+            transparent 17%
+        ),
+
+        radial-gradient(
+            ellipse at 72% 70%,
+            rgba(224,174,129,.4),
+            transparent 18%
+        ),
+
+        radial-gradient(
+            ellipse at 92% 80%,
+            rgba(190,111,116,.35),
+            transparent 16%
+        );
+
+    filter: blur(1px);
+
+    animation:
+        borderFloat 8s ease-in-out infinite alternate;
+}
+
+@keyframes borderFloat {
+
+    from {
+        transform:
+            translateY(5px);
+    }
+
+    to {
+        transform:
+            translateY(-12px);
+    }
 }
 
 
@@ -1093,22 +1359,24 @@ body.locked {
 
     inset: 0;
 
-    z-index: 3;
+    z-index: 4;
+
+    pointer-events: none;
 
     background:
 
         linear-gradient(
             90deg,
-            rgba(10,14,10,.95) 0%,
-            rgba(10,14,10,.78) 38%,
-            rgba(10,14,10,.30) 72%,
-            rgba(10,14,10,.10) 100%
+            rgba(255,249,238,.95) 0%,
+            rgba(255,249,238,.78) 38%,
+            rgba(255,249,238,.34) 72%,
+            rgba(255,249,238,.10) 100%
         ),
 
         linear-gradient(
             180deg,
-            rgba(10,14,10,.10),
-            rgba(10,14,10,.50)
+            rgba(255,255,255,.08),
+            rgba(244,224,205,.28)
         );
 }
 
@@ -1121,10 +1389,10 @@ body.locked {
 
     position: relative;
 
-    z-index: 6;
+    z-index: 8;
 
     width:
-        min(620px, 88%);
+        min(680px, 88%);
 
     margin-left:
         clamp(30px, 9vw, 130px);
@@ -1188,7 +1456,7 @@ body.locked {
 
     text-transform: uppercase;
 
-    color: #d8d09f;
+    color: #9a704c;
 
     margin-bottom: 24px;
 }
@@ -1204,10 +1472,10 @@ body.locked {
 
     line-height: .82;
 
-    color: #fffdf3;
+    color: #4b352d;
 
     text-shadow:
-        0 10px 40px rgba(0,0,0,.4);
+        0 8px 25px rgba(90,58,45,.12);
 }
 
 .names .and {
@@ -1225,14 +1493,14 @@ body.locked {
 
     line-height: 1;
 
-    color: #d9cf99;
+    color: #b07869;
 
     letter-spacing: 3px;
 }
 
 .divider {
 
-    width: 65px;
+    width: 75px;
 
     height: 1px;
 
@@ -1242,7 +1510,7 @@ body.locked {
     background:
         linear-gradient(
             90deg,
-            #d9cf99,
+            #bd896f,
             transparent
         );
 }
@@ -1258,7 +1526,7 @@ body.locked {
 
     letter-spacing: 5px;
 
-    color: #f5f0df;
+    color: #60483c;
 }
 
 .date-caption {
@@ -1272,7 +1540,7 @@ body.locked {
     text-transform: uppercase;
 
     color:
-        rgba(255,255,255,.52);
+        rgba(74,53,43,.58);
 }
 
 
@@ -1303,7 +1571,7 @@ body.locked {
     height: 55px;
 
     background:
-        rgba(218,208,163,.35);
+        rgba(155,111,86,.35);
 }
 
 .parent-label {
@@ -1315,7 +1583,7 @@ body.locked {
     text-transform: uppercase;
 
     color:
-        rgba(255,255,255,.45);
+        rgba(74,53,43,.52);
 
     margin-bottom: 7px;
 }
@@ -1330,7 +1598,7 @@ body.locked {
 
     line-height: 1.25;
 
-    color: #f5f0df;
+    color: #4b392f;
 }
 
 
@@ -1350,7 +1618,14 @@ body.locked {
         90px 20px;
 
     background:
-        #111610;
+        linear-gradient(
+            135deg,
+            #f8eee5,
+            #ead9d0,
+            #f7eadb
+        );
+
+    color: #49372f;
 }
 
 .family-art {
@@ -1374,7 +1649,7 @@ body.locked {
     height: 700px;
 
     border:
-        1px solid rgba(215,206,158,.14);
+        1px solid rgba(177,123,104,.18);
 
     border-radius: 50%;
 
@@ -1387,13 +1662,13 @@ body.locked {
     box-shadow:
 
         0 0 0 80px
-        rgba(215,206,158,.025),
+        rgba(194,137,119,.035),
 
         0 0 0 160px
-        rgba(215,206,158,.018),
+        rgba(194,137,119,.025),
 
         0 0 0 240px
-        rgba(215,206,158,.012);
+        rgba(194,137,119,.018);
 
     animation:
         ringPulse 10s ease-in-out infinite alternate;
@@ -1433,7 +1708,7 @@ body.locked {
     background:
         radial-gradient(
             circle,
-            rgba(184,196,159,.14),
+            rgba(215,153,142,.16),
             transparent 68%
         );
 
@@ -1465,11 +1740,6 @@ body.locked {
 
 }
 
-
-/* =========================================================
-   FAMILY CARD
-========================================================= */
-
 .family-card {
 
     position: relative;
@@ -1486,14 +1756,14 @@ body.locked {
     text-align: center;
 
     background:
-        rgba(255,255,255,.045);
+        rgba(255,250,244,.66);
 
     border:
         1px solid
-        rgba(225,218,180,.17);
+        rgba(163,116,94,.20);
 
     box-shadow:
-        0 40px 100px rgba(0,0,0,.25);
+        0 40px 100px rgba(100,60,45,.13);
 
     backdrop-filter:
         blur(14px);
@@ -1533,7 +1803,7 @@ body.locked {
 
     text-transform: uppercase;
 
-    color: #cbc49b;
+    color: #a26e5d;
 }
 
 .family-title {
@@ -1549,7 +1819,7 @@ body.locked {
 
     line-height: .9;
 
-    color: #fffdf3;
+    color: #51382f;
 }
 
 .family-message {
@@ -1570,13 +1840,8 @@ body.locked {
     line-height: 1.55;
 
     color:
-        rgba(245,242,229,.76);
+        rgba(74,53,43,.76);
 }
-
-
-/* =========================================================
-   FAMILY PARENTS
-========================================================= */
 
 .family-parents {
 
@@ -1602,7 +1867,7 @@ body.locked {
     height: 70px;
 
     background:
-        rgba(216,207,164,.30);
+        rgba(163,116,94,.30);
 }
 
 .family-parent-label {
@@ -1614,7 +1879,7 @@ body.locked {
     text-transform: uppercase;
 
     color:
-        rgba(255,255,255,.45);
+        rgba(74,53,43,.48);
 
     margin-bottom: 10px;
 }
@@ -1629,7 +1894,7 @@ body.locked {
 
     line-height: 1.3;
 
-    color: #f5f1df;
+    color: #4f3a31;
 }
 
 
@@ -1651,7 +1916,14 @@ body.locked {
         90px 20px;
 
     background:
-        #101510;
+        linear-gradient(
+            135deg,
+            #f9eee5,
+            #ead7d1,
+            #f6e7dc
+        );
+
+    color: #4b382f;
 }
 
 .blessing-art {
@@ -1710,8 +1982,8 @@ body.locked {
     background:
         linear-gradient(
             180deg,
-            rgba(221,211,164,.5),
-            rgba(164,181,146,.05)
+            rgba(207,143,138,.5),
+            rgba(224,176,148,.05)
         );
 
     border-radius:
@@ -1721,11 +1993,6 @@ body.locked {
         translate(-50%, -100%)
         rotate(calc(var(--i) * 45deg));
 }
-
-
-/* =========================================================
-   BLESSING LIGHT
-========================================================= */
 
 .blessing::after {
 
@@ -1741,7 +2008,7 @@ body.locked {
     background:
         radial-gradient(
             circle,
-            rgba(216,205,159,.12),
+            rgba(215,158,140,.14),
             transparent 68%
         );
 
@@ -1770,11 +2037,6 @@ body.locked {
     }
 
 }
-
-
-/* =========================================================
-   BLESSING CONTENT
-========================================================= */
 
 .blessing-content {
 
@@ -1815,7 +2077,7 @@ body.locked {
 
     text-transform: uppercase;
 
-    color: #cbc49b;
+    color: #a46e5d;
 }
 
 .blessing-title {
@@ -1831,7 +2093,7 @@ body.locked {
 
     line-height: .88;
 
-    color: #fffdf4;
+    color: #51372e;
 }
 
 .blessing-text {
@@ -1851,7 +2113,7 @@ body.locked {
     line-height: 1.65;
 
     color:
-        rgba(245,242,229,.76);
+        rgba(74,53,43,.76);
 }
 
 .blessing-divider {
@@ -1867,7 +2129,7 @@ body.locked {
         linear-gradient(
             90deg,
             transparent,
-            #d8ce9a,
+            #b97968,
             transparent
         );
 }
@@ -1883,7 +2145,7 @@ body.locked {
 
     line-height: 1;
 
-    color: #f7f3e7;
+    color: #543b31;
 }
 
 .final-small {
@@ -1897,7 +2159,7 @@ body.locked {
     text-transform: uppercase;
 
     color:
-        rgba(255,255,255,.38);
+        rgba(74,53,43,.42);
 }
 
 
@@ -1909,30 +2171,6 @@ body.locked {
 
     .hero {
         align-items: flex-end;
-    }
-
-    .couple-illustration {
-
-        right: -12%;
-
-        width: 85vw;
-
-        height: 70vh;
-
-        opacity: .38;
-    }
-
-    .hero::after {
-
-        background:
-
-            linear-gradient(
-                180deg,
-                rgba(10,14,10,.10),
-                rgba(10,14,10,.25) 35%,
-                rgba(10,14,10,.75) 68%,
-                rgba(10,14,10,.96) 100%
-            );
     }
 
     .hero-content {
@@ -1982,6 +2220,24 @@ body.locked {
         width: 45px;
 
         height: 1px;
+    }
+
+    .garden-flower:nth-child(1) {
+        transform: scale(.65);
+        left: -30px !important;
+    }
+
+    .garden-flower:nth-child(2) {
+        transform: scale(.55);
+        right: -30px !important;
+    }
+
+    .garden-flower:nth-child(3) {
+        transform: scale(.45);
+    }
+
+    .vine {
+        opacity: .35;
     }
 
     .family {
@@ -2086,11 +2342,10 @@ body.locked {
 }
 
 </style>
+
 </head>
 
-
 <body class="locked">
-
 
 <!-- =========================================================
      OPENING SCREEN
@@ -2098,65 +2353,59 @@ body.locked {
 
 <div class="opening" id="opening">
 
-    <div class="opening-content">
+<div class="opening-content">
 
-        <div class="opening-label">
-            A Wedding Invitation
-        </div>
+    <div class="opening-label">
+        A Wedding Invitation
+    </div>
 
-        <!-- Names intentionally removed from landing page -->
+    <div class="opening-description">
+        A beautiful beginning awaits
+    </div>
 
-        <div class="opening-description">
-            A beautiful beginning awaits
-        </div>
+    <div class="envelope-area">
 
+        <div
+            class="envelope"
+            id="envelope"
+            tabindex="0"
+            role="button"
+            aria-label="Open wedding invitation"
+        >
 
-        <div class="envelope-area">
+            <div class="letter">
 
-            <div
-                class="envelope"
-                id="envelope"
-                tabindex="0"
-                role="button"
-                aria-label="Open wedding invitation"
-            >
+                <div class="letter-content">
 
-                <div class="letter">
+                    <div class="letter-small">
+                        You Are Invited
+                    </div>
 
-                    <div class="letter-content">
-
-                        <div class="letter-small">
-                            You Are Invited To
-                        </div>
-
-                        <div class="letter-names">
-                            Aneesha & Dhanu
-                        </div>
-
+                    <div class="letter-names">
+                        Aneesha & Dhanu
                     </div>
 
                 </div>
 
-                <div class="envelope-body"></div>
-
-                <div class="flap"></div>
-
-                <div class="seal" id="seal"></div>
-
             </div>
 
+            <div class="envelope-body"></div>
 
-            <div class="tap-text">
-                Tap the seal to open
-            </div>
+            <div class="flap"></div>
 
+            <div class="seal" id="seal"></div>
+
+        </div>
+
+        <div class="tap-text">
+            Tap the seal to open
         </div>
 
     </div>
 
 </div>
 
-
+</div>
 
 <!-- =========================================================
      INVITATION
@@ -2167,207 +2416,38 @@ body.locked {
     id="invitation"
 >
 
+<div
+    class="star-field"
+    id="starField"
+></div>
 
-    <!-- =====================================================
-         GLOBAL ANIMATIONS
-    ====================================================== -->
+<div
+    class="petal-field"
+    id="petalField"
+></div>
 
-    <div
-        class="star-field"
-        id="starField"
-    ></div>
 
-    <div
-        class="petal-field"
-        id="petalField"
-    ></div>
+<!-- =====================================================
+     SECTION 1 — NEW ANIMATED GARDEN THEME
+====================================================== -->
 
+<section class="section hero">
 
 
-    <!-- =====================================================
-         SECTION 1
-    ====================================================== -->
+    <div class="hero-art">
 
-    <section class="section hero">
+        <!-- FLOWER GARDEN -->
 
+        <div class="flower-garden">
 
-        <div class="hero-art">
-
-            <div class="moon"></div>
-
-            <div class="horizon"></div>
-
-        </div>
-
-
-        <div class="couple-illustration">
-
-            <div class="bride"></div>
-
-            <div class="groom"></div>
-
-        </div>
-
-
-        <div class="hero-content">
-
-            <div class="hero-label">
-                Together With Their Families
-            </div>
-
-
-            <div class="names">
-
-                Aneesha
-
-                <span class="and">
-                    &
-                </span>
-
-                Dhanu Reddy
-
-            </div>
-
-
-            <div class="divider"></div>
-
-
-            <div class="date">
-                15 · 16 AUGUST 2026
-            </div>
-
-
-            <div class="date-caption">
-                Invite you to celebrate their journey together
-            </div>
-
-
-            <div class="parents">
-
-                <div class="parent">
-
-                    <div class="parent-label">
-                        Bride's Parents
-                    </div>
-
-                    <div class="parent-name">
-                        Banu<br>
-                        & Ali Akbar Basha
-                    </div>
-
-                </div>
-
-
-                <div class="parent-divider"></div>
-
-
-                <div class="parent">
-
-                    <div class="parent-label">
-                        Groom's Parents
-                    </div>
-
-                    <div class="parent-name">
-                        Mr. & Mrs.<br>
-                        Groom's Parents
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         SECTION 2
-    ====================================================== -->
-
-    <section class="section family">
-
-
-        <div class="family-art"></div>
-
-
-        <div class="family-card">
-
-            <div class="family-label">
-                With The Blessings Of Our Families
-            </div>
-
-
-            <div class="family-title">
-                Two Families,<br>
-                One Beginning
-            </div>
-
-
-            <div class="family-message">
-
-                With the love and blessings of our
-                families, we invite you to join us
-                as Aneesha and Dhanu begin a beautiful
-                new chapter together.
-
-            </div>
-
-
-            <div class="family-parents">
-
-
-                <div>
-
-                    <div class="family-parent-label">
-                        Bride's Family
-                    </div>
-
-                    <div class="family-parent-name">
-                        Banu<br>
-                        & Ali Akbar Basha
-                    </div>
-
-                </div>
-
-
-                <div class="family-parent-divider"></div>
-
-
-                <div>
-
-                    <div class="family-parent-label">
-                        Groom's Family
-                    </div>
-
-                    <div class="family-parent-name">
-                        Mr. & Mrs.<br>
-                        Groom's Parents
-                    </div>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         SECTION 3
-    ====================================================== -->
-
-    <section class="section blessing">
-
-
-        <div class="blessing-art">
-
-            <div class="flower">
-
+            <div
+                class="garden-flower"
+                style="
+                    left:5%;
+                    top:14%;
+                    --flower-speed:5s;
+                "
+            >
                 <span style="--i:0"></span>
                 <span style="--i:1"></span>
                 <span style="--i:2"></span>
@@ -2376,438 +2456,26 @@ body.locked {
                 <span style="--i:5"></span>
                 <span style="--i:6"></span>
                 <span style="--i:7"></span>
-
-            </div>
-
-        </div>
-
-
-        <div class="blessing-content">
-
-            <div class="blessing-label">
-                A Blessing For Their Journey
             </div>
 
 
-            <div class="blessing-title">
-                May Love<br>
-                Lead The Way
+            <div
+                class="garden-flower"
+                style="
+                    right:8%;
+                    top:18%;
+                    --flower-speed:6s;
+                "
+            >
+                <span style="--i:0"></span>
+                <span style="--i:1"></span>
+                <span style="--i:2"></span>
+                <span style="--i:3"></span>
+                <span style="--i:4"></span>
+                <span style="--i:5"></span>
+                <span style="--i:6"></span>
+                <span style="--i:7"></span>
             </div>
 
 
-            <div class="blessing-text">
-
-                May their hearts always find happiness
-                in one another, their home be filled
-                with laughter, and their journey be
-                blessed with love, understanding
-                and togetherness.
-
-                <br><br>
-
-                May they walk hand in hand through
-                every season of life, surrounded by
-                the love and blessings of their families.
-
-            </div>
-
-
-            <div class="blessing-divider"></div>
-
-
-            <div class="final-names">
-                Aneesha & Dhanu Reddy
-            </div>
-
-
-            <div class="final-small">
-                With Love · With Family · With Blessings
-            </div>
-
-        </div>
-
-    </section>
-
-
-</main>
-
-
-
-<script>
-
-/* =========================================================
-   ELEMENTS
-========================================================= */
-
-const opening =
-    document.getElementById("opening");
-
-const envelope =
-    document.getElementById("envelope");
-
-const seal =
-    document.getElementById("seal");
-
-const invitation =
-    document.getElementById("invitation");
-
-const starField =
-    document.getElementById("starField");
-
-const petalField =
-    document.getElementById("petalField");
-
-
-let opened = false;
-
-
-/* =========================================================
-   CREATE STARS
-========================================================= */
-
-function createStars() {
-
-    for (
-        let i = 0;
-        i < 80;
-        i++
-    ) {
-
-        const star =
-            document.createElement("div");
-
-        star.className = "star";
-
-
-        star.style.left =
-            Math.random() * 100 + "%";
-
-        star.style.top =
-            Math.random() * 100 + "%";
-
-
-        star.style.setProperty(
-            "--duration",
-            (2 + Math.random() * 5) + "s"
-        );
-
-
-        star.style.setProperty(
-            "--delay",
-            (Math.random() * 5) + "s"
-        );
-
-
-        star.style.width =
-            (1 + Math.random() * 3) + "px";
-
-        star.style.height =
-            star.style.width;
-
-
-        starField.appendChild(star);
-
-    }
-
-}
-
-
-/* =========================================================
-   CREATE PETALS
-========================================================= */
-
-function createPetals() {
-
-    for (
-        let i = 0;
-        i < 22;
-        i++
-    ) {
-
-        const petal =
-            document.createElement("div");
-
-        petal.className = "petal";
-
-
-        petal.style.left =
-            Math.random() * 100 + "%";
-
-
-        petal.style.setProperty(
-            "--duration",
-            (12 + Math.random() * 15) + "s"
-        );
-
-
-        petal.style.setProperty(
-            "--delay",
-            (-Math.random() * 20) + "s"
-        );
-
-
-        petal.style.setProperty(
-            "--sway",
-            (-120 + Math.random() * 240) + "px"
-        );
-
-
-        petal.style.setProperty(
-            "--sway2",
-            (-180 + Math.random() * 360) + "px"
-        );
-
-
-        petal.style.transform =
-            `scale(${.5 + Math.random() * .8})`;
-
-
-        petalField.appendChild(petal);
-
-    }
-
-}
-
-
-/* =========================================================
-   OPENING PARTICLE BURST
-========================================================= */
-
-function createExplosion() {
-
-    const symbols = [
-        "✦",
-        "✧",
-        "·",
-        "♡",
-        "❋",
-        "✿"
-    ];
-
-
-    for (
-        let i = 0;
-        i < 65;
-        i++
-    ) {
-
-        const particle =
-            document.createElement("div");
-
-        particle.className =
-            "particle";
-
-
-        particle.textContent =
-            symbols[
-                Math.floor(
-                    Math.random() *
-                    symbols.length
-                )
-            ];
-
-
-        const angle =
-            Math.random() *
-            Math.PI * 2;
-
-
-        const distance =
-            120 +
-            Math.random() * 500;
-
-
-        const x =
-            Math.cos(angle) *
-            distance;
-
-
-        const y =
-            Math.sin(angle) *
-            distance;
-
-
-        particle.style.setProperty(
-            "--x",
-            `${x}px`
-        );
-
-
-        particle.style.setProperty(
-            "--y",
-            `${y}px`
-        );
-
-
-        particle.style.setProperty(
-            "--scale",
-            `${.4 + Math.random() * 1.2}`
-        );
-
-
-        particle.style.setProperty(
-            "--rotation",
-            `${Math.random() * 720 - 360}deg`
-        );
-
-
-        particle.style.fontSize =
-            `${10 + Math.random() * 20}px`;
-
-
-        document.body.appendChild(
-            particle
-        );
-
-
-        setTimeout(
-            () => particle.remove(),
-            2200
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   OPEN INVITATION
-========================================================= */
-
-function openInvitation() {
-
-    if (opened) {
-        return;
-    }
-
-    opened = true;
-
-
-    /* stop seal animation */
-
-    seal.style.animation = "none";
-
-
-    /* seal breaks */
-
-    seal.animate(
-
-        [
-            {
-                transform:
-                    "translate(-50%, -50%) scale(1)"
-            },
-
-            {
-                transform:
-                    "translate(-50%, -50%) scale(1.18) rotate(-10deg)"
-            },
-
-            {
-                transform:
-                    "translate(-50%, -50%) scale(0) rotate(35deg)",
-
-                opacity: 0
-            }
-        ],
-
-        {
-            duration: 650,
-
-            easing:
-                "cubic-bezier(.2,.8,.2,1)",
-
-            fill:
-                "forwards"
-        }
-
-    );
-
-
-    /* open envelope */
-
-    setTimeout(() => {
-
-        opening.classList.add(
-            "opened"
-        );
-
-    }, 220);
-
-
-    /* particle burst */
-
-    setTimeout(() => {
-
-        createExplosion();
-
-    }, 320);
-
-
-    /* reveal invitation */
-
-    setTimeout(() => {
-
-        invitation.classList.add(
-            "visible"
-        );
-
-
-        createStars();
-
-        createPetals();
-
-
-        document.body.classList.remove(
-            "locked"
-        );
-
-
-        setTimeout(() => {
-
-            opening.style.display =
-                "none";
-
-        }, 1600);
-
-    }, 850);
-
-}
-
-
-/* =========================================================
-   CLICK
-========================================================= */
-
-envelope.addEventListener(
-    "click",
-    openInvitation
-);
-
-
-/* =========================================================
-   KEYBOARD
-========================================================= */
-
-envelope.addEventListener(
-    "keydown",
-    event => {
-
-        if (
-            event.key === "Enter" ||
-            event.key === " "
-        ) {
-
-            event.preventDefault();
-
-            openInvitation();
-
-        }
-
-    }
-);
-
-</script>
-
-</body>
-</html>
+            <div
