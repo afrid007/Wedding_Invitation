@@ -138,19 +138,12 @@ body.locked {
     animation: fadeUp 1s .2s both;
 }
 
-.opening-names {
-    margin-top: 12px;
 
-    font-family: "Italianno", cursive;
-
-    font-size: clamp(65px, 13vw, 105px);
-
-    line-height: .9;
-
-    color: #292d27;
-
-    animation: fadeUp 1s .35s both;
-}
+/*
+   IMPORTANT:
+   Bride and groom names have intentionally been removed
+   from the landing page.
+*/
 
 .opening-description {
     margin-top: 15px;
@@ -161,7 +154,7 @@ body.locked {
 
     color: #777a71;
 
-    animation: fadeUp 1s .5s both;
+    animation: fadeUp 1s .35s both;
 }
 
 @keyframes fadeUp {
@@ -314,7 +307,13 @@ body.locked {
     box-shadow:
         0 12px 25px rgba(30,34,29,.12);
 
-    transform: translateY(38%);
+    /*
+       IMPORTANT:
+       Keep the invitation completely hidden
+       until the seal is opened.
+    */
+
+    transform: translateY(100%);
 
     transition:
         transform 1.4s
@@ -323,29 +322,6 @@ body.locked {
 
 .letter-content {
     text-align: center;
-
-    /*
-       ONLY CHANGE:
-       Hide the invitation message before
-       the seal is opened.
-    */
-    opacity: 0;
-
-    transition:
-        opacity .7s ease;
-}
-
-
-/*
-   ONLY CHANGE:
-   Reveal the invitation message after
-   the envelope is opened.
-*/
-
-.opening.opened .letter-content {
-    opacity: 1;
-
-    transition-delay: .75s;
 }
 
 .letter-small {
@@ -516,6 +492,13 @@ body.locked {
 .opening.opened .flap {
     transform: rotateX(180deg);
 }
+
+
+/*
+   IMPORTANT:
+   The invitation letter is revealed only AFTER
+   the seal is opened.
+*/
 
 .opening.opened .letter {
     transform: translateY(-25%);
@@ -841,13 +824,6 @@ body.locked {
         #101510;
 }
 
-
-/*
-   Instead of requiring another image file,
-   this creates an elegant illustrated background
-   directly inside the HTML.
-*/
-
 .hero-art {
 
     position: absolute;
@@ -858,9 +834,6 @@ body.locked {
 
     overflow: hidden;
 }
-
-
-/* giant moon */
 
 .hero-art .moon {
 
@@ -909,9 +882,6 @@ body.locked {
     }
 
 }
-
-
-/* horizon glow */
 
 .hero-art .horizon {
 
@@ -977,9 +947,6 @@ body.locked {
     pointer-events: none;
 }
 
-
-/* woman's silhouette */
-
 .bride {
 
     position: absolute;
@@ -1021,9 +988,6 @@ body.locked {
         );
 }
 
-
-/* bride head */
-
 .bride::before {
 
     content: "";
@@ -1048,9 +1012,6 @@ body.locked {
     box-shadow:
         -18px 8px 0 -2px rgba(49,56,45,.8);
 }
-
-
-/* groom */
 
 .groom {
 
@@ -1092,9 +1053,6 @@ body.locked {
             0 0 35px rgba(40,45,38,.35)
         );
 }
-
-
-/* groom head */
 
 .groom::before {
 
@@ -1175,7 +1133,6 @@ body.locked {
         90px 0;
 }
 
-
 .hero-content > * {
 
     animation:
@@ -1223,7 +1180,6 @@ body.locked {
 
 }
 
-
 .hero-label {
 
     font-size: 9px;
@@ -1236,7 +1192,6 @@ body.locked {
 
     margin-bottom: 24px;
 }
-
 
 .names {
 
@@ -1254,7 +1209,6 @@ body.locked {
     text-shadow:
         0 10px 40px rgba(0,0,0,.4);
 }
-
 
 .names .and {
 
@@ -1276,7 +1230,6 @@ body.locked {
     letter-spacing: 3px;
 }
 
-
 .divider {
 
     width: 65px;
@@ -1294,7 +1247,6 @@ body.locked {
         );
 }
 
-
 .date {
 
     font-family:
@@ -1308,7 +1260,6 @@ body.locked {
 
     color: #f5f0df;
 }
-
 
 .date-caption {
 
@@ -1345,7 +1296,6 @@ body.locked {
     margin-top: 40px;
 }
 
-
 .parent-divider {
 
     width: 1px;
@@ -1355,7 +1305,6 @@ body.locked {
     background:
         rgba(218,208,163,.35);
 }
-
 
 .parent-label {
 
@@ -1370,7 +1319,6 @@ body.locked {
 
     margin-bottom: 7px;
 }
-
 
 .parent-name {
 
@@ -1405,9 +1353,6 @@ body.locked {
         #111610;
 }
 
-
-/* animated arch */
-
 .family-art {
 
     position: absolute;
@@ -1418,9 +1363,6 @@ body.locked {
 
     z-index: 0;
 }
-
-
-/* giant rings */
 
 .family-art::before {
 
@@ -1476,9 +1418,6 @@ body.locked {
     }
 
 }
-
-
-/* floating glow */
 
 .family-art::after {
 
@@ -1586,7 +1525,6 @@ body.locked {
 
 }
 
-
 .family-label {
 
     font-size: 8px;
@@ -1597,7 +1535,6 @@ body.locked {
 
     color: #cbc49b;
 }
-
 
 .family-title {
 
@@ -1614,7 +1551,6 @@ body.locked {
 
     color: #fffdf3;
 }
-
 
 .family-message {
 
@@ -1659,7 +1595,6 @@ body.locked {
         50px auto 0;
 }
 
-
 .family-parent-divider {
 
     width: 1px;
@@ -1669,7 +1604,6 @@ body.locked {
     background:
         rgba(216,207,164,.30);
 }
-
 
 .family-parent-label {
 
@@ -1684,7 +1618,6 @@ body.locked {
 
     margin-bottom: 10px;
 }
-
 
 .family-parent-name {
 
@@ -1721,9 +1654,6 @@ body.locked {
         #101510;
 }
 
-
-/* large animated flower */
-
 .blessing-art {
 
     position: absolute;
@@ -1734,9 +1664,6 @@ body.locked {
 
     z-index: 0;
 }
-
-
-/* flower petals */
 
 .blessing-art .flower {
 
@@ -1766,9 +1693,6 @@ body.locked {
     }
 
 }
-
-
-/* petal */
 
 .blessing-art .flower span {
 
@@ -1883,7 +1807,6 @@ body.locked {
 
 }
 
-
 .blessing-label {
 
     font-size: 8px;
@@ -1894,7 +1817,6 @@ body.locked {
 
     color: #cbc49b;
 }
-
 
 .blessing-title {
 
@@ -1911,7 +1833,6 @@ body.locked {
 
     color: #fffdf4;
 }
-
 
 .blessing-text {
 
@@ -1933,7 +1854,6 @@ body.locked {
         rgba(245,242,229,.76);
 }
 
-
 .blessing-divider {
 
     width: 65px;
@@ -1952,7 +1872,6 @@ body.locked {
         );
 }
 
-
 .final-names {
 
     font-family:
@@ -1966,7 +1885,6 @@ body.locked {
 
     color: #f7f3e7;
 }
-
 
 .final-small {
 
@@ -1993,7 +1911,6 @@ body.locked {
         align-items: flex-end;
     }
 
-
     .couple-illustration {
 
         right: -12%;
@@ -2004,7 +1921,6 @@ body.locked {
 
         opacity: .38;
     }
-
 
     .hero::after {
 
@@ -2019,7 +1935,6 @@ body.locked {
             );
     }
 
-
     .hero-content {
 
         width: 88%;
@@ -2031,13 +1946,11 @@ body.locked {
             80px 0 55px;
     }
 
-
     .names {
 
         font-size:
             clamp(62px, 18vw, 80px);
     }
-
 
     .names .and {
 
@@ -2047,14 +1960,12 @@ body.locked {
             15px 0;
     }
 
-
     .date {
 
         font-size: 18px;
 
         letter-spacing: 2px;
     }
-
 
     .parents {
 
@@ -2066,7 +1977,6 @@ body.locked {
         margin-top: 30px;
     }
 
-
     .parent-divider {
 
         width: 45px;
@@ -2074,13 +1984,11 @@ body.locked {
         height: 1px;
     }
 
-
     .family {
 
         padding:
             70px 16px;
     }
-
 
     .family-card {
 
@@ -2088,18 +1996,15 @@ body.locked {
             48px 22px;
     }
 
-
     .family-title {
 
         font-size: 58px;
     }
 
-
     .family-message {
 
         font-size: 20px;
     }
-
 
     .family-parents {
 
@@ -2108,7 +2013,6 @@ body.locked {
 
         gap: 24px;
     }
-
 
     .family-parent-divider {
 
@@ -2119,19 +2023,16 @@ body.locked {
         justify-self: center;
     }
 
-
     .blessing {
 
         padding:
             70px 16px;
     }
 
-
     .blessing-title {
 
         font-size: 68px;
     }
-
 
     .blessing-text {
 
@@ -2203,9 +2104,7 @@ body.locked {
             A Wedding Invitation
         </div>
 
-        <div class="opening-names">
-            Aneesha & Dhanu
-        </div>
+        <!-- Names intentionally removed from landing page -->
 
         <div class="opening-description">
             A beautiful beginning awaits
@@ -2227,7 +2126,7 @@ body.locked {
                     <div class="letter-content">
 
                         <div class="letter-small">
-                            You Are Invited
+                            You Are Invited To
                         </div>
 
                         <div class="letter-names">
@@ -2292,8 +2191,6 @@ body.locked {
     <section class="section hero">
 
 
-        <!-- CSS / SVG-LIKE ILLUSTRATION -->
-
         <div class="hero-art">
 
             <div class="moon"></div>
@@ -2354,8 +2251,8 @@ body.locked {
                     </div>
 
                     <div class="parent-name">
-                        Mr. & Mrs.<br>
-                        Bride's Parents
+                        Banu<br>
+                        & Ali Akbar Basha
                     </div>
 
                 </div>
@@ -2428,8 +2325,8 @@ body.locked {
                     </div>
 
                     <div class="family-parent-name">
-                        Mr. & Mrs.<br>
-                        Bride's Parents
+                        Banu<br>
+                        & Ali Akbar Basha
                     </div>
 
                 </div>
@@ -2856,8 +2753,6 @@ function openInvitation() {
         );
 
 
-        /* start atmospheric animation */
-
         createStars();
 
         createPetals();
@@ -2866,16 +2761,6 @@ function openInvitation() {
         document.body.classList.remove(
             "locked"
         );
-
-
-        /*
-           IMPORTANT:
-           We do NOT automatically scroll.
-
-           The visitor gets the first
-           invitation section and can
-           naturally scroll through it.
-        */
 
 
         setTimeout(() => {
